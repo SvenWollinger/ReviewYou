@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'de.muenchen'
+
+application {
+    getMainClass().set("de.muenchen.reviewyou.Main")
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes(
+                'Main-Class': 'de.muenchen.reviewyou.Main'
+        )
+    }
+    //https://stackoverflow.com/questions/52816630/unable-to-create-a-jar-of-my-jda-project-because-of-pom-dependency
+
+    from {
+        "src//main//resources//net//snipsniper//resources//cfg//buildinfo.cfg"
+        configurations
+                .runtimeClasspath
+                .findAll { !it.name.endsWith('pom') }
+                .collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

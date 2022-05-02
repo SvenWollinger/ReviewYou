@@ -1,0 +1,10 @@
+/bin/
+/ReviewYou/
+/.classpath
+/.project
+/.idea/
+/out/
+/.gradle/
+/build/
+/release/*
+ReviewYou.iml
