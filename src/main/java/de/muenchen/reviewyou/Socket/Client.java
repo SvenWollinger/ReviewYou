@@ -6,22 +6,9 @@ import java.io.*;
 import java.net.*;
 
 
-public class Socket {
+public class Client {
     //TODO: Send the created HTML to browser
 
-
-
-
-
-
-
-
-
-
-
-
-
-    public class GreetClient {
         private Socket clientSocket;
         private PrintWriter out;
         private BufferedReader in;
