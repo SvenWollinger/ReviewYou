@@ -47,7 +47,6 @@ jar {
     //https://stackoverflow.com/questions/52816630/unable-to-create-a-jar-of-my-jda-project-because-of-pom-dependency
 
     from {
-        "src//main//resources//net//snipsniper//resources//cfg//buildinfo.cfg"
         configurations
                 .runtimeClasspath
                 .findAll { !it.name.endsWith('pom') }
