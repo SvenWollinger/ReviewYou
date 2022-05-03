@@ -37,11 +37,11 @@ public class GUI {
         next.setPreferredSize(new Dimension(80,30));
         previous.setPreferredSize(new Dimension(80,30));
 
-        layout.putConstraint(SpringLayout.NORTH, next, 510, SpringLayout.NORTH, contentPane);
-        layout.putConstraint(SpringLayout.WEST, next, 480, SpringLayout.WEST, contentPane);
+        layout.putConstraint(SpringLayout.SOUTH, next, -25, SpringLayout.SOUTH, contentPane);
+        layout.putConstraint(SpringLayout.WEST, next, 400, SpringLayout.WEST, contentPane);
 
-        layout.putConstraint(SpringLayout.EAST, previous, -10, SpringLayout.WEST, next);
-        layout.putConstraint(SpringLayout.NORTH, previous, 0, SpringLayout.NORTH, next);
+        layout.putConstraint(SpringLayout.SOUTH, previous, -25, SpringLayout.SOUTH, contentPane);
+        layout.putConstraint(SpringLayout.EAST, previous, 0, SpringLayout.WEST, next);
 
         startPanel();
 
