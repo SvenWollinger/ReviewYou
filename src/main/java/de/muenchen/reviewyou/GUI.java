@@ -16,7 +16,7 @@ public class GUI {
     SpringLayout layout = new SpringLayout();
     private int page = 0;
     JPanel panel = new JPanel();
-    
+
 
 
     public GUI() {
@@ -24,11 +24,14 @@ public class GUI {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setVisible(true);
-        window.setSize(600,600);
+        window.setSize(800,800);
+        window.setLocationRelativeTo(null);
 
         contentPane = window.getContentPane();
         contentPane.setLayout(layout);
         contentPane.add(next);
+        contentPane.add(previous);
+        previous.setVisible(false);
 
 
         next.setPreferredSize(new Dimension(80,30));
@@ -46,8 +49,8 @@ public class GUI {
 
     public void checkPage(){
         if(page != 1) {
-            contentPane.add(previous);
-        }
+            previous.setVisible(true);
+        } else previous.setVisible(false);
     }
     // First page to get user data
 
@@ -60,10 +63,13 @@ public class GUI {
     private JTextField currentDate = new JTextField();
     private JTextField instructorTelephone = new JTextField();
     private boolean isOpen;
+    private JTabbedPane pane = new JTabbedPane();
 
     public void startPanel(){
         page = 1;
         checkPage();
+        panel.removeAll();
+        panel.revalidate();
         JLabel label = new JLabel("Hallo i bims");
         window.add(panel);
         panel.setBackground(Color.red);
@@ -75,8 +81,9 @@ public class GUI {
             public void actionPerformed(ActionEvent e) {
                 panel.removeAll();
                 panel.revalidate();
-//                panel.repaint();
+                panel.repaint();
                 secondPanel();
+//                page++;
             }
         });
 
@@ -90,13 +97,10 @@ public class GUI {
         previous.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panel.removeAll();
-                panel.revalidate();
+
                 startPanel();
             }
         });
-
-
     }
 
 }
