@@ -54,6 +54,7 @@ public class GUI {
         layout.putConstraint(SpringLayout.EAST, previous, -5, SpringLayout.WEST, next);
 
 
+
         startPanel();
 
     }
