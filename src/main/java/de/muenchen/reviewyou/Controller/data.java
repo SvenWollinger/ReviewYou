@@ -3,10 +3,10 @@ package de.muenchen.reviewyou.Controller;
 import java.time.LocalDate;
 
 public class data {
-    private String frage1;
-    private int frage1Punkte;
-    private String frage2;
-    private int frage2Punkte;
+    private String query1;
+    private int query1Points;
+    private String query2;
+    private int query2Punkte;
     private String frage3;
     private int frage3Punkte;
     private String frage4;
@@ -108,11 +108,11 @@ public class data {
     public String getFrage17() { return frage17; }
     public int getFrage17Punkte() { return frage17Punkte; }
 
-    public String getFrage18() { return frage18; }
-    public int getFrage18Punkte() { return frage18Punkte; }
+    public String getquery18() { return query18; }
+    public int getquery18Punkte() { return query18(); }
 
-    public String getFrage19() { return frage19; }
-    public int getquestion20Points() { return getquestion20Points; }
+    public String getquestion19() { return question19; }
+    public int getquestion19Points() { return question19Points; }
 
 }
 
