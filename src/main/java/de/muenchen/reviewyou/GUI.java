@@ -73,38 +73,52 @@ public class GUI {
     private JTextField instructorEmail = new JTextField(15);
     private JLabel currentDate = new JLabel(LocalDateTime.now().toString());
     private JTextField instructorTelephone = new JTextField(15);
-    private boolean isOpen;
 
     public void startPanel(){
 
         JLabel headline = new JLabel("Angaben zum / zur Ausbilder:in");
-        headline.setFont(new Font(null, Font.PLAIN, 20));
+        headline.setFont(font);
         window.add(panel);
 
+        // CHECK PAGE
         page = 1;
         checkPage();
 
         panel.setLayout(layout);
 
         panel.add(headline);
-        panel.add(instructorName);
         panel.add(name);
+        panel.add(email);
+        panel.add(instructorName);
+        panel.add(telephone);
         panel.add(instructorEmail);
-        panel.add(currentDate);
-        panel.add(currentDate);
         panel.add(instructorTelephone);
 
-        layout.putConstraint(SpringLayout.WEST, name, 30, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.WEST, headline, 250, SpringLayout.WEST, panel);
+
+        // set name and name textfield
+        layout.putConstraint(SpringLayout.WEST, name, 260, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, name, 50, SpringLayout.NORTH, panel);
         name.setFont(font);
-
 
         layout.putConstraint(SpringLayout.WEST, instructorName, 10, SpringLayout.EAST, name);
         layout.putConstraint(SpringLayout.NORTH, instructorName, 4, SpringLayout.NORTH, name);
 
+        // set email and email textfield
+        layout.putConstraint(SpringLayout.WEST, email, 260, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, email, 90, SpringLayout.NORTH, panel);
+        email.setFont(font);
 
+        layout.putConstraint(SpringLayout.WEST, instructorEmail, 7, SpringLayout.EAST, email);
+        layout.putConstraint(SpringLayout.NORTH, instructorEmail, 4, SpringLayout.NORTH, email);
 
-        layout.putConstraint(SpringLayout.WEST, headline, 250, SpringLayout.WEST, panel);
+        // set telephone and telephone textfield
+        layout.putConstraint(SpringLayout.WEST, telephone, 260, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, telephone, 130, SpringLayout.NORTH, panel);
+        telephone.setFont(font);
+
+        layout.putConstraint(SpringLayout.WEST, instructorTelephone, 36, SpringLayout.EAST, telephone);
+        layout.putConstraint(SpringLayout.NORTH, instructorTelephone, 4, SpringLayout.NORTH, telephone);
 
 
 
@@ -115,11 +129,26 @@ public class GUI {
                 panel.revalidate();
                 panel.repaint();
                 secondPanel();
-//                page++;
             }
         });
 
+
+
     }
+    // GETTER FOR FIRST PAGE
+    public JTextField getInstructorName() {
+        return instructorName;
+    }
+
+    public JTextField getInstructorEmail() {
+        return instructorEmail;
+    }
+
+    public JTextField getInstructorTelephone() {
+        return instructorTelephone;
+    }
+
+
     public void secondPanel(){
         page = 2;
         checkPage();
@@ -130,8 +159,9 @@ public class GUI {
         previous.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                panel.removeAll();
-//                panel.revalidate();
+                panel.removeAll();
+                panel.revalidate();
+                panel.repaint();
                 startPanel();
             }
         });
