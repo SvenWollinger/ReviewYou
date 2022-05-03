@@ -15,13 +15,17 @@ public class data {
     private int frage5Punkte;
 
 
-    private String firstName, lastName, street, houseNumber, postalCode, location, course, intershipSection, trainingArea, participationInCourses;
+    private String firstName, lastName, street, houseNumber, postalCode, location, course, intershipSection,
+            trainingArea, participationInCourses, traineesRating ,traineesSkills, traineesStrengths, traineesDevelopmentFields,
+            traineesPerspectives, traineesOtherRemarks;
     private int vintage;
-    private LocalDate dateOfBirth, periodStart, periodEnd, periodOfEnployment, trainingPlan, internalTalk;
-    //TODO: "Gesamturteil" and "Durchschnittspunktzahl" and "Resturlaub..." and "Dienstunfähigkeit..." not implemented yet
+    private double averageScore;
+    private LocalDate dateOfBirth, periodStart, periodEnd, periodOfEmployment, trainingPlan, internalTalk;
+    //TODO: traineesRating = "Gesamturteil" -> means if i have x points i get y (Aks Olli how they calculate it)
+    //TODO: Setter and Getter
 
 
-    
+
     //Setter and Getter
     public String getFrage1() { return frage1; }
     public int getFrage1Punkte() { return frage1Punkte; }

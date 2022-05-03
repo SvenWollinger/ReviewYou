@@ -12,7 +12,7 @@ public class reviewController {
     ActionListener actionListenerNextPage = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            //
+            //Click on "weiter" -> inserdetData gets safed
         }
     };
 
