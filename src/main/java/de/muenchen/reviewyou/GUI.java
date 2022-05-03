@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 
 public class GUI {
 
@@ -20,12 +21,16 @@ public class GUI {
 
 
     public GUI() {
-        window = new JFrame("Bewertungsbogen für Nachwuchskräfte");
+        window = new JFrame("Leistungsbericht Nachwuchskräfte");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setVisible(true);
         window.setSize(800,800);
         window.setLocationRelativeTo(null);
+
+        window.add(panel);
+        panel.setBackground(Color.red);
+        panel.setPreferredSize(new Dimension(800,650));
 
         contentPane = window.getContentPane();
         contentPane.setLayout(layout);
@@ -41,18 +46,18 @@ public class GUI {
         layout.putConstraint(SpringLayout.WEST, next, 400, SpringLayout.WEST, contentPane);
 
         layout.putConstraint(SpringLayout.SOUTH, previous, -25, SpringLayout.SOUTH, contentPane);
-        layout.putConstraint(SpringLayout.EAST, previous, 0, SpringLayout.WEST, next);
+        layout.putConstraint(SpringLayout.EAST, previous, -5, SpringLayout.WEST, next);
 
 
         startPanel();
 
     }
-
     public void checkPage(){
         if(page != 1) {
             previous.setVisible(true);
         } else previous.setVisible(false);
     }
+
     // First page to get user data
 
     private JLabel name = new JLabel("Name:");
@@ -61,22 +66,30 @@ public class GUI {
     private JLabel telephone = new JLabel("Tel:");
     private JTextField instructorName = new JTextField();
     private JTextField instructorEmail = new JTextField();
-    private JTextField currentDate = new JTextField();
+    private JLabel currentDate = new JLabel(LocalDateTime.now().toString());
     private JTextField instructorTelephone = new JTextField();
     private boolean isOpen;
-    private JTabbedPane pane = new JTabbedPane();
 
     public void startPanel(){
+
+        JLabel headline = new JLabel("Angaben zum / zur Ausbilder:in");
+
         page = 1;
         checkPage();
         panel.removeAll();
         panel.revalidate();
-        JLabel label = new JLabel("Hallo i bims");
-        window.add(panel);
-        panel.setBackground(Color.red);
-        panel.setPreferredSize(new Dimension(500,500));
-        panel.add(label);
-        label.add(name);
+
+        panel.add(headline);
+        panel.add(instructorName);
+        panel.add(name);
+//        panel.add(instructorEmail);
+//        panel.add(currentDate);
+//        panel.add(currentDate);
+//        panel.add(instructorTelephone);
+
+        layout.putConstraint(SpringLayout.WEST, name, 100, SpringLayout.WEST,contentPane);
+        layout.putConstraint(SpringLayout.NORTH, name, 400, SpringLayout.NORTH, contentPane);
+
         next.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
