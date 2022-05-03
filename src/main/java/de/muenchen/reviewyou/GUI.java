@@ -27,10 +27,11 @@ public class GUI {
         window.setVisible(true);
         window.setSize(800,800);
         window.setLocationRelativeTo(null);
-
         window.add(panel);
+
         panel.setBackground(Color.red);
         panel.setPreferredSize(new Dimension(800,650));
+
 
         contentPane = window.getContentPane();
         contentPane.setLayout(layout);
@@ -73,22 +74,28 @@ public class GUI {
     public void startPanel(){
 
         JLabel headline = new JLabel("Angaben zum / zur Ausbilder:in");
+        headline.setFont(new Font(null, Font.PLAIN, 20));
 
         page = 1;
         checkPage();
         panel.removeAll();
         panel.revalidate();
+        panel.setLayout(layout);
 
         panel.add(headline);
         panel.add(instructorName);
         panel.add(name);
-//        panel.add(instructorEmail);
-//        panel.add(currentDate);
-//        panel.add(currentDate);
-//        panel.add(instructorTelephone);
+        panel.add(instructorEmail);
+        panel.add(currentDate);
+        panel.add(currentDate);
+        panel.add(instructorTelephone);
 
-        layout.putConstraint(SpringLayout.WEST, name, 100, SpringLayout.WEST,contentPane);
-        layout.putConstraint(SpringLayout.NORTH, name, 400, SpringLayout.NORTH, contentPane);
+        layout.putConstraint(SpringLayout.WEST, name, 30, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, name, 250, SpringLayout.NORTH, panel);
+
+        layout.putConstraint(SpringLayout.WEST, headline, 250, SpringLayout.WEST, panel);
+
+
 
         next.addActionListener(new ActionListener() {
             @Override
