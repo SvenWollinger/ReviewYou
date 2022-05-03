@@ -6,41 +6,41 @@ public class data {
     private String query1;
     private int query1Points;
     private String query2;
-    private int query2Punkte;
-    private String frage3;
-    private int frage3Punkte;
-    private String frage4;
-    private int frage4Punkte;
-    private String frage5;
-    private int frage5Punkte;
-    private String frage6;
-    private int frage6Punkte;
-    private String frage7;
-    private int frage7Punkte;
-    private String frage8;
-    private int frage8Punkte;
-    private String frage9;
-    private int frage9Punkte;
-    private String frage10;
-    private int frage10Punkte;
-    private String frage11;
-    private int frage11Punkte;
-    private String frage12;
-    private int frage12Punkte;
-    private String frage13;
-    private int frage13Punkte;
-    private String frage14;
-    private int frage14Punkte;
-    private String frage15;
-    private int frage15Punkte;
-    private String frage16;
-    private int frage16Punkte;
-    private String frage17;
-    private int frage17Punkte;
-    private String frage18;
-    private int frage18Punkte;
-    private String frage19;
-    private int frage20;
+    private int query2Points;
+    private String query3;
+    private int query3Points;
+    private String query4;
+    private int query4Points;
+    private String query5;
+    private int query5Points;
+    private String query6;
+    private int query6Points;
+    private String query7;
+    private int query7Points;
+    private String query8;
+    private int query8Points;
+    private String query9;
+    private int query9Points;
+    private String query10;
+    private int query10Points;
+    private String query11;
+    private int query11Points;
+    private String query12;
+    private int query12Points;
+    private String query13;
+    private int query13Points;
+    private String query14;
+    private int query14Points;
+    private String query15;
+    private int query15Points;
+    private String query16;
+    private int query16Points;
+    private String query17;
+    private int query17Points;
+    private String query18;
+    private int query18Points;
+    private String query19;
+    private int query19Points;
 
 
 
@@ -57,62 +57,62 @@ public class data {
     //TODO: Setter and Getter
 
 
-    public String getFrage1() { return frage1; }
-    public int getFrage1Punkte() { return frage1Punkte; }
+    public String getQuery1() { return query1; }
+    public int getQuery1Points() { return query1Points; }
 
-    public String getFrage2() { return frage2; }
-    public int getFrage2Punkte() { return frage2Punkte; }
+    public String getQuery2() { return query2; }
+    public int getQuery2Points() { return query2Points; }
 
-    public String getFrage3() { return frage3; }
-    public int getFrage3Punkte() { return frage3Punkte; }
+    public String getQuery3() { return query3; }
+    public int getQuery3Points() { return query3Points; }
 
-    public String getFrage4() { return frage4; }
-    public int getFrage4Punkte() { return frage4Punkte; }
+    public String getQuery4() { return query4; }
+    public int getQuery4Points() { return query4Points; }
 
-    public String getFrage5() { return frage5; }
-    public int getFrage5Punkte() { return frage5Punkte; }
+    public String getQuery5() { return query5; }
+    public int getQuery5Points() { return query5Points; }
 
-    public String getFrage6() { return frage6; }
-    public int getFrage6Punkte() { return frage6Punkte; }
+    public String getQuery6() { return query6; }
+    public int getQuery6Points() { return query6Points; }
 
-    public String getFrage7() { return frage7; }
-    public int getFrage7Punkte() { return frage7Punkte; }
+    public String getQuery7() { return query7; }
+    public int getQuery7Points() { return query7Points; }
 
-    public String getFrage8() { return frage8; }
-    public int getFrage8Punkte() { return frage8Punkte; }
+    public String getQuery8() { return query8; }
+    public int getQuery8Points() { return query8Points; }
 
-    public String getFrage9() { return frage9; }
-    public int getFrage9Punkte() { return frage9Punkte; }
+    public String getQuery9() { return query9; }
+    public int getQuery9Points() { return query9Points; }
 
-    public String getFrage10() { return frage10; }
-    public int getFrage10Punkte() { return frage10Punkte; }
+    public String getQuery10() { return query10; }
+    public int getQuery10Points() { return query10Points; }
 
-    public String getFrage11() { return frage11; }
-    public int getFrage11Punkte() { return frage11Punkte; }
+    public String getQuery11() { return query11; }
+    public int getQuery11Points() { return query11Points; }
 
-    public String getFrage12() { return frage12; }
-    public int getFrage12Punkte() { return frage12Punkte; }
+    public String getQuery12() { return query12; }
+    public int getQuery12Points() { return query12Points; }
 
-    public String getFrage13() { return frage13; }
-    public int getFrage13Punkte() { return frage13Punkte; }
+    public String getQuery13() { return query13; }
+    public int getQuery13Points() { return query13Points; }
 
-    public String getFrage14() { return  frage14; }
-    public int getFrage14Punkte() { return frage14Punkte; }
+    public String getQuery14() { return  query14; }
+    public int getQuery14Points() { return query14Points; }
 
-    public String getFrage15() { return frage15; }
-    public int getFrage15Punkte() { return frage15Punkte; }
+    public String getQuery15() { return query15; }
+    public int getQuery15Points() { return query15Points; }
 
-    public String getFrage16() { return frage16; }
-    public int getFrage16Punkte() { return frage16Punkte; }
+    public String getQuery16() { return query16; }
+    public int getQuery16Points() { return query16Points; }
 
-    public String getFrage17() { return frage17; }
-    public int getFrage17Punkte() { return frage17Punkte; }
+    public String getQuery17() { return query17; }
+    public int getQuery17Points() { return query17Points; }
 
-    public String getquery18() { return query18; }
-    public int getquery18Punkte() { return query18(); }
+    public String getQuery18() { return query18; }
+    public int getQuery18Points() { return query18Points; }
 
-    public String getquestion19() { return question19; }
-    public int getquestion19Points() { return question19Points; }
+    public String getQuery19() { return query19; }
+    public int getQuery19Points() { return query19Points; }
 
 }
 

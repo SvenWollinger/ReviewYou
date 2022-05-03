@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9bd354d3-2fc0-4b5d-8c44-008539fe8d15" name="Changes" comment="Share Projekt">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/java/de/muenchen/reviewyou/Controller/data.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/de/muenchen/reviewyou/Controller/data.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
