@@ -73,10 +73,11 @@ public class GUI {
     private JTextField instructorEmail = new JTextField(15);
     private JLabel currentDate = new JLabel(LocalDateTime.now().toString());
     private JTextField instructorTelephone = new JTextField(15);
+    private JLabel headline;
 
     public void startPanel(){
 
-        JLabel headline = new JLabel("Angaben zum / zur Ausbilder:in");
+        headline = new JLabel("Angaben zum / zur Ausbilder:in");
         headline.setFont(font);
         window.add(panel);
 
@@ -152,9 +153,9 @@ public class GUI {
     public void secondPanel(){
         page = 2;
         checkPage();
-        JLabel label = new JLabel("Hallo i bims nicht");
+        headline = new JLabel("Hallo i bims nicht");
         window.add(panel);
-        panel.add(label);
+        panel.add(headline);
 
         previous.addActionListener(new ActionListener() {
             @Override
@@ -165,6 +166,47 @@ public class GUI {
                 startPanel();
             }
         });
+    }
+
+    JLabel abilitiesLabel = new JLabel("Fähigkeiten, praktische Leistungen, Verhalten:");
+    JLabel strenghtLabel = new JLabel("Stärken:");
+    JLabel developementsLabel = new JLabel("Entwicklungsfelder");
+    JLabel perspectiveLabel = new JLabel("Perspektiven");
+    JLabel othersLabel = new JLabel("Sonstige Anmerkungen");
+    JTextField abilities = new JTextField();
+//    JTextArea abilities = new JTextArea();
+    JTextField strength;
+    JTextField developements;
+    JTextField perspective;
+    JTextField others;
+
+
+
+
+    public void thirdPanel(){
+        headline = new JLabel("Wortbeschreibungen zur gezeigten Leistung");
+        headline.setFont(font);
+        window.add(panel);
+
+        panel.add(headline);
+        panel.add(abilitiesLabel);
+        panel.add(abilities);
+
+
+        // set name and name textfield
+        layout.putConstraint(SpringLayout.WEST, headline, 200, SpringLayout.WEST, panel);
+        headline.setFont(font);
+
+        // SET ABILITIES LABEL AND TEXTFIELD
+        layout.putConstraint(SpringLayout.WEST, abilitiesLabel, 0, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, abilitiesLabel, 60, SpringLayout.NORTH, panel);
+        abilitiesLabel.setFont(font);
+
+        layout.putConstraint(SpringLayout.NORTH, abilities,10, SpringLayout.SOUTH, abilitiesLabel);
+        layout.putConstraint(SpringLayout.WEST, abilities,10, SpringLayout.WEST, panel);
+        abilities.setPreferredSize(new Dimension(200,300));
+
+
     }
 
 }
