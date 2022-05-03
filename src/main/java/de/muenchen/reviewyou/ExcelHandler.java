@@ -26,22 +26,49 @@ public class ExcelHandler {
     }
 
 
-    public boolean writeCell(int identifier, String text) throws IOException {
+    private void writeCell(int columnnumber,int rownumber, String text) throws IOException {
         if(fis == null || xssfWorkbook == null ||xssfSheet == null) {
             fis = new FileInputStream(myFile);
             xssfWorkbook = new XSSFWorkbook(fis);
             xssfSheet = xssfWorkbook.getSheetAt(0);
         }
-
-        switch(identifier) {
-            case 1:
-                Cell cell = xssfSheet.getRow(55).getCell(0);
+                Cell cell = xssfSheet.getRow(rownumber).getCell(columnnumber);
                 cell.setCellValue(text);
                 fis.close();
                 FileOutputStream outputStream = new FileOutputStream(myFile.getName());
                 xssfWorkbook.write(outputStream);
                 outputStream.close();
-        }
-        return true;
     }
+
+    public void writeStudentData(String name, String birthdate, String address, String year, String course) throws IOException {
+        writeCell(0,55, name);
+        writeCell(12,55, birthdate);
+        writeCell(0,57, address);
+        writeCell(12, 57, year);
+        writeCell(16,57,course);
+    }
+
+    public void writeAllocationPeriod(String from, String to, String internshipSection) throws IOException {
+        writeCell(0,61,from);
+        writeCell(5,61,to);
+        writeCell(12, 61, internshipSection);
+    }
+
+    public void writeTrainingAreaAndPeriod(String text) throws IOException {
+        writeCell(0,64, text);
+    }
+
+    public void writeParticipations(String coursesEtc) throws IOException {
+        writeCell(0, 66, coursesEtc);
+    }
+
+    public void writeDates(String trainingPlan, String interimTalk) throws IOException {
+        writeCell(16,67, trainingPlan);
+        writeCell(16, 68, interimTalk);
+    }
+
+    public void 
+
+
 }
+

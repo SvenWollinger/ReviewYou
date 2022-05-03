@@ -8,6 +8,6 @@ public class Main {
         System.out.println("Hi");
 
         ExcelHandler excelHandler = new ExcelHandler();
-        excelHandler.writeCell(1, "Baumann Leonhard");
+        excelHandler.writeStudentData("Baumann Leonhard", "30.04.1998", "Geheim", "1", "Schnitzel");
             }
 }
