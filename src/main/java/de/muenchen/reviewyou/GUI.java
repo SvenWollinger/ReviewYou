@@ -153,9 +153,42 @@ public class GUI {
     public void secondPanel(){
         page = 2;
         checkPage();
-        headline = new JLabel("Hallo i bims nicht");
+        JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft");
+        JLabel traineeName = new JLabel("Name, Vorname:");
+        JTextField txtTraineeName = new JTextField(8);
+        JLabel birthDate = new JLabel("Geburtsdatum: ");
+        JTextField txtBirthDate = new JTextField(8);
+        JLabel apartmentStreet = new JLabel("Straße, Haus-Nr., PLZ, Ort");
         window.add(panel);
-        panel.add(headline);
+        panel.add(apprenticeship);
+        panel.add(traineeName);
+        panel.add(txtTraineeName);
+        panel.add(birthDate);
+        panel.add(txtBirthDate);
+        panel.add(apartmentStreet);
+
+        apprenticeship.setFont(font);
+        traineeName.setFont(font);
+        birthDate.setFont(font);
+        apartmentStreet.setFont(font);
+
+
+        layout.putConstraint(SpringLayout.WEST,apprenticeship,100,SpringLayout.WEST,contentPane);
+
+        layout.putConstraint(SpringLayout.WEST,traineeName, 100,SpringLayout.WEST,contentPane);
+        layout.putConstraint(SpringLayout.NORTH,traineeName,40,SpringLayout.SOUTH,apprenticeship);
+
+        layout.putConstraint(SpringLayout.NORTH, txtTraineeName,44,SpringLayout.SOUTH,apprenticeship);
+        layout.putConstraint(SpringLayout.WEST,txtTraineeName,10,SpringLayout.EAST,traineeName);
+
+        layout.putConstraint(SpringLayout.NORTH, birthDate, 40, SpringLayout.SOUTH, apprenticeship);
+        layout.putConstraint(SpringLayout.WEST, birthDate, 10, SpringLayout.EAST, txtTraineeName);
+
+        layout.putConstraint(SpringLayout.NORTH, txtBirthDate,44, SpringLayout.SOUTH, apprenticeship);
+        layout.putConstraint(SpringLayout.WEST,txtBirthDate,10,SpringLayout.EAST,birthDate);
+
+        layout.putConstraint(SpringLayout.NORTH,apartmentStreet,40,SpringLayout.SOUTH,traineeName);
+        layout.putConstraint(SpringLayout.WEST,apartmentStreet, 100, SpringLayout.WEST, contentPane);
 
         previous.addActionListener(new ActionListener() {
             @Override
