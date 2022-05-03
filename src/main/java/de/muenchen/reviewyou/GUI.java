@@ -43,6 +43,7 @@ public class GUI {
         layout.putConstraint(SpringLayout.SOUTH, previous, -25, SpringLayout.SOUTH, contentPane);
         layout.putConstraint(SpringLayout.EAST, previous, 0, SpringLayout.WEST, next);
 
+
         startPanel();
 
     }
