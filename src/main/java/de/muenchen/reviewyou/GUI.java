@@ -1,6 +1,7 @@
 package de.muenchen.reviewyou;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicTreeUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,9 +15,11 @@ public class GUI {
 
     private JButton next = new JButton("Weiter");
     private JButton previous = new JButton("Zurück");
-    SpringLayout layout = new SpringLayout();
     private int page = 0;
+
+    SpringLayout layout = new SpringLayout();
     JPanel panel = new JPanel();
+    Font font = new Font(null, Font.PLAIN, 20);
 
 
 
@@ -31,6 +34,7 @@ public class GUI {
 
         panel.setBackground(Color.red);
         panel.setPreferredSize(new Dimension(800,650));
+        panel.setVisible(true);
 
 
         contentPane = window.getContentPane();
@@ -65,21 +69,21 @@ public class GUI {
     private JLabel email = new JLabel("E-Mail:");
     private JLabel date = new JLabel("Datum");
     private JLabel telephone = new JLabel("Tel:");
-    private JTextField instructorName = new JTextField();
-    private JTextField instructorEmail = new JTextField();
+    private JTextField instructorName = new JTextField(15);
+    private JTextField instructorEmail = new JTextField(15);
     private JLabel currentDate = new JLabel(LocalDateTime.now().toString());
-    private JTextField instructorTelephone = new JTextField();
+    private JTextField instructorTelephone = new JTextField(15);
     private boolean isOpen;
 
     public void startPanel(){
 
         JLabel headline = new JLabel("Angaben zum / zur Ausbilder:in");
         headline.setFont(new Font(null, Font.PLAIN, 20));
+        window.add(panel);
 
         page = 1;
         checkPage();
-        panel.removeAll();
-        panel.revalidate();
+
         panel.setLayout(layout);
 
         panel.add(headline);
@@ -91,7 +95,14 @@ public class GUI {
         panel.add(instructorTelephone);
 
         layout.putConstraint(SpringLayout.WEST, name, 30, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, name, 250, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, name, 50, SpringLayout.NORTH, panel);
+        name.setFont(font);
+
+
+        layout.putConstraint(SpringLayout.WEST, instructorName, 10, SpringLayout.EAST, name);
+        layout.putConstraint(SpringLayout.NORTH, instructorName, 4, SpringLayout.NORTH, name);
+
+
 
         layout.putConstraint(SpringLayout.WEST, headline, 250, SpringLayout.WEST, panel);
 
@@ -113,12 +124,14 @@ public class GUI {
         page = 2;
         checkPage();
         JLabel label = new JLabel("Hallo i bims nicht");
+        window.add(panel);
         panel.add(label);
-        panel.setVisible(true);
+
         previous.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+//                panel.removeAll();
+//                panel.revalidate();
                 startPanel();
             }
         });
