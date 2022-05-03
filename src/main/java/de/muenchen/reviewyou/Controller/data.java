@@ -1,17 +1,10 @@
 package de.muenchen.reviewyou.Controller;
 
+import java.time.LocalDate;
+
 public class data {
-    private String name;
-    //TODO: Of course we have more Strings, add them + Getter/Setter later!
-
-    //TODO: They also make a rating bar, we have to safe it aswell
-
-    //Setter and Getter
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private String firstName, lastName, street, houseNumber, postalCode, location, course, intershipSection, trainingArea, participationInCourses;
+    private int vintage;
+    private LocalDate dateOfBirth, periodStart, periodEnd, periodOfEnployment, trainingPlan, internalTalk;
+    //TODO: "Gesamturteil" and "Durchschnittspunktzahl" and "Resturlaub..." and "Dienstunfähigkeit..." not implemented yet
 }
