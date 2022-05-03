@@ -13,6 +13,38 @@ public class data {
     private int frage4Punkte;
     private String frage5;
     private int frage5Punkte;
+    private String frage6;
+    private int frage6Punkte;
+    private String frage7;
+    private int frage7Punkte;
+    private String frage8;
+    private int frage8Punkte;
+    private String frage9;
+    private int frage9Punkte;
+    private String frage10;
+    private int frage10Punkte;
+    private String frage11;
+    private int frage11Punkte;
+    private String frage12;
+    private int frage12Punkte;
+    private String frage13;
+    private int frage13Punkte;
+    private String frage14;
+    private int frage14Punkte;
+    private String frage15;
+    private int frage15Punkte;
+    private String frage16;
+    private int frage16Punkte;
+    private String frage17;
+    private int frage17Punkte;
+    private String frage18;
+    private int frage18Punkte;
+    private String frage19;
+    private int frage20;
+
+
+
+
 
 
     private String firstName, lastName, street, houseNumber, postalCode, location, course, intershipSection,
@@ -39,6 +71,49 @@ public class data {
 
     public String getFrage5() { return frage5; }
     public int getFrage5Punkte() { return frage5Punkte; }
+
+    public String getFrage6() { return frage6; }
+    public int getFrage6Punkte() { return frage6Punkte; }
+
+    public String getFrage7() { return frage7; }
+    public int getFrage7Punkte() { return frage7Punkte; }
+
+    public String getFrage8() { return frage8; }
+    public int getFrage8Punkte() { return frage8Punkte; }
+
+    public String getFrage9() { return frage9; }
+    public int getFrage9Punkte() { return frage9Punkte; }
+
+    public String getFrage10() { return frage10; }
+    public int getFrage10Punkte() { return frage10Punkte; }
+
+    public String getFrage11() { return frage11; }
+    public int getFrage11Punkte() { return frage11Punkte; }
+
+    public String getFrage12() { return frage12; }
+    public int getFrage12Punkte() { return frage12Punkte; }
+
+    public String getFrage13() { return frage13; }
+    public int getFrage13Punkte() { return frage13Punkte; }
+
+    public String getFrage14() { return  frage14; }
+    public int getFrage14Punkte() { return frage14Punkte; }
+
+    public String getFrage15() { return frage15; }
+    public int getFrage15Punkte() { return frage15Punkte; }
+
+    public String getFrage16() { return frage16; }
+    public int getFrage16Punkte() { return frage16Punkte; }
+
+    public String getFrage17() { return frage17; }
+    public int getFrage17Punkte() { return frage17Punkte; }
+
+    public String getFrage18() { return frage18; }
+    public int getFrage18Punkte() { return frage18Punkte; }
+
+    public String getFrage19() { return frage19; }
+    public int getquestion20Points() { return getquestion20Points; }
+
 }
 
 
