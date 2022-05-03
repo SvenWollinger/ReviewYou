@@ -67,8 +67,17 @@ public class ExcelHandler {
         writeCell(16, 68, interimTalk);
     }
 
-    public void 
+    public void writePerformance(String abilities, String strengths, String development, String perspectives, String other) throws IOException {
+        writeCell(0, 109, abilities);
+        writeCell(0,111, strengths);
+        writeCell(0,113, development);
+        writeCell(0,115,perspectives);
+        writeCell(0, 117, other);
+    }
 
+    public void writePoints(int row, int points) throws IOException {
+        writeCell(19-points,row,"X");
+        }
+    }
 
-}
 
