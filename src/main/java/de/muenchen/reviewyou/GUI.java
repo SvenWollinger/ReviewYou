@@ -64,7 +64,7 @@ public class GUI {
         } else previous.setVisible(false);
     }
 
-    // First page to get user data
+    // FIRST PAGE TO GET USER DATA
 
     private JLabel name = new JLabel("Name:");
     private JLabel email = new JLabel("E-Mail:");
@@ -98,7 +98,7 @@ public class GUI {
 
         layout.putConstraint(SpringLayout.WEST, headline, 250, SpringLayout.WEST, panel);
 
-        // set name and name textfield
+        // SET NAME AND TEXTFIELD
         layout.putConstraint(SpringLayout.WEST, name, 260, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, name, 50, SpringLayout.NORTH, panel);
         name.setFont(font);
@@ -106,7 +106,7 @@ public class GUI {
         layout.putConstraint(SpringLayout.WEST, instructorName, 10, SpringLayout.EAST, name);
         layout.putConstraint(SpringLayout.NORTH, instructorName, 4, SpringLayout.NORTH, name);
 
-        // set email and email textfield
+        // SET EMAIL AND TEXTFIELD
         layout.putConstraint(SpringLayout.WEST, email, 260, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, email, 90, SpringLayout.NORTH, panel);
         email.setFont(font);
@@ -114,7 +114,7 @@ public class GUI {
         layout.putConstraint(SpringLayout.WEST, instructorEmail, 7, SpringLayout.EAST, email);
         layout.putConstraint(SpringLayout.NORTH, instructorEmail, 4, SpringLayout.NORTH, email);
 
-        // set telephone and telephone textfield
+        // SET TELEPHONE AND TEXTFIELD
         layout.putConstraint(SpringLayout.WEST, telephone, 260, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, telephone, 130, SpringLayout.NORTH, panel);
         telephone.setFont(font);
@@ -130,7 +130,8 @@ public class GUI {
                 panel.removeAll();
                 panel.revalidate();
                 panel.repaint();
-                secondPanel();
+//                secondPanel();
+                thirdPanel();
             }
         });
 
@@ -202,20 +203,18 @@ public class GUI {
         });
     }
 
+    // ELEMENTS FOR THIRD PAGE
     JLabel abilitiesLabel = new JLabel("Fähigkeiten, praktische Leistungen, Verhalten:");
-    JLabel strenghtLabel = new JLabel("Stärken:");
+    JLabel strengthLabel = new JLabel("Stärken:");
     JLabel developementsLabel = new JLabel("Entwicklungsfelder");
     JLabel perspectiveLabel = new JLabel("Perspektiven");
     JLabel othersLabel = new JLabel("Sonstige Anmerkungen");
-    JTextField abilities = new JTextField();
-//    JTextArea abilities = new JTextArea();
+//    JTextField abilities = new JTextField();
+    JTextArea abilities = new JTextArea();
     JTextField strength;
     JTextField developements;
     JTextField perspective;
     JTextField others;
-
-
-
 
     public void thirdPanel(){
         headline = new JLabel("Wortbeschreibungen zur gezeigten Leistung");
@@ -226,20 +225,35 @@ public class GUI {
         panel.add(abilitiesLabel);
         panel.add(abilities);
 
+        panel.add(strengthLabel);
+//        panel.add(strength);
 
-        // set name and name textfield
+
+        // SET NAME LABEL AND TEXTFIELD
         layout.putConstraint(SpringLayout.WEST, headline, 200, SpringLayout.WEST, panel);
         headline.setFont(font);
 
         // SET ABILITIES LABEL AND TEXTFIELD
-        layout.putConstraint(SpringLayout.WEST, abilitiesLabel, 0, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.WEST, abilitiesLabel, 20, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, abilitiesLabel, 60, SpringLayout.NORTH, panel);
         abilitiesLabel.setFont(font);
 
-        layout.putConstraint(SpringLayout.NORTH, abilities,10, SpringLayout.SOUTH, abilitiesLabel);
+        layout.putConstraint(SpringLayout.NORTH, abilities,5, SpringLayout.SOUTH, abilitiesLabel);
         layout.putConstraint(SpringLayout.WEST, abilities,10, SpringLayout.WEST, panel);
-        abilities.setPreferredSize(new Dimension(200,300));
+        abilities.setPreferredSize(new Dimension(600,100));
 
+        //SET STRENGHT LABEL AND TEXTFIELD
+
+        layout.putConstraint(SpringLayout.WEST, strengthLabel, 0, SpringLayout.WEST, abilitiesLabel);
+        layout.putConstraint(SpringLayout.NORTH, strengthLabel, 110, SpringLayout.SOUTH, abilitiesLabel);
+        strengthLabel.setFont(font);
+
+//        layout.putConstraint(SpringLayout.NORTH, strength,10, SpringLayout.SOUTH, strengthLabel);
+//        layout.putConstraint(SpringLayout.WEST, strength,10, SpringLayout.WEST, panel);
+//        strength.setPreferredSize(new Dimension(600,100));
+    }
+
+    public void fourthPanel(){
 
     }
 
