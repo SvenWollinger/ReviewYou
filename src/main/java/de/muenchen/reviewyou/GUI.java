@@ -1,12 +1,17 @@
 package de.muenchen.reviewyou;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.annotation.Inherited;
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.SortedMap;
 
 public class GUI {
 
@@ -17,6 +22,7 @@ public class GUI {
 
     private JButton next = new JButton("Weiter");
     private JButton previous = new JButton("Zurück");
+    private JButton moreInfo = new JButton("Info");
     private int page = 0;
 
     SpringLayout layout = new SpringLayout();
@@ -32,7 +38,7 @@ public class GUI {
         window.setLocationRelativeTo(null);
         window.add(panel);
 
-        panel.setBackground(Color.red);
+//        panel.setBackground(Color.red);
         panel.setPreferredSize(new Dimension(800, 650));
         panel.setVisible(true);
 
@@ -41,17 +47,24 @@ public class GUI {
         contentPane.setLayout(layout);
         contentPane.add(next);
         contentPane.add(previous);
+        contentPane.add(moreInfo);
         previous.setVisible(false);
+        moreInfo.setVisible(false);
 
 
         next.setPreferredSize(new Dimension(80, 30));
         previous.setPreferredSize(new Dimension(80, 30));
+        moreInfo.setPreferredSize(new Dimension(80, 30));
 
         layout.putConstraint(SpringLayout.SOUTH, next, -25, SpringLayout.SOUTH, contentPane);
         layout.putConstraint(SpringLayout.WEST, next, 400, SpringLayout.WEST, contentPane);
 
         layout.putConstraint(SpringLayout.SOUTH, previous, -25, SpringLayout.SOUTH, contentPane);
         layout.putConstraint(SpringLayout.EAST, previous, -5, SpringLayout.WEST, next);
+
+        layout.putConstraint(SpringLayout.SOUTH, moreInfo, -25, SpringLayout.SOUTH,contentPane);
+        layout.putConstraint(SpringLayout.EAST, moreInfo, -180, SpringLayout.WEST, previous);
+
 
         window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,6 +97,20 @@ public class GUI {
                         panel.revalidate();
                         panel.repaint();
                         fifthPanel();
+                        break;
+                    case 5:
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        sixthPanel();
+                        break;
+                    case 6:
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        seventhPanel();
+                        break;
+
                 }
             }
         });
@@ -92,6 +119,24 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 switch (page) {
+                    case 8:
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        seventhPanel();
+                        break;
+                    case 7:
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        sixthPanel();
+                        break;
+                    case 6:
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        fifthPanel();
+                        break;
                     case 5:
                         panel.removeAll();
                         panel.revalidate();
@@ -119,6 +164,14 @@ public class GUI {
                 }
             }
         });
+
+        moreInfo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                moreInfo();
+              }
+            });
+
     }
 
     public void checkPage() {
@@ -174,11 +227,12 @@ public class GUI {
         panel.add(instructorEmail);
         panel.add(instructorTelephone);
 
+        layout.putConstraint(SpringLayout.NORTH, headline, 50, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, headline, 250, SpringLayout.WEST, panel);
 
         // set name and name textfield
         layout.putConstraint(SpringLayout.WEST, name, 260, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, name, 50, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, name, 50, SpringLayout.SOUTH, headline);
         name.setFont(font);
 
         layout.putConstraint(SpringLayout.WEST, instructorName, 10, SpringLayout.EAST, name);
@@ -186,7 +240,7 @@ public class GUI {
 
         // set email and email textfield
         layout.putConstraint(SpringLayout.WEST, email, 260, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, email, 90, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, email, 20, SpringLayout.SOUTH, name);
         email.setFont(font);
 
         layout.putConstraint(SpringLayout.WEST, instructorEmail, 7, SpringLayout.EAST, email);
@@ -194,7 +248,7 @@ public class GUI {
 
         // set telephone and telephone textfield
         layout.putConstraint(SpringLayout.WEST, telephone, 260, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, telephone, 130, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, telephone, 20, SpringLayout.SOUTH, email);
         telephone.setFont(font);
 
         layout.putConstraint(SpringLayout.WEST, instructorTelephone, 36, SpringLayout.EAST, telephone);
@@ -216,7 +270,7 @@ public class GUI {
         return instructorTelephone;
     }
 
-    private JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft:");
+    private JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft");
     private JLabel traineeName = new JLabel("Name, Vorname:");
     private JTextField txtTraineeName = new JTextField(8);
     private JLabel birthDate = new JLabel("Geburtsdatum: ");
@@ -247,6 +301,7 @@ public class GUI {
         page = 2;
         checkPage();
 
+        panel.setLayout(layout);
         window.add(panel);
         panel.add(apprenticeship);
         panel.add(traineeName);
@@ -287,24 +342,25 @@ public class GUI {
 
 
         layout.putConstraint(SpringLayout.WEST, apprenticeship, 100, SpringLayout.WEST, contentPane);
+        layout.putConstraint(SpringLayout.NORTH, apprenticeship, 30, SpringLayout.NORTH, contentPane);
 
         layout.putConstraint(SpringLayout.WEST, traineeName, 100, SpringLayout.WEST, contentPane);
-        layout.putConstraint(SpringLayout.NORTH, traineeName, 10, SpringLayout.SOUTH, apprenticeship);
+        layout.putConstraint(SpringLayout.NORTH, traineeName, 20, SpringLayout.SOUTH, apprenticeship);
 
-        layout.putConstraint(SpringLayout.NORTH, txtTraineeName, 14, SpringLayout.SOUTH, apprenticeship);
+        layout.putConstraint(SpringLayout.NORTH, txtTraineeName, 5, SpringLayout.NORTH, traineeName);
         layout.putConstraint(SpringLayout.WEST, txtTraineeName, 10, SpringLayout.EAST, traineeName);
 
-        layout.putConstraint(SpringLayout.NORTH, birthDate, 10, SpringLayout.SOUTH, apprenticeship);
+        layout.putConstraint(SpringLayout.NORTH, birthDate, 5, SpringLayout.NORTH, traineeName);
         layout.putConstraint(SpringLayout.WEST, birthDate, 10, SpringLayout.EAST, txtTraineeName);
 
-        layout.putConstraint(SpringLayout.NORTH, txtBirthDate, 14, SpringLayout.SOUTH, apprenticeship);
+        layout.putConstraint(SpringLayout.NORTH, txtBirthDate, 5, SpringLayout.NORTH, birthDate);
         layout.putConstraint(SpringLayout.WEST, txtBirthDate, 10, SpringLayout.EAST, birthDate);
 
         layout.putConstraint(SpringLayout.NORTH, apartmentStreet, 10, SpringLayout.SOUTH, traineeName);
         layout.putConstraint(SpringLayout.WEST, apartmentStreet, 100, SpringLayout.WEST, contentPane);
 
+        layout.putConstraint(SpringLayout.NORTH, txtApartmentStreet, 5, SpringLayout.NORTH, apartmentStreet);
         layout.putConstraint(SpringLayout.WEST, txtApartmentStreet, 10, SpringLayout.EAST, apartmentStreet);
-        layout.putConstraint(SpringLayout.NORTH, txtApartmentStreet, 14, SpringLayout.SOUTH, txtBirthDate);
 
         layout.putConstraint(SpringLayout.NORTH, allocationPeriod, 20, SpringLayout.SOUTH, apartmentStreet);
         layout.putConstraint(SpringLayout.WEST, allocationPeriod, 100, SpringLayout.WEST, contentPane);
@@ -376,13 +432,14 @@ public class GUI {
         return gbl;
     }
 
+    // CREATE THIRD PANEL
     public void thirdPanel() {
         page = 3;
         JLabel headline = new JLabel("Wortbeschreibung zur gezeigten Leistung insgesamt");
         JLabel whiteSpace = new JLabel();
         window.add(panel);
         panel.setLayout(gbl);
-        gbc.insets = new Insets(-60, 20, 70, 20);
+        gbc.insets = new Insets(-10, 20, 80, 20);
 
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -454,103 +511,284 @@ public class GUI {
     }
 
 
-    private JLabel PointsDistribution = new JLabel("Folgende Punktezahlen können vergeben werden: ");
-    private JLabel particularly = new JLabel("15 - 13 Punkte: Eine besonders hervorragende Leistung.");
-    private JLabel good = new JLabel("12 -10 Punkte: Eine Leistung, die die durchschnittlichen Anforderungen übertrifft.");
-    private JLabel average = new JLabel("9 - 7 Punkte: Eine Leistung, die in jeder Hinsicht durchschnittlichen Anforderungen entspricht.");
-    private JLabel defects = new JLabel("6 - 4 Punkte: Eine Leistung, die trotz ihrer Mängel durchschnittlichen Anforderungen noch entspricht.");
-    private JLabel badly = new JLabel("3 - 1 Punkte: Eine an erheblichen Mängeln leidende, im Ganzen nicht mehr brauchbare Leistung.");
-    private JLabel useless = new JLabel("0 Punkte: Eine völlig unbrauchbare Leistung.");
+    Insets headlineInsets = new Insets(0,0,200,0);
+    Insets sliderInsets = new Insets(-60, 0, 70, 0);
+    private List<JSlider> jSliders = createSliders();
 
-    public void fourthPanel() {
+
+
+    public void fourthPanel(){
         page = 4;
-        panel.setLayout(layout);
-        headline = new JLabel("Bewertung: ");
+        JLabel headline = new JLabel("Fachliche Kompetenzen");
+        moreInfo();
         headline.setFont(font);
         window.add(panel);
-        panel.add(headline);
-        panel.add(PointsDistribution);
-        panel.add(particularly);
-        panel.add(good);
-        panel.add(average);
-        panel.add(defects);
-        panel.add(badly);
-        panel.add(useless);
+        panel.setVisible(true);
+        panel.setLayout(gbl);
+        moreInfo.setVisible(true);
+
+        gbc.insets = headlineInsets;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel.add(headline, gbc);
+
+        // BEHERRSCHUNG DER DEUTSCHEN SPRACHE
+        gbc.insets = sliderInsets;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(createLabel("Beherrschung der deutschen Sprache").get(0), gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel.add(jSliders.get(0), gbc);
+
+
+        // IT-KENNTNISSE
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        panel.add(createLabel("IT-Kenntnisse").get(0), gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        panel.add(jSliders.get(1), gbc);
+
+        // INTERESSE AM ARBEITSFELD
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        panel.add(createLabel("Interesse am Arbeitsumfeld und Grundwissen zum Aufgabenbereich der Praktikumsstelle").get(0), gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        panel.add(jSliders.get(2), gbc);
+
+
+        }
+
+        public void fifthPanel(){
+            page = 5;
+            JLabel headline = new JLabel("Methodisches Denken");
+            headline.setFont(font);
+            window.add(panel);
+            panel.setVisible(true);
+            panel.setLayout(gbl);
+
+            gbc.insets = headlineInsets;
+            gbc.gridx = 0;
+            gbc.gridy = 0;
+            panel.add(headline, gbc);
+
+            // ANALYTISCHES DENKEN
+            gbc.insets = sliderInsets;
+            gbc.gridx = 0;
+            gbc.gridy = 1;
+            panel.add(createLabel("Analytisches Denken").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 2;
+            panel.add(jSliders.get(3), gbc);
+
+
+            // GANZHEITLICHES UND VERNETZTES DENKEN
+            gbc.gridx = 0;
+            gbc.gridy = 3;
+            panel.add(createLabel("Ganzheitliches und vernetztes Denken").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 4;
+            panel.add(jSliders.get(4), gbc);
+
+            // ARBEITS- UND LERNTECHNIKEN
+
+            gbc.gridx = 0;
+            gbc.gridy = 5;
+            panel.add(createLabel("Arbeits- und Lerntechniken").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 6;
+            panel.add(jSliders.get(5), gbc);
+        }
+
+
+        public void sixthPanel(){
+            page = 6;
+            JLabel headline = new JLabel("Soziale Kompetenzen");
+            headline.setFont(font);
+            window.add(panel);
+            panel.setVisible(true);
+            panel.setLayout(gbl);
+
+            gbc.insets = new Insets(0, 0, 100, 0);
+            gbc.gridx = 0;
+            gbc.gridy = 0;
+            panel.add(headline, gbc);
+
+            // KOMMUNIKATIONSFÄHIGKEIT
+
+            gbc.insets = sliderInsets;
+            gbc.gridx = 0;
+            gbc.gridy = 1;
+            panel.add(createLabel("Kommunikationsfähigkeit").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 2;
+            panel.add(jSliders.get(6), gbc);
+
+
+            // KONTAKTFREUDIGKEIT
+            gbc.gridx = 0;
+            gbc.gridy = 3;
+            panel.add(createLabel("Kontaktfreudigkeit").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 4;
+            panel.add(jSliders.get(7), gbc);
+
+            // TEAMFÄHIGKEIT UND KOOPERATIONSBEREITSCHAFT
+
+            gbc.gridx = 0;
+            gbc.gridy = 5;
+            panel.add(createLabel("Teamfähigkeit und Kooperationsbereitschaft").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 6;
+            panel.add(jSliders.get(8), gbc);
+
+            // KONFLIKTFÄHIGKEIT
+
+            gbc.gridx = 0;
+            gbc.gridy = 7;
+            panel.add(createLabel("Konfliktfähigkeit").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 8;
+            panel.add(jSliders.get(9), gbc);
+
+            // EINFÜHLUNGSVERMÖGEN
+
+            gbc.gridx = 0;
+            gbc.gridy = 9;
+            panel.add(createLabel("Einfühlungsvermögen").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 10;
+            panel.add(jSliders.get(10), gbc);
+
+            // RESPEKT UND UMGANG MIT ANDEREN KULTUREN
+
+            gbc.gridx = 0;
+            gbc.gridy = 11;
+            panel.add(createLabel("Respekt und kompetenter Umgang mit anderen Kulturen").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 12;
+            panel.add(jSliders.get(11), gbc);
+        }
+
+        public void seventhPanel(){
+        popup.setVisible(false);
+        }
+
+
+
+
+    static final int minScore = 0;
+    static final int maxScore = 15;
+    static final int scoreInit = 0;
+
+
+    java.util.List<JSlider> createSliders(){
+        List<JSlider> sliders = new ArrayList<>();
+        for (int i = 0; i <15 ; i++) {
+
+            sliders.add(new JSlider(JSlider.HORIZONTAL,minScore, maxScore, scoreInit));
+            sliders.get(i).setPaintTicks(true);
+            sliders.get(i).setMajorTickSpacing(1);
+            sliders.get(i).setPaintTicks(true);
+            sliders.get(i).setPaintTrack(true);
+            sliders.get(i).setPaintLabels(true);
+            sliders.get(i).setPreferredSize(new Dimension(300, 50));
+
+        }
+
+        return sliders;
+    }
+    List<JLabel> createLabel(String name) {
+        List<JLabel> labels = new ArrayList<>();
+            for (int i = 0; i < 15; i++){
+                labels.add(new JLabel(name));
+
+        }
+            return labels;
+    }
+
+    private JLabel PointsDistribution = new JLabel("Folgende Punktezahlen können vergeben werden: ");
+    private JLabel particularly = new JLabel("  15 - 13 Punkte: Eine besonders hervorragende Leistung.");
+    private JLabel good = new JLabel(" 12 -10 Punkte: Eine Leistung, die die durchschnittlichen Anforderungen übertrifft.");
+    private JLabel average = new JLabel(" 9 - 7 Punkte: Eine Leistung, die in jeder Hinsicht durchschnittlichen Anforderungen entspricht.");
+    private JLabel defects = new JLabel(" 6 - 4 Punkte: Eine Leistung, die trotz ihrer Mängel durchschnittlichen Anforderungen noch entspricht.");
+    private JLabel badly = new JLabel(" 3 - 1 Punkte: Eine an erheblichen Mängeln leidende, im Ganzen nicht mehr brauchbare Leistung.");
+    private JLabel useless = new JLabel("0 Punkte: Eine völlig unbrauchbare Leistung.");
+    private JFrame popup = new JFrame("Info");
+    private JPanel popupPanel = new JPanel();
+
+
+    public void moreInfo(){
+        popup.setVisible(true);
+        popup.setSize(800, 350);
+        popup.add(popupPanel);
+        popup.setLocation(75, 300);
+        popupPanel.setLayout(layout);
+        headline = new JLabel("Bewertung: ");
+        headline.setFont(font);
+        popupPanel.add(headline);
+        popupPanel.add(PointsDistribution);
+        popupPanel.add(particularly);
+        popupPanel.add(good);
+        popupPanel.add(average);
+        popupPanel.add(defects);
+        popupPanel.add(badly);
+        popupPanel.add(useless);
 
         layout.putConstraint(SpringLayout.NORTH, headline,20,SpringLayout.NORTH,contentPane);
         layout.putConstraint(SpringLayout.WEST, headline, 20, SpringLayout.WEST, contentPane);
         headline.setFont(font);
+
         layout.putConstraint(SpringLayout.NORTH, PointsDistribution, 40, SpringLayout.SOUTH, headline);
         layout.putConstraint(SpringLayout.WEST, PointsDistribution, 20, SpringLayout.WEST, contentPane);
         PointsDistribution.setFont(font);
+
         layout.putConstraint(SpringLayout.NORTH, particularly, 40, SpringLayout.SOUTH, PointsDistribution);
         layout.putConstraint(SpringLayout.WEST, particularly, 29, SpringLayout.WEST, contentPane);
         particularly.setFont(fontt);
+
         layout.putConstraint(SpringLayout.NORTH, good, 0, SpringLayout.SOUTH, particularly);
         layout.putConstraint(SpringLayout.WEST, good, 35, SpringLayout.WEST, contentPane);
         good.setFont(fontt);
+
         layout.putConstraint(SpringLayout.NORTH, average, 0, SpringLayout.SOUTH, good);
         layout.putConstraint(SpringLayout.WEST, average, 48, SpringLayout.WEST, contentPane);
         average.setFont(fontt);
+
         layout.putConstraint(SpringLayout.NORTH, defects, 0, SpringLayout.SOUTH, average);
         layout.putConstraint(SpringLayout.WEST, defects, 48, SpringLayout.WEST, contentPane);
         defects.setFont(fontt);
+
         layout.putConstraint(SpringLayout.NORTH, badly, 0, SpringLayout.SOUTH, defects);
         layout.putConstraint(SpringLayout.WEST, badly, 48, SpringLayout.WEST, contentPane);
         badly.setFont(fontt);
+
         layout.putConstraint(SpringLayout.NORTH, useless, 0, SpringLayout.SOUTH, badly);
         layout.putConstraint(SpringLayout.WEST, useless, 24, SpringLayout.WEST, badly);
         useless.setFont(fontt);
 
 
-    }
-
-    static final int minScore = 0;
-    static final int maxScore = 15;
-    static final int scoreInit = 7;
-    JLabel competenceLabel = new JLabel("Fachliche Kompetenzen");
-    JSlider germanSpeech = new JSlider(JSlider.HORIZONTAL,minScore, maxScore, scoreInit );
-
-    public void fifthPanel(){
-        page = 5;
-
-        window.add(panel);
-        panel.setVisible(true);
-        panel.setLayout(gbl);
-        competenceLabel = new JLabel(String.valueOf(germanSpeech.getValue()));
-        panel.add(competenceLabel);
-
-        germanSpeech.setMinorTickSpacing(1);
-        germanSpeech.setMajorTickSpacing(1);
-        germanSpeech.setPaintTicks(true);
-        germanSpeech.setPaintTrack(true);
-        germanSpeech.setPaintLabels(true);
-        germanSpeech.setPreferredSize(new Dimension(300, 100));
-
-
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        competenceLabel.setFont(font);
-        panel.add(competenceLabel, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        panel.add(germanSpeech, gbc);
-
-
-
-    }
-
-    java.util.List<JSlider> slidersForGradesOrSomethingElseIdc(){
-        List<JSlider> sliders = new ArrayList<>();
-        for (int i = 0; i <15 ; i++) {
         }
 
-        return sliders;
     }
 
 
-}
 
 
 
