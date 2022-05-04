@@ -96,6 +96,7 @@ public class GUI {
                         panel.revalidate();
                         panel.repaint();
                         fourthPanel();
+                        break;
                     case 4:
                         panel.removeAll();
                         panel.revalidate();
@@ -503,21 +504,17 @@ public class GUI {
 
     }
 
-    /*static final int minScore = 0;
+    static final int minScore = 0;
     static final int maxScore = 15;
     static final int scoreInit = 7;
     JLabel competenceLabel = new JLabel("Fachliche Kompetenzen");
-    JSlider germanSpeech = new JSlider(JSlider.HORIZONTAL,minScore, maxScore, scoreInit );*/
+    JSlider germanSpeech = new JSlider(JSlider.HORIZONTAL,minScore, maxScore, scoreInit );
 
     public void fifthPanel(){
         page = 5;
 
-        window.add(panel);
-        panel.setVisible(true);
-        panel.setLayout(gbl);
-        Slider slider = new Slider();
-       // panel.add(slider);
-        /*competenceLabel = new JLabel(String.valueOf(germanSpeech.getValue()));
+
+        competenceLabel = new JLabel(String.valueOf(germanSpeech.getValue()));
         panel.add(competenceLabel);
 
         germanSpeech.setMinorTickSpacing(1);
@@ -535,7 +532,7 @@ public class GUI {
 
         gbc.gridx = 0;
         gbc.gridy = 1;
-        panel.add(germanSpeech, gbc);*/
+        panel.add(germanSpeech, gbc);
 
 
 
