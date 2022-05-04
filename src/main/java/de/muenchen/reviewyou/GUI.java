@@ -13,6 +13,7 @@ public class GUI {
     private Container contentPane;
     private JFrame window;
 
+
     private JButton next = new JButton("Weiter");
     private JButton previous = new JButton("Zurück");
     private int page = 0;
