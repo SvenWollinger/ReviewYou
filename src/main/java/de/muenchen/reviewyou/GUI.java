@@ -61,17 +61,23 @@ public class GUI {
             public void actionPerformed(ActionEvent e) {
                 switch (page) {
                     case 1:
-                    panel.removeAll();
-                    panel.revalidate();
-                    panel.repaint();
-                    secondPanel();
-                    break;
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        secondPanel();
+                        break;
                     case 2:
-                    panel.removeAll();
-                    panel.revalidate();
-                    panel.repaint();
-                    thirdPanel();
-                    break;
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        thirdPanel();
+                        break;
+                    case 3:
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        fourthPanel();
+                        break;
                 }
             }
         });
@@ -80,18 +86,24 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 switch (page) {
+                    case 4:
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        thirdPanel();
+                        break;
                     case 3:
-                    panel.removeAll();
-                    panel.revalidate();
-                    panel.repaint();
-                    secondPanel();
-                    break;
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        secondPanel();
+                        break;
                     case 2:
-                    panel.removeAll();
-                    panel.revalidate();
-                    panel.repaint();
-                    startPanel();
-                    break;
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        startPanel();
+                        break;
                 }
             }
         });
@@ -179,6 +191,7 @@ public class GUI {
     public JTextField getInstructorTelephone() {
         return instructorTelephone;
     }
+
     private JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft:");
     private JLabel traineeName = new JLabel("Name, Vorname:");
     private JTextField txtTraineeName = new JTextField(8);
@@ -314,8 +327,62 @@ public class GUI {
         layout.putConstraint(SpringLayout.NORTH, txtInterimTalk, 10, SpringLayout.SOUTH, interimTalk);
         layout.putConstraint(SpringLayout.WEST, txtInterimTalk, 100, SpringLayout.WEST, contentPane);
     }
-        public void thirdPanel() {
-            page = 3;
-        }
+
+    public void thirdPanel() {
+        page = 3;
     }
+
+    private JLabel evaluationDescription = new JLabel("Platzhalter beschreibug Bewertung");
+    private JLabel PointsDistribution = new JLabel("Folgende Punktezahlen können vergeben werden: ");
+    private JLabel particularly = new JLabel("15 - 13 Punkte: Eine besonders hervorragende Leistung.");
+    private JLabel good = new JLabel("12 -10 Punkte: Eine Leistung, die die durchschnittlichen Anforderungen übertrifft.");
+    private JLabel average = new JLabel("9 - 7 Punkte: Eine Leistung, die in jeder Hinsicht durchschnittlichen Anforderungen entspricht.");
+    private JLabel defects = new JLabel("6 - 4 Punkte: Eine Leistung, die trotz ihrer Mängel durchschnittlichen Anforderungen noch entspricht.");
+    private JLabel badly = new JLabel("3 - 1 Punkte: Eine an erheblichen Mängeln leidende, im Ganzen nicht mehr brauchbare Leistung.");
+    private JLabel useless = new JLabel("0 Punkte: Eine völlig unbrauchbare Leistung.");
+
+    public void fourthPanel() {
+        page = 4;
+        headline = new JLabel("Bewertung: ");
+        headline.setFont(font);
+        window.add(panel);
+        panel.add(headline);
+        panel.add(evaluationDescription);
+        panel.add(PointsDistribution);
+        panel.add(particularly);
+        panel.add(good);
+        panel.add(average);
+        panel.add(defects);
+        panel.add(badly);
+        panel.add(useless);
+
+        layout.putConstraint(SpringLayout.WEST, headline, 100, SpringLayout.WEST, panel);
+        headline.setFont(font);
+        layout.putConstraint(SpringLayout.WEST, evaluationDescription, 20, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, evaluationDescription, 30, SpringLayout.SOUTH, headline);
+        evaluationDescription.setFont(font);
+        layout.putConstraint(SpringLayout.WEST, PointsDistribution, 5, SpringLayout.WEST, evaluationDescription);
+        layout.putConstraint(SpringLayout.SOUTH, PointsDistribution, 60, SpringLayout.SOUTH, evaluationDescription);
+        PointsDistribution.setFont(font);
+        layout.putConstraint(SpringLayout.WEST, particularly, 0, SpringLayout.WEST, PointsDistribution);
+        layout.putConstraint(SpringLayout.SOUTH, particularly, 30, SpringLayout.SOUTH, PointsDistribution);
+        particularly.setFont(font);
+        layout.putConstraint(SpringLayout.WEST, good, 0, SpringLayout.WEST, particularly);
+        layout.putConstraint(SpringLayout.SOUTH, good, 30, SpringLayout.SOUTH, particularly);
+        good.setFont(font);
+        layout.putConstraint(SpringLayout.WEST, average, 0, SpringLayout.WEST, good);
+        layout.putConstraint(SpringLayout.SOUTH, average, 30, SpringLayout.SOUTH, good);
+        average.setFont(font);
+        layout.putConstraint(SpringLayout.WEST, defects, 0, SpringLayout.WEST, average);
+        layout.putConstraint(SpringLayout.SOUTH, defects, 30, SpringLayout.SOUTH, average);
+        defects.setFont(font);
+        layout.putConstraint(SpringLayout.WEST, badly, 0, SpringLayout.WEST, defects);
+        layout.putConstraint(SpringLayout.SOUTH, badly, 30, SpringLayout.SOUTH, defects);
+        badly.setFont(font);
+        layout.putConstraint(SpringLayout.WEST, useless, 0, SpringLayout.WEST, badly);
+        layout.putConstraint(SpringLayout.SOUTH, useless, 30, SpringLayout.SOUTH, badly);
+        useless.setFont(font);
+    }
+}
+
 
