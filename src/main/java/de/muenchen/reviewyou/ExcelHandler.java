@@ -30,7 +30,7 @@ public class ExcelHandler {
         if(fis == null || xssfWorkbook == null ||xssfSheet == null) {
             fis = new FileInputStream(myFile);
             xssfWorkbook = new XSSFWorkbook(fis);
-            xssfSheet = xssfWorkbook.getSheetAt(0);
+            xssfSheet = xssfWorkbook.getSheet("Leistungsbericht");
         }
                 Cell cell = xssfSheet.getRow(rownumber).getCell(columnnumber);
                 cell.setCellValue(text);

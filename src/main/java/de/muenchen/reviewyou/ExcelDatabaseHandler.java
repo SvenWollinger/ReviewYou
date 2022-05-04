@@ -1,17 +1,21 @@
 package de.muenchen.reviewyou;
 
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class ExcelDatabaseHandler {
 
-    URL resource = getClass().getClassLoader().getResource("Gradingtable.xlsx");
-    File myFile = new File(resource.toURI());
+    InputStream is = ClassLoader.getSystemResourceAsStream("/Gradingtable.xlsx");
+    File file = new File("src/main/resources/Gradingtable.xlsx");
     FileInputStream fis;
     XSSFWorkbook xssfWorkbook;
     XSSFSheet xssfSheet;
@@ -39,14 +43,23 @@ public class ExcelDatabaseHandler {
 
     public void addRecommendation(String id1, String id2, String recommendation) throws IOException {
         if(fis == null || xssfWorkbook == null ||xssfSheet == null) {
-            fis = new FileInputStream(myFile);
+            fis = new FileInputStream(file);
             xssfWorkbook = new XSSFWorkbook(fis);
-            xssfSheet = xssfWorkbook.getSheetAt(1);
+            xssfSheet = xssfWorkbook.getSheet("Tabelle1");
         }
+        FileOutputStream outputStream = new FileOutputStream(file);
         int lastRow = xssfSheet.getLastRowNum();
-        xssfSheet.createRow(++lastRow).getCell(0).setCellValue(id1);
-        xssfSheet.getRow(++lastRow).getCell(1).setCellValue(id2);
-        xssfSheet.getRow(++lastRow).getCell(2).setCellValue(recommendation);
+        Cell cellId1 = xssfSheet.createRow(++lastRow).createCell(0);
+        cellId1.setCellValue(id1);
+        xssfWorkbook.write(outputStream);
+        Cell cellId2 = xssfSheet.getRow(lastRow).createCell(1);
+        cellId2.setCellValue(id2);
+        xssfWorkbook.write(outputStream);
+        Cell cellRecommendation = xssfSheet.getRow(lastRow).createCell(2);
+        cellRecommendation.setCellValue(recommendation);
+        xssfWorkbook.write(outputStream);
+        fis.close();
+        outputStream.close();
     }
 
 
