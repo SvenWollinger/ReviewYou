@@ -1,6 +1,7 @@
 package de.muenchen.reviewyou;
 
 import javax.swing.*;
+import javax.swing.event.ChangeListener;
 import javax.swing.plaf.basic.BasicTreeUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -31,7 +32,7 @@ public class GUI {
         window.setLocationRelativeTo(null);
         window.add(panel);
 
-        panel.setBackground(Color.red);
+//        panel.setBackground(Color.red);
         panel.setPreferredSize(new Dimension(800, 650));
         panel.setVisible(true);
 
@@ -491,18 +492,37 @@ public class GUI {
 
     static final int minScore = 0;
     static final int maxScore = 15;
-    static final int scoreInit = 7;
-    JLabel competenceLabel = new JLabel("Fachliche Kompetenzen");
-    JSlider germanSpeech = new JSlider(JSlider.HORIZONTAL,minScore, maxScore, scoreInit );
+    static final int scoreInit = 0;
+    JLabel competenceLabel = new JLabel();
+    JSlider germanSpeech = new JSlider(minScore, maxScore, scoreInit);
 
     public void fifthPanel(){
         page = 5;
 
         window.add(panel);
         panel.setVisible(true);
+        panel.setLayout(gbl);
+        competenceLabel = new JLabel(String.valueOf(germanSpeech.getValue()));
+        panel.add(competenceLabel);
 
-        panel.add(germanSpeech);
-        germanSpeech.add
+        germanSpeech.setMinorTickSpacing(1);
+        germanSpeech.setMajorTickSpacing(5);
+        germanSpeech.setPaintTicks(true);
+        germanSpeech.setPaintTrack(true);
+        germanSpeech.setPaintLabels(true);
+        germanSpeech.setPreferredSize(new Dimension(300, 100));
+
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        competenceLabel.setFont(font);
+        panel.add(competenceLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(germanSpeech, gbc);
+
+
 
     }
 }
