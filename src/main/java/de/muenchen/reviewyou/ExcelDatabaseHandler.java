@@ -4,27 +4,36 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class ExcelDatabaseHandler {
 
-
-    File myFile = new File("/Gradingtable.xlsx");
+    URL resource = getClass().getClassLoader().getResource("Gradingtable.xlsx");
+    File myFile = new File(resource.toURI());
     FileInputStream fis;
     XSSFWorkbook xssfWorkbook;
     XSSFSheet xssfSheet;
 
 
     private int[][] grades = new int[15][19];
-    private static ExcelDatabaseHandler excelDatabaseHandler = new ExcelDatabaseHandler();
+    private static ExcelDatabaseHandler excelDatabaseHandler;
+
+    static {
+        try {
+            excelDatabaseHandler = new ExcelDatabaseHandler();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public static ExcelDatabaseHandler getInstance(){
         return excelDatabaseHandler;
     }
 
-    private ExcelDatabaseHandler(){
-        InputStream src = ExcelHandler.class.getResourceAsStream("/Gradingtable.xlsx");
+    private ExcelDatabaseHandler() throws URISyntaxException {
 
     }
 
