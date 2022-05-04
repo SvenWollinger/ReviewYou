@@ -15,5 +15,6 @@ public class Main {
         excelHandler.writeTrainingAreaAndPeriod("Dusche und von heute bis gestern");
         excelHandler.writeParticipations("BlahBlah sagt Bumbo in the Schrein");
         excelHandler.writePoints(133, 10);
+        excelHandler.writeTotalandAverage("Geeignet", "13");
             }
 }

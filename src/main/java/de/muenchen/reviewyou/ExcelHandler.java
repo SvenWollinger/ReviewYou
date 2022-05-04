@@ -67,6 +67,11 @@ public class ExcelHandler {
         writeCell(16, 68, interimTalk);
     }
 
+    public void writeTotalandAverage(String total, String average) throws IOException {
+        writeCell(0, 70, total);
+        writeCell(10,70 , average);
+    }
+
     public void writePerformance(String abilities, String strengths, String development, String perspectives, String other) throws IOException {
         writeCell(0, 109, abilities);
         writeCell(0,111, strengths);
