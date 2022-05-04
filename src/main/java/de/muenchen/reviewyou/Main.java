@@ -18,7 +18,7 @@ public class Main {
         excelHandler.writeParticipations("BlahBlah sagt Bumbo in the Schrein");
         excelHandler.writePoints(133, 10);
         excelHandler.writeTotalandAverage("Geeignet", "13");*/
-        excelDatabaseHandler.addRecommendation("5", "7","Leo stinkt manchmal ganz schoen");
-
+        excelDatabaseHandler.addRecommendation(5, 7,"Leo stinkt manchmal ganz schoen");
+        System.out.println(excelDatabaseHandler.createRecListFromExcel());
             }
 }
