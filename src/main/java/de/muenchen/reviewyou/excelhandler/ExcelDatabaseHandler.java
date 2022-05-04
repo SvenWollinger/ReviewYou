@@ -18,7 +18,7 @@ public class ExcelDatabaseHandler {
     XSSFWorkbook xssfWorkbook;
     XSSFSheet xssfSheet;
 
-    
+
     private static ExcelDatabaseHandler excelDatabaseHandler;
 
     static {
@@ -80,5 +80,5 @@ public class ExcelDatabaseHandler {
     //TODO ARRAY IDENTIFIER 2 WHICH GRADE?? 0-5
     //TODO ARRAY MESSAGE STRINGS
 
-    }
+}
 
