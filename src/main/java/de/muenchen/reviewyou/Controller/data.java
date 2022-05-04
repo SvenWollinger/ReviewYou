@@ -44,17 +44,207 @@ public class data {
 
 
 
-
-
-
     private String firstName, lastName, street, houseNumber, postalCode, location, course, intershipSection,
-            trainingArea, participationInCourses, traineesRating ,traineesSkills, traineesStrengths, traineesDevelopmentFields,
-            traineesPerspectives, traineesOtherRemarks;
+            trainingArea, participationInCourses, traineesRating ,traineesSkills, traineesStrengths,
+            traineesDevelopmentFields, traineesPerspectives, traineesOtherRemarks;
     private int vintage;
     private double averageScore;
     private LocalDate dateOfBirth, periodStart, periodEnd, periodOfEmployment, trainingPlan, internalTalk;
-    //TODO: traineesRating = "Gesamturteil" -> means if i have x points i get y (Aks Olli how they calculate it)
-    //TODO: Setter and Getter
+
+
+    //Getter and Setter
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getlastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getHouseNumber() {
+        return houseNumber;
+    }
+
+    public void setHouseNumber(String houseNumber) {
+        this.houseNumber = houseNumber;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public String getIntershipSection() {
+        return intershipSection;
+    }
+
+    public void setIntershipSection(String intershipSection) {
+        this.intershipSection = intershipSection;
+    }
+
+    public String getTrainingArea() {
+        return trainingArea;
+    }
+
+    public void setTrainingArea(String trainingArea) {
+        this.trainingArea = trainingArea;
+    }
+
+    public String getParticipationInCourses() {
+        return participationInCourses;
+    }
+
+    public void setParticipationInCourses(String participationInCourses) {
+        this.participationInCourses = participationInCourses;
+    }
+
+    public String getTraineesRating() {
+        return traineesRating;
+    }
+
+    public void setTraineesRating(String traineesRating) {
+        this.traineesRating = traineesRating;
+    }
+
+    public String getTraineesSkills() {
+        return traineesSkills;
+    }
+
+    public void setTraineesSkills(String traineesSkills) {
+        this.traineesSkills = traineesSkills;
+    }
+
+    public String getTraineesStrengths() {
+        return traineesStrengths;
+    }
+
+    public void setTraineesStrengths(String traineesStrengths) {
+        this.traineesStrengths = traineesStrengths;
+    }
+
+    public String getTraineesDevelopmentFields() {
+        return traineesDevelopmentFields;
+    }
+
+    public void setTraineesDevelopmentFields(String traineesDevelopmentFields) {
+        this.traineesDevelopmentFields = traineesDevelopmentFields;
+    }
+
+    public String getTraineesPerspectives() {
+        return traineesPerspectives;
+    }
+
+    public void setTraineesPerspectives(String traineesPerspectives) {
+        this.traineesPerspectives = traineesPerspectives;
+    }
+
+    public String getTraineesOtherRemarks() {
+        return traineesOtherRemarks;
+    }
+
+    public void setTraineesOtherRemarks(String traineesOtherRemarks) {
+        this.traineesOtherRemarks = traineesOtherRemarks;
+    }
+
+    public int getVintage() {
+        return vintage;
+    }
+
+    public void setVintage(int vintage) {
+        this.vintage = vintage;
+    }
+
+    public double getAverageScore() {
+        return averageScore;
+    }
+
+    public void setAverageScore(double averageScore) {
+        this.averageScore = averageScore;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public LocalDate getPeriodStart() {
+        return periodStart;
+    }
+
+    public void setPeriodStart(LocalDate periodStart) {
+        this.periodStart = periodStart;
+    }
+
+    public LocalDate getPeriodEnd() {
+        return periodEnd;
+    }
+
+    public void setPeriodEnd(LocalDate periodEnd) {
+        this.periodEnd = periodEnd;
+    }
+
+    public LocalDate getPeriodOfEmployment() {
+        return periodOfEmployment;
+    }
+
+    public void setPeriodOfEmployment(LocalDate periodOfEmployment) {
+        this.periodOfEmployment = periodOfEmployment;
+    }
+
+    public LocalDate getTrainingPlan() {
+        return trainingPlan;
+    }
+
+    public void setTrainingPlan(LocalDate trainingPlan) {
+        this.trainingPlan = trainingPlan;
+    }
+
+    public LocalDate getInternalTalk() {
+        return internalTalk;
+    }
+
+    public void setInternalTalk(LocalDate internalTalk) {
+        this.internalTalk = internalTalk;
+    }
+
 
 
     public String getQuery1() { return query1; }
@@ -113,8 +303,4 @@ public class data {
 
     public String getQuery19() { return query19; }
     public int getQuery19Points() { return query19Points; }
-
 }
-
-
-    //Setter and Getter

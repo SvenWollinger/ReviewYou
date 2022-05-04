@@ -5,26 +5,96 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class reviewController {
-    //TODO: We make the actionListener for UI group
-    //TODO: At the end is a "weiter" button. If you click the button, the inserted data gets safed. On every page (expect first page) is a "zurück" button
-    //TODO: If you click on "zurück" the safed data from every JTextField gets inserted again into their previous TextField
+    public reviewController(data data, GUI GUI) {
 
-    ActionListener actionListenerNextPage = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            //Click on "weiter" -> inserdetData gets safed
-        }
-    };
+        ActionListener actionListenerSafeData = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                data.setFirstName(xxx.getText());
+                data.setLastName(xxx.getText());
+                data.setStreet(xxx.getText());
+                data.setHouseNumber(xxx.getText());
+                data.setPostalCode(xxx.getText());
+                data.setLocation(xxx.getText());
+                data.setCourse(xxx.getText());
+                data.setIntershipSection(xxx.getText());
+                data.setTrainingArea(xxx.getText());
+                data.setParticipationInCourses(xxx.getText());
+                data.setTraineesRating(xxx.getText()); //TODO: "Gesamturteil" -> means if i have x points i get y Text (Ask Olli how they calculate it)
+                data.setTraineesSkills(xxx.getText());
+                data.setTraineesStrengths(xxx.getText());
+                data.setTraineesDevelopmentFields(xxx.getText());
+                data.setTraineesPerspectives(xxx.getText());
+                data.setTraineesOtherRemarks(xxx.getText());
+                data.setVintage(xxx.getText());
+                data.setAverageScore(xxx.getText()); //TODO: "Durchschnittliche Punktzahl" -> Ask Olli how they calculate it
+                data.setDateOfBirth(xxx.getText());
+                data.setPeriodStart(xxx.getText());
+                data.setPeriodOfEmployment(xxx.getText());
+                data.setTrainingPlan(xxx.getText());
+                data.setInternalTalk(xxx.getText());
+            }
+        };
 
-    ActionListener actionListenerPreviousPage = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            //TODO: Get and set -> Save informations in JTextFields.
-            //TODO: Load Data Class with Informations
+        //ActionListener for "Weiter" button
+        ActionListener actionListenerNextPage = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO: Tell Manu that they have to delete "page = 2;" and "checkPage();" + page at the begin of the code = 1
+                switch (page) {
+                    case 1:
+                        GUI.setPage(GUI.getPage() + 1);
+                        secondPanel();
+                        secondPanel.setVisibility(true);
+                        startPanel.setVisibility(false);
+                        break;
+                    case 2:
+                        GUI.setPage(GUI.getPage() + 1);
+                        thirdPanel();
+                        thirdPanel.setVisibility(true);
+                        secondPanel.setVisibility(false);
+                        break;
+                    case 3:
+                        GUI.setPage(GUI.getPage() + 1);
+                        fourthPanel();
+                        fourthPanel.setVisibility(true);
+                        thirdPanel.setVisibility(false);
+                        break;
+                }
+            }
+        };
 
+        //ActionListener for "Zurück" button
+        ActionListener actionListenerPreviousPage = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO: Tell Manu that they have to delete "page = 2;" and "checkPage();"
+                switch (page) {
+                    case 1:
+                        break;
+                    case 2:
+                        GUI.setPage(GUI.getPage() - 1);
+                        startPanel();
+                        startPanel.setVisibility(true);
+                        secondPanel().setVisibility(false);
+                        break;
+                    case 3:
+                        GUI.setPage(GUI.getPage() - 1);
+                        secondPanel();
+                        secondPanel.setVisibility(true);
+                        thirdPanel.setVisibility(false);
+                        break;
+                    case 4:
+                        GUI.setPage(GUI.getPage() - 1);
+                        thirdPanel();
+                        thirdPanel.setVisibility(true);
+                        fourthPanel.setVisibility(false);
+                }
+            }
+        };
 
-        }
-    };
-
-
+        //Add "Weiter" button to ActionListener
+        next.addActionListener(actionListenerNextPage);
+        previous.addActionListener(actionListenerPreviousPage);
+    }
 }
