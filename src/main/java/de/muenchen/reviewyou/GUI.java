@@ -1,11 +1,12 @@
 package de.muenchen.reviewyou;
 
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicTreeUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GUI {
 
@@ -513,12 +514,14 @@ public class GUI {
     public void fifthPanel(){
         page = 5;
 
-
+        window.add(panel);
+        panel.setVisible(true);
+        panel.setLayout(gbl);
         competenceLabel = new JLabel(String.valueOf(germanSpeech.getValue()));
         panel.add(competenceLabel);
 
         germanSpeech.setMinorTickSpacing(1);
-        germanSpeech.setMajorTickSpacing(5);
+        germanSpeech.setMajorTickSpacing(1);
         germanSpeech.setPaintTicks(true);
         germanSpeech.setPaintTrack(true);
         germanSpeech.setPaintLabels(true);
@@ -537,6 +540,16 @@ public class GUI {
 
 
     }
+
+    java.util.List<JSlider> slidersForGradesOrSomethingElseIdc(){
+        List<JSlider> sliders = new ArrayList<>();
+        for (int i = 0; i <15 ; i++) {
+        }
+
+        return sliders;
+    }
+
+
 }
 
 
