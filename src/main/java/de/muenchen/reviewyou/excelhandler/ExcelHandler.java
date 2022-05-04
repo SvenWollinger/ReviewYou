@@ -37,6 +37,12 @@ public class ExcelHandler {
                 outputStream.close();
     }
 
+    public void writeInstructorData(String name, String telephone, String date) throws IOException {
+        writeCell(3, 0, date);
+        writeCell(0, 3, name);
+        writeCell(3, 1, telephone);
+    }
+
     public void writeStudentData(String name, String birthdate, String address, String year, String course) throws IOException {
         writeCell(0,55, name);
         writeCell(12,55, birthdate);
