@@ -20,20 +20,18 @@ public class GUI {
     SpringLayout layout = new SpringLayout();
     JPanel panel = new JPanel();
     Font font = new Font(null, Font.PLAIN, 20);
-
+    Font fontt = new Font(null, Font.PLAIN, 15);
 
 
     public GUI() {
         window = new JFrame("Leistungsbericht Nachwuchskräfte");
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setVisible(true);
-        window.setSize(800,800);
+        window.setSize(800, 800);
         window.setLocationRelativeTo(null);
         window.add(panel);
 
         panel.setBackground(Color.red);
-        panel.setPreferredSize(new Dimension(800,650));
+        panel.setPreferredSize(new Dimension(800, 650));
         panel.setVisible(true);
 
 
@@ -44,8 +42,8 @@ public class GUI {
         previous.setVisible(false);
 
 
-        next.setPreferredSize(new Dimension(80,30));
-        previous.setPreferredSize(new Dimension(80,30));
+        next.setPreferredSize(new Dimension(80, 30));
+        previous.setPreferredSize(new Dimension(80, 30));
 
         layout.putConstraint(SpringLayout.SOUTH, next, -25, SpringLayout.SOUTH, contentPane);
         layout.putConstraint(SpringLayout.WEST, next, 400, SpringLayout.WEST, contentPane);
@@ -53,13 +51,47 @@ public class GUI {
         layout.putConstraint(SpringLayout.SOUTH, previous, -25, SpringLayout.SOUTH, contentPane);
         layout.putConstraint(SpringLayout.EAST, previous, -5, SpringLayout.WEST, next);
 
-
-
+        window.setVisible(true);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         startPanel();
 
+        next.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (page == 1) {
+                    panel.removeAll();
+                    panel.revalidate();
+                    panel.repaint();
+                    secondPanel();
+                } else if (page == 2) {
+                    panel.removeAll();
+                    panel.revalidate();
+                    panel.repaint();
+                    thirdPanel();
+                }
+            }
+        });
+
+        previous.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (page == 3) {
+                    panel.removeAll();
+                    panel.revalidate();
+                    panel.repaint();
+                    secondPanel();
+                } else if (page ==2) {
+                    panel.removeAll();
+                    panel.revalidate();
+                    panel.repaint();
+                    startPanel();
+                }
+            }
+        });
     }
-    public void checkPage(){
-        if(page != 1) {
+
+    public void checkPage() {
+        if (page != 1) {
             previous.setVisible(true);
         } else previous.setVisible(false);
     }
@@ -76,7 +108,10 @@ public class GUI {
     private JTextField instructorTelephone = new JTextField(15);
     private JLabel headline;
 
-    public void startPanel(){
+    // second page
+
+
+    public void startPanel() {
 
         headline = new JLabel("Angaben zum / zur Ausbilder:in");
         headline.setFont(font);
@@ -123,20 +158,8 @@ public class GUI {
         layout.putConstraint(SpringLayout.NORTH, instructorTelephone, 4, SpringLayout.NORTH, telephone);
 
 
-
-        next.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel.removeAll();
-                panel.revalidate();
-                panel.repaint();
-                secondPanel();
-            }
-        });
-
-
-
     }
+
     // GETTER FOR FIRST PAGE
     public JTextField getInstructorName() {
         return instructorName;
@@ -149,17 +172,37 @@ public class GUI {
     public JTextField getInstructorTelephone() {
         return instructorTelephone;
     }
+    private JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft:");
+    private JLabel traineeName = new JLabel("Name, Vorname:");
+    private JTextField txtTraineeName = new JTextField(8);
+    private JLabel birthDate = new JLabel("Geburtsdatum: ");
+    private JTextField txtBirthDate = new JTextField(8);
+    private JLabel apartmentStreet = new JLabel("Straße, Haus-Nr., PLZ, Ort:");
+    private JTextField txtApartmentStreet = new JTextField(22);
+    private JLabel allocationPeriod = new JLabel("Zuweisungszeitraum:");
+    private JLabel from = new JLabel("vom:");
+    private JTextField txtfrom = new JTextField(10);
+    private JLabel till = new JLabel("bis:");
+    private JTextField txtTill = new JTextField(10);
+    private JLabel internshipSelection = new JLabel("Praktikumsabschnitt:");
+    private JTextField txtInternshipSelection = new JTextField(20);
+    private JLabel trainingArea = new JLabel("<html><body>Ausbildungsbereich und Zeitraum der Beschäftigung<br>" +
+            "in den einzelnen Ausbildungsgebieten:</body></html>");
+    private JTextField txtTrainingArea = new JTextField(45);
+    private JLabel sessions = new JLabel("<html><body>Teilnahme an Lehrgängen, Versammlungen, Sitzungen, " +
+            "<br>Besichtigungen usw.: </body></html>");
+    private JTextField txtSessions = new JTextField(45);
+    private JLabel traingPlan = new JLabel("<html><body>Örtlicher Ausbildungsplan vorgestellt und Kopie <br> " +
+            "ausgehändigt am: </body></html>");
+    private JTextField txtTrainingsPlan = new JTextField(45);
+    private JLabel interimTalk = new JLabel("Zwischengespräch geführt am:");
+    private JTextField txtInterimTalk = new JTextField(45);
+    private JLabel overallRating = new JLabel("Gesamtbewetung");
 
-
-    public void secondPanel(){
+    public void secondPanel() {
         page = 2;
         checkPage();
-        JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft");
-        JLabel traineeName = new JLabel("Name, Vorname:");
-        JTextField txtTraineeName = new JTextField(8);
-        JLabel birthDate = new JLabel("Geburtsdatum: ");
-        JTextField txtBirthDate = new JTextField(8);
-        JLabel apartmentStreet = new JLabel("Straße, Haus-Nr., PLZ, Ort");
+
         window.add(panel);
         panel.add(apprenticeship);
         panel.add(traineeName);
@@ -167,80 +210,105 @@ public class GUI {
         panel.add(birthDate);
         panel.add(txtBirthDate);
         panel.add(apartmentStreet);
+        panel.add(txtApartmentStreet);
+        panel.add(allocationPeriod);
+        panel.add(from);
+        panel.add(txtfrom);
+        panel.add(till);
+        panel.add(txtTill);
+        panel.add(internshipSelection);
+        panel.add(txtInternshipSelection);
+        panel.add(trainingArea);
+        panel.add(txtTrainingArea);
+        panel.add(sessions);
+        panel.add(txtSessions);
+        panel.add(traingPlan);
+        panel.add(txtTrainingsPlan);
+        panel.add(interimTalk);
+        panel.add(txtInterimTalk);
 
-        apprenticeship.setFont(font);
-        traineeName.setFont(font);
-        birthDate.setFont(font);
-        apartmentStreet.setFont(font);
+
+        apprenticeship.setFont(fontt);
+        traineeName.setFont(fontt);
+        birthDate.setFont(fontt);
+        apartmentStreet.setFont(fontt);
+        allocationPeriod.setFont(fontt);
+        from.setFont(fontt);
+        till.setFont(fontt);
+        internshipSelection.setFont(fontt);
+        trainingArea.setFont(fontt);
+        sessions.setFont(fontt);
+        traingPlan.setFont(fontt);
+        interimTalk.setFont(fontt);
 
 
-        layout.putConstraint(SpringLayout.WEST,apprenticeship,100,SpringLayout.WEST,contentPane);
+        layout.putConstraint(SpringLayout.WEST, apprenticeship, 100, SpringLayout.WEST, contentPane);
 
-        layout.putConstraint(SpringLayout.WEST,traineeName, 100,SpringLayout.WEST,contentPane);
-        layout.putConstraint(SpringLayout.NORTH,traineeName,40,SpringLayout.SOUTH,apprenticeship);
+        layout.putConstraint(SpringLayout.WEST, traineeName, 100, SpringLayout.WEST, contentPane);
+        layout.putConstraint(SpringLayout.NORTH, traineeName, 10, SpringLayout.SOUTH, apprenticeship);
 
-        layout.putConstraint(SpringLayout.NORTH, txtTraineeName,44,SpringLayout.SOUTH,apprenticeship);
-        layout.putConstraint(SpringLayout.WEST,txtTraineeName,10,SpringLayout.EAST,traineeName);
+        layout.putConstraint(SpringLayout.NORTH, txtTraineeName, 10, SpringLayout.SOUTH, apprenticeship);
+        layout.putConstraint(SpringLayout.WEST, txtTraineeName, 10, SpringLayout.EAST, traineeName);
 
-        layout.putConstraint(SpringLayout.NORTH, birthDate, 40, SpringLayout.SOUTH, apprenticeship);
+        layout.putConstraint(SpringLayout.NORTH, birthDate, 10, SpringLayout.SOUTH, apprenticeship);
         layout.putConstraint(SpringLayout.WEST, birthDate, 10, SpringLayout.EAST, txtTraineeName);
 
-        layout.putConstraint(SpringLayout.NORTH, txtBirthDate,44, SpringLayout.SOUTH, apprenticeship);
-        layout.putConstraint(SpringLayout.WEST,txtBirthDate,10,SpringLayout.EAST,birthDate);
+        layout.putConstraint(SpringLayout.NORTH, txtBirthDate, 10, SpringLayout.SOUTH, apprenticeship);
+        layout.putConstraint(SpringLayout.WEST, txtBirthDate, 10, SpringLayout.EAST, birthDate);
 
-        layout.putConstraint(SpringLayout.NORTH,apartmentStreet,40,SpringLayout.SOUTH,traineeName);
-        layout.putConstraint(SpringLayout.WEST,apartmentStreet, 100, SpringLayout.WEST, contentPane);
+        layout.putConstraint(SpringLayout.NORTH, apartmentStreet, 10, SpringLayout.SOUTH, traineeName);
+        layout.putConstraint(SpringLayout.WEST, apartmentStreet, 100, SpringLayout.WEST, contentPane);
 
-        previous.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel.removeAll();
-                panel.revalidate();
-                panel.repaint();
-                startPanel();
-            }
-        });
+        layout.putConstraint(SpringLayout.WEST, txtApartmentStreet, 10, SpringLayout.EAST, apartmentStreet);
+        layout.putConstraint(SpringLayout.NORTH, txtApartmentStreet, 10, SpringLayout.SOUTH, txtBirthDate);
+
+        layout.putConstraint(SpringLayout.NORTH, allocationPeriod, 20, SpringLayout.SOUTH, apartmentStreet);
+        layout.putConstraint(SpringLayout.WEST, allocationPeriod, 100, SpringLayout.WEST, contentPane);
+
+        layout.putConstraint(SpringLayout.NORTH, from, 10, SpringLayout.SOUTH, allocationPeriod);
+        layout.putConstraint(SpringLayout.WEST, from, 100, SpringLayout.WEST, contentPane);
+
+        layout.putConstraint(SpringLayout.NORTH, txtfrom, 10, SpringLayout.SOUTH, allocationPeriod);
+        layout.putConstraint(SpringLayout.WEST, txtfrom, 10, SpringLayout.EAST, from);
+
+        layout.putConstraint(SpringLayout.NORTH, till, 10, SpringLayout.SOUTH, allocationPeriod);
+        layout.putConstraint(SpringLayout.WEST, till, 10, SpringLayout.EAST, txtfrom);
+
+        layout.putConstraint(SpringLayout.NORTH, txtTill, 10, SpringLayout.SOUTH, allocationPeriod);
+        layout.putConstraint(SpringLayout.WEST, txtTill, 10, SpringLayout.EAST, till);
+
+        layout.putConstraint(SpringLayout.NORTH, internshipSelection, 10, SpringLayout.SOUTH, from);
+        layout.putConstraint(SpringLayout.WEST, internshipSelection, 100, SpringLayout.WEST, contentPane);
+
+        layout.putConstraint(SpringLayout.NORTH, txtInternshipSelection, 10, SpringLayout.SOUTH, from);
+        layout.putConstraint(SpringLayout.WEST, txtInternshipSelection, 10, SpringLayout.EAST, internshipSelection);
+
+        layout.putConstraint(SpringLayout.NORTH, trainingArea, 20, SpringLayout.SOUTH, internshipSelection);
+        layout.putConstraint(SpringLayout.WEST, trainingArea, 100, SpringLayout.WEST, contentPane);
+
+        layout.putConstraint(SpringLayout.NORTH, txtTrainingArea, 5, SpringLayout.SOUTH, trainingArea);
+        layout.putConstraint(SpringLayout.WEST, txtTrainingArea, 100, SpringLayout.WEST, contentPane);
+
+        layout.putConstraint(SpringLayout.NORTH, sessions, 20, SpringLayout.SOUTH, txtTrainingArea);
+        layout.putConstraint(SpringLayout.WEST, sessions, 100, SpringLayout.WEST, contentPane);
+
+        layout.putConstraint(SpringLayout.NORTH, txtSessions, 14, SpringLayout.SOUTH, sessions);
+        layout.putConstraint(SpringLayout.WEST, txtSessions, 100, SpringLayout.WEST, contentPane);
+
+        layout.putConstraint(SpringLayout.NORTH, traingPlan, 20, SpringLayout.SOUTH, txtSessions);
+        layout.putConstraint(SpringLayout.WEST, traingPlan, 100, SpringLayout.WEST, contentPane);
+
+        layout.putConstraint(SpringLayout.NORTH, txtTrainingsPlan, 10, SpringLayout.SOUTH, traingPlan);
+        layout.putConstraint(SpringLayout.WEST, txtTrainingsPlan, 100, SpringLayout.WEST, contentPane);
+
+        layout.putConstraint(SpringLayout.NORTH, interimTalk, 20, SpringLayout.SOUTH, txtTrainingsPlan);
+        layout.putConstraint(SpringLayout.WEST, interimTalk, 100, SpringLayout.WEST, contentPane);
+
+        layout.putConstraint(SpringLayout.NORTH, txtInterimTalk, 10, SpringLayout.SOUTH, interimTalk);
+        layout.putConstraint(SpringLayout.WEST, txtInterimTalk, 100, SpringLayout.WEST, contentPane);
+    }
+        public void thirdPanel() {
+            page = 3;
+        }
     }
 
-    JLabel abilitiesLabel = new JLabel("Fähigkeiten, praktische Leistungen, Verhalten:");
-    JLabel strenghtLabel = new JLabel("Stärken:");
-    JLabel developementsLabel = new JLabel("Entwicklungsfelder");
-    JLabel perspectiveLabel = new JLabel("Perspektiven");
-    JLabel othersLabel = new JLabel("Sonstige Anmerkungen");
-    JTextField abilities = new JTextField();
-//    JTextArea abilities = new JTextArea();
-    JTextField strength;
-    JTextField developements;
-    JTextField perspective;
-    JTextField others;
-
-
-
-
-    public void thirdPanel(){
-        headline = new JLabel("Wortbeschreibungen zur gezeigten Leistung");
-        headline.setFont(font);
-        window.add(panel);
-
-        panel.add(headline);
-        panel.add(abilitiesLabel);
-        panel.add(abilities);
-
-
-        // set name and name textfield
-        layout.putConstraint(SpringLayout.WEST, headline, 200, SpringLayout.WEST, panel);
-        headline.setFont(font);
-
-        // SET ABILITIES LABEL AND TEXTFIELD
-        layout.putConstraint(SpringLayout.WEST, abilitiesLabel, 0, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, abilitiesLabel, 60, SpringLayout.NORTH, panel);
-        abilitiesLabel.setFont(font);
-
-        layout.putConstraint(SpringLayout.NORTH, abilities,10, SpringLayout.SOUTH, abilitiesLabel);
-        layout.putConstraint(SpringLayout.WEST, abilities,10, SpringLayout.WEST, panel);
-        abilities.setPreferredSize(new Dimension(200,300));
-
-
-    }
-
-}
