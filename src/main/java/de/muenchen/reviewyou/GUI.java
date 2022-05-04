@@ -78,7 +78,7 @@ public class GUI {
                         panel.repaint();
                         fourthPanel();
                         break;
-                    case 5:
+                    case 4:
                         panel.removeAll();
                         panel.revalidate();
                         panel.repaint();
@@ -96,7 +96,7 @@ public class GUI {
                         panel.removeAll();
                         panel.revalidate();
                         panel.repaint();
-                        fifthPanel();
+                        fourthPanel();
                         break;
                     case 4:
                         panel.removeAll();
@@ -497,12 +497,12 @@ public class GUI {
 
     public void fifthPanel(){
         page = 5;
-        checkPage();
+
         window.add(panel);
         panel.setVisible(true);
 
         panel.add(germanSpeech);
-//        germanSpeech.addChangeListener();
+        germanSpeech.add
 
     }
 }
