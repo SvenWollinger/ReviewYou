@@ -78,6 +78,12 @@ public class GUI {
                         panel.repaint();
                         fourthPanel();
                         break;
+                    case 5:
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        fifthPanel();
+                        break;
                 }
             }
         });
@@ -86,6 +92,12 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 switch (page) {
+                    case 5:
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        fifthPanel();
+                        break;
                     case 4:
                         panel.removeAll();
                         panel.revalidate();
