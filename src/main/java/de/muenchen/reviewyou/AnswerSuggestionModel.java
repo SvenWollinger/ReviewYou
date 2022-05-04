@@ -1,5 +1,7 @@
 package de.muenchen.reviewyou;
 
+import java.util.List;
+
 public class AnswerSuggestionModel {
     double id1;
     double id2;
@@ -10,6 +12,13 @@ public class AnswerSuggestionModel {
         this.id2 = id2;
         this.recommendend = recommendend;
     }
+
+    public  List<AnswerSuggestionModel> specificListForQuestion(int id1, int id2){
+            
+
+    }
+
+
 
 
     @Override
