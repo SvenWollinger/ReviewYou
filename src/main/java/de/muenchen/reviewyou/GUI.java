@@ -30,6 +30,8 @@ public class GUI {
         window.setSize(800, 800);
         window.setLocationRelativeTo(null);
         window.add(panel);
+        window.setVisible(true);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel.setBackground(Color.red);
         panel.setPreferredSize(new Dimension(800, 650));
@@ -52,26 +54,23 @@ public class GUI {
         layout.putConstraint(SpringLayout.SOUTH, previous, -25, SpringLayout.SOUTH, contentPane);
         layout.putConstraint(SpringLayout.EAST, previous, -5, SpringLayout.WEST, next);
 
-        window.setVisible(true);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
         startPanel();
 
         next.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                switch (page) {
-                    case 1:
+                if (page == 1) {
                     panel.removeAll();
                     panel.revalidate();
                     panel.repaint();
                     secondPanel();
-                    break;
-                    case 2:
+                } else if (page == 2) {
                     panel.removeAll();
                     panel.revalidate();
                     panel.repaint();
                     thirdPanel();
-                    break;
                 }
             }
         });
@@ -79,19 +78,16 @@ public class GUI {
         previous.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                switch (page) {
-                    case 3:
+                if (page == 3) {
                     panel.removeAll();
                     panel.revalidate();
                     panel.repaint();
                     secondPanel();
-                    break;
-                    case 2:
+                } else if (page == 2) {
                     panel.removeAll();
                     panel.revalidate();
                     panel.repaint();
                     startPanel();
-                    break;
                 }
             }
         });
@@ -179,6 +175,7 @@ public class GUI {
     public JTextField getInstructorTelephone() {
         return instructorTelephone;
     }
+
     private JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft:");
     private JLabel traineeName = new JLabel("Name, Vorname:");
     private JTextField txtTraineeName = new JTextField(8);
@@ -209,7 +206,7 @@ public class GUI {
     public void secondPanel() {
         page = 2;
         checkPage();
-
+        panel.setLayout(layout);
         window.add(panel);
         panel.add(apprenticeship);
         panel.add(traineeName);
@@ -235,18 +232,18 @@ public class GUI {
         panel.add(txtInterimTalk);
 
 
-        apprenticeship.setFont(fontt);
-        traineeName.setFont(fontt);
-        birthDate.setFont(fontt);
-        apartmentStreet.setFont(fontt);
-        allocationPeriod.setFont(fontt);
-        from.setFont(fontt);
-        till.setFont(fontt);
-        internshipSelection.setFont(fontt);
-        trainingArea.setFont(fontt);
-        sessions.setFont(fontt);
-        traingPlan.setFont(fontt);
-        interimTalk.setFont(fontt);
+        apprenticeship.setFont(font);
+        traineeName.setFont(font);
+        birthDate.setFont(font);
+        apartmentStreet.setFont(font);
+        allocationPeriod.setFont(font);
+        from.setFont(font);
+        till.setFont(font);
+        internshipSelection.setFont(font);
+        trainingArea.setFont(font);
+        sessions.setFont(font);
+        traingPlan.setFont(font);
+        interimTalk.setFont(font);
 
 
         layout.putConstraint(SpringLayout.WEST, apprenticeship, 100, SpringLayout.WEST, contentPane);
@@ -314,8 +311,99 @@ public class GUI {
         layout.putConstraint(SpringLayout.NORTH, txtInterimTalk, 10, SpringLayout.SOUTH, interimTalk);
         layout.putConstraint(SpringLayout.WEST, txtInterimTalk, 100, SpringLayout.WEST, contentPane);
     }
-        public void thirdPanel() {
-            page = 3;
-        }
+
+    // ELEMENTS FOR THIRD PAGE
+    GridBagLayout gbl = new GridBagLayout();
+    GridBagConstraints gbc = new GridBagConstraints();
+    JLabel abilitiesLabel = new JLabel("Fähigkeiten, praktische Leistungen, Verhalten");
+    JLabel strengthLabel = new JLabel("Stärken");
+    JLabel developementsLabel = new JLabel("Entwicklungsfelder");
+    JLabel perspectiveLabel = new JLabel("Perspektiven");
+    JLabel othersLabel = new JLabel("Sonstige Anmerkungen");
+    JTextArea abilities = new JTextArea();
+    JTextArea strength = new JTextArea();
+    JTextArea developements = new JTextArea();
+    JTextArea perspective = new JTextArea();
+    JTextArea others = new JTextArea();
+    Dimension preferedSize = new Dimension(600, 50);
+    Dimension maximumSize = new Dimension(600, 70);
+
+    public void thirdPanel() {
+        page = 3;
+        checkPage();
+        JLabel headline = new JLabel("Wortbeschreibung zur gezeigten Leistung insgesamt");
+        JLabel whiteSpace = new JLabel();
+        window.add(panel);
+        panel.setLayout(gbl);
+        gbc.insets = new Insets(-60, 20, 70, 20);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        headline.setFont(font);
+        panel.add(headline, gbc);
+
+        gbc.insets = new Insets(0, 20, 10, 20);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        abilitiesLabel.setFont(font);
+        panel.add(abilitiesLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        abilities.setPreferredSize(preferedSize);
+        abilities.setMaximumSize(maximumSize);
+        abilities.setLineWrap(true);
+        panel.add(abilities, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        strengthLabel.setFont(font);
+        panel.add(strengthLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        strength.setPreferredSize(preferedSize);
+        strength.setMaximumSize(maximumSize);
+        strength.setLineWrap(true);
+        panel.add(strength, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        developementsLabel.setFont(font);
+        panel.add(developementsLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        developements.setPreferredSize(preferedSize);
+        developements.setMaximumSize(maximumSize);
+        developements.setLineWrap(true);
+        panel.add(developements, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        perspectiveLabel.setFont(font);
+        panel.add(perspectiveLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 9;
+        perspective.setPreferredSize(preferedSize);
+        perspective.setMaximumSize(maximumSize);
+        perspective.setLineWrap(true);
+        panel.add(perspective, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 10;
+        othersLabel.setFont(font);
+        panel.add(othersLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 11;
+        others.setPreferredSize(preferedSize);
+        others.setMaximumSize(maximumSize);
+        others.setLineWrap(true);
+        panel.add(others, gbc);
+
     }
+}
 
