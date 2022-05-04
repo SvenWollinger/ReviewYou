@@ -1,4 +1,4 @@
-package de.muenchen.reviewyou;
+package de.muenchen.reviewyou.excelhandler;
 
 public enum QuestionCatalogue {
     GERMANLANGUAGE,

@@ -1,4 +1,4 @@
-package de.muenchen.reviewyou;
+package de.muenchen.reviewyou.excelhandler;
 
 import java.util.ArrayList;
 import java.util.List;
