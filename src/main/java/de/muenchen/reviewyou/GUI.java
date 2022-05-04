@@ -59,16 +59,19 @@ public class GUI {
         next.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (page == 1) {
+                switch (page) {
+                    case 1:
                     panel.removeAll();
                     panel.revalidate();
                     panel.repaint();
                     secondPanel();
-                } else if (page == 2) {
+                    break;
+                    case 2:
                     panel.removeAll();
                     panel.revalidate();
                     panel.repaint();
                     thirdPanel();
+                    break;
                 }
             }
         });
@@ -76,16 +79,19 @@ public class GUI {
         previous.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (page == 3) {
+                switch (page) {
+                    case 3:
                     panel.removeAll();
                     panel.revalidate();
                     panel.repaint();
                     secondPanel();
-                } else if (page ==2) {
+                    break;
+                    case 2:
                     panel.removeAll();
                     panel.revalidate();
                     panel.repaint();
                     startPanel();
+                    break;
                 }
             }
         });
