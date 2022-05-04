@@ -328,9 +328,99 @@ public class GUI {
         layout.putConstraint(SpringLayout.WEST, txtInterimTalk, 100, SpringLayout.WEST, contentPane);
     }
 
+    // ELEMENTS FOR THIRD PAGE
+    GridBagLayout gbl = new GridBagLayout();
+    GridBagConstraints gbc = new GridBagConstraints();
+    JLabel abilitiesLabel = new JLabel("Fähigkeiten, praktische Leistungen, Verhalten");
+    JLabel strengthLabel = new JLabel("Stärken");
+    JLabel developementsLabel = new JLabel("Entwicklungsfelder");
+    JLabel perspectiveLabel = new JLabel("Perspektiven");
+    JLabel othersLabel = new JLabel("Sonstige Anmerkungen");
+    JTextArea abilities = new JTextArea();
+    JTextArea strength = new JTextArea();
+    JTextArea developements = new JTextArea();
+    JTextArea perspective = new JTextArea();
+    JTextArea others = new JTextArea();
+    Dimension preferedSize = new Dimension(600, 50);
+    Dimension maximumSize = new Dimension(600, 70);
+
     public void thirdPanel() {
         page = 3;
+        JLabel headline = new JLabel("Wortbeschreibung zur gezeigten Leistung insgesamt");
+        JLabel whiteSpace = new JLabel();
+        window.add(panel);
+        panel.setLayout(gbl);
+        gbc.insets = new Insets(-60, 20, 70, 20);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        headline.setFont(font);
+        panel.add(headline, gbc);
+
+        gbc.insets = new Insets(0, 20, 10, 20);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        abilitiesLabel.setFont(font);
+        panel.add(abilitiesLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        abilities.setPreferredSize(preferedSize);
+        abilities.setMaximumSize(maximumSize);
+        abilities.setLineWrap(true);
+        panel.add(abilities, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        strengthLabel.setFont(font);
+        panel.add(strengthLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        strength.setPreferredSize(preferedSize);
+        strength.setMaximumSize(maximumSize);
+        strength.setLineWrap(true);
+        panel.add(strength, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        developementsLabel.setFont(font);
+        panel.add(developementsLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        developements.setPreferredSize(preferedSize);
+        developements.setMaximumSize(maximumSize);
+        developements.setLineWrap(true);
+        panel.add(developements, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        perspectiveLabel.setFont(font);
+        panel.add(perspectiveLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 9;
+        perspective.setPreferredSize(preferedSize);
+        perspective.setMaximumSize(maximumSize);
+        perspective.setLineWrap(true);
+        panel.add(perspective, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 10;
+        othersLabel.setFont(font);
+        panel.add(othersLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 11;
+        others.setPreferredSize(preferedSize);
+        others.setMaximumSize(maximumSize);
+        others.setLineWrap(true);
+        panel.add(others, gbc);
+
     }
+
 
     private JLabel evaluationDescription = new JLabel("Platzhalter beschreibug Bewertung");
     private JLabel PointsDistribution = new JLabel("Folgende Punktezahlen können vergeben werden: ");
@@ -343,6 +433,7 @@ public class GUI {
 
     public void fourthPanel() {
         page = 4;
+        panel.setLayout(layout);
         headline = new JLabel("Bewertung: ");
         headline.setFont(font);
         window.add(panel);
@@ -385,6 +476,24 @@ public class GUI {
 
 
     }
+
+    static final int minScore = 0;
+    static final int maxScore = 15;
+    static final int scoreInit = 7;
+    JLabel competenceLabel = new JLabel("Fachliche Kompetenzen");
+    JSlider germanSpeech = new JSlider(JSlider.HORIZONTAL,minScore, maxScore, scoreInit );
+
+    public void fifthPanel(){
+        page = 5;
+        checkPage();
+        window.add(panel);
+        panel.setVisible(true);
+
+        panel.add(germanSpeech);
+//        germanSpeech.addChangeListener();
+
+    }
 }
+
 
 
