@@ -1,5 +1,10 @@
 package de.muenchen.reviewyou;
 
+import org.jdatepicker.JDatePicker;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -10,6 +15,7 @@ import java.lang.annotation.Inherited;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.SortedMap;
 
 import static java.awt.Color.red;
@@ -37,11 +43,7 @@ public class GUI {
         window.setResizable(false);
         window.setSize(800, 800);
         window.setLocationRelativeTo(null);
-        window.add(panel);
 
-//        panel.setBackground(Color.red);
-        panel.setPreferredSize(new Dimension(800, 700));
-        panel.setVisible(true);
 
 
         contentPane = window.getContentPane();
@@ -51,6 +53,7 @@ public class GUI {
         contentPane.add(moreInfo);
         previous.setVisible(false);
         moreInfo.setVisible(false);
+
 
 
         next.setPreferredSize(new Dimension(80, 30));
@@ -79,6 +82,7 @@ public class GUI {
                         panel.removeAll();
                         panel.revalidate();
                         panel.repaint();
+                        previous.setVisible(true);
                         secondPanel();
                         break;
                     case 2:
@@ -86,6 +90,8 @@ public class GUI {
                         panel.revalidate();
                         panel.repaint();
                         thirdPanel();
+                        moreInfo();
+                        moreInfo.setVisible(true);
                         break;
                     case 3:
                         panel.removeAll();
@@ -110,12 +116,15 @@ public class GUI {
                         panel.revalidate();
                         panel.repaint();
                         seventhPanel();
+                        moreInfo.setVisible(false);
+                        popup.setVisible(false);
                         break;
                     case 7:
                         panel.removeAll();
                         panel.revalidate();
                         panel.repaint();
                         eightPanel();
+                        next.setVisible(false);
                         break;
 
                 }
@@ -131,12 +140,14 @@ public class GUI {
                         panel.revalidate();
                         panel.repaint();
                         seventhPanel();
+                        next.setVisible(true);
                         break;
                     case 7:
                         panel.removeAll();
                         panel.revalidate();
                         panel.repaint();
                         sixthPanel();
+                        moreInfo.setVisible(true);
                         break;
                     case 6:
                         panel.removeAll();
@@ -160,6 +171,8 @@ public class GUI {
                         panel.removeAll();
                         panel.revalidate();
                         panel.repaint();
+                        moreInfo.setVisible(false);
+                        popup.setVisible(false);
                         secondPanel();
                         break;
                     case 2:
@@ -181,15 +194,6 @@ public class GUI {
 
     }
 
-
-    public void checkPage() {
-        if (page == 1) {
-            previous.setVisible(false);
-        } else if (page == 8) {
-            previous.setVisible(false);
-        } else previous.setVisible(true);
-    }
-
     // First page to get user data
 
     private JLabel name = new JLabel("Name");
@@ -200,21 +204,34 @@ public class GUI {
     private JTextField instructorEmail = new JTextField(15);
     private JTextField currentDate = new JTextField(15);
     private JTextField instructorTelephone = new JTextField(15);
+    UtilDateModel model = new UtilDateModel();
+    Properties p = new Properties();
     private JLabel headline;
+    JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+    JPanel test = new JPanel();
 
     // second page
 
     public void startPanel() {
 
+        p.put("text.today", "Today");
+        p.put("text.month", "Month");
+        p.put("text.year", "Year");
+
+        window.add(panel);
+        panel.setLayout(layout);
+//        panel.setBackground(Color.red);
+        panel.setPreferredSize(new Dimension(800, 700));
+
         headline = new JLabel("Angaben zum / zur Ausbilder:in");
         headline.setFont(font);
-        window.add(panel);
+
+
+
 
         // CHECK PAGE
         page = 1;
-        checkPage();
-
-        panel.setLayout(layout);
+        //        panel.setLayout(layout);
         panel.add(headline);
         panel.add(name);
         panel.add(email);
@@ -223,7 +240,12 @@ public class GUI {
         panel.add(telephone);
         panel.add(instructorEmail);
         panel.add(instructorTelephone);
-        panel.add(currentDate);
+        panel.add(datePanel);
+        panel.add(test);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        test.add(datePanel, gbc);
 
 
         layout.putConstraint(SpringLayout.NORTH, headline, 50, SpringLayout.NORTH, panel);
@@ -297,8 +319,6 @@ public class GUI {
 
     public void secondPanel() {
         page = 2;
-        checkPage();
-        moreInfo.setVisible(false);
 
         panel.setLayout(layout);
         window.add(panel);
@@ -434,8 +454,6 @@ public class GUI {
     public void thirdPanel(){
         page = 3;
         JLabel headline = new JLabel("Fachliche Kompetenzen");
-        moreInfo();
-        moreInfo.setVisible(true);
         headline.setFont(font);
         window.add(panel);
         panel.setVisible(true);
@@ -444,6 +462,7 @@ public class GUI {
         gbc.insets = headlineInsets;
         gbc.gridx = 0;
         gbc.gridy = 0;
+
         panel.add(headline, gbc);
 
         // BEHERRSCHUNG DER DEUTSCHEN SPRACHE
@@ -609,7 +628,6 @@ public class GUI {
             window.add(panel);
             panel.setVisible(true);
             panel.setLayout(gbl);
-            moreInfo.setVisible(true);
 
             gbc.insets = new Insets(10, 0, 60, 0);
             gbc.gridx = 0;
@@ -713,8 +731,6 @@ public class GUI {
         JLabel whiteSpace = new JLabel();
         window.add(panel);
         panel.setLayout(gbl);
-        moreInfo.setVisible(false);
-        popup.setVisible(false);
 
         gbc.insets = new Insets(-10, 20, 80, 20);
 
@@ -793,6 +809,7 @@ public class GUI {
     JPanel panel1 = new JPanel();
     JLabel score = new JLabel("Punktzahl");
     JLabel review = new JLabel("Gesamturteil");
+    GridBagConstraints gbc1 = new GridBagConstraints();
 
     public void eightPanel(){
         page = 8;
@@ -810,36 +827,39 @@ public class GUI {
         panel1.setLayout(gbl);
         panel1.setPreferredSize(new Dimension(150,100));
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 3;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        panel.add(headline, gbc);
+        gbc1.insets = new Insets(0,20,0, 20);
 
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.gridwidth = 1;
-        panel.add(panel1, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        panel1.add(score, gbc);
+        gbc1.gridx = 0;
+        gbc1.gridy = 0;
+        gbc1.gridwidth = 3;
+        gbc1.fill = GridBagConstraints.HORIZONTAL;
+        panel.add(headline, gbc1);
 
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        panel1.add(review, gbc);
+        gbc1.gridx = 0;
+        gbc1.gridy = 1;
+        gbc1.gridwidth = 1;
+        panel.add(panel1, gbc1);
 
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        panel.add(calc,gbc);
+        gbc1.gridx = 0;
+        gbc1.gridy = 0;
+        panel1.add(score, gbc1);
 
-        gbc.gridx = 1;
-        gbc.gridy = 2;
-        panel.add(saveAndNew,gbc);
+        gbc1.gridx = 0;
+        gbc1.gridy = 2;
+        panel1.add(review, gbc1);
 
-        gbc.gridx = 2;
-        gbc.gridy = 2;
-        panel.add(saveAndExit,gbc);
+        gbc1.gridx = 0;
+        gbc1.gridy = 2;
+        panel.add(calc,gbc1);
+
+        gbc1.gridx = 1;
+        gbc1.gridy = 2;
+        panel.add(saveAndNew,gbc1);
+
+        gbc1.gridx = 2;
+        gbc1.gridy = 2;
+        panel.add(saveAndExit,gbc1);
 
 
     }
