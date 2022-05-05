@@ -23,7 +23,7 @@ import java.util.List;
 
 
 public class GUI {
-
+ 
 
     private Container contentPane;
     private JFrame window;
@@ -232,7 +232,7 @@ public class GUI {
 
         headline = new JLabel("Angaben zum / zur Ausbilder:in");
         headline.setFont(font);
- 
+
 
         panel.add(headline);
         panel.add(name);
