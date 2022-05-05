@@ -5,20 +5,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class reviewController {
+    //Dummies
+    JButton calc = new JButton();
+    JButton saveAndNew = new JButton();
+    JButton saveAndExit = new JButton();
+
     public reviewController() {
 
+        //TODO: Ask Excel-Group if the code is good + how should we do the 2x big tables? + what does writePoints?
+        
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Dummies
                 JTextField instructorName = new JTextField();
                 JTextField instructorTelephone = new JTextField();
-                JTextField date = new JTextField();
+                JTextField currentDate = new JTextField();
                 JTextField txtTraineeName = new JTextField();
                 JTextField txtBirthDate = new JTextField();
                 JTextField txtApartmentStreet = new JTextField();
-                JTextField year = new JTextField();
-                JTextField course = new JTextField();
+                JTextField txtTraineeYear = new JTextField();
+                JTextField txtCourse = new JTextField();
                 JTextField txtFrom = new JTextField();
                 JTextField txtTill = new JTextField();
                 JTextField txtIntershipSelection = new JTextField();
@@ -32,24 +39,45 @@ public class reviewController {
                 JTextArea perspective = new JTextArea();
                 JTextArea others = new JTextArea();
 
-
-                writeInstructorData(instructorName.getText(), instructorTelephone.getText(), date.getText());
-                writeStudentData(txtTraineeName.getText(), txtBirthDate.getText(), txtApartmentStreet.getText(), year.getText(), course.getText());
+                //TODO: First every safe-statement, then the if-cases
+                writeInstructorData(instructorName.getText(), instructorTelephone.getText(), currentDate.getText());
+                writeStudentData(txtTraineeName.getText(), txtBirthDate.getText(), txtApartmentStreet.getText(),
+                        txtTraineeYear.getText(), txtCourse.getText());
                 writeAllocationPeriod(txtFrom.getText(), txtTill.getText(), txtIntershipSelection.getText());
                 writeTrainingAreaAndPeriod(txtTrainingArea.getText());
                 writeParticipations(txtSessions.getText());
                 writeDates(txtTrainingsPlan.getText(), txtInternimTalk.getText());
-                //writeTotalandAverage();
-                writePerformance(abilities.getText(), strength.getText(), developements.getText(), perspective.getText(), others.getText());
+                //writePerformance();
+                //TODO: Values from sliders gives text (make function for that) and then insert them into
+                //      TODO: ability, strength, ... -> Aks Olli which points from sliders gives which text
+
+                if(e.getSource().equals(saveAndNew)) {
+                    //Button "Speichern und neuer Leistungsbericht"
+                    //Delete data from second Page (only trainee). Everything else from first/second page is the same
+                    //  as before. But reset every slider and open page 1
+                }
+
+                else if(e.getSource().equals(saveAndExit)) {
+                    //Button "Speichern und schließen"
+                    //Safe data and end programm
+                }
             }
         };
 
-        JButton jButton = new JButton("Speichern"); //Dummie
-        jButton.addActionListener(actionListenerSafeData);
+
+        ActionListener actionListenerCalculate = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Button "Berechnen"
+                //Calculate "Punktzahl" and "Gesamturteil" -> writeTotalandAverage() (Josef)
+            }
+        };
 
 
-
-
+        //Dummies for add jButton to actionListener
+        saveAndNew.addActionListener(actionListenerSafeData);
+        saveAndExit.addActionListener(actionListenerSafeData);
+        calc.addActionListener(actionListenerSafeData);
 
 
 
