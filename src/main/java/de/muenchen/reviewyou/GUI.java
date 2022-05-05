@@ -2,22 +2,17 @@ package de.muenchen.reviewyou;
 
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.annotation.Inherited;
-import java.lang.reflect.Array;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
 
-import static java.awt.Color.red;
 
 public class GUI {
 
@@ -31,10 +26,12 @@ public class GUI {
     private JButton moreInfo = new JButton("Info");
     private int page = 0;
 
-    SpringLayout layout = new SpringLayout();
+
     JPanel panel = new JPanel();
     Font font = new Font(null, Font.PLAIN, 20);
     Font fontt = new Font(null, Font.PLAIN, 17);
+    SpringLayout layout = new SpringLayout();
+    SpringLayout layout1 = new SpringLayout();
 
 
     public GUI() {
@@ -42,8 +39,6 @@ public class GUI {
         window.setResizable(false);
         window.setSize(800, 800);
         window.setLocationRelativeTo(null);
-
-
 
         contentPane = window.getContentPane();
         window.setLayout(layout);
@@ -69,7 +64,7 @@ public class GUI {
         layout.putConstraint(SpringLayout.EAST, moreInfo, -180, SpringLayout.WEST, previous);
 
 
-        window.setVisible(true);
+
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         startPanel();
 
@@ -178,6 +173,7 @@ public class GUI {
                         panel.removeAll();
                         panel.revalidate();
                         panel.repaint();
+                        previous.setVisible(false);
                         startPanel();
                         break;
                 }
@@ -205,30 +201,24 @@ public class GUI {
     private JTextField instructorTelephone = new JTextField(15);
     private JTextField txtdate = new JTextField(15);
     private JLabel headline;
+    LocalDate today = LocalDate.now();
 
-    JPanel test = new JPanel();
+
 
     // second page
 
     public void startPanel() {
+        window.setVisible(true);
+        page = 1;
+        window.add(panel);
+        panel.setLayout(layout1);
 
-
-        panel.setLayout(layout);
-//        panel.setBackground(Color.red);
         panel.setPreferredSize(new Dimension(800, 700));
 
         headline = new JLabel("Angaben zum / zur Ausbilder:in");
         headline.setFont(font);
 
-        LocalDate today = LocalDate.now();
 
-
-
-
-        // CHECK PAGE
-        page = 1;
-
-        //        panel.setLayout(layout);
         panel.add(headline);
         panel.add(name);
         panel.add(email);
@@ -237,51 +227,46 @@ public class GUI {
         panel.add(telephone);
         panel.add(instructorEmail);
         panel.add(instructorTelephone);
-        panel.add(test);
         panel.add(txtdate);
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        ;
-
-
-        layout.putConstraint(SpringLayout.NORTH, headline, 50, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, headline, 250, SpringLayout.WEST, panel);
+        layout1.putConstraint(SpringLayout.NORTH, headline, 50, SpringLayout.NORTH, panel);
+        layout1.putConstraint(SpringLayout.WEST, headline, 250, SpringLayout.WEST, panel);
 
         // set name and name textfield
-        layout.putConstraint(SpringLayout.WEST, name, 260, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, name, 50, SpringLayout.SOUTH, headline);
+        layout1.putConstraint(SpringLayout.WEST, name, 260, SpringLayout.WEST, panel);
+        layout1.putConstraint(SpringLayout.NORTH, name, 50, SpringLayout.SOUTH, headline);
         name.setFont(font);
 
-        layout.putConstraint(SpringLayout.WEST, instructorName, 12, SpringLayout.EAST, name);
-        layout.putConstraint(SpringLayout.NORTH, instructorName, 4, SpringLayout.NORTH, name);
+        layout1.putConstraint(SpringLayout.WEST, instructorName, 12, SpringLayout.EAST, name);
+        layout1.putConstraint(SpringLayout.NORTH, instructorName, 4, SpringLayout.NORTH, name);
 
         // set email and email textfield
-        layout.putConstraint(SpringLayout.WEST, email, 260, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, email, 20, SpringLayout.SOUTH, name);
+        layout1.putConstraint(SpringLayout.WEST, email, 260, SpringLayout.WEST, panel);
+        layout1.putConstraint(SpringLayout.NORTH, email, 20, SpringLayout.SOUTH, name);
         email.setFont(font);
 
-        layout.putConstraint(SpringLayout.WEST, instructorEmail, 7, SpringLayout.EAST, email);
-        layout.putConstraint(SpringLayout.NORTH, instructorEmail, 4, SpringLayout.NORTH, email);
+        layout1.putConstraint(SpringLayout.WEST, instructorEmail, 7, SpringLayout.EAST, email);
+        layout1.putConstraint(SpringLayout.NORTH, instructorEmail, 4, SpringLayout.NORTH, email);
 
         // set telephone and telephone textfield
-        layout.putConstraint(SpringLayout.WEST, telephone, 260, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, telephone, 20, SpringLayout.SOUTH, email);
+        layout1.putConstraint(SpringLayout.WEST, telephone, 260, SpringLayout.WEST, panel);
+        layout1.putConstraint(SpringLayout.NORTH, telephone, 20, SpringLayout.SOUTH, email);
         telephone.setFont(font);
 
-        layout.putConstraint(SpringLayout.WEST, instructorTelephone, 38, SpringLayout.EAST, telephone);
-        layout.putConstraint(SpringLayout.NORTH, instructorTelephone, 4, SpringLayout.NORTH, telephone);
+        layout1.putConstraint(SpringLayout.WEST, instructorTelephone, 38, SpringLayout.EAST, telephone);
+        layout1.putConstraint(SpringLayout.NORTH, instructorTelephone, 4, SpringLayout.NORTH, telephone);
 
-        layout.putConstraint(SpringLayout.WEST, date, 260, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, date, 20, SpringLayout.SOUTH, telephone);
+        layout1.putConstraint(SpringLayout.WEST, date, 260, SpringLayout.WEST, panel);
+        layout1.putConstraint(SpringLayout.NORTH, date, 20, SpringLayout.SOUTH, telephone);
         date.setFont(font);
 
 
-        layout.putConstraint(SpringLayout.NORTH,txtdate, 27,SpringLayout.SOUTH,instructorTelephone);
-        layout.putConstraint(SpringLayout.WEST,txtdate,8,SpringLayout.EAST,date);
+        layout1.putConstraint(SpringLayout.NORTH,txtdate, 27,SpringLayout.SOUTH,instructorTelephone);
+        layout1.putConstraint(SpringLayout.WEST,txtdate,8,SpringLayout.EAST,date);
 
 
         txtdate.setText(String.valueOf(today.format(DateTimeFormatter.ofPattern("dd.MM.uuuu"))));
+
     }
 
 
