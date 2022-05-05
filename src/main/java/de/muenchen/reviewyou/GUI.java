@@ -801,6 +801,7 @@ public class GUI {
         window.add(panel);
         panel.setVisible(true);
         panel.setLayout(gbl);
+        next.setVisible(false);
 
         score.setFont(font);
         review.setFont(font);
@@ -888,7 +889,7 @@ public class GUI {
 
     public void moreInfo(){
         popup.setVisible(true);
-        popup.setSize(800, 350);
+        popup.setSize(805, 350);
         popup.add(popupPanel);
         popup.setLocation(75, 300);
         popupPanel.setLayout(layout);
