@@ -1,9 +1,5 @@
 package de.muenchen.reviewyou;
 
-import org.jdatepicker.JDatePicker;
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -224,6 +220,7 @@ public class GUI {
         headline = new JLabel("Angaben zum / zur Ausbilder:in");
         headline.setFont(font);
 
+        LocalDate today = LocalDate.now();
 
 
 
