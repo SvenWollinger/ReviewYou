@@ -29,7 +29,7 @@ public class GUI {
     SpringLayout layout = new SpringLayout();
     JPanel panel = new JPanel();
     Font font = new Font(null, Font.PLAIN, 20);
-    Font fontt = new Font(null, Font.PLAIN, 15);
+    Font fontt = new Font(null, Font.PLAIN, 17);
 
 
     public GUI() {
@@ -296,6 +296,10 @@ public class GUI {
     private JLabel interimTalk = new JLabel("Zwischengespräch geführt am:");
     private JTextField txtInterimTalk = new JTextField(45);
     private JLabel overallRating = new JLabel("Gesamtbewetung");
+    private JLabel traineeYear = new JLabel("Jahrgang:");
+    private JTextField txtTraineeYear = new JTextField(7);
+    private JLabel course = new JLabel("Kurs:");
+    private JTextField txtCourse = new JTextField(7);
 
     public void secondPanel() {
         page = 2;
@@ -326,20 +330,26 @@ public class GUI {
         panel.add(txtTrainingsPlan);
         panel.add(interimTalk);
         panel.add(txtInterimTalk);
+        panel.add(traineeYear);
+        panel.add(txtTraineeYear);
+        panel.add(course);
+        panel.add(txtCourse);
 
 
-        apprenticeship.setFont(font);
-        traineeName.setFont(font);
-        birthDate.setFont(font);
-        apartmentStreet.setFont(font);
-        allocationPeriod.setFont(font);
-        from.setFont(font);
-        till.setFont(font);
-        internshipSelection.setFont(font);
-        trainingArea.setFont(font);
-        sessions.setFont(font);
-        traingPlan.setFont(font);
-        interimTalk.setFont(font);
+        apprenticeship.setFont(fontt);
+        traineeName.setFont(fontt);
+        birthDate.setFont(fontt);
+        apartmentStreet.setFont(fontt);
+        allocationPeriod.setFont(fontt);
+        from.setFont(fontt);
+        till.setFont(fontt);
+        internshipSelection.setFont(fontt);
+        trainingArea.setFont(fontt);
+        sessions.setFont(fontt);
+        traingPlan.setFont(fontt);
+        interimTalk.setFont(fontt);
+        traineeYear.setFont(fontt);
+        course.setFont(fontt);
 
 
         layout.putConstraint(SpringLayout.WEST, apprenticeship, 100, SpringLayout.WEST, contentPane);
@@ -348,19 +358,19 @@ public class GUI {
         layout.putConstraint(SpringLayout.WEST, traineeName, 100, SpringLayout.WEST, contentPane);
         layout.putConstraint(SpringLayout.NORTH, traineeName, 20, SpringLayout.SOUTH, apprenticeship);
 
-        layout.putConstraint(SpringLayout.NORTH, txtTraineeName, 5, SpringLayout.NORTH, traineeName);
+        layout.putConstraint(SpringLayout.NORTH, txtTraineeName, 4, SpringLayout.NORTH, traineeName);
         layout.putConstraint(SpringLayout.WEST, txtTraineeName, 10, SpringLayout.EAST, traineeName);
 
-        layout.putConstraint(SpringLayout.NORTH, birthDate, 5, SpringLayout.NORTH, traineeName);
+        layout.putConstraint(SpringLayout.NORTH, birthDate, 1, SpringLayout.NORTH, traineeName);
         layout.putConstraint(SpringLayout.WEST, birthDate, 10, SpringLayout.EAST, txtTraineeName);
 
-        layout.putConstraint(SpringLayout.NORTH, txtBirthDate, 5, SpringLayout.NORTH, birthDate);
+        layout.putConstraint(SpringLayout.NORTH, txtBirthDate, 2, SpringLayout.NORTH, birthDate);
         layout.putConstraint(SpringLayout.WEST, txtBirthDate, 10, SpringLayout.EAST, birthDate);
 
         layout.putConstraint(SpringLayout.NORTH, apartmentStreet, 10, SpringLayout.SOUTH, traineeName);
         layout.putConstraint(SpringLayout.WEST, apartmentStreet, 100, SpringLayout.WEST, contentPane);
 
-        layout.putConstraint(SpringLayout.NORTH, txtApartmentStreet, 5, SpringLayout.NORTH, apartmentStreet);
+        layout.putConstraint(SpringLayout.NORTH, txtApartmentStreet, 4, SpringLayout.NORTH, apartmentStreet);
         layout.putConstraint(SpringLayout.WEST, txtApartmentStreet, 10, SpringLayout.EAST, apartmentStreet);
 
         layout.putConstraint(SpringLayout.NORTH, allocationPeriod, 20, SpringLayout.SOUTH, apartmentStreet);
@@ -384,7 +394,19 @@ public class GUI {
         layout.putConstraint(SpringLayout.NORTH, txtInternshipSelection, 14, SpringLayout.SOUTH, from);
         layout.putConstraint(SpringLayout.WEST, txtInternshipSelection, 10, SpringLayout.EAST, internshipSelection);
 
-        layout.putConstraint(SpringLayout.NORTH, trainingArea, 20, SpringLayout.SOUTH, internshipSelection);
+        layout.putConstraint(SpringLayout.NORTH, traineeYear,10, SpringLayout.SOUTH,internshipSelection);
+        layout.putConstraint(SpringLayout.WEST,traineeYear,100,SpringLayout.WEST,contentPane);
+
+        layout.putConstraint(SpringLayout.NORTH,txtTraineeYear, 14, SpringLayout.SOUTH,internshipSelection);
+        layout.putConstraint(SpringLayout.WEST,txtTraineeYear,10,SpringLayout.EAST,traineeYear);
+
+        layout.putConstraint(SpringLayout.NORTH,course,10,SpringLayout.SOUTH,internshipSelection);
+        layout.putConstraint(SpringLayout.WEST,course,10,SpringLayout.EAST,txtTraineeYear);
+
+        layout.putConstraint(SpringLayout.NORTH, txtCourse, 14, SpringLayout.SOUTH,internshipSelection);
+        layout.putConstraint(SpringLayout.WEST, txtCourse, 10 ,SpringLayout.EAST,course);
+
+        layout.putConstraint(SpringLayout.NORTH, trainingArea, 20, SpringLayout.SOUTH, traineeYear);
         layout.putConstraint(SpringLayout.WEST, trainingArea, 100, SpringLayout.WEST, contentPane);
 
         layout.putConstraint(SpringLayout.NORTH, txtTrainingArea, 5, SpringLayout.SOUTH, trainingArea);
