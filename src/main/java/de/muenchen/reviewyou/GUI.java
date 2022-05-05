@@ -39,7 +39,7 @@ public class GUI {
         window.add(panel);
 
 //        panel.setBackground(Color.red);
-        panel.setPreferredSize(new Dimension(800, 650));
+        panel.setPreferredSize(new Dimension(800, 700));
         panel.setVisible(true);
 
 
@@ -174,10 +174,13 @@ public class GUI {
 
     }
 
+
     public void checkPage() {
-        if (page != 1) {
-            previous.setVisible(true);
-        } else previous.setVisible(false);
+        if (page == 1) {
+            previous.setVisible(false);
+        } else if (page == 8) {
+            previous.setVisible(false);
+        } else previous.setVisible(true);
     }
 
     // First page to get user data
@@ -191,18 +194,6 @@ public class GUI {
     private JLabel currentDate = new JLabel(LocalDateTime.now().toString());
     private JTextField instructorTelephone = new JTextField(15);
     private JLabel headline;
-
-    public JFrame getWindow() {
-        return window;
-    }
-
-    public JPanel getPanel() {
-        return panel;
-    }
-
-    public Font getFont() {
-        return font;
-    }
 
     // second page
 
@@ -300,6 +291,7 @@ public class GUI {
     public void secondPanel() {
         page = 2;
         checkPage();
+        moreInfo.setVisible(false);
 
         panel.setLayout(layout);
         window.add(panel);
@@ -408,124 +400,21 @@ public class GUI {
         layout.putConstraint(SpringLayout.WEST, txtInterimTalk, 100, SpringLayout.WEST, contentPane);
     }
 
-    // ELEMENTS FOR THIRD PAGE
-    GridBagLayout gbl = new GridBagLayout();
-    GridBagConstraints gbc = new GridBagConstraints();
-    JLabel abilitiesLabel = new JLabel("Fähigkeiten, praktische Leistungen, Verhalten");
-    JLabel strengthLabel = new JLabel("Stärken");
-    JLabel developementsLabel = new JLabel("Entwicklungsfelder");
-    JLabel perspectiveLabel = new JLabel("Perspektiven");
-    JLabel othersLabel = new JLabel("Sonstige Anmerkungen");
-    JTextArea abilities = new JTextArea();
-    JTextArea strength = new JTextArea();
-    JTextArea developements = new JTextArea();
-    JTextArea perspective = new JTextArea();
-    JTextArea others = new JTextArea();
-    Dimension preferedSize = new Dimension(600, 50);
-    Dimension maximumSize = new Dimension(600, 70);
-
-    public GridBagConstraints getGbc() {
-        return gbc;
-    }
-
-    public GridBagLayout getGbl() {
-        return gbl;
-    }
-
-    // CREATE THIRD PANEL
-    public void thirdPanel() {
-        page = 3;
-        JLabel headline = new JLabel("Wortbeschreibung zur gezeigten Leistung insgesamt");
-        JLabel whiteSpace = new JLabel();
-        window.add(panel);
-        panel.setLayout(gbl);
-        gbc.insets = new Insets(-10, 20, 80, 20);
-
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        headline.setFont(font);
-        panel.add(headline, gbc);
-
-        gbc.insets = new Insets(0, 20, 10, 20);
-
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        abilitiesLabel.setFont(font);
-        panel.add(abilitiesLabel, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        abilities.setPreferredSize(preferedSize);
-        abilities.setMaximumSize(maximumSize);
-        abilities.setLineWrap(true);
-        panel.add(abilities, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        strengthLabel.setFont(font);
-        panel.add(strengthLabel, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 5;
-        strength.setPreferredSize(preferedSize);
-        strength.setMaximumSize(maximumSize);
-        strength.setLineWrap(true);
-        panel.add(strength, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 6;
-        developementsLabel.setFont(font);
-        panel.add(developementsLabel, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 7;
-        developements.setPreferredSize(preferedSize);
-        developements.setMaximumSize(maximumSize);
-        developements.setLineWrap(true);
-        panel.add(developements, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 8;
-        perspectiveLabel.setFont(font);
-        panel.add(perspectiveLabel, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 9;
-        perspective.setPreferredSize(preferedSize);
-        perspective.setMaximumSize(maximumSize);
-        perspective.setLineWrap(true);
-        panel.add(perspective, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 10;
-        othersLabel.setFont(font);
-        panel.add(othersLabel, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 11;
-        others.setPreferredSize(preferedSize);
-        others.setMaximumSize(maximumSize);
-        others.setLineWrap(true);
-        panel.add(others, gbc);
-
-    }
-
 
     Insets headlineInsets = new Insets(0,0,200,0);
     Insets sliderInsets = new Insets(-60, 0, 70, 0);
     private List<JSlider> jSliders = createSliders();
 
 
-
-    public void fourthPanel(){
-        page = 4;
+    public void thirdPanel(){
+        page = 3;
         JLabel headline = new JLabel("Fachliche Kompetenzen");
         moreInfo();
+        moreInfo.setVisible(true);
         headline.setFont(font);
         window.add(panel);
         panel.setVisible(true);
         panel.setLayout(gbl);
-        moreInfo.setVisible(true);
 
         gbc.insets = headlineInsets;
         gbc.gridx = 0;
@@ -553,6 +442,7 @@ public class GUI {
         gbc.gridy = 4;
         panel.add(jSliders.get(1), gbc);
 
+
         // INTERESSE AM ARBEITSFELD
 
         gbc.gridx = 0;
@@ -566,8 +456,8 @@ public class GUI {
 
         }
 
-        public void fifthPanel(){
-            page = 5;
+        public void fourthPanel(){
+            page = 4;
             JLabel headline = new JLabel("Methodisches Denken");
             headline.setFont(font);
             window.add(panel);
@@ -611,8 +501,8 @@ public class GUI {
         }
 
 
-        public void sixthPanel(){
-            page = 6;
+        public void fifthPanel(){
+            page = 5;
             JLabel headline = new JLabel("Soziale Kompetenzen");
             headline.setFont(font);
             window.add(panel);
@@ -686,21 +576,200 @@ public class GUI {
             panel.add(jSliders.get(11), gbc);
         }
 
-        public void seventhPanel(){
-        popup.setVisible(false);
+        public void sixthPanel(){
+
+            page = 6;
+            JLabel headline = new JLabel("Persönliche Kompetenzen");
+            headline.setFont(font);
+            window.add(panel);
+            panel.setVisible(true);
+            panel.setLayout(gbl);
+            moreInfo.setVisible(true);
+
+            gbc.insets = new Insets(10, 0, 60, 0);
+            gbc.gridx = 0;
+            gbc.gridy = 0;
+            panel.add(headline, gbc);
+
+            // OFFENHEIT
+
+            gbc.insets = new Insets(-30, 0, 40, 0);
+            gbc.gridx = 0;
+            gbc.gridy = 1;
+            panel.add(createLabel("Offenheit").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 2;
+            panel.add(jSliders.get(12), gbc);
+
+
+            // GEWISSENHAFTIGKEIT UND INTEGRITÄT
+            gbc.gridx = 0;
+            gbc.gridy = 3;
+            panel.add(createLabel("Gewissenhaftigkeit und Integrität").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 4;
+            panel.add(jSliders.get(13), gbc);
+
+            // MOTIVATION
+
+            gbc.gridx = 0;
+            gbc.gridy = 5;
+            panel.add(createLabel("Motivation").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 6;
+            panel.add(jSliders.get(14), gbc);
+
+            // STRESSTOLERANZ
+
+            gbc.gridx = 0;
+            gbc.gridy = 7;
+            panel.add(createLabel("Stresstoleranz").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 8;
+            panel.add(jSliders.get(15), gbc);
+
+            // IDENTIFIKATION
+
+            gbc.gridx = 0;
+            gbc.gridy = 9;
+            panel.add(createLabel("Identifikation").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 10;
+            panel.add(jSliders.get(16), gbc);
+
+            // SELBSTSTÄNDIGKEIT
+
+            gbc.gridx = 0;
+            gbc.gridy = 11;
+            panel.add(createLabel("Selbstständigkeit").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 12;
+            panel.add(jSliders.get(17), gbc);
+
+            // KRITIKFÄHIGKEIT
+
+            gbc.gridx = 0;
+            gbc.gridy = 13;
+            panel.add(createLabel("Kritikfähigkeit").get(0), gbc);
+
+            gbc.gridx = 0;
+            gbc.gridy = 14;
+            panel.add(jSliders.get(18), gbc);
         }
 
 
+    // ELEMENTS FOR SEVENTH PAGE
+    GridBagLayout gbl = new GridBagLayout();
+    GridBagConstraints gbc = new GridBagConstraints();
+    JLabel abilitiesLabel = new JLabel("Fähigkeiten, praktische Leistungen, Verhalten");
+    JLabel strengthLabel = new JLabel("Stärken");
+    JLabel developementsLabel = new JLabel("Entwicklungsfelder");
+    JLabel perspectiveLabel = new JLabel("Perspektiven");
+    JLabel othersLabel = new JLabel("Sonstige Anmerkungen");
+    JTextArea abilities = new JTextArea();
+    JTextArea strength = new JTextArea();
+    JTextArea developements = new JTextArea();
+    JTextArea perspective = new JTextArea();
+    JTextArea others = new JTextArea();
+    Dimension preferedSize = new Dimension(600, 50);
+    Dimension maximumSize = new Dimension(600, 70);
+
+
+    // CREATE THIRD PANEL
+    public void seventhPanel() {
+        page = 7;
+        JLabel headline = new JLabel("Wortbeschreibung zur gezeigten Leistung insgesamt");
+        JLabel whiteSpace = new JLabel();
+        window.add(panel);
+        panel.setLayout(gbl);
+        moreInfo.setVisible(false);
+        popup.setVisible(false);
+
+        gbc.insets = new Insets(-10, 20, 80, 20);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        headline.setFont(font);
+        panel.add(headline, gbc);
+
+        gbc.insets = new Insets(0, 20, 10, 20);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        abilitiesLabel.setFont(font);
+        panel.add(abilitiesLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        abilities.setPreferredSize(preferedSize);
+        abilities.setMaximumSize(maximumSize);
+        abilities.setLineWrap(true);
+        panel.add(abilities, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        strengthLabel.setFont(font);
+        panel.add(strengthLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        strength.setPreferredSize(preferedSize);
+        strength.setMaximumSize(maximumSize);
+        strength.setLineWrap(true);
+        panel.add(strength, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        developementsLabel.setFont(font);
+        panel.add(developementsLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        developements.setPreferredSize(preferedSize);
+        developements.setMaximumSize(maximumSize);
+        developements.setLineWrap(true);
+        panel.add(developements, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        perspectiveLabel.setFont(font);
+        panel.add(perspectiveLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 9;
+        perspective.setPreferredSize(preferedSize);
+        perspective.setMaximumSize(maximumSize);
+        perspective.setLineWrap(true);
+        panel.add(perspective, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 10;
+        othersLabel.setFont(font);
+        panel.add(othersLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 11;
+        others.setPreferredSize(preferedSize);
+        others.setMaximumSize(maximumSize);
+        others.setLineWrap(true);
+        panel.add(others, gbc);
+
+    }
 
 
     static final int minScore = 0;
     static final int maxScore = 15;
     static final int scoreInit = 0;
 
-
     java.util.List<JSlider> createSliders(){
         List<JSlider> sliders = new ArrayList<>();
-        for (int i = 0; i <15 ; i++) {
+        for (int i = 0; i < 19 ; i++) {
 
             sliders.add(new JSlider(JSlider.HORIZONTAL,minScore, maxScore, scoreInit));
             sliders.get(i).setPaintTicks(true);
@@ -716,12 +785,14 @@ public class GUI {
     }
     List<JLabel> createLabel(String name) {
         List<JLabel> labels = new ArrayList<>();
-            for (int i = 0; i < 15; i++){
+            for (int i = 0; i < 18; i++){
                 labels.add(new JLabel(name));
 
         }
             return labels;
     }
+
+    // MORE INFO PAGE
 
     private JLabel PointsDistribution = new JLabel("Folgende Punktezahlen können vergeben werden: ");
     private JLabel particularly = new JLabel("  15 - 13 Punkte: Eine besonders hervorragende Leistung.");
