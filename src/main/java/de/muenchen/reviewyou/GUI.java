@@ -1,5 +1,10 @@
 package de.muenchen.reviewyou;
 
+import org.jdatepicker.JDatePicker;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -41,7 +46,6 @@ public class GUI {
         window.setResizable(false);
         window.setSize(800, 800);
         window.setLocationRelativeTo(null);
-
 
 
 
@@ -179,7 +183,6 @@ public class GUI {
                         panel.revalidate();
                         panel.repaint();
                         startPanel();
-                        previous.setVisible(false);
                         break;
                 }
             }
@@ -221,7 +224,6 @@ public class GUI {
         headline = new JLabel("Angaben zum / zur Ausbilder:in");
         headline.setFont(font);
 
-        LocalDate today = LocalDate.now();
 
 
 
@@ -959,9 +961,17 @@ public class GUI {
 
         }
 
+
     }
 
 
 
+//    UtilDateModel model = new UtilDateModel();
+//    Properties p = new Properties();
+//    JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+//
+//        p.put("text.today", "Today");
+//                p.put("text.month", "Month");
+//                p.put("text.year", "Year");
 
 
