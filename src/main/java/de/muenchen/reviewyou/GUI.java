@@ -1,10 +1,5 @@
 package de.muenchen.reviewyou;
 
-import org.jdatepicker.JDatePicker;
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.UtilDateModel;
-
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -13,10 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.annotation.Inherited;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.List;
-import java.util.Properties;
-import java.util.SortedMap;
 
 import static java.awt.Color.red;
 
@@ -46,11 +44,12 @@ public class GUI {
 
 
 
+
         contentPane = window.getContentPane();
-        contentPane.setLayout(layout);
-        contentPane.add(next);
-        contentPane.add(previous);
-        contentPane.add(moreInfo);
+        window.setLayout(layout);
+        window.add(next);
+        window.add(previous);
+        window.add(moreInfo);
         previous.setVisible(false);
         moreInfo.setVisible(false);
 
@@ -180,6 +179,7 @@ public class GUI {
                         panel.revalidate();
                         panel.repaint();
                         startPanel();
+                        previous.setVisible(false);
                         break;
                 }
             }
@@ -204,19 +204,14 @@ public class GUI {
     private JTextField instructorEmail = new JTextField(15);
     private JTextField currentDate = new JTextField(15);
     private JTextField instructorTelephone = new JTextField(15);
-    UtilDateModel model = new UtilDateModel();
-    Properties p = new Properties();
+    private JTextField txtdate = new JTextField(15);
     private JLabel headline;
-    JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+
     JPanel test = new JPanel();
 
     // second page
 
     public void startPanel() {
-
-        p.put("text.today", "Today");
-        p.put("text.month", "Month");
-        p.put("text.year", "Year");
 
         window.add(panel);
         panel.setLayout(layout);
@@ -226,11 +221,13 @@ public class GUI {
         headline = new JLabel("Angaben zum / zur Ausbilder:in");
         headline.setFont(font);
 
+        LocalDate today = LocalDate.now();
 
 
 
         // CHECK PAGE
         page = 1;
+
         //        panel.setLayout(layout);
         panel.add(headline);
         panel.add(name);
@@ -240,12 +237,12 @@ public class GUI {
         panel.add(telephone);
         panel.add(instructorEmail);
         panel.add(instructorTelephone);
-        panel.add(datePanel);
         panel.add(test);
+        panel.add(txtdate);
 
         gbc.gridx = 0;
         gbc.gridy = 0;
-        test.add(datePanel, gbc);
+        ;
 
 
         layout.putConstraint(SpringLayout.NORTH, headline, 50, SpringLayout.NORTH, panel);
@@ -279,10 +276,12 @@ public class GUI {
         layout.putConstraint(SpringLayout.NORTH, date, 20, SpringLayout.SOUTH, telephone);
         date.setFont(font);
 
-        layout.putConstraint(SpringLayout.NORTH, currentDate, 4, SpringLayout.NORTH, date);
-        layout.putConstraint(SpringLayout.WEST, currentDate, 8, SpringLayout.EAST, date);
+
+        layout.putConstraint(SpringLayout.NORTH,txtdate, 27,SpringLayout.SOUTH,instructorTelephone);
+        layout.putConstraint(SpringLayout.WEST,txtdate,8,SpringLayout.EAST,date);
 
 
+        txtdate.setText(String.valueOf(today.format(DateTimeFormatter.ofPattern("dd.MM.uuuu"))));
     }
 
 
@@ -322,6 +321,7 @@ public class GUI {
 
         panel.setLayout(layout);
         window.add(panel);
+
         panel.add(apprenticeship);
         panel.add(traineeName);
         panel.add(txtTraineeName);
