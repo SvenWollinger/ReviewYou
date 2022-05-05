@@ -7,6 +7,57 @@ import java.awt.event.ActionListener;
 public class reviewController {
     public reviewController() {
 
+        ActionListener actionListenerSafeData = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Dummies
+                JTextField instructorName = new JTextField();
+                JTextField instructorTelephone = new JTextField();
+                JTextField date = new JTextField();
+                JTextField txtTraineeName = new JTextField();
+                JTextField txtBirthDate = new JTextField();
+                JTextField txtApartmentStreet = new JTextField();
+                JTextField year = new JTextField();
+                JTextField course = new JTextField();
+                JTextField txtFrom = new JTextField();
+                JTextField txtTill = new JTextField();
+                JTextField txtIntershipSelection = new JTextField();
+                JTextField txtTrainingArea = new JTextField();
+                JTextField txtSessions = new JTextField();
+                JTextField txtTrainingsPlan = new JTextField();
+                JTextField txtInternimTalk = new JTextField();
+                JTextArea abilities = new JTextArea();
+                JTextArea strength = new JTextArea();
+                JTextArea developements = new JTextArea();
+                JTextArea perspective = new JTextArea();
+                JTextArea others = new JTextArea();
+
+
+                writeInstructorData(instructorName.getText(), instructorTelephone.getText(), date.getText());
+                writeStudentData(txtTraineeName.getText(), txtBirthDate.getText(), txtApartmentStreet.getText(), year.getText(), course.getText());
+                writeAllocationPeriod(txtFrom.getText(), txtTill.getText(), txtIntershipSelection.getText());
+                writeTrainingAreaAndPeriod(txtTrainingArea.getText());
+                writeParticipations(txtSessions.getText());
+                writeDates(txtTrainingsPlan.getText(), txtInternimTalk.getText());
+                //writeTotalandAverage();
+                writePerformance(abilities.getText(), strength.getText(), developements.getText(), perspective.getText(), others.getText());
+            }
+        };
+
+        JButton jButton = new JButton("Speichern"); //Dummie
+        jButton.addActionListener(actionListenerSafeData);
+
+
+
+
+
+
+
+
+
+
+
+
 //        ActionListener actionListenerSafeData = new ActionListener() {
 //            @Override
 //            public void actionPerformed(ActionEvent e) {
@@ -97,4 +148,15 @@ public class reviewController {
 //        next.addActionListener(actionListenerNextPage);
 //        previous.addActionListener(actionListenerPreviousPage);
     }
+
+    //Dummies
+    public void writeInstructorData(String name, String telephone, String date) {}
+    public void writeStudentData(String name, String birthdate, String address, String year, String course){}
+    public void writeAllocationPeriod(String from, String to, String internshipSection){}
+    public void writeTrainingAreaAndPeriod(String text){}
+    public void writeParticipations(String coursesEtc){}
+    public void writeDates(String trainingPlan, String interimTalk){}
+    public void writeTotalandAverage(String total, String average){}
+    public void writePerformance(String abilities, String strengths, String development, String perspectives, String other){}
+
 }
