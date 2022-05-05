@@ -212,7 +212,7 @@ public class GUI {
 
     public void startPanel() {
 
-        window.add(panel);
+
         panel.setLayout(layout);
 //        panel.setBackground(Color.red);
         panel.setPreferredSize(new Dimension(800, 700));
@@ -221,6 +221,7 @@ public class GUI {
         headline.setFont(font);
 
         LocalDate today = LocalDate.now();
+
 
 
 
