@@ -8,11 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.annotation.Inherited;
 import java.lang.reflect.Array;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedMap;
+
+import static java.awt.Color.red;
 
 public class GUI {
 
@@ -192,10 +192,10 @@ public class GUI {
 
     // First page to get user data
 
-    private JLabel name = new JLabel("Name:");
-    private JLabel email = new JLabel("E-Mail:");
+    private JLabel name = new JLabel("Name");
+    private JLabel email = new JLabel("E-Mail");
     private JLabel date = new JLabel("Datum");
-    private JLabel telephone = new JLabel("Tel:");
+    private JLabel telephone = new JLabel("Tel");
     private JTextField instructorName = new JTextField(15);
     private JTextField instructorEmail = new JTextField(15);
     private JTextField currentDate = new JTextField(15);
@@ -203,7 +203,6 @@ public class GUI {
     private JLabel headline;
 
     // second page
-
 
     public void startPanel() {
 
@@ -235,7 +234,7 @@ public class GUI {
         layout.putConstraint(SpringLayout.NORTH, name, 50, SpringLayout.SOUTH, headline);
         name.setFont(font);
 
-        layout.putConstraint(SpringLayout.WEST, instructorName, 10, SpringLayout.EAST, name);
+        layout.putConstraint(SpringLayout.WEST, instructorName, 12, SpringLayout.EAST, name);
         layout.putConstraint(SpringLayout.NORTH, instructorName, 4, SpringLayout.NORTH, name);
 
         // set email and email textfield
@@ -251,24 +250,19 @@ public class GUI {
         layout.putConstraint(SpringLayout.NORTH, telephone, 20, SpringLayout.SOUTH, email);
         telephone.setFont(font);
 
-        layout.putConstraint(SpringLayout.WEST, instructorTelephone, 36, SpringLayout.EAST, telephone);
+        layout.putConstraint(SpringLayout.WEST, instructorTelephone, 38, SpringLayout.EAST, telephone);
         layout.putConstraint(SpringLayout.NORTH, instructorTelephone, 4, SpringLayout.NORTH, telephone);
 
+        layout.putConstraint(SpringLayout.WEST, date, 260, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, date, 20, SpringLayout.SOUTH, telephone);
+        date.setFont(font);
+
+        layout.putConstraint(SpringLayout.NORTH, currentDate, 4, SpringLayout.NORTH, date);
+        layout.putConstraint(SpringLayout.WEST, currentDate, 8, SpringLayout.EAST, date);
+
 
     }
 
-    // GETTER FOR FIRST PAGE
-    public JTextField getInstructorName() {
-        return instructorName;
-    }
-
-    public JTextField getInstructorEmail() {
-        return instructorEmail;
-    }
-
-    public JTextField getInstructorTelephone() {
-        return instructorTelephone;
-    }
 
     private JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft");
     private JLabel traineeName = new JLabel("Name, Vorname:");
@@ -771,19 +765,58 @@ public class GUI {
 
     }
 
-    JButton calc = new JButton();
-    JButton saveAndNew = new JButton();
-    JButton saveAndExit = new JButton();
+    JButton calc = new JButton("Berechnen");
+    JButton saveAndNew = new JButton("Speichern und neuer Leistungsbericht");
+    JButton saveAndExit = new JButton("Speichern und Schließen");
+    JPanel panel1 = new JPanel();
+    JLabel score = new JLabel("Punktzahl");
+    JLabel review = new JLabel("Gesamturteil");
 
     public void eightPanel(){
         page = 8;
-//        JLabel headline = new JLabel("Abschluss des Leistungsberichts von "+ );
+        JLabel headline = new JLabel("Abschluss des Leistungsberichts von " + txtTraineeName.getText());
         headline.setFont(font);
         window.add(panel);
         panel.setVisible(true);
         panel.setLayout(gbl);
 
+        score.setFont(font);
+        review.setFont(font);
 
+        panel1.setVisible(true);
+        panel1.setLayout(gbl);
+        panel1.setPreferredSize(new Dimension(150,100));
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 3;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        panel.add(headline, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        panel.add(panel1, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel1.add(score, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel1.add(review, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel.add(calc,gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        panel.add(saveAndNew,gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 2;
+        panel.add(saveAndExit,gbc);
 
 
     }
