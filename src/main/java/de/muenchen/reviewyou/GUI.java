@@ -1,17 +1,25 @@
 package de.muenchen.reviewyou;
 
 
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
 import javax.swing.*;
+import javax.swing.text.DateFormatter;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.text.DateFormat;
 import java.time.LocalDate;
 
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
+
+
 
 
 public class GUI {
@@ -203,11 +211,18 @@ public class GUI {
     private JLabel headline;
     LocalDate today = LocalDate.now();
 
+//    UtilDateModel model = new UtilDateModel();
+//    Properties p = new Properties();
+//    JDatePanelImpl datePanel = new JDatePanelImpl(model,p);
+//    JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateFormat().format(("dd.MM.uuuu"));
 
 
     // second page
 
     public void startPanel() {
+//        p.put("text.today", "Today");
+//        p.put("text.month", "Month");
+//        p.put("text.year", "Year");
         window.setVisible(true);
         page = 1;
         window.add(panel);
@@ -237,24 +252,30 @@ public class GUI {
         layout1.putConstraint(SpringLayout.NORTH, name, 50, SpringLayout.SOUTH, headline);
         name.setFont(font);
 
+
         layout1.putConstraint(SpringLayout.WEST, instructorName, 12, SpringLayout.EAST, name);
         layout1.putConstraint(SpringLayout.NORTH, instructorName, 4, SpringLayout.NORTH, name);
 
-        // set email and email textfield
+
+// set email and email textfield
         layout1.putConstraint(SpringLayout.WEST, email, 260, SpringLayout.WEST, panel);
         layout1.putConstraint(SpringLayout.NORTH, email, 20, SpringLayout.SOUTH, name);
         email.setFont(font);
 
+
         layout1.putConstraint(SpringLayout.WEST, instructorEmail, 7, SpringLayout.EAST, email);
         layout1.putConstraint(SpringLayout.NORTH, instructorEmail, 4, SpringLayout.NORTH, email);
+
 
         // set telephone and telephone textfield
         layout1.putConstraint(SpringLayout.WEST, telephone, 260, SpringLayout.WEST, panel);
         layout1.putConstraint(SpringLayout.NORTH, telephone, 20, SpringLayout.SOUTH, email);
         telephone.setFont(font);
 
+
         layout1.putConstraint(SpringLayout.WEST, instructorTelephone, 38, SpringLayout.EAST, telephone);
         layout1.putConstraint(SpringLayout.NORTH, instructorTelephone, 4, SpringLayout.NORTH, telephone);
+
 
         layout1.putConstraint(SpringLayout.WEST, date, 260, SpringLayout.WEST, panel);
         layout1.putConstraint(SpringLayout.NORTH, date, 20, SpringLayout.SOUTH, telephone);
@@ -263,7 +284,6 @@ public class GUI {
 
         layout1.putConstraint(SpringLayout.NORTH,txtdate, 27,SpringLayout.SOUTH,instructorTelephone);
         layout1.putConstraint(SpringLayout.WEST,txtdate,8,SpringLayout.EAST,date);
-
 
         txtdate.setText(String.valueOf(today.format(DateTimeFormatter.ofPattern("dd.MM.uuuu"))));
 
@@ -949,12 +969,5 @@ public class GUI {
 
 
 
-//    UtilDateModel model = new UtilDateModel();
-//    Properties p = new Properties();
-//    JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
-//
-//        p.put("text.today", "Today");
-//                p.put("text.month", "Month");
-//                p.put("text.year", "Year");
 
 
