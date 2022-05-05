@@ -12,9 +12,11 @@ public class reviewController {
     JButton saveAndNew = new JButton();
     JButton saveAndExit = new JButton();
     JPanel panel = new JPanel();
+    JPanel panel1 = new JPanel();
     JTextField instructorName = new JTextField();
     JTextField instructorTelephone = new JTextField();
     JTextField currentDate = new JTextField();
+    JTextField instructorEmail = new JTextField();
     JTextField txtTraineeName = new JTextField();
     JTextField txtBirthDate = new JTextField();
     JTextField txtApartmentStreet = new JTextField();
@@ -36,20 +38,22 @@ public class reviewController {
     public reviewController() {
 
         //TODO: Ask Excel-Group if the code is good + how should we do the 2x big tables? + what does writePoints?
+            //TODO: + tell them that we have E-Mail now
 
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                writeInstructorData(instructorName.getText(), instructorTelephone.getText(), currentDate.getText());
+                traineeRating traineeRating = new traineeRating();
+
+                writeInstructorData(instructorName.getText(), instructorTelephone.getText(), currentDate.getText(), instructorEmail.getText());
                 writeStudentData(txtTraineeName.getText(), txtBirthDate.getText(), txtApartmentStreet.getText(),
                         txtTraineeYear.getText(), txtCourse.getText());
                 writeAllocationPeriod(txtFrom.getText(), txtTill.getText(), txtIntershipSelection.getText());
                 writeTrainingAreaAndPeriod(txtTrainingArea.getText());
                 writeParticipations(txtSessions.getText());
                 writeDates(txtTrainingsPlan.getText(), txtInternimTalk.getText());
-                //writePerformance();
-                //TODO: Values from sliders gives text (make function for that) and then insert them into
-                //      TODO: ability, strength, ... -> Aks Olli which points from sliders gives which text
+                writePerformance(traineeRating.abilities(), traineeRating.strength(), traineeRating.developments(),
+                        traineeRating.perspective(), traineeRating.others());
 
                 if (e.getSource().equals(saveAndNew)) {
                     //TODO: Need Josef´s code for the slider reset
@@ -59,11 +63,13 @@ public class reviewController {
                     txtBirthDate.setText(placeholder);
                     txtApartmentStreet.setText(placeholder);
 
+                    panel1.removeAll();
+                    panel1.revalidate();
+                    panel1.repaint();
                     panel.removeAll();
                     panel.revalidate();
                     panel.repaint();
                     startPanel();
-                    //TODO: Panel1 extra clearen + panelclearen
                 } else if (e.getSource().equals(saveAndExit)) {
                     System.exit(0);
                 }
@@ -86,8 +92,16 @@ public class reviewController {
         calc.addActionListener(actionListenerSafeData);
     }
 
+    public void textForTraineeRating(traineeRating traineeRating) {
+        abilities.setText(traineeRating.abilities());
+        strength.setText(traineeRating.strength());
+        developements.setText(traineeRating.developments());
+        perspective.setText(traineeRating.perspective());
+        others.setText(traineeRating.others());
+    }
+
     //Dummies
-    public void writeInstructorData(String name, String telephone, String date) {}
+    public void writeInstructorData(String name, String telephone, String date, String eMail) {}
     public void writeStudentData(String name, String birthdate, String address, String year, String course){}
     public void writeAllocationPeriod(String from, String to, String internshipSection){}
     public void writeTrainingAreaAndPeriod(String text){}
