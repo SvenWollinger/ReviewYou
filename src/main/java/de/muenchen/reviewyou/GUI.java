@@ -232,7 +232,7 @@ public class GUI {
 
         headline = new JLabel("Angaben zum / zur Ausbilder:in");
         headline.setFont(font);
-
+ 
 
         panel.add(headline);
         panel.add(name);
