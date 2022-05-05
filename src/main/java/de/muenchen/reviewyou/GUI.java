@@ -6,26 +6,19 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.annotation.Inherited;
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
-import java.util.SortedMap;
-
-import static java.awt.Color.red;
 
 public class GUI {
 
 
     private Container contentPane;
     private JFrame window;
-
 
     private JButton next = new JButton("Weiter");
     private JButton previous = new JButton("Zurück");
@@ -43,7 +36,6 @@ public class GUI {
         window.setResizable(false);
         window.setSize(800, 800);
         window.setLocationRelativeTo(null);
-
 
 
         contentPane = window.getContentPane();
@@ -204,34 +196,24 @@ public class GUI {
     private JTextField instructorEmail = new JTextField(15);
     private JTextField currentDate = new JTextField(15);
     private JTextField instructorTelephone = new JTextField(15);
-    UtilDateModel model = new UtilDateModel();
-    Properties p = new Properties();
     private JLabel headline;
-    JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
-    JPanel test = new JPanel();
+
 
     // second page
 
     public void startPanel() {
 
-        p.put("text.today", "Today");
-        p.put("text.month", "Month");
-        p.put("text.year", "Year");
 
         window.add(panel);
         panel.setLayout(layout);
-//        panel.setBackground(Color.red);
         panel.setPreferredSize(new Dimension(800, 700));
 
         headline = new JLabel("Angaben zum / zur Ausbilder:in");
         headline.setFont(font);
 
 
+        panel.setLayout(layout);
 
-
-        // CHECK PAGE
-        page = 1;
-        //        panel.setLayout(layout);
         panel.add(headline);
         panel.add(name);
         panel.add(email);
@@ -240,12 +222,6 @@ public class GUI {
         panel.add(telephone);
         panel.add(instructorEmail);
         panel.add(instructorTelephone);
-        panel.add(datePanel);
-        panel.add(test);
-
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        test.add(datePanel, gbc);
 
 
         layout.putConstraint(SpringLayout.NORTH, headline, 50, SpringLayout.NORTH, panel);
@@ -292,7 +268,7 @@ public class GUI {
     private JLabel birthDate = new JLabel("Geburtsdatum: ");
     private JTextField txtBirthDate = new JTextField(8);
     private JLabel apartmentStreet = new JLabel("Straße, Haus-Nr., PLZ, Ort:");
-    private JTextField txtApartmentStreet = new JTextField(22);
+    private JTextField txtApartmentStreet = new JTextField(30);
     private JLabel allocationPeriod = new JLabel("Zuweisungszeitraum:");
     private JLabel from = new JLabel("vom:");
     private JTextField txtfrom = new JTextField(10);
@@ -959,9 +935,17 @@ public class GUI {
 
         }
 
+
     }
 
 
 
+//    UtilDateModel model = new UtilDateModel();
+//    Properties p = new Properties();
+//    JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+//
+//        p.put("text.today", "Today");
+//                p.put("text.month", "Month");
+//                p.put("text.year", "Year");
 
 
