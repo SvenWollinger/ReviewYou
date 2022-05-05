@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.annotation.Inherited;
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -110,6 +111,12 @@ public class GUI {
                         panel.repaint();
                         seventhPanel();
                         break;
+                    case 7:
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        eightPanel();
+                        break;
 
                 }
             }
@@ -191,7 +198,7 @@ public class GUI {
     private JLabel telephone = new JLabel("Tel:");
     private JTextField instructorName = new JTextField(15);
     private JTextField instructorEmail = new JTextField(15);
-    private JLabel currentDate = new JLabel(LocalDateTime.now().toString());
+    private JTextField currentDate = new JTextField(15);
     private JTextField instructorTelephone = new JTextField(15);
     private JLabel headline;
 
@@ -209,14 +216,16 @@ public class GUI {
         checkPage();
 
         panel.setLayout(layout);
-
         panel.add(headline);
         panel.add(name);
         panel.add(email);
+        panel.add(date);
         panel.add(instructorName);
         panel.add(telephone);
         panel.add(instructorEmail);
         panel.add(instructorTelephone);
+        panel.add(currentDate);
+
 
         layout.putConstraint(SpringLayout.NORTH, headline, 50, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, headline, 250, SpringLayout.WEST, panel);
@@ -759,6 +768,23 @@ public class GUI {
         others.setMaximumSize(maximumSize);
         others.setLineWrap(true);
         panel.add(others, gbc);
+
+    }
+
+    JButton calc = new JButton();
+    JButton saveAndNew = new JButton();
+    JButton saveAndExit = new JButton();
+
+    public void eightPanel(){
+        page = 8;
+//        JLabel headline = new JLabel("Abschluss des Leistungsberichts von "+ );
+        headline.setFont(font);
+        window.add(panel);
+        panel.setVisible(true);
+        panel.setLayout(gbl);
+
+
+
 
     }
 
