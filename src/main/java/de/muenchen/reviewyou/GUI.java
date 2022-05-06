@@ -35,13 +35,14 @@ public class GUI {
     private int page = 0;
 
 
-    JPanel panel = new JPanel();
-    Font font = new Font(null, Font.PLAIN, 20);
-    Font fontt = new Font(null, Font.PLAIN, 17);
-    SpringLayout layout = new SpringLayout();
-    SpringLayout layout1 = new SpringLayout();
-    SpringLayout layout2 = new SpringLayout();
+    private   JPanel panel = new JPanel();
+    private Font font = new Font(null, Font.PLAIN, 20);
+    private Font fontt = new Font(null, Font.PLAIN, 17);
+    private SpringLayout layout = new SpringLayout();
+    private SpringLayout layout1 = new SpringLayout();
+    private SpringLayout layout2 = new SpringLayout();
 
+    //constructor
 
     public GUI() {
         window = new JFrame("Leistungsbericht Nachwuchskräfte");
@@ -63,11 +64,17 @@ public class GUI {
         previous.setPreferredSize(new Dimension(80, 30));
         moreInfo.setPreferredSize(new Dimension(80, 30));
 
+        // set nextButton
+
         layout.putConstraint(SpringLayout.SOUTH, next, -25, SpringLayout.SOUTH, contentPane);
         layout.putConstraint(SpringLayout.WEST, next, 400, SpringLayout.WEST, contentPane);
 
+        // set previousButton
+
         layout.putConstraint(SpringLayout.SOUTH, previous, -25, SpringLayout.SOUTH, contentPane);
         layout.putConstraint(SpringLayout.EAST, previous, -5, SpringLayout.WEST, next);
+
+        // set moreInfoButton
 
         layout.putConstraint(SpringLayout.SOUTH, moreInfo, -25, SpringLayout.SOUTH,contentPane);
         layout.putConstraint(SpringLayout.EAST, moreInfo, -180, SpringLayout.WEST, previous);
@@ -76,6 +83,8 @@ public class GUI {
 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         startPanel();
+
+        //actionLister for next Button
 
         next.addActionListener(new ActionListener() {
             @Override
@@ -133,6 +142,8 @@ public class GUI {
                 }
             }
         });
+
+        //actionLister for back Button
 
         previous.addActionListener(new ActionListener() {
             @Override
@@ -212,18 +223,11 @@ public class GUI {
     private JLabel headline;
     LocalDate today = LocalDate.now();
 
-//    UtilDateModel model = new UtilDateModel();
-//    Properties p = new Properties();
-//    JDatePanelImpl datePanel = new JDatePanelImpl(model,p);
-//    JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateFormat().format(("dd.MM.uuuu"));
 
 
     // second page
 
     public void startPanel() {
-//        p.put("text.today", "Today");
-//        p.put("text.month", "Month");
-//        p.put("text.year", "Year");
         window.setVisible(true);
         page = 1;
         window.add(panel);
@@ -234,6 +238,7 @@ public class GUI {
         headline = new JLabel("Angaben zum / zur Ausbilder:in");
         headline.setFont(font);
 
+        // add Components
 
         panel.add(headline);
         panel.add(name);
@@ -253,16 +258,18 @@ public class GUI {
         layout1.putConstraint(SpringLayout.NORTH, name, 50, SpringLayout.SOUTH, headline);
         name.setFont(font);
 
+        // set instructorName
 
         layout1.putConstraint(SpringLayout.WEST, instructorName, 12, SpringLayout.EAST, name);
         layout1.putConstraint(SpringLayout.NORTH, instructorName, 4, SpringLayout.NORTH, name);
 
 
-// set email and email textfield
+        // set email and email textfield
         layout1.putConstraint(SpringLayout.WEST, email, 260, SpringLayout.WEST, panel);
         layout1.putConstraint(SpringLayout.NORTH, email, 20, SpringLayout.SOUTH, name);
         email.setFont(font);
 
+        //set instrutorEmail
 
         layout1.putConstraint(SpringLayout.WEST, instructorEmail, 7, SpringLayout.EAST, email);
         layout1.putConstraint(SpringLayout.NORTH, instructorEmail, 4, SpringLayout.NORTH, email);
@@ -273,15 +280,18 @@ public class GUI {
         layout1.putConstraint(SpringLayout.NORTH, telephone, 20, SpringLayout.SOUTH, email);
         telephone.setFont(font);
 
+        //setInstructorTelephone
 
         layout1.putConstraint(SpringLayout.WEST, instructorTelephone, 38, SpringLayout.EAST, telephone);
         layout1.putConstraint(SpringLayout.NORTH, instructorTelephone, 4, SpringLayout.NORTH, telephone);
 
+        //setDate
 
         layout1.putConstraint(SpringLayout.WEST, date, 260, SpringLayout.WEST, panel);
         layout1.putConstraint(SpringLayout.NORTH, date, 20, SpringLayout.SOUTH, telephone);
         date.setFont(font);
 
+        //txtDate
 
         layout1.putConstraint(SpringLayout.NORTH,txtdate, 27,SpringLayout.SOUTH,instructorTelephone);
         layout1.putConstraint(SpringLayout.WEST,txtdate,8,SpringLayout.EAST,date);
@@ -290,6 +300,8 @@ public class GUI {
 
     }
 
+
+    //Second Page created Labels, Txtfields and JDatePicker
 
     private JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft");
     private JLabel traineeName = new JLabel("Name, Vorname:");
@@ -328,22 +340,24 @@ public class GUI {
     JDatePanelImpl datePanel1 = new JDatePanelImpl(model1,p);
     JDatePickerImpl txtTill = new JDatePickerImpl(datePanel1,new DateLabelFormatter());
 
+    // second Page
+
     public void secondPanel() {
         page = 2;
 
+        //set properties for JDatePanel
 
         p.put("text.today", "Today");
         p.put("text.month", "Month");
         p.put("text.year", "Year");
 
 
+        //added components
 
         panel.add(txtFrom);
         panel.add(txtTill);
         panel.setLayout(layout2);
         window.add(panel);
-
-
         panel.add(apprenticeship);
         panel.add(traineeName);
         panel.add(txtTraineeName);
@@ -369,6 +383,7 @@ public class GUI {
         panel.add(course);
         panel.add(txtCourse);
 
+        // setFont for Labels
 
         apprenticeship.setFont(fontt);
         traineeName.setFont(fontt);
@@ -385,9 +400,12 @@ public class GUI {
         traineeYear.setFont(fontt);
         course.setFont(fontt);
 
+        // set appreticeship
 
         layout2.putConstraint(SpringLayout.WEST, apprenticeship, 100, SpringLayout.WEST, contentPane);
         layout2.putConstraint(SpringLayout.NORTH, apprenticeship, 30, SpringLayout.NORTH, contentPane);
+
+        // set traineeName and Textfield
 
         layout2.putConstraint(SpringLayout.WEST, traineeName, 100, SpringLayout.WEST, contentPane);
         layout2.putConstraint(SpringLayout.NORTH, traineeName, 20, SpringLayout.SOUTH, apprenticeship);
@@ -395,11 +413,15 @@ public class GUI {
         layout2.putConstraint(SpringLayout.NORTH, txtTraineeName, 4, SpringLayout.NORTH, traineeName);
         layout2.putConstraint(SpringLayout.WEST, txtTraineeName, 10, SpringLayout.EAST, traineeName);
 
+        // set birthDate and Textfield
+
         layout2.putConstraint(SpringLayout.NORTH, birthDate, 1, SpringLayout.NORTH, traineeName);
         layout2.putConstraint(SpringLayout.WEST, birthDate, 10, SpringLayout.EAST, txtTraineeName);
 
         layout2.putConstraint(SpringLayout.NORTH, txtBirthDate, 2, SpringLayout.NORTH, birthDate);
         layout2.putConstraint(SpringLayout.WEST, txtBirthDate, 10, SpringLayout.EAST, birthDate);
+
+        // set apartmentStreet and Textfield
 
         layout2.putConstraint(SpringLayout.NORTH, apartmentStreet, 10, SpringLayout.SOUTH, traineeName);
         layout2.putConstraint(SpringLayout.WEST, apartmentStreet, 100, SpringLayout.WEST, contentPane);
@@ -407,8 +429,12 @@ public class GUI {
         layout2.putConstraint(SpringLayout.NORTH, txtApartmentStreet, 4, SpringLayout.NORTH, apartmentStreet);
         layout2.putConstraint(SpringLayout.WEST, txtApartmentStreet, 10, SpringLayout.EAST, apartmentStreet);
 
+        // set allocationPeriod
+
         layout2.putConstraint(SpringLayout.NORTH, allocationPeriod, 20, SpringLayout.SOUTH, apartmentStreet);
         layout2.putConstraint(SpringLayout.WEST, allocationPeriod, 100, SpringLayout.WEST, contentPane);
+
+        // set from and Textfield
 
         layout2.putConstraint(SpringLayout.NORTH, from, 10, SpringLayout.SOUTH, allocationPeriod);
         layout2.putConstraint(SpringLayout.WEST, from, 100, SpringLayout.WEST, contentPane);
@@ -416,11 +442,15 @@ public class GUI {
         layout2.putConstraint(SpringLayout.NORTH, txtFrom, 10, SpringLayout.SOUTH, allocationPeriod);
         layout2.putConstraint(SpringLayout.WEST, txtFrom, 10, SpringLayout.EAST, from);
 
+        // set till and Textfield
+
         layout2.putConstraint(SpringLayout.NORTH, till, 10, SpringLayout.SOUTH, allocationPeriod);
         layout2.putConstraint(SpringLayout.WEST, till, 10, SpringLayout.EAST, txtFrom);
 
         layout2.putConstraint(SpringLayout.NORTH, txtTill, 10, SpringLayout.SOUTH, allocationPeriod);
         layout2.putConstraint(SpringLayout.WEST, txtTill, 10, SpringLayout.EAST, till);
+
+        // set internshipSelection and Textfield
 
         layout2.putConstraint(SpringLayout.NORTH, internshipSelection, 10, SpringLayout.SOUTH, from);
         layout2.putConstraint(SpringLayout.WEST, internshipSelection, 100, SpringLayout.WEST, contentPane);
@@ -428,11 +458,15 @@ public class GUI {
         layout2.putConstraint(SpringLayout.NORTH, txtInternshipSelection, 14, SpringLayout.SOUTH, from);
         layout2.putConstraint(SpringLayout.WEST, txtInternshipSelection, 10, SpringLayout.EAST, internshipSelection);
 
+        // set tranieeYear and Textfield
+
         layout2.putConstraint(SpringLayout.NORTH, traineeYear,10, SpringLayout.SOUTH,internshipSelection);
         layout2.putConstraint(SpringLayout.WEST,traineeYear,100,SpringLayout.WEST,contentPane);
 
         layout2.putConstraint(SpringLayout.NORTH,txtTraineeYear, 14, SpringLayout.SOUTH,internshipSelection);
         layout2.putConstraint(SpringLayout.WEST,txtTraineeYear,10,SpringLayout.EAST,traineeYear);
+
+        // set course and Textfield
 
         layout2.putConstraint(SpringLayout.NORTH,course,10,SpringLayout.SOUTH,internshipSelection);
         layout2.putConstraint(SpringLayout.WEST,course,10,SpringLayout.EAST,txtTraineeYear);
@@ -440,11 +474,15 @@ public class GUI {
         layout2.putConstraint(SpringLayout.NORTH, txtCourse, 14, SpringLayout.SOUTH,internshipSelection);
         layout2.putConstraint(SpringLayout.WEST, txtCourse, 10 ,SpringLayout.EAST,course);
 
+        // set trainingsArea and Textfield
+
         layout2.putConstraint(SpringLayout.NORTH, trainingArea, 20, SpringLayout.SOUTH, traineeYear);
         layout2.putConstraint(SpringLayout.WEST, trainingArea, 100, SpringLayout.WEST, contentPane);
 
         layout2.putConstraint(SpringLayout.NORTH, txtTrainingArea, 5, SpringLayout.SOUTH, trainingArea);
         layout2.putConstraint(SpringLayout.WEST, txtTrainingArea, 100, SpringLayout.WEST, contentPane);
+
+        // set sessions and Textfield
 
         layout2.putConstraint(SpringLayout.NORTH, sessions, 20, SpringLayout.SOUTH, txtTrainingArea);
         layout2.putConstraint(SpringLayout.WEST, sessions, 100, SpringLayout.WEST, contentPane);
@@ -452,11 +490,15 @@ public class GUI {
         layout2.putConstraint(SpringLayout.NORTH, txtSessions, 14, SpringLayout.SOUTH, sessions);
         layout2.putConstraint(SpringLayout.WEST, txtSessions, 100, SpringLayout.WEST, contentPane);
 
+        // set trainingsPlan and Textfield
+
         layout2.putConstraint(SpringLayout.NORTH, traingPlan, 20, SpringLayout.SOUTH, txtSessions);
         layout2.putConstraint(SpringLayout.WEST, traingPlan, 100, SpringLayout.WEST, contentPane);
 
         layout2.putConstraint(SpringLayout.NORTH, txtTrainingsPlan, 10, SpringLayout.SOUTH, traingPlan);
         layout2.putConstraint(SpringLayout.WEST, txtTrainingsPlan, 100, SpringLayout.WEST, contentPane);
+
+        // set interimTalk and Textfield
 
         layout2.putConstraint(SpringLayout.NORTH, interimTalk, 20, SpringLayout.SOUTH, txtTrainingsPlan);
         layout2.putConstraint(SpringLayout.WEST, interimTalk, 100, SpringLayout.WEST, contentPane);
@@ -465,11 +507,13 @@ public class GUI {
         layout2.putConstraint(SpringLayout.WEST, txtInterimTalk, 100, SpringLayout.WEST, contentPane);
     }
 
+    // set Insets
 
     Insets headlineInsets = new Insets(0,0,200,0);
     Insets sliderInsets = new Insets(-60, 0, 70, 0);
     private List<JSlider> jSliders = createSliders();
 
+    // third Page
 
     public void thirdPanel(){
         page = 3;
@@ -520,6 +564,8 @@ public class GUI {
 
         }
 
+        // fourth Page
+
         public void fourthPanel(){
             page = 4;
             JLabel headline = new JLabel("Methodisches Denken");
@@ -564,6 +610,7 @@ public class GUI {
             panel.add(jSliders.get(5), gbc);
         }
 
+        // fifth Page
 
         public void fifthPanel(){
             page = 5;
@@ -639,6 +686,8 @@ public class GUI {
             gbc.gridy = 12;
             panel.add(jSliders.get(11), gbc);
         }
+
+        // sixth Page
 
         public void sixthPanel(){
 
@@ -823,6 +872,8 @@ public class GUI {
 
     }
 
+    // elements fpr eight Page
+
     JButton calc = new JButton("Berechnen");
     JButton saveAndNew = new JButton("Speichern und neuer Leistungsbericht");
     JButton saveAndExit = new JButton("Speichern und Schließen");
@@ -830,6 +881,9 @@ public class GUI {
     JLabel score = new JLabel("Punktzahl");
     JLabel review = new JLabel("Gesamturteil");
     GridBagConstraints gbc1 = new GridBagConstraints();
+
+
+    // eight Page
 
     public void eightPanel(){
         page = 8;
@@ -884,6 +938,7 @@ public class GUI {
 
     }
 
+    // sliders
 
     static final int minScore = 0;
     static final int maxScore = 15;
@@ -914,7 +969,7 @@ public class GUI {
             return labels;
     }
 
-    // MORE INFO PAGE
+    // Elements for moreInfo page
 
     private JLabel PointsDistribution = new JLabel("Folgende Punktezahlen können vergeben werden: ");
     private JLabel particularly = new JLabel("  15 - 13 Punkte: Eine besonders hervorragende Leistung.");
@@ -926,6 +981,7 @@ public class GUI {
     private JFrame popup = new JFrame("Info");
     private JPanel popupPanel = new JPanel();
 
+    // Moreinfo page
 
     public void moreInfo(){
         popup.setVisible(true);
