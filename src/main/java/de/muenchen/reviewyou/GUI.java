@@ -1,41 +1,32 @@
 package de.muenchen.reviewyou;
 
-
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.*;
-import javax.swing.text.DateFormatter;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
 
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
 
-
-
-
 public class GUI {
-
 
     private Container contentPane;
     private JFrame window;
-
 
     private JButton next = new JButton("Weiter");
     private JButton previous = new JButton("Zurück");
     private JButton moreInfo = new JButton("Info");
     private int page = 0;
 
-
-    private   JPanel panel = new JPanel();
+    private JPanel panel = new JPanel();
     private Font font = new Font(null, Font.PLAIN, 20);
     private Font fontt = new Font(null, Font.PLAIN, 17);
     private SpringLayout layout = new SpringLayout();
@@ -58,8 +49,6 @@ public class GUI {
         previous.setVisible(false);
         moreInfo.setVisible(false);
 
-
-
         next.setPreferredSize(new Dimension(80, 30));
         previous.setPreferredSize(new Dimension(80, 30));
         moreInfo.setPreferredSize(new Dimension(80, 30));
@@ -78,8 +67,6 @@ public class GUI {
 
         layout.putConstraint(SpringLayout.SOUTH, moreInfo, -25, SpringLayout.SOUTH,contentPane);
         layout.putConstraint(SpringLayout.EAST, moreInfo, -180, SpringLayout.WEST, previous);
-
-
 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         startPanel();
@@ -223,8 +210,6 @@ public class GUI {
     private JLabel headline;
     LocalDate today = LocalDate.now();
 
-
-
     // second page
 
     public void startPanel() {
@@ -300,16 +285,15 @@ public class GUI {
 
     }
 
-
     //Second Page created Labels, Txtfields and JDatePicker
 
     private JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft");
     private JLabel traineeName = new JLabel("Name, Vorname:");
-    private JTextField txtTraineeName = new JTextField(8);
+    private JTextField txtTraineeName = new JTextField(10);
     private JLabel birthDate = new JLabel("Geburtsdatum: ");
-    private JTextField txtBirthDate = new JTextField(8);
+    private JTextField txtBirthDate = new JTextField(9);
     private JLabel apartmentStreet = new JLabel("Straße, Haus-Nr., PLZ, Ort:");
-    private JTextField txtApartmentStreet = new JTextField(22);
+    private JTextField txtApartmentStreet = new JTextField(24);
     private JLabel allocationPeriod = new JLabel("Zuweisungszeitraum:");
     private JLabel from = new JLabel("vom:");
     private JLabel till = new JLabel("bis:");
@@ -350,7 +334,6 @@ public class GUI {
         p.put("text.today", "Today");
         p.put("text.month", "Month");
         p.put("text.year", "Year");
-
 
         //added components
 
@@ -419,7 +402,7 @@ public class GUI {
         layout2.putConstraint(SpringLayout.WEST, birthDate, 10, SpringLayout.EAST, txtTraineeName);
 
         layout2.putConstraint(SpringLayout.NORTH, txtBirthDate, 2, SpringLayout.NORTH, birthDate);
-        layout2.putConstraint(SpringLayout.WEST, txtBirthDate, 10, SpringLayout.EAST, birthDate);
+        layout2.putConstraint(SpringLayout.WEST, txtBirthDate, 8, SpringLayout.EAST, birthDate);
 
         // set apartmentStreet and Textfield
 
@@ -561,7 +544,6 @@ public class GUI {
         gbc.gridy = 6;
         panel.add(jSliders.get(2), gbc);
 
-
         }
 
         // fourth Page
@@ -588,7 +570,6 @@ public class GUI {
             gbc.gridx = 0;
             gbc.gridy = 2;
             panel.add(jSliders.get(3), gbc);
-
 
             // GANZHEITLICHES UND VERNETZTES DENKEN
             gbc.gridx = 0;
@@ -636,8 +617,8 @@ public class GUI {
             gbc.gridy = 2;
             panel.add(jSliders.get(6), gbc);
 
-
             // KONTAKTFREUDIGKEIT
+
             gbc.gridx = 0;
             gbc.gridy = 3;
             panel.add(createLabel("Kontaktfreudigkeit").get(0), gbc);
@@ -714,8 +695,8 @@ public class GUI {
             gbc.gridy = 2;
             panel.add(jSliders.get(12), gbc);
 
-
             // GEWISSENHAFTIGKEIT UND INTEGRITÄT
+
             gbc.gridx = 0;
             gbc.gridy = 3;
             panel.add(createLabel("Gewissenhaftigkeit und Integrität").get(0), gbc);
@@ -775,8 +756,8 @@ public class GUI {
             panel.add(jSliders.get(18), gbc);
         }
 
-
     // ELEMENTS FOR SEVENTH PAGE
+
     GridBagLayout gbl = new GridBagLayout();
     GridBagConstraints gbc = new GridBagConstraints();
     JLabel abilitiesLabel = new JLabel("Fähigkeiten, praktische Leistungen, Verhalten");
@@ -792,8 +773,8 @@ public class GUI {
     Dimension preferedSize = new Dimension(600, 50);
     Dimension maximumSize = new Dimension(600, 70);
 
+    // CREATE SEVENTH PAGE
 
-    // CREATE THIRD PANEL
     public void seventhPanel() {
         page = 7;
         JLabel headline = new JLabel("Wortbeschreibung zur gezeigten Leistung insgesamt");
@@ -882,7 +863,6 @@ public class GUI {
     JLabel review = new JLabel("Gesamturteil");
     GridBagConstraints gbc1 = new GridBagConstraints();
 
-
     // eight Page
 
     public void eightPanel(){
@@ -902,7 +882,6 @@ public class GUI {
         panel1.setPreferredSize(new Dimension(150,100));
 
         gbc1.insets = new Insets(0,20,0, 20);
-
 
         gbc1.gridx = 0;
         gbc1.gridy = 0;
@@ -934,7 +913,6 @@ public class GUI {
         gbc1.gridx = 2;
         gbc1.gridy = 2;
         panel.add(saveAndExit,gbc1);
-
 
     }
 
@@ -1032,13 +1010,5 @@ public class GUI {
         layout.putConstraint(SpringLayout.WEST, useless, 24, SpringLayout.WEST, badly);
         useless.setFont(fontt);
 
-
         }
-
-
     }
-
-
-
-
-
