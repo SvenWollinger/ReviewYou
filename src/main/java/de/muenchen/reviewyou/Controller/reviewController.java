@@ -1,5 +1,7 @@
 package de.muenchen.reviewyou.Controller;
 
+import jdk.internal.access.JavaIOFileDescriptorAccess;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -191,8 +193,6 @@ public class reviewController {
             int question19Points = jSliders.get(18).getValue();
         }
     };
-
-    panel.add(jSliders.get(0), gbc);
 
 
 
