@@ -37,9 +37,6 @@ public class reviewController {
 
     public reviewController() {
 
-        //TODO: Ask Excel-Group if the code is good + how should we do the 2x big tables? + what does writePoints?
-        //TODO: + tell them that we have E-Mail now
-
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,8 +52,9 @@ public class reviewController {
                 writePerformance(traineeRating.abilities(), traineeRating.strength(), traineeRating.developments(),
                         traineeRating.perspective(), traineeRating.others());
 
+                //TODO: Give Excel-Group "writeTotalandAverage"
                 if (e.getSource().equals(saveAndNew)) {
-                    //TODO: Need Josef´s code for the slider reset
+                    //TODO: Slider reset
 
                     String placeholder = "";
                     txtTraineeName.setText(placeholder);
@@ -81,9 +79,8 @@ public class reviewController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Button "Berechnen"
-                //Calculate "Punktzahl" and "Gesamturteil" -> writeTotalandAverage() (Josef)
-
-
+                calculate();
+                //TODO: Tell GUI-Group that they don´t have JLabels for "calculatedPoints" and "overallRating"
             }
         };
 
@@ -102,6 +99,12 @@ public class reviewController {
         others.setText(traineeRating.others());
     }
 
+    public void calculate() {
+        //Get int from sliders and calculate them
+        //      -> Then x.setText(calculatedPoints)
+        //      -> Then x.setText(overallRating)
+    }
+
     //Dummies
     public void writeInstructorData(String name, String telephone, String date, String eMail) {}
     public void writeStudentData(String name, String birthdate, String address, String year, String course) {}
@@ -112,17 +115,4 @@ public class reviewController {
     public void writeTotalandAverage(String total, String average) {}
     public void writePerformance(String abilities, String strengths, String development, String perspectives, String other) {}
     public void startPanel() {}
-
-    ActionListener actionListenerWeiter = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-        }
-    };
-
-
-
-
-
-
 }
