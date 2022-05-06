@@ -132,33 +132,17 @@ public class reviewController {
     }
 
     //Dummies
-    public void writeInstructorData(String name, String telephone, String date, String eMail) {
-    }
+    public void writeInstructorData(String name, String telephone, String date, String eMail) {}
+    public void writeStudentData(String name, String birthdate, String address, String year, String course) {}
+    public void writeAllocationPeriod(String from, String to, String internshipSection) {}
+    public void writeTrainingAreaAndPeriod(String text) {}
+    public void writeParticipations(String coursesEtc) {}
+    public void writeDates(String trainingPlan, String interimTalk) {}
+    public void writeTotalandAverage(String total, String average) {}
+    public void writePerformance(String abilities, String strengths, String development, String perspectives, String other) {}
+    public void startPanel() {}
 
-    public void writeStudentData(String name, String birthdate, String address, String year, String course) {
-    }
 
-    public void writeAllocationPeriod(String from, String to, String internshipSection) {
-    }
-
-    public void writeTrainingAreaAndPeriod(String text) {
-    }
-
-    public void writeParticipations(String coursesEtc) {
-    }
-
-    public void writeDates(String trainingPlan, String interimTalk) {
-    }
-
-    public void writeTotalandAverage(String total, String average) {
-
-    }
-
-    public void writePerformance(String abilities, String strengths, String development, String perspectives, String other) {
-    }
-
-    public void startPanel() {
-    }
 
     ActionListener actionListenercontinue= new ActionListener() {
         @Override
