@@ -299,9 +299,7 @@ public class GUI {
     private JTextField txtApartmentStreet = new JTextField(22);
     private JLabel allocationPeriod = new JLabel("Zuweisungszeitraum:");
     private JLabel from = new JLabel("vom:");
-    private JTextField txtfrom = new JTextField(10);
     private JLabel till = new JLabel("bis:");
-    private JTextField txtTill = new JTextField(10);
     private JLabel internshipSelection = new JLabel("Praktikumsabschnitt:");
     private JTextField txtInternshipSelection = new JTextField(20);
     private JLabel trainingArea = new JLabel("<html><body>Ausbildungsbereich und Zeitraum der Beschäftigung<br>" +
@@ -314,16 +312,33 @@ public class GUI {
             "ausgehändigt am: </body></html>");
     private JTextField txtTrainingsPlan = new JTextField(45);
     private JLabel interimTalk = new JLabel("Zwischengespräch geführt am:");
-    private JTextField txtInterimTalk = new JTextField(45);
-    private JLabel overallRating = new JLabel("Gesamtbewetung");
+    private JTextField txtInterimTalk = new JTextField(45);;
     private JLabel traineeYear = new JLabel("Jahrgang:");
     private JTextField txtTraineeYear = new JTextField(7);
     private JLabel course = new JLabel("Kurs:");
     private JTextField txtCourse = new JTextField(7);
 
+    UtilDateModel model = new UtilDateModel();
+    Properties p = new Properties();
+    JDatePanelImpl datePanel = new JDatePanelImpl(model,p);
+    JDatePickerImpl datePicker = new JDatePickerImpl(datePanel,new DateLabelFormatter());
+
+    UtilDateModel model1 = new UtilDateModel();
+    JDatePanelImpl datePanel1 = new JDatePanelImpl(model1,p);
+    JDatePickerImpl datePicker1 = new JDatePickerImpl(datePanel,new DateLabelFormatter());
+
     public void secondPanel() {
         page = 2;
 
+
+        p.put("text.today", "Today");
+        p.put("text.month", "Month");
+        p.put("text.year", "Year");
+
+
+
+        panel.add(datePicker1);
+        panel.add(datePicker);
         panel.setLayout(layout);
         window.add(panel);
 
@@ -336,9 +351,7 @@ public class GUI {
         panel.add(txtApartmentStreet);
         panel.add(allocationPeriod);
         panel.add(from);
-        panel.add(txtfrom);
         panel.add(till);
-        panel.add(txtTill);
         panel.add(internshipSelection);
         panel.add(txtInternshipSelection);
         panel.add(trainingArea);
@@ -398,14 +411,14 @@ public class GUI {
         layout.putConstraint(SpringLayout.NORTH, from, 10, SpringLayout.SOUTH, allocationPeriod);
         layout.putConstraint(SpringLayout.WEST, from, 100, SpringLayout.WEST, contentPane);
 
-        layout.putConstraint(SpringLayout.NORTH, txtfrom, 14, SpringLayout.SOUTH, allocationPeriod);
-        layout.putConstraint(SpringLayout.WEST, txtfrom, 10, SpringLayout.EAST, from);
+        layout.putConstraint(SpringLayout.NORTH, datePicker, 10, SpringLayout.SOUTH, allocationPeriod);
+        layout.putConstraint(SpringLayout.WEST, datePicker, 10, SpringLayout.EAST, from);
 
-        layout.putConstraint(SpringLayout.NORTH, till, 10, SpringLayout.SOUTH, allocationPeriod);
-        layout.putConstraint(SpringLayout.WEST, till, 10, SpringLayout.EAST, txtfrom);
+       layout.putConstraint(SpringLayout.NORTH, till, 10, SpringLayout.SOUTH, allocationPeriod);
+        layout.putConstraint(SpringLayout.WEST, till, 10, SpringLayout.EAST, datePicker);
 
-        layout.putConstraint(SpringLayout.NORTH, txtTill, 14, SpringLayout.SOUTH, allocationPeriod);
-        layout.putConstraint(SpringLayout.WEST, txtTill, 10, SpringLayout.EAST, till);
+        layout.putConstraint(SpringLayout.NORTH, datePicker1, 10, SpringLayout.SOUTH, allocationPeriod);
+        layout.putConstraint(SpringLayout.WEST, datePicker1, 10, SpringLayout.EAST, till);
 
         layout.putConstraint(SpringLayout.NORTH, internshipSelection, 10, SpringLayout.SOUTH, from);
         layout.putConstraint(SpringLayout.WEST, internshipSelection, 100, SpringLayout.WEST, contentPane);
