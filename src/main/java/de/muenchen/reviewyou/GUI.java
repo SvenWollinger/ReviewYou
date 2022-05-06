@@ -322,11 +322,11 @@ public class GUI {
     UtilDateModel model = new UtilDateModel();
     Properties p = new Properties();
     JDatePanelImpl datePanel = new JDatePanelImpl(model,p);
-    JDatePickerImpl datePicker = new JDatePickerImpl(datePanel,new DateLabelFormatter());
+    JDatePickerImpl txtFrom = new JDatePickerImpl(datePanel,new DateLabelFormatter());
 
     UtilDateModel model1 = new UtilDateModel();
     JDatePanelImpl datePanel1 = new JDatePanelImpl(model1,p);
-    JDatePickerImpl datePicker1 = new JDatePickerImpl(datePanel1,new DateLabelFormatter());
+    JDatePickerImpl txtTill = new JDatePickerImpl(datePanel1,new DateLabelFormatter());
 
     public void secondPanel() {
         page = 2;
@@ -338,10 +338,11 @@ public class GUI {
 
 
 
-        panel.add(datePicker1);
-        panel.add(datePicker);
+        panel.add(txtFrom);
+        panel.add(txtTill);
         panel.setLayout(layout2);
         window.add(panel);
+
 
         panel.add(apprenticeship);
         panel.add(traineeName);
@@ -412,14 +413,14 @@ public class GUI {
         layout2.putConstraint(SpringLayout.NORTH, from, 10, SpringLayout.SOUTH, allocationPeriod);
         layout2.putConstraint(SpringLayout.WEST, from, 100, SpringLayout.WEST, contentPane);
 
-        layout2.putConstraint(SpringLayout.NORTH, datePicker, 10, SpringLayout.SOUTH, allocationPeriod);
-        layout2.putConstraint(SpringLayout.WEST, datePicker, 10, SpringLayout.EAST, from);
+        layout2.putConstraint(SpringLayout.NORTH, txtFrom, 10, SpringLayout.SOUTH, allocationPeriod);
+        layout2.putConstraint(SpringLayout.WEST, txtFrom, 10, SpringLayout.EAST, from);
 
         layout2.putConstraint(SpringLayout.NORTH, till, 10, SpringLayout.SOUTH, allocationPeriod);
-        layout2.putConstraint(SpringLayout.WEST, till, 10, SpringLayout.EAST, datePicker);
+        layout2.putConstraint(SpringLayout.WEST, till, 10, SpringLayout.EAST, txtFrom);
 
-        layout2.putConstraint(SpringLayout.NORTH, datePicker1, 10, SpringLayout.SOUTH, allocationPeriod);
-        layout2.putConstraint(SpringLayout.WEST, datePicker1, 10, SpringLayout.EAST, till);
+        layout2.putConstraint(SpringLayout.NORTH, txtTill, 10, SpringLayout.SOUTH, allocationPeriod);
+        layout2.putConstraint(SpringLayout.WEST, txtTill, 10, SpringLayout.EAST, till);
 
         layout2.putConstraint(SpringLayout.NORTH, internshipSelection, 10, SpringLayout.SOUTH, from);
         layout2.putConstraint(SpringLayout.WEST, internshipSelection, 100, SpringLayout.WEST, contentPane);
