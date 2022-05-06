@@ -22,5 +22,6 @@ public class Main {
 
         excelDatabaseHandler.addRecommendation(5, 7,"Kann Gut Deutsch");
         System.out.println(excelDatabaseHandler.createRecListFromExcel());
+        excelHandler.copyFinalFile("hallo");
     }
 }
