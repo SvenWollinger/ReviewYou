@@ -47,4 +47,10 @@ public class AnswerSuggestionModel {
                 ", recommendend='" + recommendend + '\'' +
                 '}';
     }
+
+    public String getRecommended(){
+        return this.recommendend;
+    }
+
+
 }
