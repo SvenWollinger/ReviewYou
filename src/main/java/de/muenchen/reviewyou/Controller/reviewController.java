@@ -38,7 +38,7 @@ public class reviewController {
     public reviewController() {
 
         //TODO: Ask Excel-Group if the code is good + how should we do the 2x big tables? + what does writePoints?
-        //TODO: + tell them that we have E-Mail now
+            //TODO: + tell them that we have E-Mail now
 
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
@@ -103,32 +103,15 @@ public class reviewController {
     }
 
     //Dummies
-    public void writeInstructorData(String name, String telephone, String date, String eMail) {
-    }
-
-    public void writeStudentData(String name, String birthdate, String address, String year, String course) {
-    }
-
-    public void writeAllocationPeriod(String from, String to, String internshipSection) {
-    }
-
-    public void writeTrainingAreaAndPeriod(String text) {
-    }
-
-    public void writeParticipations(String coursesEtc) {
-    }
-
-    public void writeDates(String trainingPlan, String interimTalk) {
-    }
-
-    public void writeTotalandAverage(String total, String average) {
-    }
-
-    public void writePerformance(String abilities, String strengths, String development, String perspectives, String other) {
-    }
-
-    public void startPanel() {
-    }
+    public void writeInstructorData(String name, String telephone, String date, String eMail) {}
+    public void writeStudentData(String name, String birthdate, String address, String year, String course) {}
+    public void writeAllocationPeriod(String from, String to, String internshipSection) {}
+    public void writeTrainingAreaAndPeriod(String text) {}
+    public void writeParticipations(String coursesEtc) {}
+    public void writeDates(String trainingPlan, String interimTalk) {}
+    public void writeTotalandAverage(String total, String average) {}
+    public void writePerformance(String abilities, String strengths, String development, String perspectives, String other) {}
+    public void startPanel() {}
 
     ActionListener actionListenerWeiter = new ActionListener() {
         @Override
