@@ -1,6 +1,6 @@
 package de.muenchen.reviewyou.Controller;
 
-import de.muenchen.reviewyou.Main;
+import jdk.internal.access.JavaIOFileDescriptorAccess;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -8,6 +8,26 @@ import java.awt.event.ActionListener;
 
 public class reviewController {
     //Dummies
+    int question1Points;
+    int question2Points;
+    int question3Points;
+    int question4Points;
+    int question5Points;
+    int question6Points;
+    int question7Points;
+    int question8Points;
+    int question9Points;
+    int question10Points;
+    int question11Points;
+    int question12Points;
+    int question13Points;
+    int question14Points;
+    int question15Points;
+    int question16Points;
+    int question17Points;
+    int question18Points;
+    int question19Points;
+
     JButton calc = new JButton();
     JButton saveAndNew = new JButton();
     JButton saveAndExit = new JButton();
@@ -36,19 +56,25 @@ public class reviewController {
     JTextArea others = new JTextArea();
 
     public reviewController() {
+<<<<<<< HEAD
+        //TODO: String dateFromString = txtFrom.getJFormattedTextField().getText(); -> ehemals txtFrom und txtTill
+=======
 
         //TODO: Ask Excel-Group if the code is good + how should we do the 2x big tables? + what does writePoints?
-            //TODO: + tell them that we have E-Mail now
+        //TODO: + tell them that we have E-Mail now
 
+>>>>>>> 6d4564532ca3fa94be86f857151ade5219905feb
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 traineeRating traineeRating = new traineeRating();
+//                String dateFrom = txtFrom.getJFormattedTextField().getText(); //TODO: Wait for GUI
+//                String dateTill = txtTill.getJFormattedTextField().getText(); //TODO: Wait from GUI
 
                 writeInstructorData(instructorName.getText(), instructorTelephone.getText(), currentDate.getText(), instructorEmail.getText());
                 writeStudentData(txtTraineeName.getText(), txtBirthDate.getText(), txtApartmentStreet.getText(),
                         txtTraineeYear.getText(), txtCourse.getText());
-                writeAllocationPeriod(txtFrom.getText(), txtTill.getText(), txtIntershipSelection.getText());
+//                writeAllocationPeriod(dateFrom, dateTill, txtIntershipSelection.getText()); //TODO: Wait from GUI
                 writeTrainingAreaAndPeriod(txtTrainingArea.getText());
                 writeParticipations(txtSessions.getText());
                 writeDates(txtTrainingsPlan.getText(), txtInternimTalk.getText());
@@ -82,11 +108,14 @@ public class reviewController {
             public void actionPerformed(ActionEvent e) {
                 //Button "Berechnen"
                 //Calculate "Punktzahl" and "Gesamturteil" -> writeTotalandAverage() (Josef)
-
+                double OverallAssessment = ( question1Points + question2Points + question3Points + question4Points + question5Points +
+                                        question6Points + question7Points + question8Points + question9Points + question10Points +
+                                        question11Points + question12Points + question13Points + question14Points + question15Points +
+                                        question16Points + question17Points + question18Points + question19Points) / 19;
 
             }
         };
-
+)
 
         //Dummies for add jButton to actionListener
         saveAndNew.addActionListener(actionListenerSafeData);
@@ -103,20 +132,71 @@ public class reviewController {
     }
 
     //Dummies
-    public void writeInstructorData(String name, String telephone, String date, String eMail) {}
-    public void writeStudentData(String name, String birthdate, String address, String year, String course) {}
-    public void writeAllocationPeriod(String from, String to, String internshipSection) {}
-    public void writeTrainingAreaAndPeriod(String text) {}
-    public void writeParticipations(String coursesEtc) {}
-    public void writeDates(String trainingPlan, String interimTalk) {}
-    public void writeTotalandAverage(String total, String average) {}
-    public void writePerformance(String abilities, String strengths, String development, String perspectives, String other) {}
-    public void startPanel() {}
+    public void writeInstructorData(String name, String telephone, String date, String eMail) {
+    }
 
-    ActionListener actionListenerWeiter = new ActionListener() {
+    public void writeStudentData(String name, String birthdate, String address, String year, String course) {
+    }
+
+    public void writeAllocationPeriod(String from, String to, String internshipSection) {
+    }
+
+    public void writeTrainingAreaAndPeriod(String text) {
+    }
+
+    public void writeParticipations(String coursesEtc) {
+    }
+
+    public void writeDates(String trainingPlan, String interimTalk) {
+    }
+
+    public void writeTotalandAverage(String total, String average) {
+
+    }
+
+    public void writePerformance(String abilities, String strengths, String development, String perspectives, String other) {
+    }
+
+    public void startPanel() {
+    }
+
+    ActionListener actionListenercontinue= new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            int question1Points = jSliders.get(0).getValue();
+            int question2Points = jSliders.get(1).getValue();
+            int question3Points = jSliders.get(2).getValue();
+        }
+    };
+    ActionListener actionListenercontinue2 = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int question4Points = jSliders.get(3).getValue();
+            int question5Points = jSliders.get(4).getValue();
+            int question6Points = jSliders.get(5).getValue();
+        }
+    };
+    ActionListener actionListenercontinue3 = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int question7Points = jSliders.get(6).getValue();
+            int question8Points = jSliders.get(7).getValue();
+            int question9Points = jSliders.get(8).getValue();
+            int question10Points = jSliders.get(9).getValue();
+            int question11Points = jSliders.get(10).getValue();
+            int question12Points = jSliders.get(11).getValue();
+        }
+    };
+    ActionListener actionListenercontinue4 = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int question13Points = jSliders.get(12).getValue();
+            int question14Points = jSliders.get(13).getValue();
+            int question15Points = jSliders.get(14).getValue();
+            int question16Points = jSliders.get(15).getValue();
+            int question17Points = jSliders.get(16).getValue();
+            int question18Points = jSliders.get(17).getValue();
+            int question19Points = jSliders.get(18).getValue();
         }
     };
 
