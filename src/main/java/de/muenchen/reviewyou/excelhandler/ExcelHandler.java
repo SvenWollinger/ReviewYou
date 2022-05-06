@@ -37,6 +37,11 @@ public class ExcelHandler {
         outputStream.close();
     }
 
+    public void copyFinalFile(String fileName) throws IOException {
+        File clonedWb = new File(fileName);
+        Files.copy(myFile.toPath(), clonedWb.toPath());
+    }
+
     public void writeInstructorData(String name, String telephone, String date) throws IOException {
         writeCell(3, 0, date);
         writeCell(0, 3, name);
