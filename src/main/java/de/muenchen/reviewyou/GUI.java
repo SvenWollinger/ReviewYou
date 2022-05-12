@@ -18,8 +18,8 @@ import java.util.List;
 
 public class GUI {
 
-    private Container contentPane;
-    private JFrame window;
+    private final Container contentPane;
+    private final JFrame window;
 
     private JButton next = new JButton("Weiter");
     private JButton previous = new JButton("Zurück");
@@ -89,7 +89,6 @@ public class GUI {
                         panel.revalidate();
                         panel.repaint();
                         thirdPanel();
-                        moreInfo();
                         moreInfo.setVisible(true);
                         break;
                     case 3:
