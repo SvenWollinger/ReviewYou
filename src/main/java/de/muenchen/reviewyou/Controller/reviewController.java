@@ -51,8 +51,8 @@ public class reviewController {
                 writeDates(txtTrainingsPlan.getText(), txtInternimTalk.getText());
                 writePerformance(traineeRating.abilities(), traineeRating.strength(), traineeRating.developments(),
                         traineeRating.perspective(), traineeRating.others());
+                writeTotalandAverage(calculateTotal(), calculateAverage());
 
-                //TODO: Give Excel-Group "writeTotalandAverage"
                 if (e.getSource().equals(saveAndNew)) {
                     //TODO: Slider reset
 
@@ -61,6 +61,7 @@ public class reviewController {
                     txtBirthDate.setText(placeholder);
                     txtApartmentStreet.setText(placeholder);
 
+                    //Go to page 1
                     panel1.removeAll();
                     panel1.revalidate();
                     panel1.repaint();
@@ -78,8 +79,8 @@ public class reviewController {
         ActionListener actionListenerCalculate = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Button "Berechnen"
-                calculate();
+                calculateTotal();
+                calculateAverage();
                 //TODO: Tell GUI-Group that they don´t have JLabels for "calculatedPoints" and "overallRating"
             }
         };
@@ -91,7 +92,7 @@ public class reviewController {
         calc.addActionListener(actionListenerSafeData);
     }
 
-    public void textForTraineeRating(traineeRating traineeRating) {
+    public void textForTraineeRating(traineeRating traineeRating) { //TODO: Ask Excel how they did it
         abilities.setText(traineeRating.abilities());
         strength.setText(traineeRating.strength());
         developements.setText(traineeRating.developments());
@@ -99,10 +100,17 @@ public class reviewController {
         others.setText(traineeRating.others());
     }
 
-    public void calculate() {
+    public String calculateTotal() {
         //Get int from sliders and calculate them
         //      -> Then x.setText(calculatedPoints)
         //      -> Then x.setText(overallRating)
+        //Dont forget setText
+        return "";
+    }
+
+    public String calculateAverage() {
+        //Dont forget setText
+        return "";
     }
 
     //Dummies
