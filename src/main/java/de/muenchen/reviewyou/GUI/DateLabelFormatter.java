@@ -1,4 +1,4 @@
-package de.muenchen.reviewyou;
+package de.muenchen.reviewyou.GUI;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
