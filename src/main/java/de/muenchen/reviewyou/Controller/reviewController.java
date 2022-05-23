@@ -34,6 +34,8 @@ public class reviewController {
     JTextArea developements = new JTextArea();
     JTextArea perspective = new JTextArea();
     JTextArea others = new JTextArea();
+    JLabel txtTotal = new JLabel();
+    JLabel txtAverage = new JLabel();
 
     public reviewController() {
 
@@ -52,9 +54,12 @@ public class reviewController {
                 writePerformance(traineeRating.abilities(), traineeRating.strength(), traineeRating.developments(),
                         traineeRating.perspective(), traineeRating.others());
                 writeTotalandAverage(calculateTotal(), calculateAverage());
-
+                txtTotal.setText(String.valueOf(calculateTotal()));
+                txtAverage.setText(calculateAverage());
                 if (e.getSource().equals(saveAndNew)) {
-                    //TODO: Slider reset
+                    for(int i = 0; i < 19; i++) {
+                        //Reset every slider
+                    }
 
                     String placeholder = "";
                     txtTraineeName.setText(placeholder);
@@ -100,17 +105,22 @@ public class reviewController {
         others.setText(traineeRating.others());
     }
 
-    public String calculateTotal() {
-        //Get int from sliders and calculate them
-        //      -> Then x.setText(calculatedPoints)
-        //      -> Then x.setText(overallRating)
-        //Dont forget setText
-        return "";
+    public int calculateTotal() {
+        int totalPoints = 0;
+        for(int i = 0; i < 19; i++) {
+            totalPoints = totalPoints; // + JSlider[i]; TODO: get JSlider int
+        }
+        return totalPoints;
     }
 
     public String calculateAverage() {
-        //Dont forget setText
-        return "";
+        String average = "";
+        int totalPoints = 0;
+        for(int i = 0; i < 19; i++) {
+            totalPoints = totalPoints; // + JSlider[i]; TODO: get JSlider int
+        }
+        //TODO: A text is output based on the values of the sliders
+        return average;
     }
 
     //Dummies
@@ -120,7 +130,7 @@ public class reviewController {
     public void writeTrainingAreaAndPeriod(String text) {}
     public void writeParticipations(String coursesEtc) {}
     public void writeDates(String trainingPlan, String interimTalk) {}
-    public void writeTotalandAverage(String total, String average) {}
+    public void writeTotalandAverage(int total, String average) {} //TODO: Tell Excel that i changed String to int
     public void writePerformance(String abilities, String strengths, String development, String perspectives, String other) {}
     public void startPanel() {}
 }
