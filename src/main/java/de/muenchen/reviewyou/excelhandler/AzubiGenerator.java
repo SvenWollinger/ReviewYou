@@ -13,8 +13,8 @@ import java.util.List;
 public class AzubiGenerator {
 
    private static Object AzubiGenerator;
-   InputStream is = ClassLoader.getSystemResourceAsStream("/Gradingtable.xlsx");
-   File file = new File("src/main/resources/Gradingtable.xlsx");
+   InputStream is = ClassLoader.getSystemResourceAsStream("/AzubiDaten.xlsx");
+   File file = new File("src/main/resources/AzubiDaten.xlsx");
    FileInputStream fis;
    XSSFWorkbook xssfWorkbook;
    XSSFSheet xssfSheet;
