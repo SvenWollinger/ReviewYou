@@ -69,8 +69,10 @@ public class ExcelDatabaseHandler {
         List<AnswerSuggestionModel> list = new ArrayList<>();
         for (int i = 1; i < lastRow; i++) {
             Row row = xssfSheet.getRow(i);
-            list.add(new AnswerSuggestionModel(row.getCell(0).getNumericCellValue(),row.getCell(1).getNumericCellValue(),row.getCell(2).getStringCellValue()));
-            System.out.println(row.getCell(0).getNumericCellValue());
+            list.add(new AnswerSuggestionModel(
+                  row.getCell(0).getNumericCellValue(),
+                  row.getCell(1).getNumericCellValue(),
+                  row.getCell(2).getStringCellValue()));
         }
         return list;
     }

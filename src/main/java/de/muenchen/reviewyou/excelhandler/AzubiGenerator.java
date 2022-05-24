@@ -7,19 +7,23 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AzubiGenerator {
 
    private static Object AzubiGenerator;
-   InputStream is = ClassLoader.getSystemResourceAsStream("/AzubiDaten.xlsx");
-   File file = new File("src/main/resources/AzubiDaten.xlsx");
+
+
    FileInputStream fis;
    XSSFWorkbook xssfWorkbook;
    XSSFSheet xssfSheet;
 
-   public List<Azubi> createAzubiListFromExcel() throws IOException {
+
+   public List<Azubi> getAzubiList(String excelSheetPath) throws IOException {
+      File file = new File(excelSheetPath);
+      InputStream is = ClassLoader.getSystemResourceAsStream(excelSheetPath);
       if(fis == null || xssfWorkbook == null ||xssfSheet == null) {
          fis = new FileInputStream(file);
          xssfWorkbook = new XSSFWorkbook(fis);
@@ -40,4 +44,5 @@ public class AzubiGenerator {
       }
       return list;
    }
+
 }
