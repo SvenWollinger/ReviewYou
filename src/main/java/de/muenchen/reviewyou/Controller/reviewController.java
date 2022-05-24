@@ -34,6 +34,7 @@ public class reviewController {
                     excelHandler.writePerformance(traineeRating.abilities(), traineeRating.strength(),
                             traineeRating.developments(), traineeRating.perspective(), traineeRating.others());
                     excelHandler.writeTotalandAverage(gui.getTxtPoints().getText(), gui.getTxtReview().getText());
+                    //excelHandler.writePoints(xxx, gui.getTxtPoints().getText()); //TODO: Write it
                 } catch (IOException ioException) {
                     System.out.println("Error in SQL!" + ioException.getMessage());
                 }
