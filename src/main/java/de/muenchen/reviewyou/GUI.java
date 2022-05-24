@@ -24,6 +24,7 @@ public class GUI {
     private JButton next = new JButton("Weiter");
     private JButton previous = new JButton("Zurück");
     private JButton moreInfo = new JButton("Info");
+    private JButton btnTraineedata = new JButton("Azubidaten");
     private int page = 0;
 
     private JPanel panel = new JPanel();
@@ -46,8 +47,10 @@ public class GUI {
         window.add(next);
         window.add(previous);
         window.add(moreInfo);
+        window.add(btnTraineedata);
         previous.setVisible(false);
         moreInfo.setVisible(false);
+        btnTraineedata.setVisible(false);
 
         next.setPreferredSize(new Dimension(80, 30));
         previous.setPreferredSize(new Dimension(80, 30));
@@ -68,6 +71,9 @@ public class GUI {
         layout.putConstraint(SpringLayout.SOUTH, moreInfo, -25, SpringLayout.SOUTH,contentPane);
         layout.putConstraint(SpringLayout.EAST, moreInfo, -180, SpringLayout.WEST, previous);
 
+        layout.putConstraint(SpringLayout.SOUTH, btnTraineedata, -25, SpringLayout.SOUTH,contentPane);
+        layout.putConstraint(SpringLayout.EAST, btnTraineedata, -180, SpringLayout.WEST, previous);
+
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         startPanel();
 
@@ -82,6 +88,7 @@ public class GUI {
                         panel.revalidate();
                         panel.repaint();
                         previous.setVisible(true);
+                        btnTraineedata.setVisible(true);
                         secondPanel();
                         break;
                     case 2:
@@ -90,6 +97,7 @@ public class GUI {
                         panel.repaint();
                         thirdPanel();
                         moreInfo.setVisible(true);
+                        btnTraineedata.setVisible(false);
                         break;
                     case 3:
                         panel.removeAll();
@@ -173,6 +181,7 @@ public class GUI {
                         panel.repaint();
                         moreInfo.setVisible(false);
                         popup.setVisible(false);
+                        btnTraineedata.setVisible(true);
                         secondPanel();
                         break;
                     case 2:
@@ -180,6 +189,7 @@ public class GUI {
                         panel.revalidate();
                         panel.repaint();
                         previous.setVisible(false);
+                        btnTraineedata.setVisible(false);
                         startPanel();
                         break;
                 }
@@ -192,6 +202,13 @@ public class GUI {
                 moreInfo();
               }
             });
+
+        btnTraineedata.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                traineeDataPage();
+            }
+        });
 
     }
 
@@ -1010,4 +1027,16 @@ public class GUI {
         useless.setFont(fontt);
 
         }
+
+    private JFileChooser traineedata = new JFileChooser();
+    private JFrame traineedataFrame = new JFrame("Azubidaten");
+
+
+    public void traineeDataPage() {
+        traineedataFrame.setVisible(true);
+        traineedataFrame.setSize(805, 350);
+        traineedataFrame.setLocation(75, 300);
+        traineedataFrame.add(traineedata);
+
+    }
     }
