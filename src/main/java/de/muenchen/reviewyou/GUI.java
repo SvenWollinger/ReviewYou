@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.io.File;
 import java.time.LocalDate;
 
 import java.time.format.DateTimeFormatter;
@@ -33,6 +34,7 @@ public class GUI {
     private SpringLayout layout = new SpringLayout();
     private SpringLayout layout1 = new SpringLayout();
     private SpringLayout layout2 = new SpringLayout();
+    private SpringLayout layout3 = new SpringLayout();
 
     //constructor
 
@@ -208,7 +210,11 @@ public class GUI {
         btnTraineedata.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                traineeDataPage();
+               JFileChooser fileChooser = new JFileChooser();
+               int optiion = fileChooser.showOpenDialog(null);
+               if (optiion == JFileChooser.APPROVE_OPTION) {
+                   File file = fileChooser.getSelectedFile();
+               }
             }
         });
 
@@ -877,60 +883,82 @@ public class GUI {
     JButton saveAndNew = new JButton("Speichern und neuer Leistungsbericht");
     JButton saveAndExit = new JButton("Speichern und Schließen");
     JPanel panel1 = new JPanel();
-    JLabel score = new JLabel("Punktzahl");
-    JLabel review = new JLabel("Gesamturteil");
-    GridBagConstraints gbc1 = new GridBagConstraints();
+    JLabel score = new JLabel("Punktzahl:");
+    JLabel review = new JLabel("Gesamturteil:");
+    JLabel txtPoints = new JLabel();
+    JLabel txtReview = new JLabel();
 
     // eight Page
 
     public void eightPanel(){
         page = 8;
         JLabel headline = new JLabel("Abschluss des Leistungsberichts von " + txtTraineeName.getText());
-        headline.setFont(font);
         window.add(panel);
+        panel.setLayout(layout3);
         panel.setVisible(true);
-        panel.setLayout(gbl);
-        next.setVisible(false);
 
+        //add Elements
+
+        panel.add(headline);
+        panel.add(score);
+        panel.add(review);
+        panel.add(calc);
+        panel.add(saveAndNew);
+        panel.add(saveAndExit);
+        panel.add(txtPoints);
+        panel.add(txtReview);
+
+        //set Font
+
+        headline.setFont(font);
         score.setFont(font);
         review.setFont(font);
+        txtPoints.setFont(font);
+        txtReview.setFont(font);
 
-        panel1.setVisible(true);
-        panel1.setLayout(gbl);
-        panel1.setPreferredSize(new Dimension(150,100));
+        //set size of the calculate Button
 
-        gbc1.insets = new Insets(0,20,0, 20);
+        calc.setPreferredSize(new Dimension(150,26));
 
-        gbc1.gridx = 0;
-        gbc1.gridy = 0;
-        gbc1.gridwidth = 3;
-        gbc1.fill = GridBagConstraints.HORIZONTAL;
-        panel.add(headline, gbc1);
+        //set headline
 
-        gbc1.gridx = 0;
-        gbc1.gridy = 1;
-        gbc1.gridwidth = 1;
-        panel.add(panel1, gbc1);
+        layout3.putConstraint(SpringLayout.WEST,headline,80,SpringLayout.WEST,contentPane);
+        layout3.putConstraint(SpringLayout.NORTH,headline,280,SpringLayout.NORTH,contentPane);
 
-        gbc1.gridx = 0;
-        gbc1.gridy = 0;
-        panel1.add(score, gbc1);
+        //set score
 
-        gbc1.gridx = 0;
-        gbc1.gridy = 2;
-        panel1.add(review, gbc1);
+        layout3.putConstraint(SpringLayout.NORTH,score,30,SpringLayout.SOUTH,headline);
+        layout3.putConstraint(SpringLayout.WEST,score,100,SpringLayout.WEST,contentPane);
 
-        gbc1.gridx = 0;
-        gbc1.gridy = 2;
-        panel.add(calc,gbc1);
+        //set review
 
-        gbc1.gridx = 1;
-        gbc1.gridy = 2;
-        panel.add(saveAndNew,gbc1);
+        layout3.putConstraint(SpringLayout.NORTH,review,5,SpringLayout.SOUTH,score);
+        layout3.putConstraint(SpringLayout.WEST,review,100,SpringLayout.WEST,contentPane);
 
-        gbc1.gridx = 2;
-        gbc1.gridy = 2;
-        panel.add(saveAndExit,gbc1);
+        //set calc
+
+        layout3.putConstraint(SpringLayout.NORTH,calc,30,SpringLayout.SOUTH,review);
+        layout3.putConstraint(SpringLayout.WEST,calc,80,SpringLayout.WEST,contentPane);
+
+        //set saveAndNew
+
+        layout3.putConstraint(SpringLayout.NORTH,saveAndNew,30,SpringLayout.SOUTH,review);
+        layout3.putConstraint(SpringLayout.WEST,saveAndNew,40,SpringLayout.EAST,calc);
+
+        //set saveAndExit
+
+        layout3.putConstraint(SpringLayout.NORTH,saveAndExit,30,SpringLayout.SOUTH,review);
+        layout3.putConstraint(SpringLayout.WEST,saveAndExit,40,SpringLayout.EAST,saveAndNew);
+
+        //set txtPoints
+
+        layout3.putConstraint(SpringLayout.NORTH,txtPoints,30,SpringLayout.SOUTH,headline);
+        layout3.putConstraint(SpringLayout.WEST,txtPoints,50,SpringLayout.EAST,score);
+
+        //set txtReview
+
+        layout3.putConstraint(SpringLayout.NORTH,txtReview,5,SpringLayout.SOUTH,txtPoints);
+        layout3.putConstraint(SpringLayout.WEST,txtReview,50,SpringLayout.EAST,score);
 
     }
 
@@ -1030,18 +1058,6 @@ public class GUI {
 
         }
 
-        // ELEMENTS for traineedata page
 
-    private JFileChooser traineedata = new JFileChooser();
-    private JFrame traineedataFrame = new JFrame("Azubidaten");
 
-        //Traineedata page
-
-    public void traineeDataPage() {
-        traineedataFrame.setVisible(true);
-        traineedataFrame.setSize(805, 350);
-        traineedataFrame.setLocation(75, 300);
-        traineedataFrame.add(traineedata);
-
-    }
     }
