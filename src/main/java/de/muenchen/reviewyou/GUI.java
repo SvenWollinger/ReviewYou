@@ -71,6 +71,8 @@ public class GUI {
         layout.putConstraint(SpringLayout.SOUTH, moreInfo, -25, SpringLayout.SOUTH,contentPane);
         layout.putConstraint(SpringLayout.EAST, moreInfo, -180, SpringLayout.WEST, previous);
 
+        //set traineeDataButton
+
         layout.putConstraint(SpringLayout.SOUTH, btnTraineedata, -25, SpringLayout.SOUTH,contentPane);
         layout.putConstraint(SpringLayout.EAST, btnTraineedata, -180, SpringLayout.WEST, previous);
 
@@ -1028,9 +1030,12 @@ public class GUI {
 
         }
 
+        // ELEMENTS for traineedata page
+
     private JFileChooser traineedata = new JFileChooser();
     private JFrame traineedataFrame = new JFrame("Azubidaten");
 
+        //Traineedata page
 
     public void traineeDataPage() {
         traineedataFrame.setVisible(true);
