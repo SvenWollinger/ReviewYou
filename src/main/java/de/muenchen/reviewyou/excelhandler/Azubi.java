@@ -11,7 +11,6 @@ public class Azubi {
    private LocalDate allocationPeriodFrom;
    private LocalDate allocationPeriodTo;
 
-
    public Azubi(String name, LocalDate birthday, String address, int year, String course, LocalDate allocationPeriodFrom, LocalDate allocationPeriodTo) {
       this.name = name;
       this.birthday = birthday;
@@ -33,5 +32,35 @@ public class Azubi {
             ", allocationPeriodFrom=" + allocationPeriodFrom +
             ", allocationPeriodTo=" + allocationPeriodTo +
             '}';
+   }
+
+
+
+   public String getName() {
+      return name;
+   }
+
+   public LocalDate getBirthday() {
+      return birthday;
+   }
+
+   public String getAddress() {
+      return address;
+   }
+
+   public int getYear() {
+      return year;
+   }
+
+   public String getCourse() {
+      return course;
+   }
+
+   public LocalDate getAllocationPeriodFrom() {
+      return allocationPeriodFrom;
+   }
+
+   public LocalDate getAllocationPeriodTo() {
+      return allocationPeriodTo;
    }
 }

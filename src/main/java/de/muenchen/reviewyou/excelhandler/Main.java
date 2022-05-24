@@ -24,7 +24,7 @@ public class Main {
         //System.out.println(excelDatabaseHandler.createRecListFromExcel());
         //excelHandler.copyFinalFile("hallo");
 
-        System.out.println(azubiGenerator.getAzubiList("src/main/resources/AzubiDaten.xlsx"));
+        //System.out.println(azubiGenerator.getAzubiList("src/main/resources/AzubiDaten.xlsx"));
 
     }
 }
