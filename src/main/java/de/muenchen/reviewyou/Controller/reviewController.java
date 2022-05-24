@@ -45,7 +45,8 @@ public class reviewController {
                 traineeRating traineeRating = new traineeRating();
 
                 //Give values to Excel-Group
-                writeInstructorData(instructorName.getText(), instructorTelephone.getText(), currentDate.getText(), instructorEmail.getText());
+                writeInstructorData(instructorName.getText(), instructorTelephone.getText(), currentDate.getText(),
+                        instructorEmail.getText());
                 writeStudentData(txtTraineeName.getText(), txtBirthDate.getText(), txtApartmentStreet.getText(),
                         txtTraineeYear.getText(), txtCourse.getText());
                 writeAllocationPeriod(txtFrom.getText(), txtTill.getText(), txtIntershipSelection.getText());
@@ -59,7 +60,7 @@ public class reviewController {
                 if (e.getSource().equals(saveAndNew)) {
                     for(int i = 0; i < 19; i++) {
                         //Reset every slider
-                        jSliders.get(i).setValue(jSliders.get(i).getMaximum() / 2);
+                        jSliders.get(i).setValue(jSliders.get(i).getMinimum());
                     }
 
                     //Clear text
@@ -88,7 +89,7 @@ public class reviewController {
         ActionListener actionListenerCalculate = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jLabelTotal.setText(String.valueOf(calculateTotal()));
+                jLabelTotal.setText(String.valueOf(calculateTotalPoints()));
                 jLabelAverage.setText(calculateAverage());
             }
         };
@@ -108,22 +109,24 @@ public class reviewController {
         others.setText(traineeRating.others());
     }
 
-    public int calculateTotal() {
+    public String calculateAverage() {
+        String average = "";
+        for(int i = 0; i < calculateTotalPoints(); i++) {
+            if(calculateTotalPoints() < 100 && calculateTotalPoints() > 90) {
+                average = "xxx";
+            }
+        }
+
+        //TODO: Output a text based on the values from sliders
+        return average;
+    }
+
+    public int calculateTotalPoints() {
         int totalPoints = 0;
         for(int i = 0; i < 19; i++) {
             totalPoints = totalPoints + jSliders.get(i).getValue();
         }
         return totalPoints;
-    }
-
-    public String calculateAverage() {
-        String average = "";
-        int totalPoints = 0;
-        for(int i = 0; i < 19; i++) {
-            totalPoints = totalPoints + jSliders.get(i).getValue();
-        }
-        //TODO: Output a text based on the values from sliders
-        return average;
     }
 
     //Dummies
@@ -134,7 +137,8 @@ public class reviewController {
     public void writeParticipations(String coursesEtc) {}
     public void writeDates(String trainingPlan, String interimTalk) {}
     public void writeTotalandAverage(String total, String average) {}
-    public void writePerformance(String abilities, String strengths, String development, String perspectives, String other) {}
+    public void writePerformance(String abilities, String strengths, String development, String perspectives,
+                                 String other) {}
     public void startPanel() {}
     public List<JSlider> createSliders(){
         return null;
