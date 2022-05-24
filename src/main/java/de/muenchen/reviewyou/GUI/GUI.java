@@ -36,6 +36,11 @@ public class GUI {
     private SpringLayout layout2 = new SpringLayout();
     private SpringLayout layout3 = new SpringLayout();
 
+    //Getter
+    public JPanel getPanel() {
+        return panel;
+    }
+
     //constructor
 
     public GUI() {
@@ -234,6 +239,23 @@ public class GUI {
     private JLabel headline;
     LocalDate today = LocalDate.now();
 
+    //Getter
+    public JTextField getInstructorName() {
+        return instructorName;
+    }
+
+    public JTextField getInstructorEmail() {
+        return instructorEmail;
+    }
+
+    public JTextField getCurrentDate() {
+        return currentDate;
+    }
+
+    public JTextField getInstructorTelephone() {
+        return instructorTelephone;
+    }
+
     // second page
 
     public void startPanel() {
@@ -338,6 +360,47 @@ public class GUI {
     private JTextField txtTraineeYear = new JTextField(7);
     private JLabel course = new JLabel("Kurs:");
     private JTextField txtCourse = new JTextField(7);
+
+    //Getter
+    public JTextField getTxtTraineeName() {
+        return txtTraineeName;
+    }
+
+    public  JTextField getTxtBirthDate() {
+        return txtBirthDate;
+    }
+
+    public JTextField getTxtApartmentStreet() {
+        return txtApartmentStreet;
+    }
+
+    public JTextField getTxtTraineeYear() {
+        return txtTraineeYear;
+    }
+
+    public JTextField getTxtCourse() {
+        return txtCourse;
+    }
+
+    public JTextField getTxtTrainingArea() {
+        return txtTrainingArea;
+    }
+
+    public JTextField getTxtSessions() {
+        return txtSessions;
+    }
+
+    public JTextField getTxtTrainingsPlan() {
+        return txtTrainingsPlan;
+    }
+
+    public JTextField getTxtInterimTalk() {
+        return txtInterimTalk;
+    }
+
+    public JTextField getTxtInternshipSelection() {
+        return  txtInternshipSelection;
+    }
 
     UtilDateModel model = new UtilDateModel();
     Properties p = new Properties();
@@ -519,6 +582,11 @@ public class GUI {
     Insets headlineInsets = new Insets(0,0,200,0);
     Insets sliderInsets = new Insets(-60, 0, 70, 0);
     private List<JSlider> jSliders = createSliders();
+
+    //Getter
+    public List<JSlider> getjSliders() {
+        return jSliders;
+    }
 
     // third Page
 
@@ -879,6 +947,10 @@ public class GUI {
 
     // elements fpr eight Page
 
+
+
+
+
     JButton calc = new JButton("Berechnen");
     JButton saveAndNew = new JButton("Speichern und neuer Leistungsbericht");
     JButton saveAndExit = new JButton("Speichern und Schließen");
@@ -887,6 +959,32 @@ public class GUI {
     JLabel review = new JLabel("Gesamturteil:");
     JLabel txtPoints = new JLabel();
     JLabel txtReview = new JLabel();
+
+    //Getter
+    public JButton getCalc() {
+        return calc;
+    }
+
+    public JButton getSaveAndNew() {
+        return saveAndNew;
+    }
+
+    public JButton getSaveAndExit() {
+        return saveAndExit;
+    }
+
+    public JLabel getTxtPoints() {
+        return txtPoints;
+    }
+
+    public JLabel getTxtReview() {
+        return txtReview;
+    }
+
+    public JPanel getPanel1() {
+        return panel1;
+    }
+
 
     // eight Page
 

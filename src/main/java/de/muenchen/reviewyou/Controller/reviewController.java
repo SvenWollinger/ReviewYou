@@ -1,146 +1,115 @@
 package de.muenchen.reviewyou.Controller;
 
+import de.muenchen.reviewyou.GUI.GUI;
+import de.muenchen.reviewyou.excelhandler.ExcelHandler;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
 
 public class reviewController {
-    //Dummies
-    JButton calc = new JButton();
-    JButton saveAndNew = new JButton();
-    JButton saveAndExit = new JButton();
-    JPanel panel = new JPanel();
-    JPanel panel1 = new JPanel();
-    JTextField instructorName = new JTextField();
-    JTextField instructorTelephone = new JTextField();
-    JTextField currentDate = new JTextField();
-    JTextField instructorEmail = new JTextField();
-    JTextField txtTraineeName = new JTextField();
-    JTextField txtBirthDate = new JTextField();
-    JTextField txtApartmentStreet = new JTextField();
-    JTextField txtTraineeYear = new JTextField();
-    JTextField txtCourse = new JTextField();
-    JTextField txtFrom = new JTextField();
-    JTextField txtTill = new JTextField();
-    JTextField txtIntershipSelection = new JTextField();
-    JTextField txtTrainingArea = new JTextField();
-    JTextField txtSessions = new JTextField();
-    JTextField txtTrainingsPlan = new JTextField();
-    JTextField txtInternimTalk = new JTextField();
-    JTextArea abilities = new JTextArea();
-    JTextArea strength = new JTextArea();
-    JTextArea developements = new JTextArea();
-    JTextArea perspective = new JTextArea();
-    JTextArea others = new JTextArea();
-    JLabel jLabelTotal = new JLabel();
-    JLabel jLabelAverage = new JLabel();
-    private List<JSlider> jSliders = createSliders();
+    GUI gui; //Now everything out of scope can take this
 
-    public reviewController() {
-
+    public reviewController(ExcelHandler excelHandler, GUI gui) {
+        this.gui = gui;
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 traineeRating traineeRating = new traineeRating();
 
                 //Give values to Excel-Group
-                writeInstructorData(instructorName.getText(), instructorTelephone.getText(), currentDate.getText(),
-                        instructorEmail.getText());
-                writeStudentData(txtTraineeName.getText(), txtBirthDate.getText(), txtApartmentStreet.getText(),
-                        txtTraineeYear.getText(), txtCourse.getText());
-                writeAllocationPeriod(txtFrom.getText(), txtTill.getText(), txtIntershipSelection.getText());
-                writeTrainingAreaAndPeriod(txtTrainingArea.getText());
-                writeParticipations(txtSessions.getText());
-                writeDates(txtTrainingsPlan.getText(), txtInternimTalk.getText());
-                writePerformance(traineeRating.abilities(), traineeRating.strength(), traineeRating.developments(),
-                        traineeRating.perspective(), traineeRating.others());
-                writeTotalandAverage(jLabelTotal.getText(), jLabelAverage.getText());
+                try{
+                    excelHandler.writeInstructorData(gui.getInstructorName().getText(),
+                            gui.getInstructorTelephone().getText(), gui.getCurrentDate().getText()); //TODO: Missing "E-Mail"
+                    excelHandler.writeStudentData(gui.getTxtTraineeName().getText(), gui.getTxtBirthDate().getText(),
+                            gui.getTxtApartmentStreet().getText(), gui.getTxtTraineeYear().getText(),
+                            gui.getTxtCourse().getText());
+                    //excelHandler.writeAllocationPeriod(txtFrom.getText(), txtTill.getText(),
+                    // gui.getTxtInternshipSelection().getText()); //TODO: Ask GUI-Group
+                    excelHandler.writeTrainingAreaAndPeriod(gui.getTxtTrainingArea().getText());
+                    excelHandler.writeParticipations(gui.getTxtSessions().getText());
+                    excelHandler.writeDates(gui.getTxtTrainingsPlan().getText(), gui.getTxtInterimTalk().getText());
+                    excelHandler.writePerformance(traineeRating.abilities(), traineeRating.strength(),
+                            traineeRating.developments(), traineeRating.perspective(), traineeRating.others());
+                    excelHandler.writeTotalandAverage(gui.getTxtPoints().getText(), gui.getTxtReview().getText());
+                } catch (IOException ioException) {
+                    System.out.println("Error in SQL!" + ioException.getMessage());
+                }
 
-                if (e.getSource().equals(saveAndNew)) {
+                if (e.getSource().equals(gui.getSaveAndNew())) { //"Speichern und neuer Leistungsbericht" button
                     for(int i = 0; i < 19; i++) {
                         //Reset every slider
-                        jSliders.get(i).setValue(jSliders.get(i).getMinimum());
+                        gui.getjSliders().get(i).setValue(gui.getjSliders().get(i).getMinimum());
                     }
 
                     //Clear text
                     String placeholder = "";
-                    txtTraineeName.setText(placeholder);
-                    txtBirthDate.setText(placeholder);
-                    txtApartmentStreet.setText(placeholder);
+                    gui.getTxtTraineeName().setText(placeholder);
+                    gui.getTxtBirthDate().setText(placeholder);
+                    gui.getTxtApartmentStreet().setText(placeholder);
 
                     //Go to page 1
-                    panel1.removeAll();
-                    panel1.revalidate();
-                    panel1.repaint();
-                    panel.removeAll();
-                    panel.revalidate();
-                    panel.repaint();
-                    startPanel();
+                    gui.getPanel1().removeAll();
+                    gui.getPanel().revalidate();
+                    gui.getPanel1().repaint();
+                    gui.getPanel().removeAll();
+                    gui.getPanel().revalidate();
+                    gui.getPanel().repaint();
+                    gui.startPanel();
 
-                } else if (e.getSource().equals(saveAndExit)) {
+                } else if (e.getSource().equals(gui.getSaveAndExit())) { //"Speichern und Schließen" button
                     System.exit(0);
                 }
             }
         };
 
+        //Add both buttons to ActionListener
+        gui.getSaveAndNew().addActionListener(actionListenerSafeData);
+        gui.getSaveAndExit().addActionListener(actionListenerSafeData);
 
         //Calculate-button
-        ActionListener actionListenerCalculate = new ActionListener() {
+        gui.getCalc().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jLabelTotal.setText(String.valueOf(calculateTotalPoints()));
-                jLabelAverage.setText(calculateAverage());
+                gui.getTxtPoints().setText(String.valueOf(calculateAveragePoints(gui)));
+                gui.getTxtReview().setText(calculateAverage(gui));
             }
-        };
-
-
-        //Dummies for add jButton to actionListener
-        saveAndNew.addActionListener(actionListenerSafeData);
-        saveAndExit.addActionListener(actionListenerSafeData);
-        calc.addActionListener(actionListenerSafeData);
+        });
     }
 
-    public void textForTraineeRating(traineeRating traineeRating) { //TODO: Ask Excel how they did it
+
+    
+    public String calculateAverage(GUI gui) {
+        String average = "";
+        for(int i = 0; i < calculateAveragePoints(gui); i++) {
+            if(calculateAveragePoints(gui) <= 15 && calculateAveragePoints(gui) >= 6) {
+                average = "Geeignet";
+            } else if(calculateAveragePoints(gui) <= 5.99 && calculateAveragePoints(gui) >= 3) {
+                average = "Noch nicht geeignet";
+            } else if(calculateAveragePoints(gui) <= 2.99 && calculateAveragePoints(gui) >= 0) {
+                average = "Nicht geeignet";
+            }
+        }
+        return average;
+    }
+
+    public double calculateAveragePoints(GUI gui) {
+        int totalPoints = 0;
+        double averagePoints = 0;
+        for(int i = 0; i < 19; i++) {
+            totalPoints = totalPoints + gui.getjSliders().get(i).getValue();
+        }
+        averagePoints = totalPoints / 19;
+        return averagePoints;
+    }
+
+    /*public void textForTraineeRating(traineeRating traineeRating) { //TODO: Ask Excel how they did it
         abilities.setText(traineeRating.abilities());
         strength.setText(traineeRating.strength());
         developements.setText(traineeRating.developments());
         perspective.setText(traineeRating.perspective());
         others.setText(traineeRating.others());
-    }
-
-    public String calculateAverage() {
-        String average = "";
-        for(int i = 0; i < calculateTotalPoints(); i++) {
-            if(calculateTotalPoints() < 100 && calculateTotalPoints() > 90) {
-                average = "xxx";
-            }
-        }
-
-        //TODO: Output a text based on the values from sliders
-        return average;
-    }
-
-    public int calculateTotalPoints() {
-        int totalPoints = 0;
-        for(int i = 0; i < 19; i++) {
-            totalPoints = totalPoints + jSliders.get(i).getValue();
-        }
-        return totalPoints;
-    }
-
-    //Dummies
-    public void writeInstructorData(String name, String telephone, String date, String eMail) {}
-    public void writeStudentData(String name, String birthdate, String address, String year, String course) {}
-    public void writeAllocationPeriod(String from, String to, String internshipSection) {}
-    public void writeTrainingAreaAndPeriod(String text) {}
-    public void writeParticipations(String coursesEtc) {}
-    public void writeDates(String trainingPlan, String interimTalk) {}
-    public void writeTotalandAverage(String total, String average) {}
-    public void writePerformance(String abilities, String strengths, String development, String perspectives,
-                                 String other) {}
-    public void startPanel() {}
-    public List<JSlider> createSliders(){
-        return null;
-    }
+    }*/
 }
