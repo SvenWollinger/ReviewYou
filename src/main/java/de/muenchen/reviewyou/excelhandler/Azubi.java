@@ -22,8 +22,16 @@ public class Azubi {
       this.allocationPeriodTo = allocationPeriodTo;
    }
 
-
-
-
-
+   @Override
+   public String toString() {
+      return "Azubi{" +
+            "name='" + name + '\'' +
+            ", birthday=" + birthday +
+            ", address='" + address + '\'' +
+            ", year=" + year +
+            ", course='" + course + '\'' +
+            ", allocationPeriodFrom=" + allocationPeriodFrom +
+            ", allocationPeriodTo=" + allocationPeriodTo +
+            '}';
+   }
 }

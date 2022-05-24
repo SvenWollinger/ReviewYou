@@ -19,12 +19,11 @@ public class AzubiGenerator {
    FileInputStream fis;
    XSSFWorkbook xssfWorkbook;
    XSSFSheet xssfSheet;
-   InputStream is = ClassLoader.getSystemResourceAsStream("AzubiDaten.xlsx");
-   File file = new File("src/main/resources/AzubiDaten.xlsx");
 
 
-   public List<Azubi> getAzubiList() throws IOException {
 
+   public List<Azubi> getAzubiList(String excelPath) throws IOException {
+      File file = new File(excelPath);
       if(fis == null || xssfWorkbook == null ||xssfSheet == null) {
          fis = new FileInputStream(file);
          xssfWorkbook = new XSSFWorkbook(fis);
@@ -32,7 +31,7 @@ public class AzubiGenerator {
       }
       int lastRow = xssfSheet.getLastRowNum();
       List<Azubi> list = new ArrayList<>();
-      for (int i = 1; i < lastRow; i++) {
+      for (int i = 1; i <= lastRow; i++) {
          Row row = xssfSheet.getRow(i);
          list.add(new Azubi(
                row.getCell(0).getStringCellValue(),
@@ -42,7 +41,9 @@ public class AzubiGenerator {
                row.getCell(4).getStringCellValue(),
                row.getCell(5).getLocalDateTimeCellValue().toLocalDate(),
                row.getCell(6).getLocalDateTimeCellValue().toLocalDate()));
+         System.out.println(row.getCell(0).getStringCellValue());
       }
+
       return list;
    }
 

@@ -6,8 +6,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        System.out.println("Hello world!");
-        System.out.println("Hi");
         ExcelHandler excelHandler = new ExcelHandler();
         ExcelDatabaseHandler excelDatabaseHandler = ExcelDatabaseHandler.getInstance();
         AzubiGenerator azubiGenerator = new AzubiGenerator();
@@ -26,7 +24,7 @@ public class Main {
         //System.out.println(excelDatabaseHandler.createRecListFromExcel());
         //excelHandler.copyFinalFile("hallo");
 
-        System.out.println(azubiGenerator.getAzubiList());
+        System.out.println(azubiGenerator.getAzubiList("src/main/resources/AzubiDaten.xlsx"));
 
     }
 }
