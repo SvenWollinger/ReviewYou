@@ -1,4 +1,4 @@
-package de.muenchen.reviewyou;
+package de.muenchen.reviewyou.GUI;
 
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;

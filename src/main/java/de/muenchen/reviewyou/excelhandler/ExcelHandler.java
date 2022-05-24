@@ -29,12 +29,23 @@ public class ExcelHandler {
             xssfWorkbook = new XSSFWorkbook(fis);
             xssfSheet = xssfWorkbook.getSheet("Leistungsbericht");
         }
-                Cell cell = xssfSheet.getRow(rownumber).getCell(columnnumber);
-                cell.setCellValue(text);
-                fis.close();
-                FileOutputStream outputStream = new FileOutputStream(myFile.getName());
-                xssfWorkbook.write(outputStream);
-                outputStream.close();
+        Cell cell = xssfSheet.getRow(rownumber).getCell(columnnumber);
+        cell.setCellValue(text);
+        fis.close();
+        FileOutputStream outputStream = new FileOutputStream(myFile.getName());
+        xssfWorkbook.write(outputStream);
+        outputStream.close();
+    }
+
+    public void copyFinalFile(String fileName) throws IOException {
+        File clonedWb = new File(fileName+".xlsx");
+        Files.copy(myFile.toPath(), clonedWb.toPath());
+    }
+
+    public void writeInstructorData(String name, String telephone, String date) throws IOException {
+        writeCell(3, 0, date);
+        writeCell(0, 3, name);
+        writeCell(3, 1, telephone);
     }
 
     public void writeStudentData(String name, String birthdate, String address, String year, String course) throws IOException {
@@ -79,7 +90,7 @@ public class ExcelHandler {
 
     public void writePoints(int row, int points) throws IOException {
         writeCell(19-points,row,"X");
-        }
     }
+}
 
 

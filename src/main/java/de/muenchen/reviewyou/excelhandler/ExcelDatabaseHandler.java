@@ -19,7 +19,6 @@ public class ExcelDatabaseHandler {
     XSSFSheet xssfSheet;
 
 
-    private int[][] grades = new int[15][19];
     private static ExcelDatabaseHandler excelDatabaseHandler;
 
     static {
@@ -70,59 +69,18 @@ public class ExcelDatabaseHandler {
         List<AnswerSuggestionModel> list = new ArrayList<>();
         for (int i = 1; i < lastRow; i++) {
             Row row = xssfSheet.getRow(i);
-            list.add(new AnswerSuggestionModel(row.getCell(0).getNumericCellValue(),row.getCell(1).getNumericCellValue(),row.getCell(2).getStringCellValue()));
-            System.out.println(row.getCell(0).getNumericCellValue());
+            list.add(new AnswerSuggestionModel(
+                  row.getCell(0).getNumericCellValue(),
+                  row.getCell(1).getNumericCellValue(),
+                  row.getCell(2).getStringCellValue()));
         }
         return list;
     }
 
 
-
-
-
-
-
-
-
-/*    private ArrayList<String> possiblesForGerman;
-    private ArrayList<String> possiblesForIt;
-    private ArrayList<String> possiblesForInterest;
-    private ArrayList<String> possiblesForAnalyticalThinking;
-    private ArrayList<String> possiblesForConnectedThinking;
-    private ArrayList<String> possiblesForCommunication;
-    private ArrayList<String> possiblesForContacts;
-    private ArrayList<String> possiblesForEmpathy;
-    private ArrayList<String> possiblesForNotRacist;
-    private ArrayList<String> possiblesForOpeness;
-    private ArrayList<String> possiblesForIntegrity;
-    private ArrayList<String> possiblesForMotivation;
-    private ArrayList<String> possiblesForStressTolerance;
-    private ArrayList<String> possiblesForIdentification;
-    private ArrayList<String> possiblesForIndependence;
-    private ArrayList<String> possiblesForCrtics;*/
-
-
-    private String[][] irgendwas;
-
     //TODO ARRAY IDENTIFIER 1 WHICH QUESTION ?? SO 0-18
     //TODO ARRAY IDENTIFIER 2 WHICH GRADE?? 0-5
     //TODO ARRAY MESSAGE STRINGS
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public void setGrade(int i, int j, int grade) {
-        this.grades[i][j] = grade;
-
-    }
 }
+

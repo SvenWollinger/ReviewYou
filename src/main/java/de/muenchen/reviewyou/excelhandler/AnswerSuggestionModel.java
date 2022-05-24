@@ -23,9 +23,9 @@ public class AnswerSuggestionModel {
                 specificList.add(list.get(i));
             }
         }
-    return specificList;
+        return specificList;
     }
-    
+
 
     public double getId1() {
         return id1;
@@ -47,4 +47,10 @@ public class AnswerSuggestionModel {
                 ", recommendend='" + recommendend + '\'' +
                 '}';
     }
+
+    public String getRecommended(){
+        return this.recommendend;
+    }
+
+
 }
