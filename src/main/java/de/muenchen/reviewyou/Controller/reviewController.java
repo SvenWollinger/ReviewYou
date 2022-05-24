@@ -1,10 +1,9 @@
 package de.muenchen.reviewyou.Controller;
 
-import de.muenchen.reviewyou.Main;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class reviewController {
     //Dummies
@@ -34,8 +33,9 @@ public class reviewController {
     JTextArea developements = new JTextArea();
     JTextArea perspective = new JTextArea();
     JTextArea others = new JTextArea();
-    JLabel txtTotal = new JLabel();
-    JLabel txtAverage = new JLabel();
+    JLabel jLabelTotal = new JLabel();
+    JLabel jLabelAverage = new JLabel();
+    private List<JSlider> jSliders = createSliders();
 
     public reviewController() {
 
@@ -44,6 +44,7 @@ public class reviewController {
             public void actionPerformed(ActionEvent e) {
                 traineeRating traineeRating = new traineeRating();
 
+                //Give values to Excel-Group
                 writeInstructorData(instructorName.getText(), instructorTelephone.getText(), currentDate.getText(), instructorEmail.getText());
                 writeStudentData(txtTraineeName.getText(), txtBirthDate.getText(), txtApartmentStreet.getText(),
                         txtTraineeYear.getText(), txtCourse.getText());
@@ -53,14 +54,15 @@ public class reviewController {
                 writeDates(txtTrainingsPlan.getText(), txtInternimTalk.getText());
                 writePerformance(traineeRating.abilities(), traineeRating.strength(), traineeRating.developments(),
                         traineeRating.perspective(), traineeRating.others());
-                writeTotalandAverage(calculateTotal(), calculateAverage());
-                txtTotal.setText(String.valueOf(calculateTotal()));
-                txtAverage.setText(calculateAverage());
+                writeTotalandAverage(jLabelTotal.getText(), jLabelAverage.getText());
+
                 if (e.getSource().equals(saveAndNew)) {
                     for(int i = 0; i < 19; i++) {
                         //Reset every slider
+                        jSliders.get(i).setValue(jSliders.get(i).getMaximum() / 2);
                     }
 
+                    //Clear text
                     String placeholder = "";
                     txtTraineeName.setText(placeholder);
                     txtBirthDate.setText(placeholder);
@@ -74,6 +76,7 @@ public class reviewController {
                     panel.revalidate();
                     panel.repaint();
                     startPanel();
+
                 } else if (e.getSource().equals(saveAndExit)) {
                     System.exit(0);
                 }
@@ -81,12 +84,12 @@ public class reviewController {
         };
 
 
+        //Calculate-button
         ActionListener actionListenerCalculate = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                calculateTotal();
-                calculateAverage();
-                //TODO: Tell GUI-Group that they don´t have JLabels for "calculatedPoints" and "overallRating"
+                jLabelTotal.setText(String.valueOf(calculateTotal()));
+                jLabelAverage.setText(calculateAverage());
             }
         };
 
@@ -108,7 +111,7 @@ public class reviewController {
     public int calculateTotal() {
         int totalPoints = 0;
         for(int i = 0; i < 19; i++) {
-            totalPoints = totalPoints; // + JSlider[i]; TODO: get JSlider int
+            totalPoints = totalPoints + jSliders.get(i).getValue();
         }
         return totalPoints;
     }
@@ -117,9 +120,9 @@ public class reviewController {
         String average = "";
         int totalPoints = 0;
         for(int i = 0; i < 19; i++) {
-            totalPoints = totalPoints; // + JSlider[i]; TODO: get JSlider int
+            totalPoints = totalPoints + jSliders.get(i).getValue();
         }
-        //TODO: A text is output based on the values of the sliders
+        //TODO: Output a text based on the values from sliders
         return average;
     }
 
@@ -130,7 +133,10 @@ public class reviewController {
     public void writeTrainingAreaAndPeriod(String text) {}
     public void writeParticipations(String coursesEtc) {}
     public void writeDates(String trainingPlan, String interimTalk) {}
-    public void writeTotalandAverage(int total, String average) {} //TODO: Tell Excel that i changed String to int
+    public void writeTotalandAverage(String total, String average) {}
     public void writePerformance(String abilities, String strengths, String development, String perspectives, String other) {}
     public void startPanel() {}
+    public List<JSlider> createSliders(){
+        return null;
+    }
 }
