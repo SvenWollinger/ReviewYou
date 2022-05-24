@@ -1,6 +1,7 @@
 package de.muenchen.reviewyou.excelhandler;
 
 import java.io.IOException;
+import java.util.List;
 
 
 public class Main {
@@ -9,6 +10,7 @@ public class Main {
         System.out.println("Hi");
         ExcelHandler excelHandler = new ExcelHandler();
         ExcelDatabaseHandler excelDatabaseHandler = ExcelDatabaseHandler.getInstance();
+        AzubiGenerator azubiGenerator = new AzubiGenerator();
 
 
 /*      excelHandler.writeStudentData("Baumann Leonhard", "30.04.1998", "Geheim", "1", "Schnitzel");
@@ -20,8 +22,11 @@ public class Main {
         excelHandler.writePoints(133, 10);
         excelHandler.writeTotalandAverage("Geeignet", "13");*/
 
-        excelDatabaseHandler.addRecommendation(5, 7,"Kann Gut Deutsch");
-        System.out.println(excelDatabaseHandler.createRecListFromExcel());
-        excelHandler.copyFinalFile("hallo");
+        //excelDatabaseHandler.addRecommendation(5, 7,"Kann Gut Deutsch");
+        //System.out.println(excelDatabaseHandler.createRecListFromExcel());
+        //excelHandler.copyFinalFile("hallo");
+
+        System.out.println(azubiGenerator.getAzubiList());
+
     }
 }

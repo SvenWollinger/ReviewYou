@@ -19,11 +19,12 @@ public class AzubiGenerator {
    FileInputStream fis;
    XSSFWorkbook xssfWorkbook;
    XSSFSheet xssfSheet;
+   InputStream is = ClassLoader.getSystemResourceAsStream("C:\\Users\\Kai Tauwald\\Documents\\GitHub\\ReviewYou\\resources\\AzubiDaten.xlsm");
+   File file = new File("C:\\Users\\Kai Tauwald\\Documents\\GitHub\\ReviewYou\\resources\\AzubiDaten.xlsm");
 
 
-   public List<Azubi> getAzubiList(String excelSheetPath) throws IOException {
-      File file = new File(excelSheetPath);
-      InputStream is = ClassLoader.getSystemResourceAsStream(excelSheetPath);
+   public List<Azubi> getAzubiList() throws IOException {
+
       if(fis == null || xssfWorkbook == null ||xssfSheet == null) {
          fis = new FileInputStream(file);
          xssfWorkbook = new XSSFWorkbook(fis);
