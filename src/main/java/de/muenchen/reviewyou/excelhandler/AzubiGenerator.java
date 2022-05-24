@@ -19,8 +19,8 @@ public class AzubiGenerator {
    FileInputStream fis;
    XSSFWorkbook xssfWorkbook;
    XSSFSheet xssfSheet;
-   InputStream is = ClassLoader.getSystemResourceAsStream("C:\\Users\\Kai Tauwald\\Documents\\GitHub\\ReviewYou\\resources\\AzubiDaten.xlsm");
-   File file = new File("C:\\Users\\Kai Tauwald\\Documents\\GitHub\\ReviewYou\\resources\\AzubiDaten.xlsm");
+   InputStream is = ClassLoader.getSystemResourceAsStream("AzubiDaten.xlsx");
+   File file = new File("src/main/resources/AzubiDaten.xlsx");
 
 
    public List<Azubi> getAzubiList() throws IOException {
@@ -28,7 +28,7 @@ public class AzubiGenerator {
       if(fis == null || xssfWorkbook == null ||xssfSheet == null) {
          fis = new FileInputStream(file);
          xssfWorkbook = new XSSFWorkbook(fis);
-         xssfSheet = xssfWorkbook.getSheetAt(1);
+         xssfSheet = xssfWorkbook.getSheetAt(0);
       }
       int lastRow = xssfSheet.getLastRowNum();
       List<Azubi> list = new ArrayList<>();
