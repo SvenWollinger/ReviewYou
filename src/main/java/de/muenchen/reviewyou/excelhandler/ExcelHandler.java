@@ -11,10 +11,11 @@ import java.nio.file.StandardCopyOption;
 
 public class ExcelHandler {
 
-    File myFile = new File("FinalFile.xlsx");
-    FileInputStream fis;
-    XSSFWorkbook xssfWorkbook;
-    XSSFSheet xssfSheet;
+    private final File myFile = new File("FinalFile.xlsx");
+    private FileInputStream fis;
+    private XSSFWorkbook xssfWorkbook;
+    private XSSFSheet xssfSheet;
+
 
 
     public ExcelHandler() throws IOException {
