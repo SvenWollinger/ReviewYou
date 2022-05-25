@@ -2,12 +2,9 @@ package de.muenchen.reviewyou.Controller;
 
 import de.muenchen.reviewyou.GUI.GUI;
 import de.muenchen.reviewyou.excelhandler.ExcelHandler;
-
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.List;
 
 public class reviewController {
     GUI gui; //Now everything out of scope can take this
@@ -22,7 +19,7 @@ public class reviewController {
                 //Give values to Excel-Group
                 try{
                     excelHandler.writeInstructorData(gui.getInstructorName().getText(),
-                            gui.getInstructorTelephone().getText(), gui.getCurrentDate().getText()); //TODO: Missing "E-Mail"
+                            gui.getInstructorTelephone().getText(), gui.getCurrentDate().getText(), gui.getInstructorEmail().getText());
                     excelHandler.writeStudentData(gui.getTxtTraineeName().getText(), gui.getTxtBirthDate().getText(),
                             gui.getTxtApartmentStreet().getText(), gui.getTxtTraineeYear().getText(),
                             gui.getTxtCourse().getText());
@@ -35,7 +32,7 @@ public class reviewController {
                     excelHandler.writePerformance(traineeRating.abilities(), traineeRating.strength(),
                             traineeRating.developments(), traineeRating.perspective(), traineeRating.others());
                     excelHandler.writeTotalandAverage(gui.getTxtPoints().getText(), gui.getTxtReview().getText());
-                    //excelHandler.writePoints(xxx, gui.getTxtPoints().getText()); //TODO: Write it
+                    excelHandler.writePoints(0, Integer.parseInt(gui.getTxtPoints().getText()));
                 } catch (IOException ioException) {
                     System.out.println("Error in SQL!" + ioException.getMessage());
                 }
@@ -72,8 +69,6 @@ public class reviewController {
             }
         });
     }
-
-
 
     public String calculateAverage(GUI gui) {
         String average = "";
