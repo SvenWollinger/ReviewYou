@@ -798,6 +798,46 @@ public class GUI {
     private Dimension preferedSize = new Dimension(600, 50);
     private Dimension maximumSize = new Dimension(600, 70);
 
+    public JTextArea getAbilities() {
+        return abilities;
+    }
+
+    public JTextArea getStrength() {
+        return strength;
+    }
+
+    public JTextArea getDevelopements() {
+        return developements;
+    }
+
+    public JTextArea getPerspective() {
+        return perspective;
+    }
+
+    public JTextArea getOthers() {
+        return others;
+    }
+
+    public void setAbilities(JTextArea abilities) {
+        this.abilities = abilities;
+    }
+
+    public void setStrength(JTextArea strength) {
+        this.strength = strength;
+    }
+
+    public void setDevelopements(JTextArea developements) {
+        this.developements = developements;
+    }
+
+    public void setPerspective(JTextArea perspective) {
+        this.perspective = perspective;
+    }
+
+    public void setOthers(JTextArea others) {
+        this.others = others;
+    }
+
     // CREATE SEVENTH PAGE
 
     public void seventhPanel() {
