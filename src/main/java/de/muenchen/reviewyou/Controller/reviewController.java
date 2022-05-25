@@ -19,8 +19,9 @@ public class reviewController {
                 //Give values to Excel-Group
                 try{
                     excelHandler.writeInstructorData(gui.getInstructorName().getText(),
-                            gui.getInstructorTelephone().getText(), gui.getCurrentDate().getText(),
+                            gui.getInstructorTelephone().getText(), gui.getTxtdate().getText(),
                             gui.getInstructorEmail().getText());
+                    System.out.println(gui.getTxtdate().getText());
                     excelHandler.writeStudentData(gui.getTxtTraineeName().getText(), gui.getTxtBirthDate().getText(),
                             gui.getTxtApartmentStreet().getText(), gui.getTxtTraineeYear().getText(),
                             gui.getTxtCourse().getText());

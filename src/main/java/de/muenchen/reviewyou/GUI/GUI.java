@@ -999,6 +999,8 @@ public class GUI {
         return panel1;
     }
 
+    public JTextField getTxtdate(){return txtdate;}
+
 
     // eight Page
 
