@@ -57,6 +57,7 @@ public class GUI {
         next.setPreferredSize(new Dimension(80, 30));
         previous.setPreferredSize(new Dimension(80, 30));
         moreInfo.setPreferredSize(new Dimension(80, 30));
+        btnTraineedata.setPreferredSize(new Dimension(100,30));
 
         // set nextButton
 
