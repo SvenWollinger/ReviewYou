@@ -32,7 +32,15 @@ public class reviewController {
                     excelHandler.writePerformance(traineeRating.abilities(), traineeRating.strength(),
                             traineeRating.developments(), traineeRating.perspective(), traineeRating.others());
                     excelHandler.writeTotalandAverage(gui.getTxtPoints().getText(), gui.getTxtReview().getText());
-                    excelHandler.writePoints(0, Integer.parseInt(gui.getTxtPoints().getText()));
+
+                    //Get every value and give them to excel
+                    int pointsFromSliders = 0;
+                    int row = 137;
+                    for(int i = 0; i < 19; i++) {
+                        pointsFromSliders = gui.getjSliders().get(i).getValue();
+                        excelHandler.writePoints(row, pointsFromSliders);
+                        row = row + 2;
+                    }
                 } catch (IOException ioException) {
                     System.out.println("Error in SQL!" + ioException.getMessage());
                 }
