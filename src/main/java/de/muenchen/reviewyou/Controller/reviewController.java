@@ -52,15 +52,7 @@ public class reviewController {
                     gui.getTxtBirthDate().setText(placeholder);
                     gui.getTxtApartmentStreet().setText(placeholder);
 
-                    //Go to page 1
-                    gui.getPanel1().removeAll();
-                    gui.getPanel().revalidate();
-                    gui.getPanel1().repaint();
-                    gui.getPanel().removeAll();
-                    gui.getPanel().revalidate();
-                    gui.getPanel().repaint();
-                    gui.startPanel();
-
+                    gui.goToFirstPanel();
                 } else if (e.getSource().equals(gui.getSaveAndExit())) { //"Speichern und Schließen" button
                     System.exit(0);
                 }
@@ -82,7 +74,7 @@ public class reviewController {
     }
 
 
-    
+
     public String calculateAverage(GUI gui) {
         String average = "";
         for(int i = 0; i < calculateAveragePoints(gui); i++) {

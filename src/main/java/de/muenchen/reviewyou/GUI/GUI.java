@@ -36,11 +36,6 @@ public class GUI {
     private SpringLayout layout2 = new SpringLayout();
     private SpringLayout layout3 = new SpringLayout();
 
-    //Getter
-    public JPanel getPanel() {
-        return panel;
-    }
-
     //constructor
 
     public GUI() {
@@ -225,6 +220,16 @@ public class GUI {
 
     }
 
+    public void goToFirstPanel() {
+        panel.removeAll();
+        panel.revalidate();
+        panel.repaint();
+        previous.setVisible(false);
+        btnTraineedata.setVisible(false);
+        next.setVisible(true);
+        startPanel();
+    }
+    
     // First page to get user data
 
     private JLabel name = new JLabel("Name");
@@ -410,6 +415,15 @@ public class GUI {
     UtilDateModel model1 = new UtilDateModel();
     JDatePanelImpl datePanel1 = new JDatePanelImpl(model1,p);
     JDatePickerImpl txtTill = new JDatePickerImpl(datePanel1,new DateLabelFormatter());
+
+    //Getter
+    public JDatePickerImpl getTxtFrom() {
+        return txtFrom;
+    }
+
+    public JDatePickerImpl getTxtTill() {
+        return txtTill;
+    }
 
     // second Page
 
