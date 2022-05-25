@@ -219,6 +219,18 @@ public class GUI {
             }
         });
 
+        saveAndNew.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                panel.removeAll();
+                panel.revalidate();
+                panel.repaint();
+                next.setVisible(true);
+                previous.setVisible(false);
+                startPanel();
+            }
+        });
+
     }
 
     // First page to get user data
