@@ -19,7 +19,8 @@ public class reviewController {
                 //Give values to Excel-Group
                 try{
                     excelHandler.writeInstructorData(gui.getInstructorName().getText(),
-                            gui.getInstructorTelephone().getText(), gui.getCurrentDate().getText(), gui.getInstructorEmail().getText());
+                            gui.getInstructorTelephone().getText(), gui.getCurrentDate().getText(),
+                            gui.getInstructorEmail().getText());
                     excelHandler.writeStudentData(gui.getTxtTraineeName().getText(), gui.getTxtBirthDate().getText(),
                             gui.getTxtApartmentStreet().getText(), gui.getTxtTraineeYear().getText(),
                             gui.getTxtCourse().getText());
@@ -33,6 +34,7 @@ public class reviewController {
                             traineeRating.developments(), traineeRating.perspective(), traineeRating.others());
                     excelHandler.writeTotalandAverage(gui.getTxtPoints().getText(), gui.getTxtReview().getText());
 
+                    /*
                     //Get every value and give them to excel
                     int pointsFromSliders = 0;
                     int row = 137;
@@ -41,6 +43,8 @@ public class reviewController {
                         excelHandler.writePoints(row, pointsFromSliders);
                         row = row + 2;
                     }
+
+                     */
                 } catch (IOException ioException) {
                     System.out.println("Error in SQL!" + ioException.getMessage());
                 }
