@@ -26,8 +26,9 @@ public class reviewController {
                     excelHandler.writeStudentData(gui.getTxtTraineeName().getText(), gui.getTxtBirthDate().getText(),
                             gui.getTxtApartmentStreet().getText(), gui.getTxtTraineeYear().getText(),
                             gui.getTxtCourse().getText());
-                    //excelHandler.writeAllocationPeriod(txtFrom.getText(), txtTill.getText(),
-                    // gui.getTxtInternshipSelection().getText()); //TODO: Ask GUI-Group
+                    excelHandler.writeAllocationPeriod(gui.getTxtFrom().getJFormattedTextField().getText(),
+                            gui.getTxtTill().getJFormattedTextField().getText(),
+                            gui.getTxtInternshipSelection().getText());
                     excelHandler.writeTrainingAreaAndPeriod(gui.getTxtTrainingArea().getText());
                     excelHandler.writeParticipations(gui.getTxtSessions().getText());
                     excelHandler.writeDates(gui.getTxtTrainingsPlan().getText(), gui.getTxtInterimTalk().getText());
