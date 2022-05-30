@@ -1077,12 +1077,12 @@ public class GUI {
     }
 
     // sliders
-
-    static final int minScore = 0;
-    static final int maxScore = 15;
-    static final int scoreInit = 0;
+    
 
     java.util.List<JSlider> createSliders(){
+        final int minScore = 0;
+        final int maxScore = 15;
+        final int scoreInit = 0;
         List<JSlider> sliders = new ArrayList<>();
         for (int i = 0; i < 19 ; i++) {
 
