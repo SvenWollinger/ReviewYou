@@ -5,6 +5,7 @@ import de.muenchen.reviewyou.excelhandler.ExcelHandler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class reviewController {
     GUI gui; //Now everything out of scope can take this
@@ -14,14 +15,11 @@ public class reviewController {
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                traineeRating traineeRating = new traineeRating();
-
                 //Give values to Excel-Group
                 try{
                     excelHandler.writeInstructorData(gui.getInstructorName().getText(),
                             gui.getInstructorTelephone().getText(), gui.getTxtdate().getText(),
                             gui.getInstructorEmail().getText());
-                    System.out.println(gui.getTxtdate().getText());
                     excelHandler.writeStudentData(gui.getTxtTraineeName().getText(), gui.getTxtBirthDate().getText(),
                             gui.getTxtApartmentStreet().getText(), gui.getTxtTraineeYear().getText(),
                             gui.getTxtCourse().getText());
@@ -31,21 +29,26 @@ public class reviewController {
                     excelHandler.writeTrainingAreaAndPeriod(gui.getTxtTrainingArea().getText());
                     excelHandler.writeParticipations(gui.getTxtSessions().getText());
                     excelHandler.writeDates(gui.getTxtTrainingsPlan().getText(), gui.getTxtInterimTalk().getText());
-                    excelHandler.writePerformance(traineeRating.abilities(), traineeRating.strength(),
-                            traineeRating.developments(), traineeRating.perspective(), traineeRating.others());
-                    excelHandler.writeTotalandAverage(gui.getTxtPoints().getText(), gui.getTxtReview().getText());
+                    //excelHandler.writePerformance();
+                    excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
 
-                    /*
                     //Get every value and give them to excel
                     int pointsFromSliders = 0;
-                    int row = 137;
+                    int row = 133;
                     for(int i = 0; i < 19; i++) {
                         pointsFromSliders = gui.getjSliders().get(i).getValue();
                         excelHandler.writePoints(row, pointsFromSliders);
-                        row = row + 2;
+                        row = row + 1;
+                        if(row == 136) {
+                            row = 139;
+                        }
+                        else if(row == 142) {
+                            row = 145;
+                        }
+                        else if(row == 151) {
+                            row = 154;
+                        }
                     }
-
-                     */
                 } catch (IOException ioException) {
                     System.out.println("Error in SQL!" + ioException.getMessage());
                 }
@@ -98,20 +101,20 @@ public class reviewController {
     }
 
     public double calculateAveragePoints(GUI gui) {
-        int totalPoints = 0;
+        double totalPoints = 0;
         double averagePoints = 0;
         for(int i = 0; i < 19; i++) {
             totalPoints = totalPoints + gui.getjSliders().get(i).getValue();
         }
         averagePoints = totalPoints / 19;
+        averagePoints = round(averagePoints, 2);
         return averagePoints;
     }
 
-    /*public void textForTraineeRating(traineeRating traineeRating) { //TODO: Ask Excel how they did it
-        abilities.setText(traineeRating.abilities());
-        strength.setText(traineeRating.strength());
-        developements.setText(traineeRating.developments());
-        perspective.setText(traineeRating.perspective());
-        others.setText(traineeRating.others());
-    }*/
+    public static double round(double value, int places) {
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
+    }
 }
