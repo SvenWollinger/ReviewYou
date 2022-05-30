@@ -31,7 +31,7 @@ public class reviewController {
                     excelHandler.writeDates(gui.getTxtTrainingsPlan().getText(), gui.getTxtInterimTalk().getText());
                     excelHandler.writePerformance(traineeRating.abilities(), traineeRating.strength(),
                             traineeRating.developments(), traineeRating.perspective(), traineeRating.others());
-                    excelHandler.writeTotalandAverage(gui.getTxtPoints().getText(), gui.getTxtReview().getText());
+                    excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
 
                     //Get every value and give them to excel
                     int pointsFromSliders = 0;
