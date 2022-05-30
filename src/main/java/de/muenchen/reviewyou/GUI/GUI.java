@@ -220,16 +220,6 @@ public class GUI {
 
     }
 
-    public void goToFirstPanel() {
-        panel.removeAll();
-        panel.revalidate();
-        panel.repaint();
-        previous.setVisible(false);
-        btnTraineedata.setVisible(false);
-        next.setVisible(true);
-        startPanel();
-    }
-    
     // First page to get user data
 
     private JLabel name = new JLabel("Name");
@@ -243,23 +233,6 @@ public class GUI {
     private JTextField txtdate = new JTextField(15);
     private JLabel headline;
     LocalDate today = LocalDate.now();
-
-    //Getter
-    public JTextField getInstructorName() {
-        return instructorName;
-    }
-
-    public JTextField getInstructorEmail() {
-        return instructorEmail;
-    }
-
-    public JTextField getCurrentDate() {
-        return currentDate;
-    }
-
-    public JTextField getInstructorTelephone() {
-        return instructorTelephone;
-    }
 
     // second page
 
@@ -366,47 +339,6 @@ public class GUI {
     private JLabel course = new JLabel("Kurs:");
     private JTextField txtCourse = new JTextField(7);
 
-    //Getter
-    public JTextField getTxtTraineeName() {
-        return txtTraineeName;
-    }
-
-    public  JTextField getTxtBirthDate() {
-        return txtBirthDate;
-    }
-
-    public JTextField getTxtApartmentStreet() {
-        return txtApartmentStreet;
-    }
-
-    public JTextField getTxtTraineeYear() {
-        return txtTraineeYear;
-    }
-
-    public JTextField getTxtCourse() {
-        return txtCourse;
-    }
-
-    public JTextField getTxtTrainingArea() {
-        return txtTrainingArea;
-    }
-
-    public JTextField getTxtSessions() {
-        return txtSessions;
-    }
-
-    public JTextField getTxtTrainingsPlan() {
-        return txtTrainingsPlan;
-    }
-
-    public JTextField getTxtInterimTalk() {
-        return txtInterimTalk;
-    }
-
-    public JTextField getTxtInternshipSelection() {
-        return  txtInternshipSelection;
-    }
-
     UtilDateModel model = new UtilDateModel();
     Properties p = new Properties();
     JDatePanelImpl datePanel = new JDatePanelImpl(model,p);
@@ -415,15 +347,6 @@ public class GUI {
     UtilDateModel model1 = new UtilDateModel();
     JDatePanelImpl datePanel1 = new JDatePanelImpl(model1,p);
     JDatePickerImpl txtTill = new JDatePickerImpl(datePanel1,new DateLabelFormatter());
-
-    //Getter
-    public JDatePickerImpl getTxtFrom() {
-        return txtFrom;
-    }
-
-    public JDatePickerImpl getTxtTill() {
-        return txtTill;
-    }
 
     // second Page
 
@@ -596,11 +519,6 @@ public class GUI {
     Insets headlineInsets = new Insets(0,0,200,0);
     Insets sliderInsets = new Insets(-60, 0, 70, 0);
     private List<JSlider> jSliders = createSliders();
-
-    //Getter
-    public List<JSlider> getjSliders() {
-        return jSliders;
-    }
 
     // third Page
 
@@ -961,10 +879,6 @@ public class GUI {
 
     // elements fpr eight Page
 
-
-
-
-
     JButton calc = new JButton("Berechnen");
     JButton saveAndNew = new JButton("Speichern und neuer Leistungsbericht");
     JButton saveAndExit = new JButton("Speichern und Schließen");
@@ -973,34 +887,6 @@ public class GUI {
     JLabel review = new JLabel("Gesamturteil:");
     JLabel txtPoints = new JLabel();
     JLabel txtReview = new JLabel();
-
-    //Getter
-    public JButton getCalc() {
-        return calc;
-    }
-
-    public JButton getSaveAndNew() {
-        return saveAndNew;
-    }
-
-    public JButton getSaveAndExit() {
-        return saveAndExit;
-    }
-
-    public JLabel getTxtPoints() {
-        return txtPoints;
-    }
-
-    public JLabel getTxtReview() {
-        return txtReview;
-    }
-
-    public JPanel getPanel1() {
-        return panel1;
-    }
-
-    public JTextField getTxtdate(){return txtdate;}
-
 
     // eight Page
 
