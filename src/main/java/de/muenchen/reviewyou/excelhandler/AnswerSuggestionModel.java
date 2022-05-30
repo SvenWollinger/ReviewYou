@@ -29,11 +29,11 @@ public class AnswerSuggestionModel {
 
     public double getId1() {
         return id1;
-    }
+    } //points
 
     public double getId2() {
         return id2;
-    }
+    } //question
 
     public String getRecommendend() {
         return recommendend;

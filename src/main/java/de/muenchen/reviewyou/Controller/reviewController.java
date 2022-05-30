@@ -14,7 +14,6 @@ public class reviewController {
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                traineeRating traineeRating = new traineeRating();
                 //Give values to Excel-Group
                 try{
                     excelHandler.writeInstructorData(gui.getInstructorName().getText(),
@@ -29,8 +28,7 @@ public class reviewController {
                     excelHandler.writeTrainingAreaAndPeriod(gui.getTxtTrainingArea().getText());
                     excelHandler.writeParticipations(gui.getTxtSessions().getText());
                     excelHandler.writeDates(gui.getTxtTrainingsPlan().getText(), gui.getTxtInterimTalk().getText());
-                    excelHandler.writePerformance(traineeRating.abilities(), traineeRating.strength(),
-                            traineeRating.developments(), traineeRating.perspective(), traineeRating.others());
+                    //excelHandler.writePerformance();
                     excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
 
                     //Get every value and give them to excel
@@ -110,12 +108,4 @@ public class reviewController {
         averagePoints = totalPoints / 19;
         return averagePoints;
     }
-
-    /*public void textForTraineeRating(traineeRating traineeRating) { //TODO: Ask Excel how they did it
-        abilities.setText(traineeRating.abilities());
-        strength.setText(traineeRating.strength());
-        developements.setText(traineeRating.developments());
-        perspective.setText(traineeRating.perspective());
-        others.setText(traineeRating.others());
-    }*/
 }
