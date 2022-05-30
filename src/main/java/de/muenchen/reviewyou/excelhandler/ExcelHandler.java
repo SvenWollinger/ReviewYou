@@ -11,11 +11,10 @@ import java.nio.file.StandardCopyOption;
 
 public class ExcelHandler {
 
-    private final File myFile = new File("FinalFile.xlsx");
-    private FileInputStream fis;
-    private XSSFWorkbook xssfWorkbook;
-    private XSSFSheet xssfSheet;
-
+    File myFile = new File("FinalFile.xlsx");
+    FileInputStream fis;
+    XSSFWorkbook xssfWorkbook;
+    XSSFSheet xssfSheet;
 
 
     public ExcelHandler() throws IOException {
@@ -43,11 +42,10 @@ public class ExcelHandler {
         Files.copy(myFile.toPath(), clonedWb.toPath());
     }
 
-    public void writeInstructorData(String name, String telephone, String date, String eMail) throws IOException {
+    public void writeInstructorData(String name, String telephone, String date) throws IOException {
         writeCell(3, 0, date);
         writeCell(0, 3, name);
         writeCell(3, 1, telephone);
-        writeCell(0,4, eMail);
     }
 
     public void writeStudentData(String name, String birthdate, String address, String year, String course) throws IOException {

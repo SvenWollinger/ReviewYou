@@ -57,6 +57,7 @@ public class GUI {
         next.setPreferredSize(new Dimension(80, 30));
         previous.setPreferredSize(new Dimension(80, 30));
         moreInfo.setPreferredSize(new Dimension(80, 30));
+        btnTraineedata.setPreferredSize(new Dimension(100,30));
 
         // set nextButton
 
@@ -220,16 +221,6 @@ public class GUI {
 
     }
 
-    public void goToFirstPanel() {
-        panel.removeAll();
-        panel.revalidate();
-        panel.repaint();
-        previous.setVisible(false);
-        btnTraineedata.setVisible(false);
-        next.setVisible(true);
-        startPanel();
-    }
-    
     // First page to get user data
 
     private JLabel name = new JLabel("Name");
@@ -242,24 +233,7 @@ public class GUI {
     private JTextField instructorTelephone = new JTextField(15);
     private JTextField txtdate = new JTextField(15);
     private JLabel headline;
-    LocalDate today = LocalDate.now();
-
-    //Getter
-    public JTextField getInstructorName() {
-        return instructorName;
-    }
-
-    public JTextField getInstructorEmail() {
-        return instructorEmail;
-    }
-
-    public JTextField getCurrentDate() {
-        return currentDate;
-    }
-
-    public JTextField getInstructorTelephone() {
-        return instructorTelephone;
-    }
+    private LocalDate today = LocalDate.now();
 
     // second page
 
@@ -366,64 +340,16 @@ public class GUI {
     private JLabel course = new JLabel("Kurs:");
     private JTextField txtCourse = new JTextField(7);
 
-    //Getter
-    public JTextField getTxtTraineeName() {
-        return txtTraineeName;
-    }
+    private JComboBox apprenticeshipSelector = new JComboBox();
 
-    public  JTextField getTxtBirthDate() {
-        return txtBirthDate;
-    }
+    private UtilDateModel model = new UtilDateModel();
+    private Properties p = new Properties();
+    private JDatePanelImpl datePanel = new JDatePanelImpl(model,p);
+    private JDatePickerImpl txtFrom = new JDatePickerImpl(datePanel,new DateLabelFormatter());
 
-    public JTextField getTxtApartmentStreet() {
-        return txtApartmentStreet;
-    }
-
-    public JTextField getTxtTraineeYear() {
-        return txtTraineeYear;
-    }
-
-    public JTextField getTxtCourse() {
-        return txtCourse;
-    }
-
-    public JTextField getTxtTrainingArea() {
-        return txtTrainingArea;
-    }
-
-    public JTextField getTxtSessions() {
-        return txtSessions;
-    }
-
-    public JTextField getTxtTrainingsPlan() {
-        return txtTrainingsPlan;
-    }
-
-    public JTextField getTxtInterimTalk() {
-        return txtInterimTalk;
-    }
-
-    public JTextField getTxtInternshipSelection() {
-        return  txtInternshipSelection;
-    }
-
-    UtilDateModel model = new UtilDateModel();
-    Properties p = new Properties();
-    JDatePanelImpl datePanel = new JDatePanelImpl(model,p);
-    JDatePickerImpl txtFrom = new JDatePickerImpl(datePanel,new DateLabelFormatter());
-
-    UtilDateModel model1 = new UtilDateModel();
-    JDatePanelImpl datePanel1 = new JDatePanelImpl(model1,p);
-    JDatePickerImpl txtTill = new JDatePickerImpl(datePanel1,new DateLabelFormatter());
-
-    //Getter
-    public JDatePickerImpl getTxtFrom() {
-        return txtFrom;
-    }
-
-    public JDatePickerImpl getTxtTill() {
-        return txtTill;
-    }
+    private UtilDateModel model1 = new UtilDateModel();
+    private JDatePanelImpl datePanel1 = new JDatePanelImpl(model1,p);
+    private JDatePickerImpl txtTill = new JDatePickerImpl(datePanel1,new DateLabelFormatter());
 
     // second Page
 
@@ -466,6 +392,7 @@ public class GUI {
         panel.add(txtTraineeYear);
         panel.add(course);
         panel.add(txtCourse);
+        panel.add(apprenticeshipSelector);
 
         // setFont for Labels
 
@@ -483,6 +410,9 @@ public class GUI {
         interimTalk.setFont(fontt);
         traineeYear.setFont(fontt);
         course.setFont(fontt);
+
+        apprenticeshipSelector.setEditable(true);
+        apprenticeshipSelector.setSelectedItem("Azubi auswählen");
 
         // set appreticeship
 
@@ -589,18 +519,17 @@ public class GUI {
 
         layout2.putConstraint(SpringLayout.NORTH, txtInterimTalk, 10, SpringLayout.SOUTH, interimTalk);
         layout2.putConstraint(SpringLayout.WEST, txtInterimTalk, 100, SpringLayout.WEST, contentPane);
+
+        layout2.putConstraint(SpringLayout.EAST, apprenticeshipSelector, -205, SpringLayout.EAST, panel);
+        layout2.putConstraint(SpringLayout.NORTH, apprenticeshipSelector, 30, SpringLayout.NORTH, contentPane);
+
     }
 
     // set Insets
 
-    Insets headlineInsets = new Insets(0,0,200,0);
-    Insets sliderInsets = new Insets(-60, 0, 70, 0);
+    private Insets headlineInsets = new Insets(0,0,200,0);
+    private Insets sliderInsets = new Insets(-60, 0, 70, 0);
     private List<JSlider> jSliders = createSliders();
-
-    //Getter
-    public List<JSlider> getjSliders() {
-        return jSliders;
-    }
 
     // third Page
 
@@ -654,230 +583,270 @@ public class GUI {
 
         // fourth Page
 
-        public void fourthPanel(){
-            page = 4;
-            JLabel headline = new JLabel("Methodisches Denken");
-            headline.setFont(font);
-            window.add(panel);
-            panel.setVisible(true);
-            panel.setLayout(gbl);
+    public void fourthPanel(){
+        page = 4;
+        JLabel headline = new JLabel("Methodisches Denken");
+        headline.setFont(font);
+        window.add(panel);
+        panel.setVisible(true);
+        panel.setLayout(gbl);
 
-            gbc.insets = headlineInsets;
-            gbc.gridx = 0;
-            gbc.gridy = 0;
-            panel.add(headline, gbc);
+        gbc.insets = headlineInsets;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel.add(headline, gbc);
 
-            // ANALYTISCHES DENKEN
-            gbc.insets = sliderInsets;
-            gbc.gridx = 0;
-            gbc.gridy = 1;
-            panel.add(createLabel("Analytisches Denken").get(0), gbc);
+        // ANALYTISCHES DENKEN
+        gbc.insets = sliderInsets;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(createLabel("Analytisches Denken").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 2;
-            panel.add(jSliders.get(3), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel.add(jSliders.get(3), gbc);
 
-            // GANZHEITLICHES UND VERNETZTES DENKEN
-            gbc.gridx = 0;
-            gbc.gridy = 3;
-            panel.add(createLabel("Ganzheitliches und vernetztes Denken").get(0), gbc);
+        // GANZHEITLICHES UND VERNETZTES DENKEN
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        panel.add(createLabel("Ganzheitliches und vernetztes Denken").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 4;
-            panel.add(jSliders.get(4), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        panel.add(jSliders.get(4), gbc);
 
             // ARBEITS- UND LERNTECHNIKEN
 
-            gbc.gridx = 0;
-            gbc.gridy = 5;
-            panel.add(createLabel("Arbeits- und Lerntechniken").get(0), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        panel.add(createLabel("Arbeits- und Lerntechniken").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 6;
-            panel.add(jSliders.get(5), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        panel.add(jSliders.get(5), gbc);
         }
 
         // fifth Page
 
-        public void fifthPanel(){
-            page = 5;
-            JLabel headline = new JLabel("Soziale Kompetenzen");
-            headline.setFont(font);
-            window.add(panel);
-            panel.setVisible(true);
-            panel.setLayout(gbl);
+    public void fifthPanel(){
+        page = 5;
+        JLabel headline = new JLabel("Soziale Kompetenzen");
+        headline.setFont(font);
+        window.add(panel);
+        panel.setVisible(true);
+        panel.setLayout(gbl);
 
-            gbc.insets = new Insets(0, 0, 100, 0);
-            gbc.gridx = 0;
-            gbc.gridy = 0;
-            panel.add(headline, gbc);
+        gbc.insets = new Insets(0, 0, 100, 0);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel.add(headline, gbc);
 
-            // KOMMUNIKATIONSFÄHIGKEIT
+        // KOMMUNIKATIONSFÄHIGKEIT
 
-            gbc.insets = sliderInsets;
-            gbc.gridx = 0;
-            gbc.gridy = 1;
-            panel.add(createLabel("Kommunikationsfähigkeit").get(0), gbc);
+        gbc.insets = sliderInsets;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(createLabel("Kommunikationsfähigkeit").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 2;
-            panel.add(jSliders.get(6), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel.add(jSliders.get(6), gbc);
 
-            // KONTAKTFREUDIGKEIT
+        // KONTAKTFREUDIGKEIT
 
-            gbc.gridx = 0;
-            gbc.gridy = 3;
-            panel.add(createLabel("Kontaktfreudigkeit").get(0), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        panel.add(createLabel("Kontaktfreudigkeit").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 4;
-            panel.add(jSliders.get(7), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        panel.add(jSliders.get(7), gbc);
 
-            // TEAMFÄHIGKEIT UND KOOPERATIONSBEREITSCHAFT
+        // TEAMFÄHIGKEIT UND KOOPERATIONSBEREITSCHAFT
 
-            gbc.gridx = 0;
-            gbc.gridy = 5;
-            panel.add(createLabel("Teamfähigkeit und Kooperationsbereitschaft").get(0), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        panel.add(createLabel("Teamfähigkeit und Kooperationsbereitschaft").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 6;
-            panel.add(jSliders.get(8), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        panel.add(jSliders.get(8), gbc);
 
-            // KONFLIKTFÄHIGKEIT
+        // KONFLIKTFÄHIGKEIT
 
-            gbc.gridx = 0;
-            gbc.gridy = 7;
-            panel.add(createLabel("Konfliktfähigkeit").get(0), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        panel.add(createLabel("Konfliktfähigkeit").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 8;
-            panel.add(jSliders.get(9), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        panel.add(jSliders.get(9), gbc);
 
-            // EINFÜHLUNGSVERMÖGEN
+        // EINFÜHLUNGSVERMÖGEN
 
-            gbc.gridx = 0;
-            gbc.gridy = 9;
-            panel.add(createLabel("Einfühlungsvermögen").get(0), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 9;
+        panel.add(createLabel("Einfühlungsvermögen").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 10;
-            panel.add(jSliders.get(10), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 10;
+        panel.add(jSliders.get(10), gbc);
 
-            // RESPEKT UND UMGANG MIT ANDEREN KULTUREN
+        // RESPEKT UND UMGANG MIT ANDEREN KULTUREN
 
-            gbc.gridx = 0;
-            gbc.gridy = 11;
-            panel.add(createLabel("Respekt und kompetenter Umgang mit anderen Kulturen").get(0), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 11;
+        panel.add(createLabel("Respekt und kompetenter Umgang mit anderen Kulturen").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 12;
-            panel.add(jSliders.get(11), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 12;
+        panel.add(jSliders.get(11), gbc);
         }
 
         // sixth Page
 
-        public void sixthPanel(){
+    public void sixthPanel(){
 
-            page = 6;
-            JLabel headline = new JLabel("Persönliche Kompetenzen");
-            headline.setFont(font);
-            window.add(panel);
-            panel.setVisible(true);
-            panel.setLayout(gbl);
+        page = 6;
+        JLabel headline = new JLabel("Persönliche Kompetenzen");
+        headline.setFont(font);
+        window.add(panel);
+        panel.setVisible(true);
+        panel.setLayout(gbl);
 
-            gbc.insets = new Insets(10, 0, 60, 0);
-            gbc.gridx = 0;
-            gbc.gridy = 0;
-            panel.add(headline, gbc);
+        gbc.insets = new Insets(10, 0, 60, 0);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel.add(headline, gbc);
 
-            // OFFENHEIT
+        // OFFENHEIT
 
-            gbc.insets = new Insets(-30, 0, 40, 0);
-            gbc.gridx = 0;
-            gbc.gridy = 1;
-            panel.add(createLabel("Offenheit").get(0), gbc);
+        gbc.insets = new Insets(-30, 0, 40, 0);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(createLabel("Offenheit").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 2;
-            panel.add(jSliders.get(12), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel.add(jSliders.get(12), gbc);
 
-            // GEWISSENHAFTIGKEIT UND INTEGRITÄT
+        // GEWISSENHAFTIGKEIT UND INTEGRITÄT
 
-            gbc.gridx = 0;
-            gbc.gridy = 3;
-            panel.add(createLabel("Gewissenhaftigkeit und Integrität").get(0), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        panel.add(createLabel("Gewissenhaftigkeit und Integrität").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 4;
-            panel.add(jSliders.get(13), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        panel.add(jSliders.get(13), gbc);
 
-            // MOTIVATION
+        // MOTIVATION
 
-            gbc.gridx = 0;
-            gbc.gridy = 5;
-            panel.add(createLabel("Motivation").get(0), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        panel.add(createLabel("Motivation").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 6;
-            panel.add(jSliders.get(14), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        panel.add(jSliders.get(14), gbc);
 
-            // STRESSTOLERANZ
+        // STRESSTOLERANZ
 
-            gbc.gridx = 0;
-            gbc.gridy = 7;
-            panel.add(createLabel("Stresstoleranz").get(0), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        panel.add(createLabel("Stresstoleranz").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 8;
-            panel.add(jSliders.get(15), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        panel.add(jSliders.get(15), gbc);
 
-            // IDENTIFIKATION
+        // IDENTIFIKATION
 
-            gbc.gridx = 0;
-            gbc.gridy = 9;
-            panel.add(createLabel("Identifikation").get(0), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 9;
+        panel.add(createLabel("Identifikation").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 10;
-            panel.add(jSliders.get(16), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 10;
+        panel.add(jSliders.get(16), gbc);
 
-            // SELBSTSTÄNDIGKEIT
+        // SELBSTSTÄNDIGKEIT
 
-            gbc.gridx = 0;
-            gbc.gridy = 11;
-            panel.add(createLabel("Selbstständigkeit").get(0), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 11;
+        panel.add(createLabel("Selbstständigkeit").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 12;
-            panel.add(jSliders.get(17), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 12;
+        panel.add(jSliders.get(17), gbc);
 
-            // KRITIKFÄHIGKEIT
+        // KRITIKFÄHIGKEIT
 
-            gbc.gridx = 0;
-            gbc.gridy = 13;
-            panel.add(createLabel("Kritikfähigkeit").get(0), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 13;
+        panel.add(createLabel("Kritikfähigkeit").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 14;
-            panel.add(jSliders.get(18), gbc);
-        }
+        gbc.gridx = 0;
+        gbc.gridy = 14;
+        panel.add(jSliders.get(18), gbc);
+    }
 
     // ELEMENTS FOR SEVENTH PAGE
 
-    GridBagLayout gbl = new GridBagLayout();
-    GridBagConstraints gbc = new GridBagConstraints();
-    JLabel abilitiesLabel = new JLabel("Fähigkeiten, praktische Leistungen, Verhalten");
-    JLabel strengthLabel = new JLabel("Stärken");
-    JLabel developementsLabel = new JLabel("Entwicklungsfelder");
-    JLabel perspectiveLabel = new JLabel("Perspektiven");
-    JLabel othersLabel = new JLabel("Sonstige Anmerkungen");
-    JTextArea abilities = new JTextArea();
-    JTextArea strength = new JTextArea();
-    JTextArea developements = new JTextArea();
-    JTextArea perspective = new JTextArea();
-    JTextArea others = new JTextArea();
-    Dimension preferedSize = new Dimension(600, 50);
-    Dimension maximumSize = new Dimension(600, 70);
+    private GridBagLayout gbl = new GridBagLayout();
+    private GridBagConstraints gbc = new GridBagConstraints();
+    private JLabel abilitiesLabel = new JLabel("Fähigkeiten, praktische Leistungen, Verhalten");
+    private JLabel strengthLabel = new JLabel("Stärken");
+    private JLabel developementsLabel = new JLabel("Entwicklungsfelder");
+    private JLabel perspectiveLabel = new JLabel("Perspektiven");
+    private JLabel othersLabel = new JLabel("Sonstige Anmerkungen");
+    private JTextArea abilities = new JTextArea();
+    private JTextArea strength = new JTextArea();
+    private JTextArea developements = new JTextArea();
+    private JTextArea perspective = new JTextArea();
+    private JTextArea others = new JTextArea();
+    private Dimension preferedSize = new Dimension(600, 50);
+    private Dimension maximumSize = new Dimension(600, 70);
+
+    public JTextArea getAbilities() {
+        return abilities;
+    }
+
+    public JTextArea getStrength() {
+        return strength;
+    }
+
+    public JTextArea getDevelopements() {
+        return developements;
+    }
+
+    public JTextArea getPerspective() {
+        return perspective;
+    }
+
+    public JTextArea getOthers() {
+        return others;
+    }
+
+    public void setAbilities(JTextArea abilities) {
+        this.abilities = abilities;
+    }
+
+    public void setStrength(JTextArea strength) {
+        this.strength = strength;
+    }
+
+    public void setDevelopements(JTextArea developements) {
+        this.developements = developements;
+    }
+
+    public void setPerspective(JTextArea perspective) {
+        this.perspective = perspective;
+    }
+
+    public void setOthers(JTextArea others) {
+        this.others = others;
+    }
 
     // CREATE SEVENTH PAGE
 
@@ -961,46 +930,14 @@ public class GUI {
 
     // elements fpr eight Page
 
-
-
-
-
-    JButton calc = new JButton("Berechnen");
-    JButton saveAndNew = new JButton("Speichern und neuer Leistungsbericht");
-    JButton saveAndExit = new JButton("Speichern und Schließen");
-    JPanel panel1 = new JPanel();
-    JLabel score = new JLabel("Punktzahl:");
-    JLabel review = new JLabel("Gesamturteil:");
-    JLabel txtPoints = new JLabel();
-    JLabel txtReview = new JLabel();
-
-    //Getter
-    public JButton getCalc() {
-        return calc;
-    }
-
-    public JButton getSaveAndNew() {
-        return saveAndNew;
-    }
-
-    public JButton getSaveAndExit() {
-        return saveAndExit;
-    }
-
-    public JLabel getTxtPoints() {
-        return txtPoints;
-    }
-
-    public JLabel getTxtReview() {
-        return txtReview;
-    }
-
-    public JPanel getPanel1() {
-        return panel1;
-    }
-
-    public JTextField getTxtdate(){return txtdate;}
-
+    private JButton calc = new JButton("Berechnen");
+    private JButton saveAndNew = new JButton("Speichern und neuer Leistungsbericht");
+    private JButton saveAndExit = new JButton("Speichern und Schließen");
+    private JPanel panel1 = new JPanel();
+    private JLabel score = new JLabel("Punktzahl:");
+    private JLabel review = new JLabel("Gesamturteil:");
+    private JLabel txtPoints = new JLabel();
+    private JLabel txtReview = new JLabel();
 
     // eight Page
 
@@ -1078,9 +1015,9 @@ public class GUI {
 
     // sliders
 
-    static final int minScore = 0;
-    static final int maxScore = 15;
-    static final int scoreInit = 0;
+    private static final int minScore = 0;
+    private static final int maxScore = 15;
+    private static final int scoreInit = 0;
 
     java.util.List<JSlider> createSliders(){
         List<JSlider> sliders = new ArrayList<>();
@@ -1171,7 +1108,4 @@ public class GUI {
         useless.setFont(fontt);
 
         }
-
-
-
-    }
+}
