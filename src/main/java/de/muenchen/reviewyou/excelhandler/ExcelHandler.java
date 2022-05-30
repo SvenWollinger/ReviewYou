@@ -91,6 +91,7 @@ public class ExcelHandler {
     }
 
     public void writePoints(int row, int points) throws IOException {
+        System.out.println(row);
         writeCell(19-points,row,"X");
     }
 }

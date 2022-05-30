@@ -15,13 +15,11 @@ public class reviewController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 traineeRating traineeRating = new traineeRating();
-
                 //Give values to Excel-Group
                 try{
                     excelHandler.writeInstructorData(gui.getInstructorName().getText(),
                             gui.getInstructorTelephone().getText(), gui.getTxtdate().getText(),
                             gui.getInstructorEmail().getText());
-                    System.out.println(gui.getTxtdate().getText());
                     excelHandler.writeStudentData(gui.getTxtTraineeName().getText(), gui.getTxtBirthDate().getText(),
                             gui.getTxtApartmentStreet().getText(), gui.getTxtTraineeYear().getText(),
                             gui.getTxtCourse().getText());
@@ -35,17 +33,23 @@ public class reviewController {
                             traineeRating.developments(), traineeRating.perspective(), traineeRating.others());
                     excelHandler.writeTotalandAverage(gui.getTxtPoints().getText(), gui.getTxtReview().getText());
 
-                    /*
                     //Get every value and give them to excel
                     int pointsFromSliders = 0;
-                    int row = 137;
+                    int row = 133;
                     for(int i = 0; i < 19; i++) {
                         pointsFromSliders = gui.getjSliders().get(i).getValue();
                         excelHandler.writePoints(row, pointsFromSliders);
-                        row = row + 2;
+                        row = row + 1;
+                        if(row == 136) {
+                            row = 139;
+                        }
+                        else if(row == 142) {
+                            row = 145;
+                        }
+                        else if(row == 151) {
+                            row = 154;
+                        }
                     }
-
-                     */
                 } catch (IOException ioException) {
                     System.out.println("Error in SQL!" + ioException.getMessage());
                 }
