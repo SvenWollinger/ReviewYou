@@ -340,6 +340,8 @@ public class GUI {
     private JLabel course = new JLabel("Kurs:");
     private JTextField txtCourse = new JTextField(7);
 
+    private JComboBox apprenticeshipSelector = new JComboBox();
+
     private UtilDateModel model = new UtilDateModel();
     private Properties p = new Properties();
     private JDatePanelImpl datePanel = new JDatePanelImpl(model,p);
@@ -390,6 +392,7 @@ public class GUI {
         panel.add(txtTraineeYear);
         panel.add(course);
         panel.add(txtCourse);
+        panel.add(apprenticeshipSelector);
 
         // setFont for Labels
 
@@ -513,6 +516,11 @@ public class GUI {
 
         layout2.putConstraint(SpringLayout.NORTH, txtInterimTalk, 10, SpringLayout.SOUTH, interimTalk);
         layout2.putConstraint(SpringLayout.WEST, txtInterimTalk, 100, SpringLayout.WEST, contentPane);
+
+        layout2.putConstraint(SpringLayout.WEST, apprenticeshipSelector, 300, SpringLayout.EAST, headline);
+        layout2.putConstraint(SpringLayout.NORTH, apprenticeshipSelector, 30, SpringLayout.NORTH, contentPane);
+        apprenticeshipSelector.setEditable(true);
+        apprenticeshipSelector.setSelectedItem("Azubi auswählen");
     }
 
     // set Insets
@@ -1098,7 +1106,4 @@ public class GUI {
         useless.setFont(fontt);
 
         }
-
-
-
-    }
+}
