@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AnswerSuggestionModel {
-    private int id1;
-    private int id2;
-    private String recommendend;
+    int id1;
+    int id2;
+    String recommendend;
 
 
 
