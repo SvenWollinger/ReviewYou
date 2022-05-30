@@ -77,6 +77,18 @@ public class ExcelDatabaseHandler {
         return list;
     }
 
+    public String bla(int[] arrayListSlider) throws IOException {
+        String sentences = "";
+        List<AnswerSuggestionModel> bliblablub = createRecListFromExcel();
+        for(int i = 0; i<19; i++) {
+            sentences = sentences + bliblablub.get(i).specificListForQuestion(arrayListSlider[i], i, bliblablub).get(0).getRecommended();
+            System.out.println(sentences);
+        }
+        if(sentences.length() == 0) {
+            return "Leberkas";
+        }
+        return sentences;
+    }
 
     //TODO ARRAY IDENTIFIER 1 WHICH QUESTION ?? SO 0-18
     //TODO ARRAY IDENTIFIER 2 WHICH GRADE?? 0-5

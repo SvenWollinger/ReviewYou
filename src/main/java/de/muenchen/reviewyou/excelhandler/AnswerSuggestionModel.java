@@ -1,5 +1,6 @@
 package de.muenchen.reviewyou.excelhandler;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,10 +17,10 @@ public class AnswerSuggestionModel {
         this.recommendend = recommendend;
     }
 
-    public  List<AnswerSuggestionModel> specificListForQuestion(GradingCatalogue a, QuestionCatalogue b, List<AnswerSuggestionModel> list){
+    public  List<AnswerSuggestionModel> specificListForQuestion(int a, int b, List<AnswerSuggestionModel> list){
         List<AnswerSuggestionModel> specificList = new ArrayList<>();
         for (int i = 0; i < list.size() ; i++) {
-            if (list.get(i).getId1() == a.ordinal() && list.get(i).getId2() == b.ordinal()){
+            if (list.get(i).getId1() == a && list.get(i).getId2() == b){
                 specificList.add(list.get(i));
             }
         }
@@ -51,6 +52,4 @@ public class AnswerSuggestionModel {
     public String getRecommended(){
         return this.recommendend;
     }
-
-
 }

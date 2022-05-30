@@ -1,7 +1,8 @@
 package de.muenchen.reviewyou.Controller;
 
 import de.muenchen.reviewyou.GUI.GUI;
-import de.muenchen.reviewyou.excelhandler.ExcelHandler;
+import de.muenchen.reviewyou.excelhandler.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -9,8 +10,9 @@ import java.text.DecimalFormat;
 
 public class reviewController {
     GUI gui; //Now everything out of scope can take this
+    private int[] arrayListSlider = new int[19];
 
-    public reviewController(ExcelHandler excelHandler, GUI gui) {
+    public reviewController(ExcelHandler excelHandler, GUI gui, ExcelDatabaseHandler excelDatabaseHandler) {
         this.gui = gui;
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
@@ -30,6 +32,7 @@ public class reviewController {
                     excelHandler.writeParticipations(gui.getTxtSessions().getText());
                     excelHandler.writeDates(gui.getTxtTrainingsPlan().getText(), gui.getTxtInterimTalk().getText());
                     //excelHandler.writePerformance();
+                    //excelDatabaseHandler.bla(arrayListSlider);
                     excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
 
                     //Get every value and give them to excel
@@ -105,6 +108,7 @@ public class reviewController {
         double averagePoints = 0;
         for(int i = 0; i < 19; i++) {
             totalPoints = totalPoints + gui.getjSliders().get(i).getValue();
+            arrayListSlider[i] = gui.getjSliders().get(i).getValue(); //Fill array
         }
         averagePoints = totalPoints / 19;
         averagePoints = round(averagePoints, 2);

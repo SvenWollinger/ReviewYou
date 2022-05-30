@@ -88,7 +88,8 @@ public class ExcelHandler {
         writeCell(0,113, development);
         writeCell(0,115,perspectives);
         writeCell(0, 117, other);
-    }
+    } //Give string from list answereSuggestionModel
+    //From list
 
     public void writePoints(int row, int points) throws IOException {
         writeCell(19-points,row,"X");
