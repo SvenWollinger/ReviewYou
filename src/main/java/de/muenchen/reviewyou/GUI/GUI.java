@@ -517,7 +517,7 @@ public class GUI {
         layout2.putConstraint(SpringLayout.NORTH, txtInterimTalk, 10, SpringLayout.SOUTH, interimTalk);
         layout2.putConstraint(SpringLayout.WEST, txtInterimTalk, 100, SpringLayout.WEST, contentPane);
 
-        layout2.putConstraint(SpringLayout.WEST, apprenticeshipSelector, 300, SpringLayout.EAST, headline);
+        layout2.putConstraint(SpringLayout.EAST, apprenticeshipSelector, -205, SpringLayout.EAST, panel);
         layout2.putConstraint(SpringLayout.NORTH, apprenticeshipSelector, 30, SpringLayout.NORTH, contentPane);
         apprenticeshipSelector.setEditable(true);
         apprenticeshipSelector.setSelectedItem("Azubi auswählen");
