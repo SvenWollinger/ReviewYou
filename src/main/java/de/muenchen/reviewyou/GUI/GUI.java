@@ -411,6 +411,9 @@ public class GUI {
         traineeYear.setFont(fontt);
         course.setFont(fontt);
 
+        apprenticeshipSelector.setEditable(true);
+        apprenticeshipSelector.setSelectedItem("Azubi auswählen");
+
         // set appreticeship
 
         layout2.putConstraint(SpringLayout.WEST, apprenticeship, 100, SpringLayout.WEST, contentPane);
@@ -519,8 +522,7 @@ public class GUI {
 
         layout2.putConstraint(SpringLayout.EAST, apprenticeshipSelector, -205, SpringLayout.EAST, panel);
         layout2.putConstraint(SpringLayout.NORTH, apprenticeshipSelector, 30, SpringLayout.NORTH, contentPane);
-        apprenticeshipSelector.setEditable(true);
-        apprenticeshipSelector.setSelectedItem("Azubi auswählen");
+
     }
 
     // set Insets
