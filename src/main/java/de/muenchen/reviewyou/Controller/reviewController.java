@@ -5,6 +5,7 @@ import de.muenchen.reviewyou.excelhandler.ExcelHandler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class reviewController {
     GUI gui; //Now everything out of scope can take this
@@ -100,12 +101,20 @@ public class reviewController {
     }
 
     public double calculateAveragePoints(GUI gui) {
-        int totalPoints = 0;
+        double totalPoints = 0;
         double averagePoints = 0;
         for(int i = 0; i < 19; i++) {
             totalPoints = totalPoints + gui.getjSliders().get(i).getValue();
         }
         averagePoints = totalPoints / 19;
+        averagePoints = round(averagePoints, 2);
         return averagePoints;
+    }
+
+    public static double round(double value, int places) {
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 }
