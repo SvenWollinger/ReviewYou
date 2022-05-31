@@ -9,6 +9,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 
 public class reviewController {
     GUI gui; //Now everything out of scope can take this
@@ -16,6 +17,18 @@ public class reviewController {
 
     public reviewController(ExcelHandler excelHandler, GUI gui, ExcelDatabaseHandler excelDatabaseHandler) {
         this.gui = gui;
+
+        //Sett current year from "Zuweisungszeitraum"
+        LocalDate currentDate = LocalDate.now();
+        int currentYear = currentDate.getYear();
+        int lastYear = currentYear -1;
+        gui.getModel().setDate(lastYear,8,1);
+        gui.getModel().setSelected(true);
+
+        gui.getModel1().setDate(currentYear,7,31);
+        gui.getModel1().setSelected(true);
+
+
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -98,6 +111,9 @@ public class reviewController {
                     gui.getTxtBirthDate().setText(azubi.getBirthday().toString());
                     gui.getTxtCourse().setText(azubi.getCourse());
                     gui.getTxtTraineeYear().setText(String.valueOf(azubi.getYear()));
+
+                    //gui.getModel().setValue(azubi.getAllocationPeriodFrom());
+                    //gui.getModel1().setValue(azubi.getAllocationPeriodTo());
                 }
             }
         });
