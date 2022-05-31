@@ -871,7 +871,9 @@ public class GUI {
     JLabel developementsLabel = new JLabel("Entwicklungsfelder");
     JLabel perspectiveLabel = new JLabel("Perspektiven");
     JLabel othersLabel = new JLabel("Sonstige Anmerkungen");
+
     JTextArea abilities = new JTextArea();
+
     JTextArea strength = new JTextArea();
     JTextArea developements = new JTextArea();
     JTextArea perspective = new JTextArea();
@@ -880,7 +882,6 @@ public class GUI {
     Dimension maximumSize = new Dimension(600, 70);
 
     // CREATE SEVENTH PAGE
-
     public void seventhPanel() {
         page = 7;
         JLabel headline = new JLabel("Wortbeschreibung zur gezeigten Leistung insgesamt");
@@ -959,13 +960,14 @@ public class GUI {
 
     }
 
+
     // elements fpr eight Page
 
 
 
 
-
     JButton calc = new JButton("Berechnen");
+
     JButton saveAndNew = new JButton("Speichern und neuer Leistungsbericht");
     JButton saveAndExit = new JButton("Speichern und Schließen");
     JPanel panel1 = new JPanel();
@@ -973,12 +975,11 @@ public class GUI {
     JLabel review = new JLabel("Gesamturteil:");
     JLabel txtPoints = new JLabel();
     JLabel txtReview = new JLabel();
-
     //Getter
+
     public JButton getCalc() {
         return calc;
     }
-
     public JButton getSaveAndNew() {
         return saveAndNew;
     }
@@ -989,6 +990,26 @@ public class GUI {
 
     public JLabel getTxtPoints() {
         return txtPoints;
+    }
+
+    public JTextArea getAbilities() {
+        return abilities;
+    }
+
+    public JTextArea getStrength() {
+        return strength;
+    }
+
+    public JTextArea getDevelopements() {
+        return developements;
+    }
+
+    public JTextArea getPerspective() {
+        return perspective;
+    }
+
+    public JTextArea getOthers() {
+        return others;
     }
 
     public JLabel getTxtReview() {
