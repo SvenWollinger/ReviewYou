@@ -87,10 +87,10 @@ public class ExcelDatabaseHandler {
             }
         }
         if (gender == 1 ) {
-        recString = "Herr " + azubiName + "ist ein " + tempString + " Auszubildender";
+        recString = "Herr " + azubiName + " ist ein " + tempString + " Auszubildender";
         }
         else if (gender == 2 ) {
-            recString = "Frau " + azubiName + "ist eine " + tempString + " Auszubildende";
+            recString = "Frau " + azubiName + " ist eine " + tempString + " Auszubildende";
         }
         return recString;
     }
