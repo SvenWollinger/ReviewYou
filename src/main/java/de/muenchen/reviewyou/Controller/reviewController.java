@@ -24,13 +24,13 @@ public class reviewController {
                             gui.getInstructorEmail().getText());
                     excelHandler.writeStudentData(gui.getTxtTraineeName().getText(), gui.getTxtBirthDate().getText(),
                             gui.getTxtApartmentStreet().getText(), gui.getTxtTraineeYear().getText(),
-                            gui.getTxtCourse().getText());
+                            gui.getCbCourse().getSelectedItem().toString());
                     excelHandler.writeAllocationPeriod(gui.getTxtFrom().getJFormattedTextField().getText(),
                             gui.getTxtTill().getJFormattedTextField().getText(),
                             gui.getTxtInternshipSelection().getText());
                     excelHandler.writeTrainingAreaAndPeriod(gui.getTxtTrainingArea().getText());
                     excelHandler.writeParticipations(gui.getTxtSessions().getText());
-                    excelHandler.writeDates(gui.getTxtTrainingsPlan().getText(), gui.getTxtInterimTalk().getText());
+                    excelHandler.writeDates(gui.getPickerHandover().getJFormattedTextField().getText(), gui.getPickerMeeting().getJFormattedTextField().getText());
                     excelHandler.writePerformance(gui.getAbilities().getText(),gui.getStrength().getText(),gui.getDevelopements().getText(),gui.getPerspective().getText(),gui.getOthers().getText());
                     //excelDatabaseHandler.bla(arrayListSlider);
                     excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
