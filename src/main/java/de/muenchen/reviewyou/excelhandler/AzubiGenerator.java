@@ -39,7 +39,6 @@ public class AzubiGenerator {
                row.getCell(6).getLocalDateTimeCellValue()));
          System.out.println(row.getCell(0).getStringCellValue());
       }
-
       return list;
    }
 

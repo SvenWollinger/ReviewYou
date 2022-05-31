@@ -2,8 +2,6 @@ package de.muenchen.reviewyou.Controller;
 
 import de.muenchen.reviewyou.GUI.GUI;
 import de.muenchen.reviewyou.excelhandler.*;
-
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -13,11 +11,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class reviewController {
-    GUI gui; //Now everything out of scope can take this
+    GUI gui;
     private final int[] arrayListSlider = new int[19];
     DateTimeFormatter sdf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
-    public reviewController(ExcelHandler excelHandler, GUI gui, AzubiGenerator azubiGenerator) {
+    public reviewController(ExcelHandler excelHandler, GUI gui) {
         this.gui = gui;
 
         //Sett current year from "Zuweisungszeitraum"
@@ -124,6 +122,7 @@ public class reviewController {
     }
 
 
+
     public String calculateAverage(GUI gui) {
         String average = "";
         for (int i = 0; i < calculateAveragePoints(gui); i++) {
@@ -137,7 +136,6 @@ public class reviewController {
         }
         return average;
     }
-
 
     public double calculateAveragePoints(GUI gui) {
         double totalPoints = 0;
