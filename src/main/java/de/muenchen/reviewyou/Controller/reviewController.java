@@ -44,11 +44,13 @@ public class reviewController {
                             gui.getTxtInternshipSelection().getText());
                     excelHandler.writeTrainingAreaAndPeriod(gui.getTxtTrainingArea().getText());
                     excelHandler.writeParticipations(gui.getTxtSessions().getText());
-                    excelHandler.writeDates(gui.getPickerHandover().getJFormattedTextField().getText(), gui.getPickerMeeting().getJFormattedTextField().getText());
-                    excelHandler.writePerformance(gui.getAbilities().getText(),gui.getStrength().getText(),gui.getDevelopements().getText(),gui.getPerspective().getText(),gui.getOthers().getText());
+                    excelHandler.writeDates(gui.getPickerHandover().getJFormattedTextField().getText(),
+                            gui.getPickerMeeting().getJFormattedTextField().getText());
+                    excelHandler.writePerformance(gui.getAbilities().getText(),gui.getStrength().getText(),
+                            gui.getDevelopements().getText(),gui.getPerspective().getText(),gui.getOthers().getText());
                     excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
 
-                    //TODO: Give excel-group txtCourse
+                    //TODO: Give excel-group getStringCourses
 
                     //Get every value and give them to excel
                     int pointsFromSliders = 0;
@@ -154,5 +156,18 @@ public class reviewController {
         value = value * factor;
         long tmp = Math.round(value);
         return (double) tmp / factor;
+    }
+
+    public String getStringCourse() {
+        if (gui.getTxtCourse().getText().equals("FIAE")) {
+            return "zur Fachinformatikerin/ zum Fachinformatiker - Anwendungsentwicklung";
+        }
+        else if (gui.getTxtCourse().getText().equals("FISI")) {
+            return "zur Fachinformatikerin/ zum Fachinformatiker - Systemintegration";
+        }
+        else if (gui.getTxtCourse().getText().equals("ITSE")) {
+            return "zur IT-Systemelektronikerin / zum IT-Systemelektroniker";
+        }
+        return null;
     }
 }
