@@ -341,6 +341,7 @@ public class GUI {
     private JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft");
     private JLabel traineeName = new JLabel("Name, Vorname:");
     private JTextField txtTraineeName = new JTextField(10);
+    private JComboBox apprenticeshipSelector = new JComboBox();
     private JLabel birthDate = new JLabel("Geburtsdatum: ");
     private JTextField txtBirthDate = new JTextField(9);
     private JLabel apartmentStreet = new JLabel("Straße, Haus-Nr., PLZ, Ort:");
@@ -367,6 +368,10 @@ public class GUI {
     private JTextField txtCourse = new JTextField(7);
 
     //Getter
+    public JComboBox getApprenticeshipSelector() {
+        return apprenticeshipSelector;
+    }
+
     public JTextField getTxtTraineeName() {
         return txtTraineeName;
     }
@@ -466,6 +471,7 @@ public class GUI {
         panel.add(txtTraineeYear);
         panel.add(course);
         panel.add(txtCourse);
+        panel.add(apprenticeshipSelector);
 
         // setFont for Labels
 
@@ -514,6 +520,11 @@ public class GUI {
         layout2.putConstraint(SpringLayout.WEST, txtApartmentStreet, 10, SpringLayout.EAST, apartmentStreet);
 
         // set allocationPeriod
+
+        layout2.putConstraint(SpringLayout.EAST, apprenticeshipSelector, -205, SpringLayout.EAST, panel);
+        layout2.putConstraint(SpringLayout.NORTH, apprenticeshipSelector, 30, SpringLayout.NORTH, contentPane);
+        apprenticeshipSelector.setEditable(true);
+        apprenticeshipSelector.setSelectedItem("Azubi auswählen");
 
         layout2.putConstraint(SpringLayout.NORTH, allocationPeriod, 20, SpringLayout.SOUTH, apartmentStreet);
         layout2.putConstraint(SpringLayout.WEST, allocationPeriod, 100, SpringLayout.WEST, contentPane);
@@ -871,9 +882,7 @@ public class GUI {
     JLabel developementsLabel = new JLabel("Entwicklungsfelder");
     JLabel perspectiveLabel = new JLabel("Perspektiven");
     JLabel othersLabel = new JLabel("Sonstige Anmerkungen");
-
     JTextArea abilities = new JTextArea();
-
     JTextArea strength = new JTextArea();
     JTextArea developements = new JTextArea();
     JTextArea perspective = new JTextArea();
@@ -882,6 +891,7 @@ public class GUI {
     Dimension maximumSize = new Dimension(600, 70);
 
     // CREATE SEVENTH PAGE
+
     public void seventhPanel() {
         page = 7;
         JLabel headline = new JLabel("Wortbeschreibung zur gezeigten Leistung insgesamt");
@@ -960,14 +970,13 @@ public class GUI {
 
     }
 
-
     // elements fpr eight Page
 
 
 
 
-    JButton calc = new JButton("Berechnen");
 
+    JButton calc = new JButton("Berechnen");
     JButton saveAndNew = new JButton("Speichern und neuer Leistungsbericht");
     JButton saveAndExit = new JButton("Speichern und Schließen");
     JPanel panel1 = new JPanel();
@@ -975,11 +984,12 @@ public class GUI {
     JLabel review = new JLabel("Gesamturteil:");
     JLabel txtPoints = new JLabel();
     JLabel txtReview = new JLabel();
-    //Getter
 
+    //Getter
     public JButton getCalc() {
         return calc;
     }
+
     public JButton getSaveAndNew() {
         return saveAndNew;
     }
@@ -990,26 +1000,6 @@ public class GUI {
 
     public JLabel getTxtPoints() {
         return txtPoints;
-    }
-
-    public JTextArea getAbilities() {
-        return abilities;
-    }
-
-    public JTextArea getStrength() {
-        return strength;
-    }
-
-    public JTextArea getDevelopements() {
-        return developements;
-    }
-
-    public JTextArea getPerspective() {
-        return perspective;
-    }
-
-    public JTextArea getOthers() {
-        return others;
     }
 
     public JLabel getTxtReview() {
@@ -1098,12 +1088,12 @@ public class GUI {
     }
 
     // sliders
-
-    static final int minScore = 0;
-    static final int maxScore = 15;
-    static final int scoreInit = 0;
+    
 
     java.util.List<JSlider> createSliders(){
+        final int minScore = 0;
+        final int maxScore = 15;
+        final int scoreInit = 0;
         List<JSlider> sliders = new ArrayList<>();
         for (int i = 0; i < 19 ; i++) {
 
