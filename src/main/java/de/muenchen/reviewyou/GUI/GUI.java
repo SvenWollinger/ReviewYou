@@ -341,6 +341,7 @@ public class GUI {
     private JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft");
     private JLabel traineeName = new JLabel("Name, Vorname:");
     private JTextField txtTraineeName = new JTextField(10);
+    private JComboBox apprenticeshipSelector = new JComboBox();
     private JLabel birthDate = new JLabel("Geburtsdatum: ");
     private JTextField txtBirthDate = new JTextField(9);
     private JLabel apartmentStreet = new JLabel("Straße, Haus-Nr., PLZ, Ort:");
@@ -466,6 +467,7 @@ public class GUI {
         panel.add(txtTraineeYear);
         panel.add(course);
         panel.add(txtCourse);
+        panel.add(apprenticeshipSelector);
 
         // setFont for Labels
 
@@ -514,6 +516,11 @@ public class GUI {
         layout2.putConstraint(SpringLayout.WEST, txtApartmentStreet, 10, SpringLayout.EAST, apartmentStreet);
 
         // set allocationPeriod
+
+        layout2.putConstraint(SpringLayout.EAST, apprenticeshipSelector, -205, SpringLayout.EAST, panel);
+        layout2.putConstraint(SpringLayout.NORTH, apprenticeshipSelector, 30, SpringLayout.NORTH, contentPane);
+        apprenticeshipSelector.setEditable(true);
+        apprenticeshipSelector.setSelectedItem("Azubi auswählen");
 
         layout2.putConstraint(SpringLayout.NORTH, allocationPeriod, 20, SpringLayout.SOUTH, apartmentStreet);
         layout2.putConstraint(SpringLayout.WEST, allocationPeriod, 100, SpringLayout.WEST, contentPane);
