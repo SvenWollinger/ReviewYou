@@ -436,6 +436,14 @@ public class GUI {
         return pickerMeeting;
     }
 
+    public UtilDateModel getModel() {
+        return model;
+    }
+
+    public UtilDateModel getModel1() {
+        return model1;
+    }
+
     // second Page
 
     public void secondPanel() {

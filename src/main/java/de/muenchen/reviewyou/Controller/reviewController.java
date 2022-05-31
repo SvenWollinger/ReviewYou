@@ -6,14 +6,33 @@ import de.muenchen.reviewyou.excelhandler.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class reviewController {
     GUI gui; //Now everything out of scope can take this
     private int[] arrayListSlider = new int[19];
 
-    public reviewController(ExcelHandler excelHandler, GUI gui, ExcelDatabaseHandler excelDatabaseHandler, AzubiGenerator azubiGenerator) {
+    public reviewController(ExcelHandler excelHandler, GUI gui, AzubiGenerator azubiGenerator) {
         this.gui = gui;
+
+        //Sett current year from "Zuweisungszeitraum"
+        LocalDate currentDate = LocalDate.now();
+        int currentYear = currentDate.getYear();
+        int lastYear = currentYear -1;
+        gui.getModel().setDate(lastYear,8,1);
+        gui.getModel().setSelected(true);
+
+        gui.getModel1().setDate(currentYear,7,31);
+        gui.getModel1().setSelected(true);
+
+        //Insert job-shortcuts into comboBox
+        gui.getCbCourse().addItem("FIAE");
+        gui.getCbCourse().addItem("FISI");
+        gui.getCbCourse().addItem("FITZE");
+
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,8 +51,9 @@ public class reviewController {
                     excelHandler.writeParticipations(gui.getTxtSessions().getText());
                     excelHandler.writeDates(gui.getPickerHandover().getJFormattedTextField().getText(), gui.getPickerMeeting().getJFormattedTextField().getText());
                     excelHandler.writePerformance(gui.getAbilities().getText(),gui.getStrength().getText(),gui.getDevelopements().getText(),gui.getPerspective().getText(),gui.getOthers().getText());
-                    //excelDatabaseHandler.bla(arrayListSlider);
                     excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
+
+                    //TODO: Wait for excel-group so i can give them the jobShortcut
 
                     //Get every value and give them to excel
                     int pointsFromSliders = 0;
@@ -96,6 +116,13 @@ public class reviewController {
                 }
             }
         };
+
+        gui.getCbCourse().addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                //gui.getTxtCourse().setText((String) e.getSource());
+            }
+        });
 
         //Add both buttons to ActionListener
         gui.getSaveAndNew().addActionListener(actionListenerSafeData);
