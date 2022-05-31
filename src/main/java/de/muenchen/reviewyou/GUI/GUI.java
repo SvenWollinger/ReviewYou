@@ -368,6 +368,10 @@ public class GUI {
     private JTextField txtCourse = new JTextField(7);
 
     //Getter
+    public JComboBox getApprenticeshipSelector() {
+        return apprenticeshipSelector;
+    }
+
     public JTextField getTxtTraineeName() {
         return txtTraineeName;
     }
