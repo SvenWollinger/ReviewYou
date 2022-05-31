@@ -421,7 +421,7 @@ public class GUI {
     }
 
     public JTextField getTxtInternshipSelection() {
-        return  txtInternshipSelection;
+        return txtInternshipSelection;
     }
 
     UtilDateModel model = new UtilDateModel();
@@ -441,6 +441,15 @@ public class GUI {
     public JDatePickerImpl getTxtTill() {
         return txtTill;
     }
+
+    public UtilDateModel getModel() {
+        return model;
+    }
+
+    public UtilDateModel getModel1() {
+        return model1;
+    }
+
 
     // second Page
 
