@@ -22,5 +22,5 @@ public class Main {
             e.printStackTrace();
         }*/
         new reviewController(new ExcelHandler(), new GUI(), new AzubiGenerator());
+        }
     }
-}
