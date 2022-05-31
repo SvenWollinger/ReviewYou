@@ -77,7 +77,35 @@ public class ExcelDatabaseHandler {
         return list;
     }
 
-    public String bla(int[] arrayListSlider) throws IOException {
+    public String getRecString(int gender, int grade) throws IOException {
+        String recString = null;
+        List<AnswerSuggestionModel> recList = createRecListFromExcel();
+        for (int i = 0; i < recList.size() ; i++) {
+            if (recList.get(i).getGender() == gender && recList.get(i).getGrade() == grade){
+                recString = recList.get(i).getRecommended();
+            }
+        }
+        return recString;
+    }
+
+
+
+
+
+
+
+
+   /* public  List<AnswerSuggestionModel> specificListForQuestion(int a, int b, List<AnswerSuggestionModel> list){
+        List<AnswerSuggestionModel> specificList = new ArrayList<>();
+        for (int i = 0; i < list.size() ; i++) {
+            if (list.get(i).getGender() == a && list.get(i).getGrade() == b){
+                specificList.add(list.get(i));
+            }
+        }
+        return specificList;
+    }*/
+
+   /* public String bla(int[] arrayListSlider) throws IOException {
         String sentences = "";
         List<AnswerSuggestionModel> bliblablub = createRecListFromExcel();
         for(int i = 0; i<19; i++) {
@@ -88,7 +116,7 @@ public class ExcelDatabaseHandler {
             return "Leberkas";
         }
         return sentences;
-    }
+    }*/
 
     //TODO ARRAY IDENTIFIER 1 WHICH QUESTION ?? SO 0-18
     //TODO ARRAY IDENTIFIER 2 WHICH GRADE?? 0-5
