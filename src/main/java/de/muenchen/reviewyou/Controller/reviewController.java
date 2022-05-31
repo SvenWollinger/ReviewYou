@@ -30,11 +30,6 @@ public class reviewController {
         gui.getModel1().setDate(currentYear,7,31);
         gui.getModel1().setSelected(true);
 
-        //Insert job-shortcuts into comboBox
-        gui.getCbCourse().addItem("FIAE");
-        gui.getCbCourse().addItem("FISI");
-        gui.getCbCourse().addItem("FITZE");
-
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,7 +50,7 @@ public class reviewController {
                     excelHandler.writePerformance(gui.getAbilities().getText(),gui.getStrength().getText(),gui.getDevelopements().getText(),gui.getPerspective().getText(),gui.getOthers().getText());
                     excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
 
-                    //TODO: Wait for excel-group so i can give them the jobShortcut
+                    //TODO: Give excel-group txtCourse
 
                     //Get every value and give them to excel
                     int pointsFromSliders = 0;
@@ -120,14 +115,6 @@ public class reviewController {
                     gui.getTxtCourse().setText(azubi.getCourse());
                     gui.getTxtTraineeYear().setText(String.valueOf(azubi.getYear()));
                 }
-            }
-        });
-
-
-        gui.getCbCourse().addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                //gui.getTxtCourse().setText((String) e.getSource());
             }
         });
 

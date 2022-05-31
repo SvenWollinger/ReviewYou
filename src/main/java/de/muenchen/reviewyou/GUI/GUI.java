@@ -377,7 +377,7 @@ public class GUI {
     private final JLabel traineeYear = new JLabel("Jahrgang:");
     private final JTextField txtTraineeYear = new JTextField(7);
     private final JLabel course = new JLabel("Kurs:");
-    private final JTextField txtCourse = new JTextField(7);
+    private final JTextField txtCourse = new JTextField();
 
     //Getter
     public JComboBox getApprenticeshipSelector() {
@@ -400,10 +400,6 @@ public class GUI {
         return txtTraineeYear;
     }
 
-    public JTextField getTxtCourse() {
-        return txtCourse;
-    }
-
     public JTextField getTxtTrainingArea() {
         return txtTrainingArea;
     }
@@ -424,6 +420,10 @@ public class GUI {
         return  txtInternshipSelection;
     }
 
+    public JTextField getTxtCourse() {
+        return txtCourse;
+    }
+
     UtilDateModel model = new UtilDateModel();
     Properties p = new Properties();
     JDatePanelImpl datePanel = new JDatePanelImpl(model,p);
@@ -433,6 +433,11 @@ public class GUI {
     JDatePanelImpl datePanel1 = new JDatePanelImpl(model1,p);
     JDatePickerImpl txtTill = new JDatePickerImpl(datePanel1,new DateLabelFormatter());
 
+    UtilDateModel model2 = new UtilDateModel();
+    JDatePanelImpl datePanel2 = new JDatePanelImpl(model2, p);
+    JDatePickerImpl pickerHandover = new JDatePickerImpl(datePanel2, new DateLabelFormatter());
+    JDatePickerImpl pickerMeeting = new JDatePickerImpl(datePanel2, new DateLabelFormatter());
+
     //Getter
     public JDatePickerImpl getTxtFrom() {
         return txtFrom;
@@ -441,6 +446,7 @@ public class GUI {
     public JDatePickerImpl getTxtTill() {
         return txtTill;
     }
+
 
     public JDatePickerImpl getPickerHandover() {
         return pickerHandover;
@@ -473,6 +479,8 @@ public class GUI {
 
         panel.add(txtFrom);
         panel.add(txtTill);
+        panel.add(pickerHandover);
+        panel.add(pickerMeeting);
         panel.setLayout(layout2);
         window.add(panel);
         panel.add(apprenticeship);
@@ -492,9 +500,7 @@ public class GUI {
         panel.add(sessions);
         panel.add(txtSessions);
         panel.add(traingPlan);
-        panel.add(txtTrainingsPlan);
         panel.add(interimTalk);
-        panel.add(txtInterimTalk);
         panel.add(traineeYear);
         panel.add(txtTraineeYear);
         panel.add(course);
@@ -617,16 +623,16 @@ public class GUI {
         layout2.putConstraint(SpringLayout.NORTH, traingPlan, 20, SpringLayout.SOUTH, txtSessions);
         layout2.putConstraint(SpringLayout.WEST, traingPlan, 100, SpringLayout.WEST, contentPane);
 
-        layout2.putConstraint(SpringLayout.NORTH, txtTrainingsPlan, 10, SpringLayout.SOUTH, traingPlan);
-        layout2.putConstraint(SpringLayout.WEST, txtTrainingsPlan, 100, SpringLayout.WEST, contentPane);
+        layout2.putConstraint(SpringLayout.NORTH, pickerHandover, 10, SpringLayout.SOUTH, traingPlan);
+        layout2.putConstraint(SpringLayout.WEST, pickerHandover, 100, SpringLayout.WEST, contentPane);
 
         // set interimTalk and Textfield
 
-        layout2.putConstraint(SpringLayout.NORTH, interimTalk, 20, SpringLayout.SOUTH, txtTrainingsPlan);
+        layout2.putConstraint(SpringLayout.NORTH, interimTalk, 20, SpringLayout.SOUTH, pickerHandover);
         layout2.putConstraint(SpringLayout.WEST, interimTalk, 100, SpringLayout.WEST, contentPane);
 
-        layout2.putConstraint(SpringLayout.NORTH, txtInterimTalk, 10, SpringLayout.SOUTH, interimTalk);
-        layout2.putConstraint(SpringLayout.WEST, txtInterimTalk, 100, SpringLayout.WEST, contentPane);
+        layout2.putConstraint(SpringLayout.NORTH, pickerMeeting, 10, SpringLayout.SOUTH, interimTalk);
+        layout2.putConstraint(SpringLayout.WEST, pickerMeeting, 100, SpringLayout.WEST, contentPane);
     }
 
     // set Insets
