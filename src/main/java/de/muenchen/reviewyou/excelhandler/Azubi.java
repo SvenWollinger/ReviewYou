@@ -23,15 +23,7 @@ public class Azubi {
 
    @Override
    public String toString() {
-      return "Azubi{" +
-            "name='" + name + '\'' +
-            ", birthday=" + birthday +
-            ", address='" + address + '\'' +
-            ", year=" + year +
-            ", course='" + course + '\'' +
-            ", allocationPeriodFrom=" + allocationPeriodFrom +
-            ", allocationPeriodTo=" + allocationPeriodTo +
-            '}';
+      return name;
    }
 
 

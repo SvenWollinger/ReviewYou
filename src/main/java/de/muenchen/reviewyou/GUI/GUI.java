@@ -1,5 +1,8 @@
 package de.muenchen.reviewyou.GUI;
 
+import de.muenchen.reviewyou.excelhandler.Azubi;
+import de.muenchen.reviewyou.excelhandler.AzubiGenerator;
+import de.muenchen.reviewyou.excelhandler.ExcelHandler;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -11,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 
 import java.time.format.DateTimeFormatter;
@@ -214,10 +218,18 @@ public class GUI {
                int optiion = fileChooser.showOpenDialog(null);
                if (optiion == JFileChooser.APPROVE_OPTION) {
                    File file = fileChooser.getSelectedFile();
+                   AzubiGenerator azubiGenerator = new AzubiGenerator();
+                   try {
+                      List<Azubi> azubis = azubiGenerator.getAzubiList(file.getPath());
+                      for(int i = 0; i < azubis.size(); i++) {
+                          apprenticeshipSelector.addItem(azubis.get(i));
+                      }
+                   } catch (IOException e) {
+                       e.printStackTrace();
+                   };
                }
             }
         });
-
     }
 
     public void goToFirstPanel() {
@@ -341,7 +353,7 @@ public class GUI {
     private JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft");
     private JLabel traineeName = new JLabel("Name, Vorname:");
     private JTextField txtTraineeName = new JTextField(10);
-    private JComboBox apprenticeshipSelector = new JComboBox();
+    private JComboBox apprenticeshipSelector = new JComboBox<Azubi>();
     private JLabel birthDate = new JLabel("Geburtsdatum: ");
     private JTextField txtBirthDate = new JTextField(9);
     private JLabel apartmentStreet = new JLabel("Straße, Haus-Nr., PLZ, Ort:");
@@ -524,7 +536,6 @@ public class GUI {
         layout2.putConstraint(SpringLayout.EAST, apprenticeshipSelector, -205, SpringLayout.EAST, panel);
         layout2.putConstraint(SpringLayout.NORTH, apprenticeshipSelector, 30, SpringLayout.NORTH, contentPane);
         apprenticeshipSelector.setEditable(true);
-        apprenticeshipSelector.setSelectedItem("Azubi auswählen");
 
         layout2.putConstraint(SpringLayout.NORTH, allocationPeriod, 20, SpringLayout.SOUTH, apartmentStreet);
         layout2.putConstraint(SpringLayout.WEST, allocationPeriod, 100, SpringLayout.WEST, contentPane);

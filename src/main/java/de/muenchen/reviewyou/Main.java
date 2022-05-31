@@ -24,6 +24,6 @@ public class Main {
         } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
-        reviewController reviewController = new reviewController(new ExcelHandler(), new GUI(), ExcelDatabaseHandler.getInstance());
+        new reviewController(new ExcelHandler(), new GUI(), ExcelDatabaseHandler.getInstance());
     }
 }

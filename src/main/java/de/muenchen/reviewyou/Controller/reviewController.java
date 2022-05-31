@@ -5,6 +5,8 @@ import de.muenchen.reviewyou.excelhandler.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
@@ -87,7 +89,25 @@ public class reviewController {
                 gui.getTxtReview().setText(calculateAverage(gui));
             }
         });
+
+       gui.getApprenticeshipSelector().addItemListener(new ItemListener() {
+           @Override
+           public void itemStateChanged(ItemEvent e) {
+               System.out.println(gui.getApprenticeshipSelector().getSelectedItem());
+               Azubi azubi = (Azubi) gui.getApprenticeshipSelector().getSelectedItem();
+               if (azubi != null) {
+                   gui.getTxtTraineeName().setText(azubi.getName());
+                   gui.getTxtApartmentStreet().setText(azubi.getAddress());
+                   gui.getTxtBirthDate().setText(azubi.getBirthday().toString());
+                   gui.getTxtCourse().setText(azubi.getCourse());
+                   gui.getTxtTraineeYear().setText(String.valueOf(azubi.getYear()));
+               }
+           }
+        });
+
+
     }
+
 
     public String calculateAverage(GUI gui) {
         String average = "";
@@ -102,6 +122,7 @@ public class reviewController {
         }
         return average;
     }
+
 
     public double calculateAveragePoints(GUI gui) {
         double totalPoints = 0;
