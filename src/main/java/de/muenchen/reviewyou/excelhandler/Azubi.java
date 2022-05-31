@@ -1,6 +1,7 @@
 package de.muenchen.reviewyou.excelhandler;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Azubi {
    private final String name;
@@ -8,10 +9,10 @@ public class Azubi {
    private final String address;
    private final int year;
    private final String course;
-   private final LocalDate allocationPeriodFrom;
-   private final LocalDate allocationPeriodTo;
+   private final LocalDateTime allocationPeriodFrom;
+   private final LocalDateTime allocationPeriodTo;
 
-   public Azubi(String name, LocalDate birthday, String address, int year, String course, LocalDate allocationPeriodFrom, LocalDate allocationPeriodTo) {
+   public Azubi(String name, LocalDate birthday, String address, int year, String course, LocalDateTime allocationPeriodFrom, LocalDateTime allocationPeriodTo) {
       this.name = name;
       this.birthday = birthday;
       this.address = address;
@@ -48,11 +49,11 @@ public class Azubi {
       return course;
    }
 
-   public LocalDate getAllocationPeriodFrom() {
+   public LocalDateTime getAllocationPeriodFrom() {
       return allocationPeriodFrom;
    }
 
-   public LocalDate getAllocationPeriodTo() {
+   public LocalDateTime getAllocationPeriodTo() {
       return allocationPeriodTo;
    }
 }
