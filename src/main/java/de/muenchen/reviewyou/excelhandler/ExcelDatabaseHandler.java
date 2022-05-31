@@ -77,16 +77,25 @@ public class ExcelDatabaseHandler {
         return list;
     }
 
-    public String getRecString(int gender, int grade) throws IOException {
+    public String getRecString(int gender, int grade, String azubiName) throws IOException {
         String recString = null;
+        String tempString = null;
         List<AnswerSuggestionModel> recList = createRecListFromExcel();
         for (int i = 0; i < recList.size() ; i++) {
             if (recList.get(i).getGender() == gender && recList.get(i).getGrade() == grade){
-                recString = recList.get(i).getRecommended();
+                tempString = recList.get(i).getRecommended();
             }
+        }
+        if (gender == 1 ) {
+        recString = "Herr " + azubiName + "ist ein " + tempString + " Auszubildender";
+        }
+        else if (gender == 2 ) {
+            recString = "Frau " + azubiName + "ist eine " + tempString + " Auszubildende";
         }
         return recString;
     }
+
+
 
 
 
