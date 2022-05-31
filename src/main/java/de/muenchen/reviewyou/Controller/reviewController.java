@@ -2,6 +2,8 @@ package de.muenchen.reviewyou.Controller;
 
 import de.muenchen.reviewyou.GUI.GUI;
 import de.muenchen.reviewyou.excelhandler.*;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -103,6 +105,9 @@ public class reviewController {
         });
 
 
+        //Add both buttons to ActionListener
+        gui.getSaveAndNew().addActionListener(actionListenerSafeData);
+        gui.getSaveAndExit().addActionListener(actionListenerSafeData);
     }
 
 
