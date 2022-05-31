@@ -3,16 +3,16 @@ package de.muenchen.reviewyou.Controller;
 import de.muenchen.reviewyou.GUI.GUI;
 import de.muenchen.reviewyou.excelhandler.*;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.text.DecimalFormat;
 
 public class reviewController {
     GUI gui; //Now everything out of scope can take this
     private int[] arrayListSlider = new int[19];
 
-    public reviewController(ExcelHandler excelHandler, GUI gui, ExcelDatabaseHandler excelDatabaseHandler) {
+    public reviewController(ExcelHandler excelHandler, GUI gui, ExcelDatabaseHandler excelDatabaseHandler, AzubiGenerator azubiGenerator) {
         this.gui = gui;
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
@@ -75,10 +75,6 @@ public class reviewController {
             }
         };
 
-        //Add both buttons to ActionListener
-        gui.getSaveAndNew().addActionListener(actionListenerSafeData);
-        gui.getSaveAndExit().addActionListener(actionListenerSafeData);
-
         //Calculate-button
         gui.getCalc().addActionListener(new ActionListener() {
             @Override
@@ -87,6 +83,23 @@ public class reviewController {
                 gui.getTxtReview().setText(calculateAverage(gui));
             }
         });
+
+        ActionListener actionListenerComboBox = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Then you can click on a name and every data from him gets inserted
+                try {
+                    //Now add every azubiName to comboBox using getAzubiList
+                    azubiGenerator.getAzubiList("");
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        };
+
+        //Add both buttons to ActionListener
+        gui.getSaveAndNew().addActionListener(actionListenerSafeData);
+        gui.getSaveAndExit().addActionListener(actionListenerSafeData);
     }
 
     public String calculateAverage(GUI gui) {
