@@ -40,8 +40,9 @@ public class AzubiGenerator {
                (int)row.getCell(3).getNumericCellValue(),
                row.getCell(4).getStringCellValue(),
                row.getCell(5).getLocalDateTimeCellValue().toLocalDate(),
-               row.getCell(6).getLocalDateTimeCellValue().toLocalDate()));
-         System.out.println(row.getCell(0).getStringCellValue());
+               row.getCell(6).getLocalDateTimeCellValue().toLocalDate(),
+                         (byte)row.getCell(7).getNumericCellValue())
+               );
       }
 
       return list;

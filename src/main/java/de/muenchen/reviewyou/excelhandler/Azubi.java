@@ -10,8 +10,9 @@ public class Azubi {
    private final String course;
    private final LocalDate allocationPeriodFrom;
    private final LocalDate allocationPeriodTo;
+   private final byte internshipSection;
 
-   public Azubi(String name, LocalDate birthday, String address, int year, String course, LocalDate allocationPeriodFrom, LocalDate allocationPeriodTo) {
+   public Azubi(String name, LocalDate birthday, String address, int year, String course, LocalDate allocationPeriodFrom, LocalDate allocationPeriodTo, byte internshipSection) {
       this.name = name;
       this.birthday = birthday;
       this.address = address;
@@ -19,6 +20,7 @@ public class Azubi {
       this.course = course;
       this.allocationPeriodFrom = allocationPeriodFrom;
       this.allocationPeriodTo = allocationPeriodTo;
+      this.internshipSection = internshipSection;
    }
 
    @Override
@@ -54,5 +56,9 @@ public class Azubi {
 
    public LocalDate getAllocationPeriodTo() {
       return allocationPeriodTo;
+   }
+
+   public byte getInternshipSection() {
+      return internshipSection;
    }
 }

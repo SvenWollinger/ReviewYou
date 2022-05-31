@@ -8,11 +8,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.IOException;
-import java.text.DecimalFormat;
+import java.time.format.DateTimeFormatter;
 
 public class reviewController {
     GUI gui; //Now everything out of scope can take this
     private final int[] arrayListSlider = new int[19];
+    DateTimeFormatter sdf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     public reviewController(ExcelHandler excelHandler, GUI gui, ExcelDatabaseHandler excelDatabaseHandler) {
         this.gui = gui;
@@ -95,20 +96,16 @@ public class reviewController {
                 if (azubi != null) {
                     gui.getTxtTraineeName().setText(azubi.getName());
                     gui.getTxtApartmentStreet().setText(azubi.getAddress());
-<<<<<<< Updated upstream
                     gui.getTxtBirthDate().setText(azubi.getBirthday().toString());
-=======
                     gui.getTxtBirthDate().setText(azubi.getBirthday().format(sdf));
                     gui.getTxtFrom().getJFormattedTextField().setText(azubi.getAllocationPeriodFrom().format(sdf));
                     gui.getTxtTill().getJFormattedTextField().setText(azubi.getAllocationPeriodTo().format(sdf));
->>>>>>> Stashed changes
                     gui.getTxtCourse().setText(azubi.getCourse());
+                    gui.getTxtInternshipSelection().setText(String.valueOf(azubi.getInternshipSection()));
                     gui.getTxtTraineeYear().setText(String.valueOf(azubi.getYear()));
                 }
             }
         });
-
-
     }
 
 
@@ -125,7 +122,6 @@ public class reviewController {
         }
         return average;
     }
-
 
     public double calculateAveragePoints(GUI gui) {
         double totalPoints = 0;
