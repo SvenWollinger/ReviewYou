@@ -12,7 +12,6 @@ import java.net.URISyntaxException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        GUI gui = new GUI();
         reviewController reviewController = new reviewController(new ExcelHandler(), new GUI(), ExcelDatabaseHandler.getInstance());
     }
 }
