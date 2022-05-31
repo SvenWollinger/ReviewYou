@@ -341,6 +341,7 @@ public class GUI {
     private JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft");
     private JLabel traineeName = new JLabel("Name, Vorname:");
     private JTextField txtTraineeName = new JTextField(10);
+    private JComboBox apprenticeshipSelector = new JComboBox();
     private JLabel birthDate = new JLabel("Geburtsdatum: ");
     private JTextField txtBirthDate = new JTextField(9);
     private JLabel apartmentStreet = new JLabel("Straße, Haus-Nr., PLZ, Ort:");
@@ -367,6 +368,10 @@ public class GUI {
     private JTextField txtCourse = new JTextField(7);
 
     //Getter
+    public JComboBox getApprenticeshipSelector() {
+        return apprenticeshipSelector;
+    }
+
     public JTextField getTxtTraineeName() {
         return txtTraineeName;
     }
@@ -466,6 +471,7 @@ public class GUI {
         panel.add(txtTraineeYear);
         panel.add(course);
         panel.add(txtCourse);
+        panel.add(apprenticeshipSelector);
 
         // setFont for Labels
 
@@ -514,6 +520,11 @@ public class GUI {
         layout2.putConstraint(SpringLayout.WEST, txtApartmentStreet, 10, SpringLayout.EAST, apartmentStreet);
 
         // set allocationPeriod
+
+        layout2.putConstraint(SpringLayout.EAST, apprenticeshipSelector, -205, SpringLayout.EAST, panel);
+        layout2.putConstraint(SpringLayout.NORTH, apprenticeshipSelector, 30, SpringLayout.NORTH, contentPane);
+        apprenticeshipSelector.setEditable(true);
+        apprenticeshipSelector.setSelectedItem("Azubi auswählen");
 
         layout2.putConstraint(SpringLayout.NORTH, allocationPeriod, 20, SpringLayout.SOUTH, apartmentStreet);
         layout2.putConstraint(SpringLayout.WEST, allocationPeriod, 100, SpringLayout.WEST, contentPane);
@@ -977,21 +988,6 @@ public class GUI {
     JLabel txtReview = new JLabel();
     //Getter
 
-    public JButton getCalc() {
-        return calc;
-    }
-    public JButton getSaveAndNew() {
-        return saveAndNew;
-    }
-
-    public JButton getSaveAndExit() {
-        return saveAndExit;
-    }
-
-    public JLabel getTxtPoints() {
-        return txtPoints;
-    }
-
     public JTextArea getAbilities() {
         return abilities;
     }
@@ -1010,6 +1006,21 @@ public class GUI {
 
     public JTextArea getOthers() {
         return others;
+    }
+    public JButton getCalc() {
+        return calc;
+    }
+
+    public JButton getSaveAndNew() {
+        return saveAndNew;
+    }
+
+    public JButton getSaveAndExit() {
+        return saveAndExit;
+    }
+
+    public JLabel getTxtPoints() {
+        return txtPoints;
     }
 
     public JLabel getTxtReview() {
@@ -1098,12 +1109,12 @@ public class GUI {
     }
 
     // sliders
-
-    static final int minScore = 0;
-    static final int maxScore = 15;
-    static final int scoreInit = 0;
+    
 
     java.util.List<JSlider> createSliders(){
+        final int minScore = 0;
+        final int maxScore = 15;
+        final int scoreInit = 0;
         List<JSlider> sliders = new ArrayList<>();
         for (int i = 0; i < 19 ; i++) {
 
