@@ -7,23 +7,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class reviewController {
     GUI gui; //Now everything out of scope can take this
     private int[] arrayListSlider = new int[19];
 
-    public reviewController(ExcelHandler excelHandler, GUI gui, ExcelDatabaseHandler excelDatabaseHandler, AzubiGenerator azubiGenerator) throws IOException {
+    public reviewController(ExcelHandler excelHandler, GUI gui, ExcelDatabaseHandler excelDatabaseHandler, AzubiGenerator azubiGenerator) {
         this.gui = gui;
-
-        //Dummies
-        JComboBox jComboBox = new JComboBox();
-
-        //Add every azubiName to comboBox
-        for(int i = 0; i < azubiGenerator.getAzubiList("").size(); i++) {
-            jComboBox.addItem(azubiGenerator.getAzubiList("").get(i));
-        }
-
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -97,23 +87,10 @@ public class reviewController {
         ActionListener actionListenerComboBox = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //Then you can click on a name and every data from him gets inserted
                 try {
-                    //Insert azubiData from the name the user clicked on
-                    //Create new azubi based on the comboBox. Then setter/getter are working
-                    for(int i = 0; i < azubiGenerator.getAzubiList("").size(); i++) {
-                        if(e.getSource().equals(azubiGenerator.getAzubiList("").get(i))) {
-                            //Dummie
-                            Azubi azubi = new Azubi("", "", "", 1, "", "", "");
-
-                            gui.getTxtTraineeName().setText(azubi.getName());
-                            gui.getTxtBirthDate().setText(String.valueOf(azubi.getBirthday()));
-                            gui.getTxtApartmentStreet().setText(azubi.getAddress());
-                            //gui.getTxtFrom().set
-                            //gui.getTxtTill().set
-                            gui.getTxtTraineeYear().setText(String.valueOf(azubi.getYear()));
-                            gui.getTxtCourse().setText(azubi.getCourse());
-                        }
-                    }
+                    //Now add every azubiName to comboBox using getAzubiList
+                    azubiGenerator.getAzubiList("");
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -123,7 +100,6 @@ public class reviewController {
         //Add both buttons to ActionListener
         gui.getSaveAndNew().addActionListener(actionListenerSafeData);
         gui.getSaveAndExit().addActionListener(actionListenerSafeData);
-        jComboBox.addActionListener(actionListenerComboBox);
     }
 
     public String calculateAverage(GUI gui) {
