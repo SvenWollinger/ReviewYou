@@ -31,7 +31,7 @@ public class reviewController {
                     excelHandler.writeTrainingAreaAndPeriod(gui.getTxtTrainingArea().getText());
                     excelHandler.writeParticipations(gui.getTxtSessions().getText());
                     excelHandler.writeDates(gui.getTxtTrainingsPlan().getText(), gui.getTxtInterimTalk().getText());
-                    //excelHandler.writePerformance();
+                    excelHandler.writePerformance(gui.getAbilities().getText(),gui.getStrength().getText(),gui.getDevelopements().getText(),gui.getPerspective().getText(),gui.getOthers().getText());
                     //excelDatabaseHandler.bla(arrayListSlider);
                     excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
 
