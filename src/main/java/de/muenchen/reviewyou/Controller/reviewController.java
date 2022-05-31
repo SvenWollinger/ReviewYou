@@ -3,64 +3,52 @@ package de.muenchen.reviewyou.Controller;
 import de.muenchen.reviewyou.GUI.GUI;
 import de.muenchen.reviewyou.excelhandler.*;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.io.IOException;
-import java.text.DecimalFormat;
-import java.time.LocalDate;
 
 public class reviewController {
     GUI gui; //Now everything out of scope can take this
-    private final int[] arrayListSlider = new int[19];
+    private int[] arrayListSlider = new int[19];
 
-    public reviewController(ExcelHandler excelHandler, GUI gui, ExcelDatabaseHandler excelDatabaseHandler) {
+    public reviewController(ExcelHandler excelHandler, GUI gui, ExcelDatabaseHandler excelDatabaseHandler, AzubiGenerator azubiGenerator) {
         this.gui = gui;
-
-        //Sett current year from "Zuweisungszeitraum"
-        LocalDate currentDate = LocalDate.now();
-        int currentYear = currentDate.getYear();
-        int lastYear = currentYear -1;
-        gui.getModel().setDate(lastYear,8,1);
-        gui.getModel().setSelected(true);
-
-        gui.getModel1().setDate(currentYear,7,31);
-        gui.getModel1().setSelected(true);
-
-
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Give values to Excel-Group
-                try {
+                try{
                     excelHandler.writeInstructorData(gui.getInstructorName().getText(),
                             gui.getInstructorTelephone().getText(), gui.getTxtdate().getText(),
                             gui.getInstructorEmail().getText());
                     excelHandler.writeStudentData(gui.getTxtTraineeName().getText(), gui.getTxtBirthDate().getText(),
                             gui.getTxtApartmentStreet().getText(), gui.getTxtTraineeYear().getText(),
-                            gui.getTxtCourse().getText());
+                            gui.getCbCourse().getSelectedItem().toString());
                     excelHandler.writeAllocationPeriod(gui.getTxtFrom().getJFormattedTextField().getText(),
                             gui.getTxtTill().getJFormattedTextField().getText(),
                             gui.getTxtInternshipSelection().getText());
                     excelHandler.writeTrainingAreaAndPeriod(gui.getTxtTrainingArea().getText());
                     excelHandler.writeParticipations(gui.getTxtSessions().getText());
-                    excelHandler.writeDates(gui.getTxtTrainingsPlan().getText(), gui.getTxtInterimTalk().getText());
-                    excelHandler.writePerformance(gui.getAbilities().getText(), gui.getStrength().getText(), gui.getDevelopements().getText(), gui.getPerspective().getText(), gui.getOthers().getText());
+                    excelHandler.writeDates(gui.getPickerHandover().getJFormattedTextField().getText(), gui.getPickerMeeting().getJFormattedTextField().getText());
+                    excelHandler.writePerformance(gui.getAbilities().getText(),gui.getStrength().getText(),gui.getDevelopements().getText(),gui.getPerspective().getText(),gui.getOthers().getText());
+                    //excelDatabaseHandler.bla(arrayListSlider);
                     excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
 
                     //Get every value and give them to excel
                     int pointsFromSliders = 0;
                     int row = 133;
-                    for (int i = 0; i < 19; i++) {
+                    for(int i = 0; i < 19; i++) {
                         pointsFromSliders = gui.getjSliders().get(i).getValue();
                         excelHandler.writePoints(row, pointsFromSliders);
                         row = row + 1;
-                        if (row == 136) {
+                        if(row == 136) {
                             row = 139;
-                        } else if (row == 142) {
+                        }
+                        else if(row == 142) {
                             row = 145;
-                        } else if (row == 151) {
+                        }
+                        else if(row == 151) {
                             row = 154;
                         }
                     }
@@ -69,7 +57,7 @@ public class reviewController {
                 }
 
                 if (e.getSource().equals(gui.getSaveAndNew())) { //"Speichern und neuer Leistungsbericht" button
-                    for (int i = 0; i < 19; i++) {
+                    for(int i = 0; i < 19; i++) {
                         //Reset every slider
                         gui.getjSliders().get(i).setValue(gui.getjSliders().get(i).getMinimum());
                     }
@@ -87,10 +75,6 @@ public class reviewController {
             }
         };
 
-        //Add both buttons to ActionListener
-        gui.getSaveAndNew().addActionListener(actionListenerSafeData);
-        gui.getSaveAndExit().addActionListener(actionListenerSafeData);
-
         //Calculate-button
         gui.getCalc().addActionListener(new ActionListener() {
             @Override
@@ -100,47 +84,42 @@ public class reviewController {
             }
         });
 
-        gui.getApprenticeshipSelector().addItemListener(new ItemListener() {
+        ActionListener actionListenerComboBox = new ActionListener() {
             @Override
-            public void itemStateChanged(ItemEvent e) {
-                System.out.println(gui.getApprenticeshipSelector().getSelectedItem());
-                Azubi azubi = (Azubi) gui.getApprenticeshipSelector().getSelectedItem();
-                if (azubi != null) {
-                    gui.getTxtTraineeName().setText(azubi.getName());
-                    gui.getTxtApartmentStreet().setText(azubi.getAddress());
-                    gui.getTxtBirthDate().setText(azubi.getBirthday().toString());
-                    gui.getTxtCourse().setText(azubi.getCourse());
-                    gui.getTxtTraineeYear().setText(String.valueOf(azubi.getYear()));
-
-                    //gui.getModel().setValue(azubi.getAllocationPeriodFrom());
-                    //gui.getModel1().setValue(azubi.getAllocationPeriodTo());
+            public void actionPerformed(ActionEvent e) {
+                //Then you can click on a name and every data from him gets inserted
+                try {
+                    //Now add every azubiName to comboBox using getAzubiList
+                    azubiGenerator.getAzubiList("");
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
             }
-        });
+        };
 
-
+        //Add both buttons to ActionListener
+        gui.getSaveAndNew().addActionListener(actionListenerSafeData);
+        gui.getSaveAndExit().addActionListener(actionListenerSafeData);
     }
-
 
     public String calculateAverage(GUI gui) {
         String average = "";
-        for (int i = 0; i < calculateAveragePoints(gui); i++) {
-            if (calculateAveragePoints(gui) <= 15 && calculateAveragePoints(gui) >= 6) {
+        for(int i = 0; i < calculateAveragePoints(gui); i++) {
+            if(calculateAveragePoints(gui) <= 15 && calculateAveragePoints(gui) >= 6) {
                 average = "Geeignet";
-            } else if (calculateAveragePoints(gui) <= 5.99 && calculateAveragePoints(gui) >= 3) {
+            } else if(calculateAveragePoints(gui) <= 5.99 && calculateAveragePoints(gui) >= 3) {
                 average = "Noch nicht geeignet";
-            } else if (calculateAveragePoints(gui) <= 2.99 && calculateAveragePoints(gui) >= 0) {
+            } else if(calculateAveragePoints(gui) <= 2.99 && calculateAveragePoints(gui) >= 0) {
                 average = "Nicht geeignet";
             }
         }
         return average;
     }
 
-
     public double calculateAveragePoints(GUI gui) {
         double totalPoints = 0;
         double averagePoints = 0;
-        for (int i = 0; i < 19; i++) {
+        for(int i = 0; i < 19; i++) {
             totalPoints = totalPoints + gui.getjSliders().get(i).getValue();
             arrayListSlider[i] = gui.getjSliders().get(i).getValue(); //Fill array
         }

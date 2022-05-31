@@ -1,8 +1,5 @@
 package de.muenchen.reviewyou.GUI;
 
-import de.muenchen.reviewyou.excelhandler.Azubi;
-import de.muenchen.reviewyou.excelhandler.AzubiGenerator;
-import de.muenchen.reviewyou.excelhandler.ExcelHandler;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -14,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
 
 import java.time.format.DateTimeFormatter;
@@ -26,19 +22,19 @@ public class GUI {
     private final Container contentPane;
     private final JFrame window;
 
-    private final JButton next = new JButton("Weiter");
-    private final JButton previous = new JButton("Zurück");
-    private final JButton moreInfo = new JButton("Info");
-    private final JButton btnTraineedata = new JButton("Azubidaten");
+    private JButton next = new JButton("Weiter");
+    private JButton previous = new JButton("Zurück");
+    private JButton moreInfo = new JButton("Info");
+    private JButton btnTraineedata = new JButton("Azubidaten");
     private int page = 0;
 
-    private final JPanel panel = new JPanel();
-    private final Font font = new Font(null, Font.PLAIN, 20);
-    private final Font fontt = new Font(null, Font.PLAIN, 17);
-    private final SpringLayout layout = new SpringLayout();
-    private final SpringLayout layout1 = new SpringLayout();
-    private final SpringLayout layout2 = new SpringLayout();
-    private final SpringLayout layout3 = new SpringLayout();
+    private JPanel panel = new JPanel();
+    private Font font = new Font(null, Font.PLAIN, 20);
+    private Font fontt = new Font(null, Font.PLAIN, 17);
+    private SpringLayout layout = new SpringLayout();
+    private SpringLayout layout1 = new SpringLayout();
+    private SpringLayout layout2 = new SpringLayout();
+    private SpringLayout layout3 = new SpringLayout();
 
     //constructor
 
@@ -218,18 +214,10 @@ public class GUI {
                int optiion = fileChooser.showOpenDialog(null);
                if (optiion == JFileChooser.APPROVE_OPTION) {
                    File file = fileChooser.getSelectedFile();
-                   AzubiGenerator azubiGenerator = new AzubiGenerator();
-                   try {
-                      List<Azubi> azubis = azubiGenerator.getAzubiList(file.getPath());
-                      for(int i = 0; i < azubis.size(); i++) {
-                          apprenticeshipSelector.addItem(azubis.get(i));
-                      }
-                   } catch (IOException e) {
-                       e.printStackTrace();
-                   }
                }
             }
         });
+
     }
 
     public void goToFirstPanel() {
@@ -244,15 +232,15 @@ public class GUI {
     
     // First page to get user data
 
-    private final JLabel name = new JLabel("Name");
-    private final JLabel email = new JLabel("E-Mail");
-    private final JLabel date = new JLabel("Datum");
-    private final JLabel telephone = new JLabel("Tel");
-    private final JTextField instructorName = new JTextField(15);
-    private final JTextField instructorEmail = new JTextField(15);
-    private final JTextField currentDate = new JTextField(15);
-    private final JTextField instructorTelephone = new JTextField(15);
-    private final JTextField txtdate = new JTextField(15);
+    private JLabel name = new JLabel("Name");
+    private JLabel email = new JLabel("E-Mail");
+    private JLabel date = new JLabel("Datum");
+    private JLabel telephone = new JLabel("Tel");
+    private JTextField instructorName = new JTextField(15);
+    private JTextField instructorEmail = new JTextField(15);
+    private JTextField currentDate = new JTextField(15);
+    private JTextField instructorTelephone = new JTextField(15);
+    private JTextField txtdate = new JTextField(15);
     private JLabel headline;
     LocalDate today = LocalDate.now();
 
@@ -344,40 +332,39 @@ public class GUI {
         layout1.putConstraint(SpringLayout.NORTH,txtdate, 27,SpringLayout.SOUTH,instructorTelephone);
         layout1.putConstraint(SpringLayout.WEST,txtdate,8,SpringLayout.EAST,date);
 
-        txtdate.setText(today.format(DateTimeFormatter.ofPattern("dd.MM.uuuu")));
+        txtdate.setText(String.valueOf(today.format(DateTimeFormatter.ofPattern("dd.MM.uuuu"))));
 
     }
 
     //Second Page created Labels, Txtfields and JDatePicker
 
-    private final JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft");
-    private final JLabel traineeName = new JLabel("Name, Vorname:");
-    private final JTextField txtTraineeName = new JTextField(10);
-    private final JComboBox apprenticeshipSelector = new JComboBox<Azubi>();
-    private final JLabel birthDate = new JLabel("Geburtsdatum: ");
-    private final JTextField txtBirthDate = new JTextField(9);
-    private final JLabel apartmentStreet = new JLabel("Straße, Haus-Nr., PLZ, Ort:");
-    private final JTextField txtApartmentStreet = new JTextField(24);
-    private final JLabel allocationPeriod = new JLabel("Zuweisungszeitraum:");
-    private final JLabel from = new JLabel("vom:");
-    private final JLabel till = new JLabel("bis:");
-    private final JLabel internshipSelection = new JLabel("Praktikumsabschnitt:");
-    private final JTextField txtInternshipSelection = new JTextField(20);
-    private final JLabel trainingArea = new JLabel("<html><body>Ausbildungsbereich und Zeitraum der Beschäftigung<br>" +
+    private JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft");
+    private JLabel traineeName = new JLabel("Name, Vorname:");
+    private JTextField txtTraineeName = new JTextField(10);
+    private JComboBox apprenticeshipSelector = new JComboBox();
+    private JLabel birthDate = new JLabel("Geburtsdatum: ");
+    private JTextField txtBirthDate = new JTextField(9);
+    private JLabel apartmentStreet = new JLabel("Straße, Haus-Nr., PLZ, Ort:");
+    private JTextField txtApartmentStreet = new JTextField(24);
+    private JLabel allocationPeriod = new JLabel("Zuweisungszeitraum:");
+    private JLabel from = new JLabel("vom:");
+    private JLabel till = new JLabel("bis:");
+    private JLabel internshipSelection = new JLabel("Praktikumsabschnitt:");
+    private JTextField txtInternshipSelection = new JTextField(20);
+    private JLabel trainingArea = new JLabel("<html><body>Ausbildungsbereich und Zeitraum der Beschäftigung<br>" +
             "in den einzelnen Ausbildungsgebieten:</body></html>");
-    private final JTextField txtTrainingArea = new JTextField(45);
-    private final JLabel sessions = new JLabel("<html><body>Teilnahme an Lehrgängen, Versammlungen, Sitzungen, " +
+    private JTextField txtTrainingArea = new JTextField(45);
+    private JLabel sessions = new JLabel("<html><body>Teilnahme an Lehrgängen, Versammlungen, Sitzungen, " +
             "<br>Besichtigungen usw.: </body></html>");
-    private final JTextField txtSessions = new JTextField(45);
-    private final JLabel traingPlan = new JLabel("<html><body>Örtlicher Ausbildungsplan vorgestellt und Kopie <br> " +
+    private JTextField txtSessions = new JTextField(45);
+    private JLabel traingPlan = new JLabel("<html><body>Örtlicher Ausbildungsplan vorgestellt und Kopie <br> " +
             "ausgehändigt am: </body></html>");
-    private final JTextField txtTrainingsPlan = new JTextField(45);
-    private final JLabel interimTalk = new JLabel("Zwischengespräch geführt am:");
-    private final JTextField txtInterimTalk = new JTextField(45);
-    private final JLabel traineeYear = new JLabel("Jahrgang:");
-    private final JTextField txtTraineeYear = new JTextField(7);
-    private final JLabel course = new JLabel("Kurs:");
-    private final JTextField txtCourse = new JTextField(7);
+    private JLabel interimTalk = new JLabel("Zwischengespräch geführt am:");
+    private JLabel traineeYear = new JLabel("Jahrgang:");
+    private JTextField txtTraineeYear = new JTextField(7);
+    private JLabel course = new JLabel("Kurs:");
+    private JComboBox cbCourse = new JComboBox();
+
 
     //Getter
     public JComboBox getApprenticeshipSelector() {
@@ -400,8 +387,8 @@ public class GUI {
         return txtTraineeYear;
     }
 
-    public JTextField getTxtCourse() {
-        return txtCourse;
+    public JComboBox getCbCourse() {
+        return cbCourse;
     }
 
     public JTextField getTxtTrainingArea() {
@@ -412,16 +399,9 @@ public class GUI {
         return txtSessions;
     }
 
-    public JTextField getTxtTrainingsPlan() {
-        return txtTrainingsPlan;
-    }
-
-    public JTextField getTxtInterimTalk() {
-        return txtInterimTalk;
-    }
 
     public JTextField getTxtInternshipSelection() {
-        return txtInternshipSelection;
+        return  txtInternshipSelection;
     }
 
     UtilDateModel model = new UtilDateModel();
@@ -433,6 +413,12 @@ public class GUI {
     JDatePanelImpl datePanel1 = new JDatePanelImpl(model1,p);
     JDatePickerImpl txtTill = new JDatePickerImpl(datePanel1,new DateLabelFormatter());
 
+    UtilDateModel model2 = new UtilDateModel();
+    JDatePanelImpl datePanel2 = new JDatePanelImpl(model2, p);
+    JDatePickerImpl pickerHandover = new JDatePickerImpl(datePanel2, new DateLabelFormatter());
+
+    JDatePickerImpl pickerMeeting = new JDatePickerImpl(datePanel2, new DateLabelFormatter());
+
     //Getter
     public JDatePickerImpl getTxtFrom() {
         return txtFrom;
@@ -442,14 +428,13 @@ public class GUI {
         return txtTill;
     }
 
-    public UtilDateModel getModel() {
-        return model;
+    public JDatePickerImpl getPickerHandover() {
+        return pickerHandover;
     }
 
-    public UtilDateModel getModel1() {
-        return model1;
+    public JDatePickerImpl getPickerMeeting() {
+        return pickerMeeting;
     }
-
 
     // second Page
 
@@ -466,6 +451,8 @@ public class GUI {
 
         panel.add(txtFrom);
         panel.add(txtTill);
+        panel.add(pickerHandover);
+        panel.add(pickerMeeting);
         panel.setLayout(layout2);
         window.add(panel);
         panel.add(apprenticeship);
@@ -485,13 +472,11 @@ public class GUI {
         panel.add(sessions);
         panel.add(txtSessions);
         panel.add(traingPlan);
-        panel.add(txtTrainingsPlan);
         panel.add(interimTalk);
-        panel.add(txtInterimTalk);
         panel.add(traineeYear);
         panel.add(txtTraineeYear);
         panel.add(course);
-        panel.add(txtCourse);
+        panel.add(cbCourse);
         panel.add(apprenticeshipSelector);
 
         // setFont for Labels
@@ -545,6 +530,7 @@ public class GUI {
         layout2.putConstraint(SpringLayout.EAST, apprenticeshipSelector, -205, SpringLayout.EAST, panel);
         layout2.putConstraint(SpringLayout.NORTH, apprenticeshipSelector, 30, SpringLayout.NORTH, contentPane);
         apprenticeshipSelector.setEditable(true);
+        apprenticeshipSelector.setSelectedItem("Azubi auswählen");
 
         layout2.putConstraint(SpringLayout.NORTH, allocationPeriod, 20, SpringLayout.SOUTH, apartmentStreet);
         layout2.putConstraint(SpringLayout.WEST, allocationPeriod, 100, SpringLayout.WEST, contentPane);
@@ -567,10 +553,10 @@ public class GUI {
 
         // set internshipSelection and Textfield
 
-        layout2.putConstraint(SpringLayout.NORTH, internshipSelection, 10, SpringLayout.SOUTH, from);
+        layout2.putConstraint(SpringLayout.NORTH, internshipSelection, 20, SpringLayout.SOUTH, from);
         layout2.putConstraint(SpringLayout.WEST, internshipSelection, 100, SpringLayout.WEST, contentPane);
 
-        layout2.putConstraint(SpringLayout.NORTH, txtInternshipSelection, 14, SpringLayout.SOUTH, from);
+        layout2.putConstraint(SpringLayout.NORTH, txtInternshipSelection, 20, SpringLayout.SOUTH, from);
         layout2.putConstraint(SpringLayout.WEST, txtInternshipSelection, 10, SpringLayout.EAST, internshipSelection);
 
         // set tranieeYear and Textfield
@@ -586,8 +572,8 @@ public class GUI {
         layout2.putConstraint(SpringLayout.NORTH,course,10,SpringLayout.SOUTH,internshipSelection);
         layout2.putConstraint(SpringLayout.WEST,course,10,SpringLayout.EAST,txtTraineeYear);
 
-        layout2.putConstraint(SpringLayout.NORTH, txtCourse, 14, SpringLayout.SOUTH,internshipSelection);
-        layout2.putConstraint(SpringLayout.WEST, txtCourse, 10 ,SpringLayout.EAST,course);
+        layout2.putConstraint(SpringLayout.NORTH, cbCourse, 10, SpringLayout.SOUTH,internshipSelection);
+        layout2.putConstraint(SpringLayout.WEST, cbCourse, 10 ,SpringLayout.EAST,course);
 
         // set trainingsArea and Textfield
 
@@ -610,23 +596,23 @@ public class GUI {
         layout2.putConstraint(SpringLayout.NORTH, traingPlan, 20, SpringLayout.SOUTH, txtSessions);
         layout2.putConstraint(SpringLayout.WEST, traingPlan, 100, SpringLayout.WEST, contentPane);
 
-        layout2.putConstraint(SpringLayout.NORTH, txtTrainingsPlan, 10, SpringLayout.SOUTH, traingPlan);
-        layout2.putConstraint(SpringLayout.WEST, txtTrainingsPlan, 100, SpringLayout.WEST, contentPane);
+        layout2.putConstraint(SpringLayout.NORTH, pickerHandover, 10, SpringLayout.SOUTH, traingPlan); //
+        layout2.putConstraint(SpringLayout.WEST, pickerHandover, 100, SpringLayout.WEST, contentPane);  //
 
         // set interimTalk and Textfield
 
-        layout2.putConstraint(SpringLayout.NORTH, interimTalk, 20, SpringLayout.SOUTH, txtTrainingsPlan);
+        layout2.putConstraint(SpringLayout.NORTH, interimTalk, 20, SpringLayout.SOUTH, pickerHandover);
         layout2.putConstraint(SpringLayout.WEST, interimTalk, 100, SpringLayout.WEST, contentPane);
 
-        layout2.putConstraint(SpringLayout.NORTH, txtInterimTalk, 10, SpringLayout.SOUTH, interimTalk);
-        layout2.putConstraint(SpringLayout.WEST, txtInterimTalk, 100, SpringLayout.WEST, contentPane);
+        layout2.putConstraint(SpringLayout.NORTH, pickerMeeting, 10, SpringLayout.SOUTH, interimTalk);
+        layout2.putConstraint(SpringLayout.WEST, pickerMeeting, 100, SpringLayout.WEST, contentPane);
     }
 
     // set Insets
 
     Insets headlineInsets = new Insets(0,0,200,0);
     Insets sliderInsets = new Insets(-60, 0, 70, 0);
-    private final List<JSlider> jSliders = createSliders();
+    private List<JSlider> jSliders = createSliders();
 
     //Getter
     public List<JSlider> getjSliders() {
@@ -1161,15 +1147,15 @@ public class GUI {
 
     // Elements for moreInfo page
 
-    private final JLabel PointsDistribution = new JLabel("Folgende Punktezahlen können vergeben werden: ");
-    private final JLabel particularly = new JLabel("  15 - 13 Punkte: Eine besonders hervorragende Leistung.");
-    private final JLabel good = new JLabel(" 12 -10 Punkte: Eine Leistung, die die durchschnittlichen Anforderungen übertrifft.");
-    private final JLabel average = new JLabel(" 9 - 7 Punkte: Eine Leistung, die in jeder Hinsicht durchschnittlichen Anforderungen entspricht.");
-    private final JLabel defects = new JLabel(" 6 - 4 Punkte: Eine Leistung, die trotz ihrer Mängel durchschnittlichen Anforderungen noch entspricht.");
-    private final JLabel badly = new JLabel(" 3 - 1 Punkte: Eine an erheblichen Mängeln leidende, im Ganzen nicht mehr brauchbare Leistung.");
-    private final JLabel useless = new JLabel("0 Punkte: Eine völlig unbrauchbare Leistung.");
-    private final JFrame popup = new JFrame("Info");
-    private final JPanel popupPanel = new JPanel();
+    private JLabel PointsDistribution = new JLabel("Folgende Punktezahlen können vergeben werden: ");
+    private JLabel particularly = new JLabel("  15 - 13 Punkte: Eine besonders hervorragende Leistung.");
+    private JLabel good = new JLabel(" 12 -10 Punkte: Eine Leistung, die die durchschnittlichen Anforderungen übertrifft.");
+    private JLabel average = new JLabel(" 9 - 7 Punkte: Eine Leistung, die in jeder Hinsicht durchschnittlichen Anforderungen entspricht.");
+    private JLabel defects = new JLabel(" 6 - 4 Punkte: Eine Leistung, die trotz ihrer Mängel durchschnittlichen Anforderungen noch entspricht.");
+    private JLabel badly = new JLabel(" 3 - 1 Punkte: Eine an erheblichen Mängeln leidende, im Ganzen nicht mehr brauchbare Leistung.");
+    private JLabel useless = new JLabel("0 Punkte: Eine völlig unbrauchbare Leistung.");
+    private JFrame popup = new JFrame("Info");
+    private JPanel popupPanel = new JPanel();
 
     // Moreinfo page
 
