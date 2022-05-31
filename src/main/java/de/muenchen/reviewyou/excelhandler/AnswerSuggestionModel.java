@@ -1,8 +1,8 @@
 package de.muenchen.reviewyou.excelhandler;
 
 public class AnswerSuggestionModel {
-    private int gender;
-    private int grade;
+    private final int gender;
+    private final int grade;
     String recommendend;
 
 

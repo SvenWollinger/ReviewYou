@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
 
 public class reviewController {
     GUI gui; //Now everything out of scope can take this
-    private int[] arrayListSlider = new int[19];
+    private final int[] arrayListSlider = new int[19];
 
     public reviewController(ExcelHandler excelHandler, GUI gui, ExcelDatabaseHandler excelDatabaseHandler) {
         this.gui = gui;
@@ -20,7 +20,7 @@ public class reviewController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Give values to Excel-Group
-                try{
+                try {
                     excelHandler.writeInstructorData(gui.getInstructorName().getText(),
                             gui.getInstructorTelephone().getText(), gui.getTxtdate().getText(),
                             gui.getInstructorEmail().getText());
@@ -33,24 +33,21 @@ public class reviewController {
                     excelHandler.writeTrainingAreaAndPeriod(gui.getTxtTrainingArea().getText());
                     excelHandler.writeParticipations(gui.getTxtSessions().getText());
                     excelHandler.writeDates(gui.getTxtTrainingsPlan().getText(), gui.getTxtInterimTalk().getText());
-                    excelHandler.writePerformance(gui.getAbilities().getText(),gui.getStrength().getText(),gui.getDevelopements().getText(),gui.getPerspective().getText(),gui.getOthers().getText());
-                    //excelDatabaseHandler.bla(arrayListSlider);
+                    excelHandler.writePerformance(gui.getAbilities().getText(), gui.getStrength().getText(), gui.getDevelopements().getText(), gui.getPerspective().getText(), gui.getOthers().getText());
                     excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
 
                     //Get every value and give them to excel
                     int pointsFromSliders = 0;
                     int row = 133;
-                    for(int i = 0; i < 19; i++) {
+                    for (int i = 0; i < 19; i++) {
                         pointsFromSliders = gui.getjSliders().get(i).getValue();
                         excelHandler.writePoints(row, pointsFromSliders);
                         row = row + 1;
-                        if(row == 136) {
+                        if (row == 136) {
                             row = 139;
-                        }
-                        else if(row == 142) {
+                        } else if (row == 142) {
                             row = 145;
-                        }
-                        else if(row == 151) {
+                        } else if (row == 151) {
                             row = 154;
                         }
                     }
@@ -59,7 +56,7 @@ public class reviewController {
                 }
 
                 if (e.getSource().equals(gui.getSaveAndNew())) { //"Speichern und neuer Leistungsbericht" button
-                    for(int i = 0; i < 19; i++) {
+                    for (int i = 0; i < 19; i++) {
                         //Reset every slider
                         gui.getjSliders().get(i).setValue(gui.getjSliders().get(i).getMinimum());
                     }
@@ -90,19 +87,19 @@ public class reviewController {
             }
         });
 
-       gui.getApprenticeshipSelector().addItemListener(new ItemListener() {
-           @Override
-           public void itemStateChanged(ItemEvent e) {
-               System.out.println(gui.getApprenticeshipSelector().getSelectedItem());
-               Azubi azubi = (Azubi) gui.getApprenticeshipSelector().getSelectedItem();
-               if (azubi != null) {
-                   gui.getTxtTraineeName().setText(azubi.getName());
-                   gui.getTxtApartmentStreet().setText(azubi.getAddress());
-                   gui.getTxtBirthDate().setText(azubi.getBirthday().toString());
-                   gui.getTxtCourse().setText(azubi.getCourse());
-                   gui.getTxtTraineeYear().setText(String.valueOf(azubi.getYear()));
-               }
-           }
+        gui.getApprenticeshipSelector().addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                System.out.println(gui.getApprenticeshipSelector().getSelectedItem());
+                Azubi azubi = (Azubi) gui.getApprenticeshipSelector().getSelectedItem();
+                if (azubi != null) {
+                    gui.getTxtTraineeName().setText(azubi.getName());
+                    gui.getTxtApartmentStreet().setText(azubi.getAddress());
+                    gui.getTxtBirthDate().setText(azubi.getBirthday().toString());
+                    gui.getTxtCourse().setText(azubi.getCourse());
+                    gui.getTxtTraineeYear().setText(String.valueOf(azubi.getYear()));
+                }
+            }
         });
 
 
@@ -111,12 +108,12 @@ public class reviewController {
 
     public String calculateAverage(GUI gui) {
         String average = "";
-        for(int i = 0; i < calculateAveragePoints(gui); i++) {
-            if(calculateAveragePoints(gui) <= 15 && calculateAveragePoints(gui) >= 6) {
+        for (int i = 0; i < calculateAveragePoints(gui); i++) {
+            if (calculateAveragePoints(gui) <= 15 && calculateAveragePoints(gui) >= 6) {
                 average = "Geeignet";
-            } else if(calculateAveragePoints(gui) <= 5.99 && calculateAveragePoints(gui) >= 3) {
+            } else if (calculateAveragePoints(gui) <= 5.99 && calculateAveragePoints(gui) >= 3) {
                 average = "Noch nicht geeignet";
-            } else if(calculateAveragePoints(gui) <= 2.99 && calculateAveragePoints(gui) >= 0) {
+            } else if (calculateAveragePoints(gui) <= 2.99 && calculateAveragePoints(gui) >= 0) {
                 average = "Nicht geeignet";
             }
         }
@@ -127,7 +124,7 @@ public class reviewController {
     public double calculateAveragePoints(GUI gui) {
         double totalPoints = 0;
         double averagePoints = 0;
-        for(int i = 0; i < 19; i++) {
+        for (int i = 0; i < 19; i++) {
             totalPoints = totalPoints + gui.getjSliders().get(i).getValue();
             arrayListSlider[i] = gui.getjSliders().get(i).getValue(); //Fill array
         }

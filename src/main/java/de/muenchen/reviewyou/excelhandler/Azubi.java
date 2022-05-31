@@ -3,13 +3,13 @@ package de.muenchen.reviewyou.excelhandler;
 import java.time.LocalDate;
 
 public class Azubi {
-   private String name;
-   private LocalDate birthday;
-   private String address;
-   private int year;
-   private String course;
-   private LocalDate allocationPeriodFrom;
-   private LocalDate allocationPeriodTo;
+   private final String name;
+   private final LocalDate birthday;
+   private final String address;
+   private final int year;
+   private final String course;
+   private final LocalDate allocationPeriodFrom;
+   private final LocalDate allocationPeriodTo;
 
    public Azubi(String name, LocalDate birthday, String address, int year, String course, LocalDate allocationPeriodFrom, LocalDate allocationPeriodTo) {
       this.name = name;

@@ -26,19 +26,19 @@ public class GUI {
     private final Container contentPane;
     private final JFrame window;
 
-    private JButton next = new JButton("Weiter");
-    private JButton previous = new JButton("Zurück");
-    private JButton moreInfo = new JButton("Info");
-    private JButton btnTraineedata = new JButton("Azubidaten");
+    private final JButton next = new JButton("Weiter");
+    private final JButton previous = new JButton("Zurück");
+    private final JButton moreInfo = new JButton("Info");
+    private final JButton btnTraineedata = new JButton("Azubidaten");
     private int page = 0;
 
-    private JPanel panel = new JPanel();
-    private Font font = new Font(null, Font.PLAIN, 20);
-    private Font fontt = new Font(null, Font.PLAIN, 17);
-    private SpringLayout layout = new SpringLayout();
-    private SpringLayout layout1 = new SpringLayout();
-    private SpringLayout layout2 = new SpringLayout();
-    private SpringLayout layout3 = new SpringLayout();
+    private final JPanel panel = new JPanel();
+    private final Font font = new Font(null, Font.PLAIN, 20);
+    private final Font fontt = new Font(null, Font.PLAIN, 17);
+    private final SpringLayout layout = new SpringLayout();
+    private final SpringLayout layout1 = new SpringLayout();
+    private final SpringLayout layout2 = new SpringLayout();
+    private final SpringLayout layout3 = new SpringLayout();
 
     //constructor
 
@@ -226,7 +226,7 @@ public class GUI {
                       }
                    } catch (IOException e) {
                        e.printStackTrace();
-                   };
+                   }
                }
             }
         });
@@ -244,15 +244,15 @@ public class GUI {
     
     // First page to get user data
 
-    private JLabel name = new JLabel("Name");
-    private JLabel email = new JLabel("E-Mail");
-    private JLabel date = new JLabel("Datum");
-    private JLabel telephone = new JLabel("Tel");
-    private JTextField instructorName = new JTextField(15);
-    private JTextField instructorEmail = new JTextField(15);
-    private JTextField currentDate = new JTextField(15);
-    private JTextField instructorTelephone = new JTextField(15);
-    private JTextField txtdate = new JTextField(15);
+    private final JLabel name = new JLabel("Name");
+    private final JLabel email = new JLabel("E-Mail");
+    private final JLabel date = new JLabel("Datum");
+    private final JLabel telephone = new JLabel("Tel");
+    private final JTextField instructorName = new JTextField(15);
+    private final JTextField instructorEmail = new JTextField(15);
+    private final JTextField currentDate = new JTextField(15);
+    private final JTextField instructorTelephone = new JTextField(15);
+    private final JTextField txtdate = new JTextField(15);
     private JLabel headline;
     LocalDate today = LocalDate.now();
 
@@ -344,40 +344,40 @@ public class GUI {
         layout1.putConstraint(SpringLayout.NORTH,txtdate, 27,SpringLayout.SOUTH,instructorTelephone);
         layout1.putConstraint(SpringLayout.WEST,txtdate,8,SpringLayout.EAST,date);
 
-        txtdate.setText(String.valueOf(today.format(DateTimeFormatter.ofPattern("dd.MM.uuuu"))));
+        txtdate.setText(today.format(DateTimeFormatter.ofPattern("dd.MM.uuuu")));
 
     }
 
     //Second Page created Labels, Txtfields and JDatePicker
 
-    private JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft");
-    private JLabel traineeName = new JLabel("Name, Vorname:");
-    private JTextField txtTraineeName = new JTextField(10);
-    private JComboBox apprenticeshipSelector = new JComboBox<Azubi>();
-    private JLabel birthDate = new JLabel("Geburtsdatum: ");
-    private JTextField txtBirthDate = new JTextField(9);
-    private JLabel apartmentStreet = new JLabel("Straße, Haus-Nr., PLZ, Ort:");
-    private JTextField txtApartmentStreet = new JTextField(24);
-    private JLabel allocationPeriod = new JLabel("Zuweisungszeitraum:");
-    private JLabel from = new JLabel("vom:");
-    private JLabel till = new JLabel("bis:");
-    private JLabel internshipSelection = new JLabel("Praktikumsabschnitt:");
-    private JTextField txtInternshipSelection = new JTextField(20);
-    private JLabel trainingArea = new JLabel("<html><body>Ausbildungsbereich und Zeitraum der Beschäftigung<br>" +
+    private final JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft");
+    private final JLabel traineeName = new JLabel("Name, Vorname:");
+    private final JTextField txtTraineeName = new JTextField(10);
+    private final JComboBox apprenticeshipSelector = new JComboBox<Azubi>();
+    private final JLabel birthDate = new JLabel("Geburtsdatum: ");
+    private final JTextField txtBirthDate = new JTextField(9);
+    private final JLabel apartmentStreet = new JLabel("Straße, Haus-Nr., PLZ, Ort:");
+    private final JTextField txtApartmentStreet = new JTextField(24);
+    private final JLabel allocationPeriod = new JLabel("Zuweisungszeitraum:");
+    private final JLabel from = new JLabel("vom:");
+    private final JLabel till = new JLabel("bis:");
+    private final JLabel internshipSelection = new JLabel("Praktikumsabschnitt:");
+    private final JTextField txtInternshipSelection = new JTextField(20);
+    private final JLabel trainingArea = new JLabel("<html><body>Ausbildungsbereich und Zeitraum der Beschäftigung<br>" +
             "in den einzelnen Ausbildungsgebieten:</body></html>");
-    private JTextField txtTrainingArea = new JTextField(45);
-    private JLabel sessions = new JLabel("<html><body>Teilnahme an Lehrgängen, Versammlungen, Sitzungen, " +
+    private final JTextField txtTrainingArea = new JTextField(45);
+    private final JLabel sessions = new JLabel("<html><body>Teilnahme an Lehrgängen, Versammlungen, Sitzungen, " +
             "<br>Besichtigungen usw.: </body></html>");
-    private JTextField txtSessions = new JTextField(45);
-    private JLabel traingPlan = new JLabel("<html><body>Örtlicher Ausbildungsplan vorgestellt und Kopie <br> " +
+    private final JTextField txtSessions = new JTextField(45);
+    private final JLabel traingPlan = new JLabel("<html><body>Örtlicher Ausbildungsplan vorgestellt und Kopie <br> " +
             "ausgehändigt am: </body></html>");
-    private JTextField txtTrainingsPlan = new JTextField(45);
-    private JLabel interimTalk = new JLabel("Zwischengespräch geführt am:");
-    private JTextField txtInterimTalk = new JTextField(45);;
-    private JLabel traineeYear = new JLabel("Jahrgang:");
-    private JTextField txtTraineeYear = new JTextField(7);
-    private JLabel course = new JLabel("Kurs:");
-    private JTextField txtCourse = new JTextField(7);
+    private final JTextField txtTrainingsPlan = new JTextField(45);
+    private final JLabel interimTalk = new JLabel("Zwischengespräch geführt am:");
+    private final JTextField txtInterimTalk = new JTextField(45);
+    private final JLabel traineeYear = new JLabel("Jahrgang:");
+    private final JTextField txtTraineeYear = new JTextField(7);
+    private final JLabel course = new JLabel("Kurs:");
+    private final JTextField txtCourse = new JTextField(7);
 
     //Getter
     public JComboBox getApprenticeshipSelector() {
@@ -617,7 +617,7 @@ public class GUI {
 
     Insets headlineInsets = new Insets(0,0,200,0);
     Insets sliderInsets = new Insets(-60, 0, 70, 0);
-    private List<JSlider> jSliders = createSliders();
+    private final List<JSlider> jSliders = createSliders();
 
     //Getter
     public List<JSlider> getjSliders() {
@@ -1152,15 +1152,15 @@ public class GUI {
 
     // Elements for moreInfo page
 
-    private JLabel PointsDistribution = new JLabel("Folgende Punktezahlen können vergeben werden: ");
-    private JLabel particularly = new JLabel("  15 - 13 Punkte: Eine besonders hervorragende Leistung.");
-    private JLabel good = new JLabel(" 12 -10 Punkte: Eine Leistung, die die durchschnittlichen Anforderungen übertrifft.");
-    private JLabel average = new JLabel(" 9 - 7 Punkte: Eine Leistung, die in jeder Hinsicht durchschnittlichen Anforderungen entspricht.");
-    private JLabel defects = new JLabel(" 6 - 4 Punkte: Eine Leistung, die trotz ihrer Mängel durchschnittlichen Anforderungen noch entspricht.");
-    private JLabel badly = new JLabel(" 3 - 1 Punkte: Eine an erheblichen Mängeln leidende, im Ganzen nicht mehr brauchbare Leistung.");
-    private JLabel useless = new JLabel("0 Punkte: Eine völlig unbrauchbare Leistung.");
-    private JFrame popup = new JFrame("Info");
-    private JPanel popupPanel = new JPanel();
+    private final JLabel PointsDistribution = new JLabel("Folgende Punktezahlen können vergeben werden: ");
+    private final JLabel particularly = new JLabel("  15 - 13 Punkte: Eine besonders hervorragende Leistung.");
+    private final JLabel good = new JLabel(" 12 -10 Punkte: Eine Leistung, die die durchschnittlichen Anforderungen übertrifft.");
+    private final JLabel average = new JLabel(" 9 - 7 Punkte: Eine Leistung, die in jeder Hinsicht durchschnittlichen Anforderungen entspricht.");
+    private final JLabel defects = new JLabel(" 6 - 4 Punkte: Eine Leistung, die trotz ihrer Mängel durchschnittlichen Anforderungen noch entspricht.");
+    private final JLabel badly = new JLabel(" 3 - 1 Punkte: Eine an erheblichen Mängeln leidende, im Ganzen nicht mehr brauchbare Leistung.");
+    private final JLabel useless = new JLabel("0 Punkte: Eine völlig unbrauchbare Leistung.");
+    private final JFrame popup = new JFrame("Info");
+    private final JPanel popupPanel = new JPanel();
 
     // Moreinfo page
 
