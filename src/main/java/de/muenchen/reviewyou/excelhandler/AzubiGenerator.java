@@ -1,13 +1,9 @@
 package de.muenchen.reviewyou.excelhandler;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.io.*;
-import java.net.URISyntaxException;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +40,6 @@ public class AzubiGenerator {
                          (byte)row.getCell(7).getNumericCellValue())
                );
       }
-
       return list;
    }
 

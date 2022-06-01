@@ -28,8 +28,6 @@ public class Azubi {
       return name;
    }
 
-
-
    public String getName() {
       return name;
    }
