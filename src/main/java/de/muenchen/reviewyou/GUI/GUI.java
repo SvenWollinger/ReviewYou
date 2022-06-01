@@ -622,27 +622,49 @@ public class GUI {
         return jSliders;
     }
 
+    //elements for ThirdPage
+
     private final JRadioButton genderMen = new JRadioButton("Männlich");
     private final JRadioButton genderWoman = new JRadioButton("Weiblich");
+    private final ButtonGroup genderGroup = new ButtonGroup();
     private final JLabel socialBehavior = new JLabel("Sozialverhalten");
     private final JRadioButton btn1SocialBehavior = new JRadioButton("1");
     private final JRadioButton btn2SocialBehavior = new JRadioButton("2");
     private final JRadioButton btn3SocialBehavior = new JRadioButton("3");
+    private final ButtonGroup socialBehaviorGroup = new ButtonGroup();
     private final JLabel workResult = new JLabel("Arebitsergebnisse/ -erfolg");
     private final JRadioButton btn1WorkResult = new JRadioButton("1");
     private final JRadioButton btn2WorkResult = new JRadioButton("2");
     private final JRadioButton btn3WorkResult = new JRadioButton("3");
     private final ButtonGroup workResultGroup = new ButtonGroup();
-    private final ButtonGroup genderGroup = new ButtonGroup();
-    private final ButtonGroup socialBehaviorGroup = new ButtonGroup();
+    private final JLabel participationInTheLesson = new JLabel("Mitarbeit im Unterricht");
+    private final JRadioButton btn1ParticipationInTheLesson = new JRadioButton("1");
+    private final JRadioButton btn2ParticipationInTheLesson = new JRadioButton("2");
+    private final JRadioButton btn3ParticipationInTheLesson = new JRadioButton("3");
+    private final ButtonGroup participationInTheLessonGroup = new ButtonGroup();
+    private final JLabel independentWork = new JLabel("Selbstständiges Arbeiten");
+    private final JRadioButton btn1IndependentWork = new JRadioButton("1");
+    private final JRadioButton btn2IndependentWork = new JRadioButton("2");
+    private final JRadioButton btn3IndependentWork = new JRadioButton("3");
+    private final ButtonGroup independentWorkGroup = new ButtonGroup();
+    private final JLabel supportClleagues = new JLabel("Unterstützung Kolleg*innen");
+    private final JRadioButton btn1supportColleagues= new JRadioButton("1");
+    private final JRadioButton btn2supportColleagues = new JRadioButton("2");
+    private final JRadioButton btn3supportColleagues = new JRadioButton("3");
+    private final ButtonGroup supportColleaguesGroup = new ButtonGroup();
 
+    //third Page
 
     public void thirthPanel() {
         page = 3;
 
+        //set Panel
+
         window.add(panel);
         panel.setVisible(true);
         panel.setLayout(layout4);
+
+        //add Elements
 
         genderGroup.add(genderMen);
         genderGroup.add(genderWoman);
@@ -652,6 +674,15 @@ public class GUI {
         workResultGroup.add(btn1WorkResult);
         workResultGroup.add(btn2WorkResult);
         workResultGroup.add(btn3WorkResult);
+        participationInTheLessonGroup.add(btn1ParticipationInTheLesson);
+        participationInTheLessonGroup.add(btn2ParticipationInTheLesson);
+        participationInTheLessonGroup.add(btn3ParticipationInTheLesson);
+        independentWorkGroup.add(btn1IndependentWork);
+        independentWorkGroup.add(btn2IndependentWork);
+        independentWorkGroup.add(btn3IndependentWork);
+        supportColleaguesGroup.add(btn1supportColleagues);
+        supportColleaguesGroup.add(btn2supportColleagues);
+        supportColleaguesGroup.add(btn3supportColleagues);
 
 
         panel.add(genderMen);
@@ -664,6 +695,18 @@ public class GUI {
         panel.add(btn1WorkResult);
         panel.add(btn2WorkResult);
         panel.add(btn3WorkResult);
+        panel.add(participationInTheLesson);
+        panel.add(btn1ParticipationInTheLesson);
+        panel.add(btn2ParticipationInTheLesson);
+        panel.add(btn3ParticipationInTheLesson);
+        panel.add(independentWork);
+        panel.add(btn1IndependentWork);
+        panel.add(btn2IndependentWork);
+        panel.add(btn3IndependentWork);
+        panel.add(supportClleagues);
+        panel.add(btn1supportColleagues);
+        panel.add(btn2supportColleagues);
+        panel.add(btn3supportColleagues);
 
         genderWoman.setFont(fontt);
         genderMen.setFont(fontt);
@@ -675,6 +718,18 @@ public class GUI {
         btn1WorkResult.setFont(font);
         btn2WorkResult.setFont(font);
         btn3WorkResult.setFont(font);
+        participationInTheLesson.setFont(font);
+        btn1ParticipationInTheLesson.setFont(font);
+        btn2ParticipationInTheLesson.setFont(font);
+        btn3ParticipationInTheLesson.setFont(font);
+        independentWork.setFont(font);
+        btn1IndependentWork.setFont(font);
+        btn2IndependentWork.setFont(font);
+        btn3IndependentWork.setFont(font);
+        supportClleagues.setFont(font);
+        btn1supportColleagues.setFont(font);
+        btn2supportColleagues.setFont(font);
+        btn3supportColleagues.setFont(font);
 
 
         layout4.putConstraint(SpringLayout.NORTH, genderMen,30,SpringLayout.NORTH,contentPane);
@@ -707,13 +762,48 @@ public class GUI {
         layout4.putConstraint(SpringLayout.NORTH,btn3WorkResult,10,SpringLayout.SOUTH,workResult);
         layout4.putConstraint(SpringLayout.WEST,btn3WorkResult,50, SpringLayout.EAST,btn2WorkResult);
 
+        layout4.putConstraint(SpringLayout.NORTH,participationInTheLesson,10,SpringLayout.SOUTH,btn1WorkResult);
+        layout4.putConstraint(SpringLayout.WEST,participationInTheLesson, 100,SpringLayout.WEST,contentPane);
+
+        layout4.putConstraint(SpringLayout.NORTH,btn1ParticipationInTheLesson,10,SpringLayout.SOUTH,participationInTheLesson);
+        layout4.putConstraint(SpringLayout.WEST,btn1ParticipationInTheLesson,100,SpringLayout.WEST,contentPane);
+
+        layout4.putConstraint(SpringLayout.NORTH,btn2ParticipationInTheLesson,10,SpringLayout.SOUTH,participationInTheLesson);
+        layout4.putConstraint(SpringLayout.WEST,btn2ParticipationInTheLesson,50,SpringLayout.EAST,btn1ParticipationInTheLesson);
+
+        layout4.putConstraint(SpringLayout.NORTH,btn3ParticipationInTheLesson,10,SpringLayout.SOUTH,participationInTheLesson);
+        layout4.putConstraint(SpringLayout.WEST,btn3ParticipationInTheLesson,50, SpringLayout.EAST,btn2ParticipationInTheLesson);
+
+        layout4.putConstraint(SpringLayout.NORTH,independentWork,40,SpringLayout.NORTH,genderMen);
+        layout4.putConstraint(SpringLayout.WEST,independentWork, 150,SpringLayout.EAST,socialBehavior);
+
+        layout4.putConstraint(SpringLayout.NORTH,btn1IndependentWork,10,SpringLayout.SOUTH,independentWork);
+        layout4.putConstraint(SpringLayout.WEST,btn1IndependentWork,250,SpringLayout.EAST,btn1SocialBehavior);
+
+        layout4.putConstraint(SpringLayout.NORTH,btn2IndependentWork,10,SpringLayout.SOUTH,independentWork);
+        layout4.putConstraint(SpringLayout.WEST,btn2IndependentWork,50,SpringLayout.EAST,btn1IndependentWork);
+
+        layout4.putConstraint(SpringLayout.NORTH,btn3IndependentWork,10,SpringLayout.SOUTH,independentWork);
+        layout4.putConstraint(SpringLayout.WEST,btn3IndependentWork,50, SpringLayout.EAST,btn2IndependentWork);
+
+        layout4.putConstraint(SpringLayout.NORTH,supportClleagues,10,SpringLayout.SOUTH,btn1IndependentWork);
+        layout4.putConstraint(SpringLayout.WEST,supportClleagues, 55,SpringLayout.EAST,workResult);
+
+        layout4.putConstraint(SpringLayout.NORTH,btn1supportColleagues,10,SpringLayout.SOUTH,supportClleagues);
+        layout4.putConstraint(SpringLayout.WEST,btn1supportColleagues,250,SpringLayout.EAST,btn1WorkResult);
+
+        layout4.putConstraint(SpringLayout.NORTH,btn2supportColleagues,10,SpringLayout.SOUTH,supportClleagues);
+        layout4.putConstraint(SpringLayout.WEST,btn2supportColleagues,50,SpringLayout.EAST,btn1supportColleagues);
+
+        layout4.putConstraint(SpringLayout.NORTH,btn3supportColleagues,10,SpringLayout.SOUTH,supportClleagues);
+        layout4.putConstraint(SpringLayout.WEST,btn3supportColleagues,50, SpringLayout.EAST,btn2supportColleagues);
 
 
 
     }
 
 
-    // third Page
+    // forth Page
 
     public void fourthPanel(){
         page = 4;
