@@ -103,7 +103,7 @@ public class reviewController {
         gui.getSaveAndNew().addActionListener(actionListenerSafeData);
         gui.getSaveAndExit().addActionListener(actionListenerSafeData);
 
-        //Calculate-button
+        //"Berechnen" button
         gui.getCalc().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -112,6 +112,7 @@ public class reviewController {
             }
         });
 
+        //setText from loaded AzubiDatan.xlsx
         gui.getApprenticeshipSelector().addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -131,6 +132,7 @@ public class reviewController {
             }
         });
 
+        //"Info" button
         gui.getMoreInfo().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -138,6 +140,7 @@ public class reviewController {
             }
         });
 
+        //Load AzubiDaten.xlsx
         gui.getBtnTraineedata().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -158,6 +161,7 @@ public class reviewController {
             }
         });
 
+        //"Weiter" button
         gui.getNext().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -216,6 +220,7 @@ public class reviewController {
             }
         });
 
+        //"Zurück" button
         gui.getPrevious().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -280,6 +285,7 @@ public class reviewController {
 
 
 
+    //Calculates String for "Gesamturteil"
     public String calculateAverage(GUI gui) {
         String average = "";
         for (int i = 0; i < calculateAveragePoints(gui); i++) {
@@ -294,6 +300,7 @@ public class reviewController {
         return average;
     }
 
+    //Calculate double for "Durchschnittspunktzahl"
     public double calculateAveragePoints(GUI gui) {
         double totalPoints = 0;
         double averagePoints = 0;
@@ -306,6 +313,7 @@ public class reviewController {
         return averagePoints;
     }
 
+    //Round the double for averagePoints ("Durchschnittspunktzahl")
     public static double round(double value, int places) {
         long factor = (long) Math.pow(10, places);
         value = value * factor;
@@ -313,6 +321,7 @@ public class reviewController {
         return (double) tmp / factor;
     }
 
+    //Return String for job-shortcut
     public String getStringCourse() {
         if (gui.getTxtCourse().getText().equals("FIAE")) {
             return "zur Fachinformatikerin/ zum Fachinformatiker - Anwendungsentwicklung";
