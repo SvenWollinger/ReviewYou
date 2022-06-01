@@ -40,6 +40,15 @@ public class GUI {
     private final SpringLayout layout2 = new SpringLayout();
     private final SpringLayout layout3 = new SpringLayout();
 
+    //Getter
+    public JButton getMoreInfo() {
+        return moreInfo;
+    }
+
+    public JButton getBtnTraineedata() {
+        return btnTraineedata;
+    }
+
     //constructor
 
     public GUI() {
@@ -201,33 +210,6 @@ public class GUI {
                         startPanel();
                         break;
                 }
-            }
-        });
-
-        moreInfo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                moreInfo();
-              }
-            });
-
-        btnTraineedata.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-               JFileChooser fileChooser = new JFileChooser();
-               int optiion = fileChooser.showOpenDialog(null);
-               if (optiion == JFileChooser.APPROVE_OPTION) {
-                   File file = fileChooser.getSelectedFile();
-                   AzubiGenerator azubiGenerator = new AzubiGenerator();
-                   try {
-                      List<Azubi> azubis = azubiGenerator.getAzubiList(file.getPath());
-                      for(int i = 0; i < azubis.size(); i++) {
-                          apprenticeshipSelector.addItem(azubis.get(i));
-                      }
-                   } catch (IOException e) {
-                       e.printStackTrace();
-                   }
-               }
             }
         });
     }

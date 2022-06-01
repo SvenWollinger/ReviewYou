@@ -2,14 +2,18 @@ package de.muenchen.reviewyou.Controller;
 
 import de.muenchen.reviewyou.GUI.GUI;
 import de.muenchen.reviewyou.excelhandler.*;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class reviewController {
     GUI gui;
@@ -125,6 +129,33 @@ public class reviewController {
                     gui.getTxtCourse().setText(azubi.getCourse());
                     gui.getTxtInternshipSelection().setText(String.valueOf(azubi.getInternshipSection()));
                     gui.getTxtTraineeYear().setText(String.valueOf(azubi.getYear()));
+                }
+            }
+        });
+
+        gui.getMoreInfo().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gui.moreInfo();
+            }
+        });
+        
+        gui.getBtnTraineedata().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                JFileChooser fileChooser = new JFileChooser();
+                int optiion = fileChooser.showOpenDialog(null);
+                if (optiion == JFileChooser.APPROVE_OPTION) {
+                    File file = fileChooser.getSelectedFile();
+                    AzubiGenerator azubiGenerator = new AzubiGenerator();
+                    try {
+                        List<Azubi> azubis = azubiGenerator.getAzubiList(file.getPath());
+                        for(int i = 0; i < azubis.size(); i++) {
+                            gui.getApprenticeshipSelector().addItem(azubis.get(i));
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
