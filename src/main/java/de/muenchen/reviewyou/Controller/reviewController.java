@@ -50,6 +50,7 @@ public class reviewController {
                     excelHandler.writePerformance(gui.getAbilities().getText(),gui.getStrength().getText(),
                             gui.getDevelopements().getText(),gui.getPerspective().getText(),gui.getOthers().getText());
                     excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
+                    excelHandler.writeCourse(getStringCourse());
 
                     //TODO: Give excel-group getStringCourses
 

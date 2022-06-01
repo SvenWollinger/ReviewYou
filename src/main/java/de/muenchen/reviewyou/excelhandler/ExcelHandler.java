@@ -93,6 +93,10 @@ public class ExcelHandler {
     public void writePoints(int row, int points) throws IOException {
         writeCell(19-points,row,"X");
     }
+
+    public void writeCourse(String jobName) throws IOException {
+        writeCell(7,48,jobName);
+    }
 }
 
 

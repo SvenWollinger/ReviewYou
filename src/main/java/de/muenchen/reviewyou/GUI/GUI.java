@@ -364,7 +364,7 @@ public class GUI {
     private final JLabel traineeYear = new JLabel("Jahrgang:");
     private final JTextField txtTraineeYear = new JTextField(7);
     private final JLabel course = new JLabel("Kurs:");
-    private final JTextField txtCourse = new JTextField();
+    private final JTextField txtCourse = new JTextField(6);
 
     UtilDateModel model = new UtilDateModel();
     Properties p = new Properties();
@@ -596,6 +596,8 @@ public class GUI {
 
         layout2.putConstraint(SpringLayout.NORTH, pickerMeeting, 10, SpringLayout.SOUTH, interimTalk);
         layout2.putConstraint(SpringLayout.WEST, pickerMeeting, 100, SpringLayout.WEST, contentPane);
+
+        pickerHandover.getJFormattedTextField().setText(today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
     }
 
     // set Insets
