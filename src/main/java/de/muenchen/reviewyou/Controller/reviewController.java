@@ -21,15 +21,15 @@ public class reviewController {
     public reviewController(ExcelHandler excelHandler, GUI gui) {
         this.gui = gui;
 
-        //Sett current year from "Zuweisungszeitraum"
+        //Sett current dates
         LocalDate currentDate = LocalDate.now();
         int currentYear = currentDate.getYear();
         int lastYear = currentYear -1;
         gui.getModel().setDate(lastYear,8,1);
         gui.getModel().setSelected(true);
-
         gui.getModel1().setDate(currentYear,7,31);
         gui.getModel1().setSelected(true);
+        gui.getModel2().setSelected(true);
 
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override

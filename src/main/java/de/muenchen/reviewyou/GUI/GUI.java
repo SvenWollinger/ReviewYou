@@ -274,6 +274,10 @@ public class GUI {
         return model1;
     }
 
+    public UtilDateModel getModel2() {
+        return model2;
+    }
+
     public JComboBox getApprenticeshipSelector() {
         return apprenticeshipSelector;
     }
