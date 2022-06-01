@@ -1,22 +1,12 @@
 package de.muenchen.reviewyou.GUI;
 
 import de.muenchen.reviewyou.excelhandler.Azubi;
-import de.muenchen.reviewyou.excelhandler.AzubiGenerator;
-import de.muenchen.reviewyou.excelhandler.ExcelHandler;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
-
 import javax.swing.*;
-
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
-
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
@@ -47,6 +37,22 @@ public class GUI {
 
     public JButton getBtnTraineedata() {
         return btnTraineedata;
+    }
+
+    public JButton getNext() {
+        return next;
+    }
+
+    public JButton getPrevious() {
+        return previous;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public JPanel getPanel() {
+        return panel;
     }
 
     //constructor
@@ -93,125 +99,6 @@ public class GUI {
 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         startPanel();
-
-        //actionLister for next Button
-
-        next.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                switch (page) {
-                    case 1:
-                        panel.removeAll();
-                        panel.revalidate();
-                        panel.repaint();
-                        previous.setVisible(true);
-                        btnTraineedata.setVisible(true);
-                        secondPanel();
-                        break;
-                    case 2:
-                        panel.removeAll();
-                        panel.revalidate();
-                        panel.repaint();
-                        thirdPanel();
-                        moreInfo.setVisible(true);
-                        btnTraineedata.setVisible(false);
-                        break;
-                    case 3:
-                        panel.removeAll();
-                        panel.revalidate();
-                        panel.repaint();
-                        fourthPanel();
-                        break;
-                    case 4:
-                        panel.removeAll();
-                        panel.revalidate();
-                        panel.repaint();
-                        fifthPanel();
-                        break;
-                    case 5:
-                        panel.removeAll();
-                        panel.revalidate();
-                        panel.repaint();
-                        sixthPanel();
-                        break;
-                    case 6:
-                        panel.removeAll();
-                        panel.revalidate();
-                        panel.repaint();
-                        seventhPanel();
-                        moreInfo.setVisible(false);
-                        popup.setVisible(false);
-                        break;
-                    case 7:
-                        panel.removeAll();
-                        panel.revalidate();
-                        panel.repaint();
-                        eightPanel();
-                        next.setVisible(false);
-                        break;
-
-                }
-            }
-        });
-
-        //actionLister for back Button
-
-        previous.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                switch (page) {
-                    case 8:
-                        panel.removeAll();
-                        panel.revalidate();
-                        panel.repaint();
-                        seventhPanel();
-                        next.setVisible(true);
-                        break;
-                    case 7:
-                        panel.removeAll();
-                        panel.revalidate();
-                        panel.repaint();
-                        sixthPanel();
-                        moreInfo.setVisible(true);
-                        break;
-                    case 6:
-                        panel.removeAll();
-                        panel.revalidate();
-                        panel.repaint();
-                        fifthPanel();
-                        break;
-                    case 5:
-                        panel.removeAll();
-                        panel.revalidate();
-                        panel.repaint();
-                        fourthPanel();
-                        break;
-                    case 4:
-                        panel.removeAll();
-                        panel.revalidate();
-                        panel.repaint();
-                        thirdPanel();
-                        break;
-                    case 3:
-                        panel.removeAll();
-                        panel.revalidate();
-                        panel.repaint();
-                        moreInfo.setVisible(false);
-                        popup.setVisible(false);
-                        btnTraineedata.setVisible(true);
-                        secondPanel();
-                        break;
-                    case 2:
-                        panel.removeAll();
-                        panel.revalidate();
-                        panel.repaint();
-                        previous.setVisible(false);
-                        btnTraineedata.setVisible(false);
-                        startPanel();
-                        break;
-                }
-            }
-        });
     }
 
     public void goToFirstPanel() {
@@ -1093,6 +980,11 @@ public class GUI {
     private final JLabel useless = new JLabel("0 Punkte: Eine völlig unbrauchbare Leistung.");
     private final JFrame popup = new JFrame("Info");
     private final JPanel popupPanel = new JPanel();
+
+    //Getter
+    public JFrame getPopup() {
+        return popup;
+    }
 
     // Moreinfo page
 

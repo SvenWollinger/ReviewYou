@@ -2,7 +2,6 @@ package de.muenchen.reviewyou.Controller;
 
 import de.muenchen.reviewyou.GUI.GUI;
 import de.muenchen.reviewyou.excelhandler.*;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +11,6 @@ import java.io.File;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class reviewController {
@@ -139,7 +137,7 @@ public class reviewController {
                 gui.moreInfo();
             }
         });
-        
+
         gui.getBtnTraineedata().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -156,6 +154,121 @@ public class reviewController {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                }
+            }
+        });
+
+        gui.getNext().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switch (gui.getPage()) {
+                    case 1:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.getPrevious().setVisible(true);
+                        gui.getBtnTraineedata().setVisible(true);
+                        gui.secondPanel();
+                        break;
+                    case 2:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.thirdPanel();
+                        gui.getMoreInfo().setVisible(true);
+                        gui.getBtnTraineedata().setVisible(false);
+                        break;
+                    case 3:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.fourthPanel();
+                        break;
+                    case 4:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.fifthPanel();
+                        break;
+                    case 5:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.sixthPanel();
+                        break;
+                    case 6:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.seventhPanel();
+                        gui.getMoreInfo().setVisible(false);
+                        gui.getPopup().setVisible(false);
+                        break;
+                    case 7:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.eightPanel();
+                        gui.getNext().setVisible(false);
+                        break;
+
+                }
+            }
+        });
+
+        gui.getPrevious().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switch (gui.getPage()) {
+                    case 8:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.seventhPanel();
+                        gui.getNext().setVisible(true);
+                        break;
+                    case 7:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.sixthPanel();
+                        gui.getMoreInfo().setVisible(true);
+                        break;
+                    case 6:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.fifthPanel();
+                        break;
+                    case 5:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.fourthPanel();
+                        break;
+                    case 4:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.thirdPanel();
+                        break;
+                    case 3:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.getMoreInfo().setVisible(false);
+                        gui.getPopup().setVisible(false);
+                        gui.getBtnTraineedata().setVisible(true);
+                        gui.secondPanel();
+                        break;
+                    case 2:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.getPrevious().setVisible(false);
+                        gui.getBtnTraineedata().setVisible(false);
+                        gui.startPanel();
+                        break;
                 }
             }
         });
