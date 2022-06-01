@@ -39,6 +39,7 @@ public class GUI {
     private final SpringLayout layout1 = new SpringLayout();
     private final SpringLayout layout2 = new SpringLayout();
     private final SpringLayout layout3 = new SpringLayout();
+    private final SpringLayout layout4 = new SpringLayout();
 
     //constructor
 
@@ -103,8 +104,7 @@ public class GUI {
                         panel.removeAll();
                         panel.revalidate();
                         panel.repaint();
-                        thirdPanel();
-                        moreInfo.setVisible(true);
+                        thirthPanel();
                         btnTraineedata.setVisible(false);
                         break;
                     case 3:
@@ -112,6 +112,7 @@ public class GUI {
                         panel.revalidate();
                         panel.repaint();
                         fourthPanel();
+                        moreInfo.setVisible(true);
                         break;
                     case 4:
                         panel.removeAll();
@@ -130,14 +131,20 @@ public class GUI {
                         panel.revalidate();
                         panel.repaint();
                         seventhPanel();
-                        moreInfo.setVisible(false);
-                        popup.setVisible(false);
                         break;
                     case 7:
                         panel.removeAll();
                         panel.revalidate();
                         panel.repaint();
-                        eightPanel();
+                        eigthPanel();
+                        moreInfo.setVisible(false);
+                        popup.setVisible(false);
+                        break;
+                    case 8:
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        ninethPanel();
                         next.setVisible(false);
                         break;
 
@@ -151,19 +158,25 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 switch (page) {
+                    case 9:
+                        panel.removeAll();
+                        panel.revalidate();
+                        panel.repaint();
+                        eigthPanel();
+                        next.setVisible(true);
+                        break;
                     case 8:
                         panel.removeAll();
                         panel.revalidate();
                         panel.repaint();
                         seventhPanel();
-                        next.setVisible(true);
+                        moreInfo.setVisible(true);
                         break;
                     case 7:
                         panel.removeAll();
                         panel.revalidate();
                         panel.repaint();
                         sixthPanel();
-                        moreInfo.setVisible(true);
                         break;
                     case 6:
                         panel.removeAll();
@@ -181,13 +194,13 @@ public class GUI {
                         panel.removeAll();
                         panel.revalidate();
                         panel.repaint();
-                        thirdPanel();
+                        moreInfo.setVisible(false);
+                        thirthPanel();
                         break;
                     case 3:
                         panel.removeAll();
                         panel.revalidate();
                         panel.repaint();
-                        moreInfo.setVisible(false);
                         popup.setVisible(false);
                         btnTraineedata.setVisible(true);
                         secondPanel();
@@ -609,10 +622,101 @@ public class GUI {
         return jSliders;
     }
 
+    private final JRadioButton genderMen = new JRadioButton("Männlich");
+    private final JRadioButton genderWoman = new JRadioButton("Weiblich");
+    private final JLabel socialBehavior = new JLabel("Sozialverhalten");
+    private final JRadioButton btn1SocialBehavior = new JRadioButton("1");
+    private final JRadioButton btn2SocialBehavior = new JRadioButton("2");
+    private final JRadioButton btn3SocialBehavior = new JRadioButton("3");
+    private final JLabel workResult = new JLabel("Arebitsergebnisse/ -erfolg");
+    private final JRadioButton btn1WorkResult = new JRadioButton("1");
+    private final JRadioButton btn2WorkResult = new JRadioButton("2");
+    private final JRadioButton btn3WorkResult = new JRadioButton("3");
+    private final ButtonGroup workResultGroup = new ButtonGroup();
+    private final ButtonGroup genderGroup = new ButtonGroup();
+    private final ButtonGroup socialBehaviorGroup = new ButtonGroup();
+
+
+    public void thirthPanel() {
+        page = 3;
+
+        window.add(panel);
+        panel.setVisible(true);
+        panel.setLayout(layout4);
+
+        genderGroup.add(genderMen);
+        genderGroup.add(genderWoman);
+        socialBehaviorGroup.add(btn1SocialBehavior);
+        socialBehaviorGroup.add(btn2SocialBehavior);
+        socialBehaviorGroup.add(btn3SocialBehavior);
+        workResultGroup.add(btn1WorkResult);
+        workResultGroup.add(btn2WorkResult);
+        workResultGroup.add(btn3WorkResult);
+
+
+        panel.add(genderMen);
+        panel.add(genderWoman);
+        panel.add(socialBehavior);
+        panel.add(btn1SocialBehavior);
+        panel.add(btn2SocialBehavior);
+        panel.add(btn3SocialBehavior);
+        panel.add(workResult);
+        panel.add(btn1WorkResult);
+        panel.add(btn2WorkResult);
+        panel.add(btn3WorkResult);
+
+        genderWoman.setFont(fontt);
+        genderMen.setFont(fontt);
+        socialBehavior.setFont(font);
+        btn1SocialBehavior.setFont(font);
+        btn2SocialBehavior.setFont(font);
+        btn3SocialBehavior.setFont(font);
+        workResult.setFont(font);
+        btn1WorkResult.setFont(font);
+        btn2WorkResult.setFont(font);
+        btn3WorkResult.setFont(font);
+
+
+        layout4.putConstraint(SpringLayout.NORTH, genderMen,30,SpringLayout.NORTH,contentPane);
+        layout4.putConstraint(SpringLayout.WEST,genderMen,95,SpringLayout.WEST,contentPane);
+
+        layout4.putConstraint(SpringLayout.NORTH,genderWoman,30,SpringLayout.NORTH,contentPane);
+        layout4.putConstraint(SpringLayout.WEST,genderWoman,5,SpringLayout.EAST,genderMen);
+
+        layout4.putConstraint(SpringLayout.NORTH,socialBehavior,10,SpringLayout.SOUTH,genderMen);
+        layout4.putConstraint(SpringLayout.WEST,socialBehavior, 100,SpringLayout.WEST,contentPane);
+
+        layout4.putConstraint(SpringLayout.NORTH,btn1SocialBehavior,10,SpringLayout.SOUTH,socialBehavior);
+        layout4.putConstraint(SpringLayout.WEST,btn1SocialBehavior,100,SpringLayout.WEST,contentPane);
+
+        layout4.putConstraint(SpringLayout.NORTH,btn2SocialBehavior,10,SpringLayout.SOUTH,socialBehavior);
+        layout4.putConstraint(SpringLayout.WEST,btn2SocialBehavior,50,SpringLayout.EAST,btn1SocialBehavior);
+
+        layout4.putConstraint(SpringLayout.NORTH,btn3SocialBehavior,10,SpringLayout.SOUTH,socialBehavior);
+        layout4.putConstraint(SpringLayout.WEST,btn3SocialBehavior,50, SpringLayout.EAST,btn2SocialBehavior);
+
+        layout4.putConstraint(SpringLayout.NORTH,workResult,10,SpringLayout.SOUTH,btn1SocialBehavior);
+        layout4.putConstraint(SpringLayout.WEST,workResult,100,SpringLayout.WEST,contentPane);
+
+        layout4.putConstraint(SpringLayout.NORTH,btn1WorkResult,10,SpringLayout.SOUTH,workResult);
+        layout4.putConstraint(SpringLayout.WEST,btn1WorkResult,100,SpringLayout.WEST,contentPane);
+
+        layout4.putConstraint(SpringLayout.NORTH,btn2WorkResult,10,SpringLayout.SOUTH,workResult);
+        layout4.putConstraint(SpringLayout.WEST,btn2WorkResult,50,SpringLayout.EAST,btn1WorkResult);
+
+        layout4.putConstraint(SpringLayout.NORTH,btn3WorkResult,10,SpringLayout.SOUTH,workResult);
+        layout4.putConstraint(SpringLayout.WEST,btn3WorkResult,50, SpringLayout.EAST,btn2WorkResult);
+
+
+
+
+    }
+
+
     // third Page
 
-    public void thirdPanel(){
-        page = 3;
+    public void fourthPanel(){
+        page = 4;
         JLabel headline = new JLabel("Fachliche Kompetenzen");
         headline.setFont(font);
         window.add(panel);
@@ -659,8 +763,8 @@ public class GUI {
 
     // fourth Page
 
-    public void fourthPanel(){
-        page = 4;
+    public void fifthPanel(){
+        page = 5;
         JLabel headline = new JLabel("Methodisches Denken");
         headline.setFont(font);
         window.add(panel);
@@ -703,8 +807,8 @@ public class GUI {
 
     // fifth Page
 
-    public void fifthPanel(){
-        page = 5;
+    public void sixthPanel(){
+        page = 6;
         JLabel headline = new JLabel("Soziale Kompetenzen");
         headline.setFont(font);
         window.add(panel);
@@ -774,9 +878,9 @@ public class GUI {
 
     // sixth Page
 
-    public void sixthPanel(){
+    public void seventhPanel(){
 
-        page = 6;
+        page = 7;
         JLabel headline = new JLabel("Persönliche Kompetenzen");
         headline.setFont(font);
         window.add(panel);
@@ -873,8 +977,8 @@ public class GUI {
     Dimension maximumSize = new Dimension(600, 70);
 
     // CREATE SEVENTH PAGE
-    public void seventhPanel() {
-        page = 7;
+    public void eigthPanel() {
+        page = 8;
         JLabel headline = new JLabel("Wortbeschreibung zur gezeigten Leistung insgesamt");
         JLabel whiteSpace = new JLabel();
         window.add(panel);
@@ -1009,8 +1113,8 @@ public class GUI {
 
     // eight Page
 
-    public void eightPanel(){
-        page = 8;
+    public void ninethPanel(){
+        page = 9;
         JLabel headline = new JLabel("Abschluss des Leistungsberichts von " + txtTraineeName.getText());
         window.add(panel);
         panel.setLayout(layout3);
