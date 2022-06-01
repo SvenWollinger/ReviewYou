@@ -1,22 +1,38 @@
 package de.muenchen.reviewyou.Controller;
 
 import de.muenchen.reviewyou.GUI.GUI;
-import de.muenchen.reviewyou.excelhandler.ExcelHandler;
+import de.muenchen.reviewyou.excelhandler.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.IOException;
-import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class reviewController {
-    GUI gui; //Now everything out of scope can take this
+    GUI gui;
+    private final int[] arrayListSlider = new int[19];
+    DateTimeFormatter sdf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     public reviewController(ExcelHandler excelHandler, GUI gui) {
         this.gui = gui;
+
+        //Sett current year from "Zuweisungszeitraum"
+        LocalDate currentDate = LocalDate.now();
+        int currentYear = currentDate.getYear();
+        int lastYear = currentYear -1;
+        gui.getModel().setDate(lastYear,8,1);
+        gui.getModel().setSelected(true);
+
+        gui.getModel1().setDate(currentYear,7,31);
+        gui.getModel1().setSelected(true);
+
         ActionListener actionListenerSafeData = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Give values to Excel-Group
-                try{
+                try {
                     excelHandler.writeInstructorData(gui.getInstructorName().getText(),
                             gui.getInstructorTelephone().getText(), gui.getTxtdate().getText(),
                             gui.getInstructorEmail().getText());
@@ -28,24 +44,26 @@ public class reviewController {
                             gui.getTxtInternshipSelection().getText());
                     excelHandler.writeTrainingAreaAndPeriod(gui.getTxtTrainingArea().getText());
                     excelHandler.writeParticipations(gui.getTxtSessions().getText());
-                    excelHandler.writeDates(gui.getTxtTrainingsPlan().getText(), gui.getTxtInterimTalk().getText());
-                    //excelHandler.writePerformance();
+                    excelHandler.writeDates(gui.getPickerHandover().getJFormattedTextField().getText(),
+                            gui.getPickerMeeting().getJFormattedTextField().getText());
+                    excelHandler.writePerformance(gui.getAbilities().getText(),gui.getStrength().getText(),
+                            gui.getDevelopements().getText(),gui.getPerspective().getText(),gui.getOthers().getText());
                     excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
+
+                    //TODO: Give excel-group getStringCourses
 
                     //Get every value and give them to excel
                     int pointsFromSliders = 0;
                     int row = 133;
-                    for(int i = 0; i < 19; i++) {
+                    for (int i = 0; i < 19; i++) {
                         pointsFromSliders = gui.getjSliders().get(i).getValue();
                         excelHandler.writePoints(row, pointsFromSliders);
                         row = row + 1;
-                        if(row == 136) {
+                        if (row == 136) {
                             row = 139;
-                        }
-                        else if(row == 142) {
+                        } else if (row == 142) {
                             row = 145;
-                        }
-                        else if(row == 151) {
+                        } else if (row == 151) {
                             row = 154;
                         }
                     }
@@ -54,7 +72,7 @@ public class reviewController {
                 }
 
                 if (e.getSource().equals(gui.getSaveAndNew())) { //"Speichern und neuer Leistungsbericht" button
-                    for(int i = 0; i < 19; i++) {
+                    for (int i = 0; i < 19; i++) {
                         //Reset every slider
                         gui.getjSliders().get(i).setValue(gui.getjSliders().get(i).getMinimum());
                     }
@@ -84,16 +102,37 @@ public class reviewController {
                 gui.getTxtReview().setText(calculateAverage(gui));
             }
         });
+
+        gui.getApprenticeshipSelector().addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                System.out.println(gui.getApprenticeshipSelector().getSelectedItem());
+                Azubi azubi = (Azubi) gui.getApprenticeshipSelector().getSelectedItem();
+                if (azubi != null) {
+                    gui.getTxtTraineeName().setText(azubi.getName());
+                    gui.getTxtApartmentStreet().setText(azubi.getAddress());
+                    gui.getTxtBirthDate().setText(azubi.getBirthday().format(sdf));
+                    gui.getTxtCourse().setText(azubi.getCourse());
+                    gui.getTxtTraineeYear().setText(String.valueOf(azubi.getYear()));
+                }
+            }
+        });
+
+        //Add both buttons to ActionListener
+        gui.getSaveAndNew().addActionListener(actionListenerSafeData);
+        gui.getSaveAndExit().addActionListener(actionListenerSafeData);
     }
+
+
 
     public String calculateAverage(GUI gui) {
         String average = "";
-        for(int i = 0; i < calculateAveragePoints(gui); i++) {
-            if(calculateAveragePoints(gui) <= 15 && calculateAveragePoints(gui) >= 6) {
+        for (int i = 0; i < calculateAveragePoints(gui); i++) {
+            if (calculateAveragePoints(gui) <= 15 && calculateAveragePoints(gui) >= 6) {
                 average = "Geeignet";
-            } else if(calculateAveragePoints(gui) <= 5.99 && calculateAveragePoints(gui) >= 3) {
+            } else if (calculateAveragePoints(gui) <= 5.99 && calculateAveragePoints(gui) >= 3) {
                 average = "Noch nicht geeignet";
-            } else if(calculateAveragePoints(gui) <= 2.99 && calculateAveragePoints(gui) >= 0) {
+            } else if (calculateAveragePoints(gui) <= 2.99 && calculateAveragePoints(gui) >= 0) {
                 average = "Nicht geeignet";
             }
         }
@@ -103,8 +142,9 @@ public class reviewController {
     public double calculateAveragePoints(GUI gui) {
         double totalPoints = 0;
         double averagePoints = 0;
-        for(int i = 0; i < 19; i++) {
+        for (int i = 0; i < 19; i++) {
             totalPoints = totalPoints + gui.getjSliders().get(i).getValue();
+            arrayListSlider[i] = gui.getjSliders().get(i).getValue(); //Fill array
         }
         averagePoints = totalPoints / 19;
         averagePoints = round(averagePoints, 2);
@@ -116,5 +156,18 @@ public class reviewController {
         value = value * factor;
         long tmp = Math.round(value);
         return (double) tmp / factor;
+    }
+
+    public String getStringCourse() {
+        if (gui.getTxtCourse().getText().equals("FIAE")) {
+            return "zur Fachinformatikerin/ zum Fachinformatiker - Anwendungsentwicklung";
+        }
+        else if (gui.getTxtCourse().getText().equals("FISI")) {
+            return "zur Fachinformatikerin/ zum Fachinformatiker - Systemintegration";
+        }
+        else if (gui.getTxtCourse().getText().equals("ITSE")) {
+            return "zur IT-Systemelektronikerin / zum IT-Systemelektroniker";
+        }
+        return null;
     }
 }
