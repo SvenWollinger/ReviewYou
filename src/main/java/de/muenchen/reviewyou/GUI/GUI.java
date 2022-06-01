@@ -741,61 +741,61 @@ public class GUI {
         layout4.putConstraint(SpringLayout.NORTH,socialBehavior,10,SpringLayout.SOUTH,genderMen);
         layout4.putConstraint(SpringLayout.WEST,socialBehavior, 100,SpringLayout.WEST,contentPane);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn1SocialBehavior,10,SpringLayout.SOUTH,socialBehavior);
-        layout4.putConstraint(SpringLayout.WEST,btn1SocialBehavior,100,SpringLayout.WEST,contentPane);
+        layout4.putConstraint(SpringLayout.NORTH,btn1SocialBehavior,10,SpringLayout.SOUTH,genderMen);
+        layout4.putConstraint(SpringLayout.WEST,btn1SocialBehavior,150,SpringLayout.EAST,socialBehavior);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn2SocialBehavior,10,SpringLayout.SOUTH,socialBehavior);
+        layout4.putConstraint(SpringLayout.NORTH,btn2SocialBehavior,10,SpringLayout.SOUTH,genderMen);
         layout4.putConstraint(SpringLayout.WEST,btn2SocialBehavior,50,SpringLayout.EAST,btn1SocialBehavior);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn3SocialBehavior,10,SpringLayout.SOUTH,socialBehavior);
+        layout4.putConstraint(SpringLayout.NORTH,btn3SocialBehavior,10,SpringLayout.SOUTH,genderMen);
         layout4.putConstraint(SpringLayout.WEST,btn3SocialBehavior,50, SpringLayout.EAST,btn2SocialBehavior);
 
-        layout4.putConstraint(SpringLayout.NORTH,workResult,10,SpringLayout.SOUTH,btn1SocialBehavior);
+        layout4.putConstraint(SpringLayout.NORTH,workResult,50,SpringLayout.SOUTH,socialBehavior);
         layout4.putConstraint(SpringLayout.WEST,workResult,100,SpringLayout.WEST,contentPane);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn1WorkResult,10,SpringLayout.SOUTH,workResult);
-        layout4.putConstraint(SpringLayout.WEST,btn1WorkResult,100,SpringLayout.WEST,contentPane);
+        layout4.putConstraint(SpringLayout.NORTH,btn1WorkResult,40,SpringLayout.SOUTH,btn1SocialBehavior);
+        layout4.putConstraint(SpringLayout.WEST,btn1WorkResult,54,SpringLayout.EAST,workResult);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn2WorkResult,10,SpringLayout.SOUTH,workResult);
+        layout4.putConstraint(SpringLayout.NORTH,btn2WorkResult,40,SpringLayout.SOUTH,btn1SocialBehavior);
         layout4.putConstraint(SpringLayout.WEST,btn2WorkResult,50,SpringLayout.EAST,btn1WorkResult);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn3WorkResult,10,SpringLayout.SOUTH,workResult);
+        layout4.putConstraint(SpringLayout.NORTH,btn3WorkResult,40,SpringLayout.SOUTH,btn1SocialBehavior);
         layout4.putConstraint(SpringLayout.WEST,btn3WorkResult,50, SpringLayout.EAST,btn2WorkResult);
 
-        layout4.putConstraint(SpringLayout.NORTH,participationInTheLesson,10,SpringLayout.SOUTH,btn1WorkResult);
+        layout4.putConstraint(SpringLayout.NORTH,participationInTheLesson,50,SpringLayout.SOUTH,workResult);
         layout4.putConstraint(SpringLayout.WEST,participationInTheLesson, 100,SpringLayout.WEST,contentPane);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn1ParticipationInTheLesson,10,SpringLayout.SOUTH,participationInTheLesson);
-        layout4.putConstraint(SpringLayout.WEST,btn1ParticipationInTheLesson,100,SpringLayout.WEST,contentPane);
+        layout4.putConstraint(SpringLayout.NORTH,btn1ParticipationInTheLesson,40,SpringLayout.SOUTH,btn1WorkResult);
+        layout4.putConstraint(SpringLayout.WEST,btn1ParticipationInTheLesson,88,SpringLayout.EAST,participationInTheLesson);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn2ParticipationInTheLesson,10,SpringLayout.SOUTH,participationInTheLesson);
+        layout4.putConstraint(SpringLayout.NORTH,btn2ParticipationInTheLesson,40,SpringLayout.SOUTH,btn1WorkResult);
         layout4.putConstraint(SpringLayout.WEST,btn2ParticipationInTheLesson,50,SpringLayout.EAST,btn1ParticipationInTheLesson);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn3ParticipationInTheLesson,10,SpringLayout.SOUTH,participationInTheLesson);
+        layout4.putConstraint(SpringLayout.NORTH,btn3ParticipationInTheLesson,40,SpringLayout.SOUTH,btn1WorkResult);
         layout4.putConstraint(SpringLayout.WEST,btn3ParticipationInTheLesson,50, SpringLayout.EAST,btn2ParticipationInTheLesson);
 
-        layout4.putConstraint(SpringLayout.NORTH,independentWork,40,SpringLayout.NORTH,genderMen);
-        layout4.putConstraint(SpringLayout.WEST,independentWork, 150,SpringLayout.EAST,socialBehavior);
+        layout4.putConstraint(SpringLayout.NORTH,independentWork,50,SpringLayout.SOUTH,participationInTheLesson);
+        layout4.putConstraint(SpringLayout.WEST,independentWork, 100,SpringLayout.EAST,contentPane);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn1IndependentWork,10,SpringLayout.SOUTH,independentWork);
-        layout4.putConstraint(SpringLayout.WEST,btn1IndependentWork,250,SpringLayout.EAST,btn1SocialBehavior);
+        layout4.putConstraint(SpringLayout.NORTH,btn1IndependentWork,40,SpringLayout.SOUTH,btn1ParticipationInTheLesson);
+        layout4.putConstraint(SpringLayout.WEST,btn1IndependentWork,63,SpringLayout.EAST,independentWork);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn2IndependentWork,10,SpringLayout.SOUTH,independentWork);
+        layout4.putConstraint(SpringLayout.NORTH,btn2IndependentWork,40,SpringLayout.SOUTH,btn1ParticipationInTheLesson);
         layout4.putConstraint(SpringLayout.WEST,btn2IndependentWork,50,SpringLayout.EAST,btn1IndependentWork);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn3IndependentWork,10,SpringLayout.SOUTH,independentWork);
+        layout4.putConstraint(SpringLayout.NORTH,btn3IndependentWork,40,SpringLayout.SOUTH,btn1ParticipationInTheLesson);
         layout4.putConstraint(SpringLayout.WEST,btn3IndependentWork,50, SpringLayout.EAST,btn2IndependentWork);
 
-        layout4.putConstraint(SpringLayout.NORTH,supportClleagues,10,SpringLayout.SOUTH,btn1IndependentWork);
-        layout4.putConstraint(SpringLayout.WEST,supportClleagues, 55,SpringLayout.EAST,workResult);
+        layout4.putConstraint(SpringLayout.NORTH,supportClleagues,50,SpringLayout.SOUTH,independentWork);
+        layout4.putConstraint(SpringLayout.WEST,supportClleagues, 100,SpringLayout.WEST,contentPane);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn1supportColleagues,10,SpringLayout.SOUTH,supportClleagues);
-        layout4.putConstraint(SpringLayout.WEST,btn1supportColleagues,250,SpringLayout.EAST,btn1WorkResult);
+        layout4.putConstraint(SpringLayout.NORTH,btn1supportColleagues,40,SpringLayout.SOUTH,btn1IndependentWork);
+        layout4.putConstraint(SpringLayout.WEST,btn1supportColleagues,48,SpringLayout.EAST,supportClleagues);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn2supportColleagues,10,SpringLayout.SOUTH,supportClleagues);
+        layout4.putConstraint(SpringLayout.NORTH,btn2supportColleagues,40,SpringLayout.SOUTH,btn1IndependentWork);
         layout4.putConstraint(SpringLayout.WEST,btn2supportColleagues,50,SpringLayout.EAST,btn1supportColleagues);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn3supportColleagues,10,SpringLayout.SOUTH,supportClleagues);
+        layout4.putConstraint(SpringLayout.NORTH,btn3supportColleagues,40,SpringLayout.SOUTH,btn1IndependentWork);
         layout4.putConstraint(SpringLayout.WEST,btn3supportColleagues,50, SpringLayout.EAST,btn2supportColleagues);
 
 
