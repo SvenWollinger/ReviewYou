@@ -52,7 +52,12 @@ public class reviewController {
                     excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
                     excelHandler.writeCourse(getStringCourse());
 
-                    //TODO: Give excel-group getStringCourses
+                    //Create excel file with the name of the trainee
+                    try {
+                        excelHandler.copyFinalFile(gui.getTxtTraineeName().getText());
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
 
                     //Get every value and give them to excel
                     int pointsFromSliders = 0;
