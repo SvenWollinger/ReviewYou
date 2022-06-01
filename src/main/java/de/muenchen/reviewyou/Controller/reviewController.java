@@ -288,12 +288,12 @@ public class reviewController {
     //Calculates String for "Gesamturteil"
     public String calculateAverage(GUI gui) {
         String average = "";
-        for (int i = 0; i < calculateAveragePoints(gui); i++) {
+        for (int i = -1; i < calculateAveragePoints(gui); i++) {
             if (calculateAveragePoints(gui) <= 15 && calculateAveragePoints(gui) >= 6) {
                 average = "Geeignet";
             } else if (calculateAveragePoints(gui) <= 5.99 && calculateAveragePoints(gui) >= 3) {
                 average = "Noch nicht geeignet";
-            } else if (calculateAveragePoints(gui) <= 2.99 && calculateAveragePoints(gui) >= 0) {
+            } else {
                 average = "Nicht geeignet";
             }
         }
