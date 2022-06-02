@@ -21,6 +21,9 @@ public class reviewController {
     public reviewController(ExcelHandler excelHandler, GUI gui) {
         this.gui = gui;
 
+        //Dummies
+        JRadioButton jRadioButton = new JRadioButton();
+
         //Sett current dates
         LocalDate currentDate = LocalDate.now();
         int currentYear = currentDate.getYear();
@@ -161,6 +164,16 @@ public class reviewController {
                 }
             }
         });
+
+        ActionListener actionListenerAtomicButtons = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //
+            }
+        };;
+
+        //Add buttons to actionListenerAtomicButtons
+        jRadioButton.addActionListener(actionListenerAtomicButtons);
 
         //"Weiter" button
         gui.getNext().addActionListener(new ActionListener() {
