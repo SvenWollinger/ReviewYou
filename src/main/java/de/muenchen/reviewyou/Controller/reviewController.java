@@ -209,6 +209,8 @@ public class reviewController {
             }
         });
 
+        //TODO: If click on "Weiter" button to show the fourth page, this actionListener activates
+        //TODO: Set every slider value on the picked String[]
         ActionListener actionListenerAtomicButtons = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
