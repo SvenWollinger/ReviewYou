@@ -21,53 +21,6 @@ public class reviewController {
     public reviewController(ExcelHandler excelHandler, GUI gui) {
         this.gui = gui;
 
-        //Dummies
-        JRadioButton jRadioButton = new JRadioButton();
-        String arrSocialBehavior1[] = {};
-        String arrSocialBehavior2[] = {"Option1", "Option2", "Option3"};
-        String arrSocialBehavior3[] = {"Option1", "Option2", "Option3"};
-        String arrWorkResult1[] = {"Option1", "Option2", "Option3"};
-        String arrWorkResult2[] = {"Option1", "Option2", "Option3"};
-        String arrWorkResult3[] = {"Option1", "Option2", "Option3"};
-        String arrParticipationInTheLesson1[] = {"Option1", "Option2", "Option3"};
-        String arrParticipationInTheLesson2[] = {"Option1", "Option2", "Option3"};
-        String arrParticipationInTheLesson3[] = {"Option1", "Option2", "Option3"};
-        String arrIndependentWork1[] = {"Option1", "Option2", "Option3"};
-        String arrIndependentWork2[] = {"Option1", "Option2", "Option3"};
-        String arrIndependentWork3[] = {"Option1", "Option2", "Option3"};
-        String arrSupportColleagues1[] = {"Option1", "Option2", "Option3"};
-        String arrSupportColleagues2[] = {"Option1", "Option2", "Option3"};
-        String arrSupportColleagues3[] = {"Option1", "Option2", "Option3"};
-
-        final JRadioButton genderMen = new JRadioButton("Männlich");
-        final JRadioButton genderWoman = new JRadioButton("Weiblich");
-        final ButtonGroup genderGroup = new ButtonGroup();
-        final JLabel socialBehavior = new JLabel("Sozialverhalten");
-        final JRadioButton btn1SocialBehavior = new JRadioButton("1");
-        final JRadioButton btn2SocialBehavior = new JRadioButton("2");
-        final JRadioButton btn3SocialBehavior = new JRadioButton("3");
-        final ButtonGroup socialBehaviorGroup = new ButtonGroup();
-        final JLabel workResult = new JLabel("Arebitsergebnisse/ -erfolg");
-        final JRadioButton btn1WorkResult = new JRadioButton("1");
-        final JRadioButton btn2WorkResult = new JRadioButton("2");
-        final JRadioButton btn3WorkResult = new JRadioButton("3");
-        final ButtonGroup workResultGroup = new ButtonGroup();
-        final JLabel participationInTheLesson = new JLabel("Mitarbeit im Unterricht");
-        final JRadioButton btn1ParticipationInTheLesson = new JRadioButton("1");
-        final JRadioButton btn2ParticipationInTheLesson = new JRadioButton("2");
-        final JRadioButton btn3ParticipationInTheLesson = new JRadioButton("3");
-        final ButtonGroup participationInTheLessonGroup = new ButtonGroup();
-        final JLabel independentWork = new JLabel("Selbstständiges Arbeiten");
-        final JRadioButton btn1IndependentWork = new JRadioButton("1");
-        final JRadioButton btn2IndependentWork = new JRadioButton("2");
-        final JRadioButton btn3IndependentWork = new JRadioButton("3");
-        final ButtonGroup independentWorkGroup = new ButtonGroup();
-        final JLabel supportColleagues = new JLabel("Unterstützung Kolleg*innen");
-        final JRadioButton btn1supportColleagues= new JRadioButton("1");
-        final JRadioButton btn2supportColleagues = new JRadioButton("2");
-        final JRadioButton btn3supportColleagues = new JRadioButton("3");
-        final ButtonGroup supportColleaguesGroup = new ButtonGroup();
-
         //Sett current dates
         LocalDate currentDate = LocalDate.now();
         int currentYear = currentDate.getYear();
@@ -211,15 +164,19 @@ public class reviewController {
 
         //TODO: If click on "Weiter" button to show the fourth page, this actionListener activates
         //TODO: Set every slider value on the picked String[]
+        //TODO: Every ...String()
         ActionListener actionListenerAtomicButtons = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //
+                for(int i = 0; i < 15; i++) {
+                    gui.getAbilities().setText(getSocialBehaviorString());
+                    gui.getStrength().setText(getWorkResultString());
+                    gui.getDevelopements().setText(getParticipationInTheLessonString());
+                    gui.getPerspective().setText(getIndependentWorkString());
+                    gui.getOthers().setText(getSupportColleaguesString());
+                }
             }
         };;
-
-        //Add buttons to actionListenerAtomicButtons
-        jRadioButton.addActionListener(actionListenerAtomicButtons);
 
         //"Weiter" button
         gui.getNext().addActionListener(new ActionListener() {
@@ -403,6 +360,71 @@ public class reviewController {
         }
         else if (gui.getTxtCourse().getText().equals("ITSE")) {
             return "zur IT-Systemelektronikerin / zum IT-Systemelektroniker";
+        }
+        return null;
+    }
+
+    public String getSocialBehaviorString() {
+        if(gui.getBtn1SocialBehavior().isSelected()) {
+            return null;
+        }
+        else if(gui.getBtn2SocialBehavior().isSelected()) {
+            return null;
+        }
+        else if(gui.getBtn3SocialBehavior().isSelected()) {
+            return null;
+        }
+        return null;
+    }
+
+    public String getWorkResultString() {
+        if(gui.getBtn1WorkResult().isSelected()) {
+            return null;
+        }
+        else if(gui.getBtn2WorkResult().isSelected()) {
+            return null;
+        }
+        else if(gui.getBtn3WorkResult().isSelected()) {
+            return null;
+        }
+        return null;
+    }
+
+    public String getParticipationInTheLessonString() {
+        if(gui.getBtn1ParticipationInTheLesson().isSelected()) {
+            return null;
+        }
+        else if(gui.getBtn2ParticipationInTheLesson().isSelected()) {
+            return null;
+        }
+        else if(gui.getBtn3ParticipationInTheLesson().isSelected()) {
+            return null;
+        }
+        return null;
+    }
+
+    public String getIndependentWorkString() {
+        if(gui.getBtn1IndependentWork().isSelected()) {
+            return null;
+        }
+        else if(gui.getBtn2IndependentWork().isSelected()) {
+            return null;
+        }
+        else if(gui.getBtn3IndependentWork().isSelected()) {
+            return null;
+        }
+        return null;
+    }
+
+    public String getSupportColleaguesString() {
+        if(gui.getBtn1supportColleagues().isSelected()) {
+            return null;
+        }
+        else if(gui.getBtn2supportColleagues().isSelected()) {
+            return null;
+        }
+        else if(gui.getBtn3supportColleagues().isSelected()) {
+            return null;
         }
         return null;
     }

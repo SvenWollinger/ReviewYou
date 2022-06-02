@@ -35,9 +35,9 @@ public class GUI {
     private final SpringLayout layout4 = new SpringLayout();
     private final SpringLayout layout5 = new SpringLayout();
 
-    private final String arrSoicalBehavior1[] = {"Ist ein*e sehr Freundliche*r",
+    private final String arrSocialBehavior1[] = {"Ist ein*e sehr Freundliche*r",
             "Der/Die Auszubildender ist sehr Hilfsbereit","Der/Die Auszubildender ist Teamfähig"};
-    private final JList pickSocialBehavior = new JList(arrSoicalBehavior1);
+    private final JList pickSocialBehavior = new JList(arrSocialBehavior1);
 
     private final String arrSocialBehavior2[] = {"Option1", "Option2", "Option3"};
     private final JList pickSocialBehavior2 = new JList(arrSocialBehavior2);
@@ -104,6 +104,66 @@ public class GUI {
 
     public JPanel getPanel() {
         return panel;
+    }
+
+    public JList getPickSocialBehavior() {
+        return pickSocialBehavior;
+    }
+
+    public JList getPickSocialBehavior2() {
+        return pickSocialBehavior2;
+    }
+
+    public JList getPickSocialBehavior3() {
+        return pickSocialBehavior3;
+    }
+
+    public JList getPickWorkResult1() {
+        return pickWorkResult1;
+    }
+
+    public JList getPickWorkResult2() {
+        return pickWorkResult2;
+    }
+
+    public JList getPickWorkResult3() {
+        return pickWorkResult3;
+    }
+
+    public JList getPickParticipationInTheLesson1() {
+        return pickParticipationInTheLesson1;
+    }
+
+    public JList getPickParticipationInTheLesson2() {
+        return pickParticipationInTheLesson2;
+    }
+
+    public JList getPickParticipationInTheLesson3() {
+        return  pickParticipationInTheLesson3;
+    }
+
+    public JList getPickIndependentWork1() {
+        return pickIndependentWork1;
+    }
+
+    public JList getPickIndependentWork2() {
+        return pickIndependentWork2;
+    }
+
+    public JList getPickIndependentWork3() {
+        return pickIndependentWork3;
+    }
+
+    public JList getPickSupportColleagues1() {
+        return pickSupportColleagues1;
+    }
+
+    public JList getPickSupportColleagues2() {
+        return pickSupportColleagues2;
+    }
+
+    public JList getPickSupportColleagues3() {
+        return pickSupportColleagues3;
     }
 
     //constructor
@@ -725,6 +785,99 @@ public class GUI {
     private final JRadioButton btn3supportColleagues = new JRadioButton("3");
     private final ButtonGroup supportColleaguesGroup = new ButtonGroup();
 
+    //Getter
+    public JRadioButton getGenderMen() {
+        return genderMen;
+    }
+
+    public JRadioButton getGenderWoman() {
+        return genderWoman;
+    }
+
+    public ButtonGroup getGenderGroup() {
+        return genderGroup;
+    }
+
+    public JRadioButton getBtn1SocialBehavior() {
+        return btn1SocialBehavior;
+    }
+
+    public JRadioButton getBtn2SocialBehavior() {
+        return btn2SocialBehavior;
+    }
+
+    public JRadioButton getBtn3SocialBehavior() {
+        return btn3SocialBehavior;
+    }
+
+    public ButtonGroup getSocialBehaviorGroup() {
+        return socialBehaviorGroup;
+    }
+
+    public JRadioButton getBtn1WorkResult() {
+        return btn1WorkResult;
+    }
+
+    public JRadioButton getBtn2WorkResult() {
+        return btn2WorkResult;
+    }
+
+    public JRadioButton getBtn3WorkResult() {
+        return btn3WorkResult;
+    }
+
+    public ButtonGroup getWorkResultGroup() {
+        return workResultGroup;
+    }
+
+    public JRadioButton getBtn1ParticipationInTheLesson() {
+        return  btn1ParticipationInTheLesson;
+    }
+
+    public JRadioButton getBtn2ParticipationInTheLesson() {
+        return btn2ParticipationInTheLesson;
+    }
+
+    public JRadioButton getBtn3ParticipationInTheLesson() {
+        return btn3ParticipationInTheLesson;
+    }
+
+    public ButtonGroup getParticipationInTheLessonGroup() {
+        return  participationInTheLessonGroup;
+    }
+
+    public JRadioButton getBtn1IndependentWork() {
+        return btn1IndependentWork;
+    }
+
+    public JRadioButton getBtn2IndependentWork() {
+        return btn2IndependentWork;
+    }
+
+    public JRadioButton getBtn3IndependentWork() {
+        return btn3IndependentWork;
+    }
+
+    public ButtonGroup getIndependentWorkGroup() {
+        return independentWorkGroup;
+    }
+
+    public JRadioButton getBtn1supportColleagues() {
+        return btn1supportColleagues;
+    }
+
+    public JRadioButton getBtn2supportColleagues() {
+        return btn2supportColleagues;
+    }
+
+    public JRadioButton getBtn3supportColleagues() {
+        return btn3supportColleagues;
+    }
+
+    public ButtonGroup getSupportColleaguesGroup() {
+        return supportColleaguesGroup;
+    }
+
     //third Page
 
     public void thirdPanel() {
@@ -1127,13 +1280,14 @@ public class GUI {
     JLabel othersLabel = new JLabel("Sonstige Anmerkungen");
 
     JTextArea abilities = new JTextArea();
-
     JTextArea strength = new JTextArea();
     JTextArea developements = new JTextArea();
     JTextArea perspective = new JTextArea();
     JTextArea others = new JTextArea();
     Dimension preferedSize = new Dimension(600, 50);
     Dimension maximumSize = new Dimension(600, 70);
+
+    //Getter
 
     // CREATE SEVENTH PAGE
     public void eightPanel() {
