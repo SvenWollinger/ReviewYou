@@ -49,8 +49,47 @@ public class GUI {
             "Der/Die Auszubildender ist sehr Hilfsbereit","Der/Die Auszubildender ist Teamfähig"};
     private final JList pickSocialBehavior = new JList(arrSoicalBehavior1);
 
-    private final String arrSocialBehavior2[] = {"fsfddfsdfsdfsdf", "fdgdfgfdgfdgfdgdfg", "gdfgdfgdfgfdgdfgfd"};
+    private final String arrSocialBehavior2[] = {"Option1", "Option2", "Option3"};
     private final JList pickSocialBehavior2 = new JList(arrSocialBehavior2);
+
+    private final String arrSocialBehavior3[] = {"Option1", "Option2", "Option3"};
+    private final JList pickSocialBehavior3 = new JList(arrSocialBehavior3);
+
+    private final String arrWorkResult1[] = {"Option1", "Option2", "Option3"};
+    private final JList pickWorkResult1 = new JList(arrWorkResult1);
+
+    private final String arrWorkResult2[] = {"Option1", "Option2", "Option3"};
+    private final JList pickWorkResult2 = new JList(arrWorkResult2);
+
+    private final String arrWorkResult3[] = {"Option1", "Option2", "Option3"};
+    private final JList pickWorkResult3 = new JList(arrWorkResult3);
+
+    private final String arrParticipationInTheLesson1[] = {"Option1", "Option2", "Option3"};
+    private final JList pickParticipationInTheLesson1 = new JList(arrParticipationInTheLesson1);
+
+    private final String arrParticipationInTheLesson2[] = {"Option1", "Option2", "Option3"};
+    private final JList pickParticipationInTheLesson2 = new JList(arrParticipationInTheLesson2);
+
+    private final String arrParticipationInTheLesson3[] = {"Option1", "Option2", "Option3"};
+    private final JList pickParticipationInTheLesson3 = new JList(arrParticipationInTheLesson3);
+
+    private final String arrIndependentWork1[] = {"Option1", "Option2", "Option3"};
+    private final JList pickIndependentWork1 = new JList(arrIndependentWork1);
+
+    private final String arrIndependentWork2[] = {"Option1", "Option2", "Option3"};
+    private final JList pickIndependentWork2 = new JList(arrIndependentWork2);
+
+    private final String arrIndependentWork3[] = {"Option1", "Option2", "Option3"};
+    private final JList pickIndependentWork3 = new JList(arrIndependentWork3);
+
+    private final String arrSupportColleagues1[] = {"Option1", "Option2", "Option3"};
+    private final JList pickSupportColleagues1 = new JList(arrSupportColleagues1);
+
+    private final String arrSupportColleagues2[] = {"Option1", "Option2", "Option3"};
+    private final JList pickSupportColleagues2 = new JList(arrSupportColleagues2);
+
+    private final String arrSupportColleagues3[] = {"Option1", "Option2", "Option3"};
+    private final JList pickSupportColleagues3 = new JList(arrSupportColleagues3);
 
     //constructor
 
@@ -275,6 +314,135 @@ public class GUI {
                 pickSocialBehavior2.setFont(fontt);
                 pickSocialBehavior2.setPreferredSize(new Dimension(800,200));
                 thirdPagePanel.add(pickSocialBehavior2);
+            }
+        });
+        btn3SocialBehavior.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                startThirdPanel();
+                pickSocialBehavior3.setFont(fontt);
+                pickSocialBehavior3.setPreferredSize(new Dimension(800,200));
+                thirdPagePanel.add(pickSocialBehavior3);
+            }
+        });
+
+        btn1WorkResult.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                startThirdPanel();
+                pickWorkResult1.setFont(fontt);
+                pickWorkResult1.setPreferredSize(new Dimension(800,200));
+                thirdPagePanel.add(pickWorkResult1);
+            }
+        });
+
+        btn2WorkResult.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                startThirdPanel();
+                pickWorkResult2.setFont(fontt);
+                pickWorkResult2.setPreferredSize(new Dimension(800,200));
+                thirdPagePanel.add(pickWorkResult2);
+            }
+        });
+
+        btn3WorkResult.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                startThirdPanel();
+                pickWorkResult3.setFont(fontt);
+                pickWorkResult3.setPreferredSize(new Dimension(800,200));
+                thirdPagePanel.add(pickWorkResult3);
+            }
+        });
+
+        btn1ParticipationInTheLesson.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                startThirdPanel();
+                pickParticipationInTheLesson1.setFont(fontt);
+                pickParticipationInTheLesson1.setPreferredSize(new Dimension(800,200));
+                thirdPagePanel.add(pickParticipationInTheLesson1);
+            }
+        });
+
+        btn2ParticipationInTheLesson.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                startThirdPanel();
+                pickParticipationInTheLesson2.setFont(fontt);
+                pickParticipationInTheLesson2.setPreferredSize(new Dimension(800,200));
+                thirdPagePanel.add(pickParticipationInTheLesson2);
+            }
+        });
+
+        btn3ParticipationInTheLesson.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                startThirdPanel();
+                pickParticipationInTheLesson3.setFont(fontt);
+                pickParticipationInTheLesson3.setPreferredSize(new Dimension(800,200));
+                thirdPagePanel.add(pickParticipationInTheLesson3);
+            }
+        });
+
+        btn1IndependentWork.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                startThirdPanel();
+                pickIndependentWork1.setFont(fontt);
+                pickIndependentWork1.setPreferredSize(new Dimension(800,200));
+                thirdPagePanel.add(pickIndependentWork1);
+            }
+        });
+
+        btn2IndependentWork.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                startThirdPanel();
+                pickIndependentWork2.setFont(fontt);
+                pickIndependentWork2.setPreferredSize(new Dimension(800,200));
+                thirdPagePanel.add(pickIndependentWork2);
+            }
+        });
+
+        btn3IndependentWork.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                startThirdPanel();
+                pickIndependentWork3.setFont(fontt);
+                pickIndependentWork3.setPreferredSize(new Dimension(800,200));
+                thirdPagePanel.add(pickIndependentWork3);
+            }
+        });
+
+        btn1supportColleagues.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                startThirdPanel();
+                pickSupportColleagues1.setFont(fontt);
+                pickSupportColleagues1.setPreferredSize(new Dimension(800,200));
+                thirdPagePanel.add(pickSupportColleagues1);
+            }
+        });
+
+        btn2supportColleagues.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                startThirdPanel();
+                pickSupportColleagues2.setFont(fontt);
+                pickSupportColleagues2.setPreferredSize(new Dimension(800,200));
+                thirdPagePanel.add(pickSupportColleagues2);
+            }
+        });
+
+        btn3supportColleagues.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                startThirdPanel();
+                pickSupportColleagues3.setFont(fontt);
+                pickSupportColleagues3.setPreferredSize(new Dimension(800,200));
+                thirdPagePanel.add(pickSupportColleagues3);
             }
         });
 
@@ -691,7 +859,7 @@ public class GUI {
     private final JRadioButton btn2IndependentWork = new JRadioButton("2");
     private final JRadioButton btn3IndependentWork = new JRadioButton("3");
     private final ButtonGroup independentWorkGroup = new ButtonGroup();
-    private final JLabel supportClleagues = new JLabel("Unterstützung Kolleg*innen");
+    private final JLabel supportColleagues = new JLabel("Unterstützung Kolleg*innen");
     private final JRadioButton btn1supportColleagues= new JRadioButton("1");
     private final JRadioButton btn2supportColleagues = new JRadioButton("2");
     private final JRadioButton btn3supportColleagues = new JRadioButton("3");
@@ -747,7 +915,7 @@ public class GUI {
         panel.add(btn1IndependentWork);
         panel.add(btn2IndependentWork);
         panel.add(btn3IndependentWork);
-        panel.add(supportClleagues);
+        panel.add(supportColleagues);
         panel.add(btn1supportColleagues);
         panel.add(btn2supportColleagues);
         panel.add(btn3supportColleagues);
@@ -770,7 +938,7 @@ public class GUI {
         btn1IndependentWork.setFont(font);
         btn2IndependentWork.setFont(font);
         btn3IndependentWork.setFont(font);
-        supportClleagues.setFont(font);
+        supportColleagues.setFont(font);
         btn1supportColleagues.setFont(font);
         btn2supportColleagues.setFont(font);
         btn3supportColleagues.setFont(font);
@@ -830,11 +998,11 @@ public class GUI {
         layout4.putConstraint(SpringLayout.NORTH,btn3IndependentWork,40,SpringLayout.SOUTH,btn1ParticipationInTheLesson);
         layout4.putConstraint(SpringLayout.WEST,btn3IndependentWork,50, SpringLayout.EAST,btn2IndependentWork);
 
-        layout4.putConstraint(SpringLayout.NORTH,supportClleagues,50,SpringLayout.SOUTH,independentWork);
-        layout4.putConstraint(SpringLayout.WEST,supportClleagues, 100,SpringLayout.WEST,contentPane);
+        layout4.putConstraint(SpringLayout.NORTH,supportColleagues,50,SpringLayout.SOUTH,independentWork);
+        layout4.putConstraint(SpringLayout.WEST,supportColleagues, 100,SpringLayout.WEST,contentPane);
 
         layout4.putConstraint(SpringLayout.NORTH,btn1supportColleagues,40,SpringLayout.SOUTH,btn1IndependentWork);
-        layout4.putConstraint(SpringLayout.WEST,btn1supportColleagues,48,SpringLayout.EAST,supportClleagues);
+        layout4.putConstraint(SpringLayout.WEST,btn1supportColleagues,48,SpringLayout.EAST,supportColleagues);
 
         layout4.putConstraint(SpringLayout.NORTH,btn2supportColleagues,40,SpringLayout.SOUTH,btn1IndependentWork);
         layout4.putConstraint(SpringLayout.WEST,btn2supportColleagues,50,SpringLayout.EAST,btn1supportColleagues);
