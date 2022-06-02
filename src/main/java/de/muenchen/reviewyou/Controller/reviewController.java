@@ -206,14 +206,20 @@ public class reviewController {
                         gui.getPanel().revalidate();
                         gui.getPanel().repaint();
                         gui.seventhPanel();
-                        gui.getMoreInfo().setVisible(false);
-                        gui.getPopup().setVisible(false);
                         break;
                     case 7:
                         gui.getPanel().removeAll();
                         gui.getPanel().revalidate();
                         gui.getPanel().repaint();
                         gui.eightPanel();
+                        gui.getMoreInfo().setVisible(false);
+                        gui.getPopup().setVisible(false);
+                        break;
+                    case 8:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.ninethPanel();
                         gui.getNext().setVisible(false);
                         break;
 
@@ -226,19 +232,25 @@ public class reviewController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 switch (gui.getPage()) {
+                    case 9:
+                        gui.getPanel().removeAll();
+                        gui.getPanel().revalidate();
+                        gui.getPanel().repaint();
+                        gui.getNext().setVisible(true);
+                        gui.eightPanel();
+                        break;
                     case 8:
                         gui.getPanel().removeAll();
                         gui.getPanel().revalidate();
                         gui.getPanel().repaint();
+                        gui.getMoreInfo().setVisible(true);
                         gui.seventhPanel();
-                        gui.getNext().setVisible(true);
                         break;
                     case 7:
                         gui.getPanel().removeAll();
                         gui.getPanel().revalidate();
                         gui.getPanel().repaint();
                         gui.sixthPanel();
-                        gui.getMoreInfo().setVisible(true);
                         break;
                     case 6:
                         gui.getPanel().removeAll();
