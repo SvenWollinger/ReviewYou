@@ -34,7 +34,7 @@ public class GUI {
     private final SpringLayout layout3 = new SpringLayout();
     private final SpringLayout layout4 = new SpringLayout();
     private final SpringLayout layout5 = new SpringLayout();
-    
+
     private final String arrSoicalBehavior1[] = new String[2];
     private final JList pickSocialBehavior = new JList(arrSoicalBehavior1);
 

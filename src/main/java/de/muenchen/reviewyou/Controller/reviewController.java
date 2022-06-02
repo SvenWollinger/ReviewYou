@@ -14,6 +14,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class reviewController {
+    //TODO: Ask Rinor what exactly happens in the actionListener
+    //TODO: After that, make ONE actionListener and put everything else inside this one
+    //TODO: Then ask Rinor what he thought about the gender men/women
+    //TODO: Look others TODO in code
     GUI gui;
     private final int[] arrayListSlider = new int[19];
     DateTimeFormatter sdf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
@@ -113,7 +117,7 @@ public class reviewController {
             }
         });
 
-        //setText from loaded AzubiDatan.xlsx
+        //setText from loaded AzubiData.xlsx
         gui.getApprenticeshipSelector().addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -162,22 +166,6 @@ public class reviewController {
             }
         });
 
-        //TODO: If click on "Weiter" button to show the fourth page, this actionListener activates
-        //TODO: Set every slider value on the picked String[]
-        //TODO: Every ...String()
-        ActionListener actionListenerAtomicButtons = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                for(int i = 0; i < 15; i++) {
-                    gui.getAbilities().setText(getSocialBehaviorString());
-                    gui.getStrength().setText(getWorkResultString());
-                    gui.getDevelopements().setText(getParticipationInTheLessonString());
-                    gui.getPerspective().setText(getIndependentWorkString());
-                    gui.getOthers().setText(getSupportColleaguesString());
-                }
-            }
-        };;
-
         //"Weiter" button
         gui.getNext().addActionListener(new ActionListener() {
             @Override
@@ -200,6 +188,14 @@ public class reviewController {
                         gui.getBtnTraineedata().setVisible(false);
                         break;
                     case 3:
+                        //Safe selected data
+                        //TODO: Every ...String function + setValue from sliders
+                        gui.getAbilities().setText(getSocialBehaviorString());
+                        gui.getStrength().setText(getWorkResultString());
+                        gui.getDevelopements().setText(getParticipationInTheLessonString());
+                        gui.getPerspective().setText(getIndependentWorkString());
+                        gui.getOthers().setText(getSupportColleaguesString());
+
                         gui.getPanel().removeAll();
                         gui.getPanel().revalidate();
                         gui.getPanel().repaint();
@@ -287,6 +283,14 @@ public class reviewController {
                         gui.thirdPanel();
                         break;
                     case 3:
+                        //Safe selected data
+                        //TODO: Every ...String function + setValue from sliders
+                        gui.getAbilities().setText(getSocialBehaviorString());
+                        gui.getStrength().setText(getWorkResultString());
+                        gui.getDevelopements().setText(getParticipationInTheLessonString());
+                        gui.getPerspective().setText(getIndependentWorkString());
+                        gui.getOthers().setText(getSupportColleaguesString());
+
                         gui.getPanel().removeAll();
                         gui.getPanel().revalidate();
                         gui.getPanel().repaint();
