@@ -23,6 +23,50 @@ public class reviewController {
 
         //Dummies
         JRadioButton jRadioButton = new JRadioButton();
+        String arrSocialBehavior1[] = {};
+        String arrSocialBehavior2[] = {"Option1", "Option2", "Option3"};
+        String arrSocialBehavior3[] = {"Option1", "Option2", "Option3"};
+        String arrWorkResult1[] = {"Option1", "Option2", "Option3"};
+        String arrWorkResult2[] = {"Option1", "Option2", "Option3"};
+        String arrWorkResult3[] = {"Option1", "Option2", "Option3"};
+        String arrParticipationInTheLesson1[] = {"Option1", "Option2", "Option3"};
+        String arrParticipationInTheLesson2[] = {"Option1", "Option2", "Option3"};
+        String arrParticipationInTheLesson3[] = {"Option1", "Option2", "Option3"};
+        String arrIndependentWork1[] = {"Option1", "Option2", "Option3"};
+        String arrIndependentWork2[] = {"Option1", "Option2", "Option3"};
+        String arrIndependentWork3[] = {"Option1", "Option2", "Option3"};
+        String arrSupportColleagues1[] = {"Option1", "Option2", "Option3"};
+        String arrSupportColleagues2[] = {"Option1", "Option2", "Option3"};
+        String arrSupportColleagues3[] = {"Option1", "Option2", "Option3"};
+
+        final JRadioButton genderMen = new JRadioButton("Männlich");
+        final JRadioButton genderWoman = new JRadioButton("Weiblich");
+        final ButtonGroup genderGroup = new ButtonGroup();
+        final JLabel socialBehavior = new JLabel("Sozialverhalten");
+        final JRadioButton btn1SocialBehavior = new JRadioButton("1");
+        final JRadioButton btn2SocialBehavior = new JRadioButton("2");
+        final JRadioButton btn3SocialBehavior = new JRadioButton("3");
+        final ButtonGroup socialBehaviorGroup = new ButtonGroup();
+        final JLabel workResult = new JLabel("Arebitsergebnisse/ -erfolg");
+        final JRadioButton btn1WorkResult = new JRadioButton("1");
+        final JRadioButton btn2WorkResult = new JRadioButton("2");
+        final JRadioButton btn3WorkResult = new JRadioButton("3");
+        final ButtonGroup workResultGroup = new ButtonGroup();
+        final JLabel participationInTheLesson = new JLabel("Mitarbeit im Unterricht");
+        final JRadioButton btn1ParticipationInTheLesson = new JRadioButton("1");
+        final JRadioButton btn2ParticipationInTheLesson = new JRadioButton("2");
+        final JRadioButton btn3ParticipationInTheLesson = new JRadioButton("3");
+        final ButtonGroup participationInTheLessonGroup = new ButtonGroup();
+        final JLabel independentWork = new JLabel("Selbstständiges Arbeiten");
+        final JRadioButton btn1IndependentWork = new JRadioButton("1");
+        final JRadioButton btn2IndependentWork = new JRadioButton("2");
+        final JRadioButton btn3IndependentWork = new JRadioButton("3");
+        final ButtonGroup independentWorkGroup = new ButtonGroup();
+        final JLabel supportColleagues = new JLabel("Unterstützung Kolleg*innen");
+        final JRadioButton btn1supportColleagues= new JRadioButton("1");
+        final JRadioButton btn2supportColleagues = new JRadioButton("2");
+        final JRadioButton btn3supportColleagues = new JRadioButton("3");
+        final ButtonGroup supportColleaguesGroup = new ButtonGroup();
 
         //Sett current dates
         LocalDate currentDate = LocalDate.now();
