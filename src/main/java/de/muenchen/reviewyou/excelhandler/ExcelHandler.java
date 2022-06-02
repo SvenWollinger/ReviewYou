@@ -39,7 +39,7 @@ public class ExcelHandler {
     }
 
     public void copyFinalFile(String fileName) throws IOException {
-        File clonedWb = new File(fileName+".xlsx");
+        File clonedWb = new File(fileName + ".xlsx");
         Files.copy(myFile.toPath(), clonedWb.toPath());
     }
 

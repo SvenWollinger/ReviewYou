@@ -54,12 +54,6 @@ public class reviewController {
                     excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
                     excelHandler.writeCourse(getStringCourse());
 
-                    //Create excel file with the name of the trainee
-                    try {
-                        excelHandler.copyFinalFile(gui.getTxtTraineeName().getText());
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
 
                     //Get every value and give them to excel
                     int pointsFromSliders = 0;
@@ -78,6 +72,13 @@ public class reviewController {
                     }
                 } catch (IOException ioException) {
                     System.out.println("Error in SQL!" + ioException.getMessage());
+                }
+
+                //Create excel file with the name of the trainee
+                try {
+                    excelHandler.copyFinalFile(gui.getTxtTraineeName().getText());
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
 
                 if (e.getSource().equals(gui.getSaveAndNew())) { //"Speichern und neuer Leistungsbericht" button
@@ -151,8 +152,8 @@ public class reviewController {
                     AzubiGenerator azubiGenerator = new AzubiGenerator();
                     try {
                         List<Azubi> azubis = azubiGenerator.getAzubiList(file.getPath());
-                        for(int i = 0; i < azubis.size(); i++) {
-                            gui.getApprenticeshipSelector().addItem(azubis.get(i));
+                        for (Azubi azubi : azubis) {
+                            gui.getApprenticeshipSelector().addItem(azubi);
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
