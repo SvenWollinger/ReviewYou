@@ -13,6 +13,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -33,6 +35,7 @@ public class GUI {
     private int page = 0;
 
     private final JPanel panel = new JPanel();
+    private final JPanel thirdPagePanel = new JPanel();
     private final Font font = new Font(null, Font.PLAIN, 20);
     private final Font fontt = new Font(null, Font.PLAIN, 17);
     private final SpringLayout layout = new SpringLayout();
@@ -40,6 +43,14 @@ public class GUI {
     private final SpringLayout layout2 = new SpringLayout();
     private final SpringLayout layout3 = new SpringLayout();
     private final SpringLayout layout4 = new SpringLayout();
+    private final SpringLayout layout5 = new SpringLayout();
+
+    private final String arrSoicalBehavior1[] = {"Ist ein*e sehr Freundliche*r",
+            "Der/Die Auszubildender ist sehr Hilfsbereit","Der/Die Auszubildender ist Teamfähig"};
+    private final JList pickSocialBehavior = new JList(arrSoicalBehavior1);
+
+    private final String arrSocialBehavior2[] = {"fsfddfsdfsdfsdf", "fdgdfgfdgfdgfdgdfg", "gdfgdfgdfgfdgdfgfd"};
+    private final JList pickSocialBehavior2 = new JList(arrSocialBehavior2);
 
     //constructor
 
@@ -112,6 +123,7 @@ public class GUI {
                         panel.revalidate();
                         panel.repaint();
                         fourthPanel();
+                        thirdPagePanel.setVisible(false);
                         moreInfo.setVisible(true);
                         break;
                     case 4:
@@ -203,6 +215,7 @@ public class GUI {
                         panel.repaint();
                         popup.setVisible(false);
                         btnTraineedata.setVisible(true);
+                        thirdPagePanel.setVisible(false);
                         secondPanel();
                         break;
                     case 2:
@@ -243,6 +256,37 @@ public class GUI {
                 }
             }
         });
+
+        btn1SocialBehavior.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                startThirdPanel();
+                pickSocialBehavior.setFont(fontt);
+                pickSocialBehavior.setPreferredSize(new Dimension(800,200));
+                thirdPagePanel.add(pickSocialBehavior);
+
+
+            }
+        });
+        btn2SocialBehavior.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                startThirdPanel();
+                pickSocialBehavior2.setFont(fontt);
+                pickSocialBehavior2.setPreferredSize(new Dimension(800,200));
+                thirdPagePanel.add(pickSocialBehavior2);
+            }
+        });
+
+    }
+    public void startThirdPanel() {
+        thirdPagePanel.setPreferredSize(new Dimension(800,250));
+        window.add(thirdPagePanel);
+        thirdPagePanel.setVisible(true);
+        thirdPagePanel.removeAll();
+        thirdPagePanel.revalidate();
+        thirdPagePanel.repaint();
+        layout.putConstraint(SpringLayout.NORTH,thirdPagePanel,420,SpringLayout.NORTH,contentPane);
     }
 
     public void goToFirstPanel() {
@@ -797,8 +841,6 @@ public class GUI {
 
         layout4.putConstraint(SpringLayout.NORTH,btn3supportColleagues,40,SpringLayout.SOUTH,btn1IndependentWork);
         layout4.putConstraint(SpringLayout.WEST,btn3supportColleagues,50, SpringLayout.EAST,btn2supportColleagues);
-
-
 
     }
 
