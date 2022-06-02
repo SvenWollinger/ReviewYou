@@ -35,50 +35,49 @@ public class GUI {
     private final SpringLayout layout4 = new SpringLayout();
     private final SpringLayout layout5 = new SpringLayout();
 
-    private final String arrSoicalBehavior1[] = {"Ist ein*e sehr Freundliche*r",
-            "Der/Die Auszubildender ist sehr Hilfsbereit","Der/Die Auszubildender ist Teamfähig"};
+    private final String arrSoicalBehavior1[] = new String[2];
     private final JList pickSocialBehavior = new JList(arrSoicalBehavior1);
 
-    private final String arrSocialBehavior2[] = {"Option1", "Option2", "Option3"};
+    private final String arrSocialBehavior2[] = new String[3];
     private final JList pickSocialBehavior2 = new JList(arrSocialBehavior2);
 
-    private final String arrSocialBehavior3[] = {"Option1", "Option2", "Option3"};
+    private final String arrSocialBehavior3[] = new String[3];
     private final JList pickSocialBehavior3 = new JList(arrSocialBehavior3);
 
-    private final String arrWorkResult1[] = {"Option1", "Option2", "Option3"};
+    private final String arrWorkResult1[] = new String[2];
     private final JList pickWorkResult1 = new JList(arrWorkResult1);
 
-    private final String arrWorkResult2[] = {"Option1", "Option2", "Option3"};
+    private final String arrWorkResult2[] = new String[3];
     private final JList pickWorkResult2 = new JList(arrWorkResult2);
 
-    private final String arrWorkResult3[] = {"Option1", "Option2", "Option3"};
+    private final String arrWorkResult3[] = new String[4];
     private final JList pickWorkResult3 = new JList(arrWorkResult3);
 
-    private final String arrParticipationInTheLesson1[] = {"Option1", "Option2", "Option3"};
+    private final String arrParticipationInTheLesson1[] = new String[3];
     private final JList pickParticipationInTheLesson1 = new JList(arrParticipationInTheLesson1);
 
-    private final String arrParticipationInTheLesson2[] = {"Option1", "Option2", "Option3"};
+    private final String arrParticipationInTheLesson2[] = new String[2];
     private final JList pickParticipationInTheLesson2 = new JList(arrParticipationInTheLesson2);
 
-    private final String arrParticipationInTheLesson3[] = {"Option1", "Option2", "Option3"};
+    private final String arrParticipationInTheLesson3[] = new String[4];
     private final JList pickParticipationInTheLesson3 = new JList(arrParticipationInTheLesson3);
 
-    private final String arrIndependentWork1[] = {"Option1", "Option2", "Option3"};
+    private final String arrIndependentWork1[] = new String[2];
     private final JList pickIndependentWork1 = new JList(arrIndependentWork1);
 
-    private final String arrIndependentWork2[] = {"Option1", "Option2", "Option3"};
+    private final String arrIndependentWork2[] = new String[2];
     private final JList pickIndependentWork2 = new JList(arrIndependentWork2);
 
-    private final String arrIndependentWork3[] = {"Option1", "Option2", "Option3"};
+    private final String arrIndependentWork3[] = new String[4];
     private final JList pickIndependentWork3 = new JList(arrIndependentWork3);
 
-    private final String arrSupportColleagues1[] = {"Option1", "Option2", "Option3"};
+    private final String arrSupportColleagues1[] = new String[2];
     private final JList pickSupportColleagues1 = new JList(arrSupportColleagues1);
 
-    private final String arrSupportColleagues2[] = {"Option1", "Option2", "Option3"};
+    private final String arrSupportColleagues2[] = new String[2];
     private final JList pickSupportColleagues2 = new JList(arrSupportColleagues2);
 
-    private final String arrSupportColleagues3[] = {"Option1", "Option2", "Option3"};
+    private final String arrSupportColleagues3[] = new String[1];
     private final JList pickSupportColleagues3 = new JList(arrSupportColleagues3);
 
     //Getter
@@ -298,6 +297,96 @@ public class GUI {
                 pickSupportColleagues3.setFont(fontt);
                 pickSupportColleagues3.setPreferredSize(new Dimension(800,200));
                 thirdPagePanel.add(pickSupportColleagues3);
+            }
+        });
+
+        genderMen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                arrSoicalBehavior1[0] = "Ist ein sehr freundlicher Auszubildender";
+                arrSoicalBehavior1[1] = "Ist ein sehr freundlicher und hilfsbereiteter Auszubildender";
+                arrSocialBehavior2[0] = "Ist ein freundlicher Auszubildender";
+                arrSocialBehavior2[1] = "Ist ein freundlicher und hilfsbereiter Auszubildender";
+                arrSocialBehavior2[2] = "Ist ein freundlicher, jedoch zurückhaltender Auszubildender";
+                arrSocialBehavior3[0] = "Ist ein freundlicher jedoch sehr zurückhaldender Auszubildender";
+                arrSocialBehavior3[1] = "Ist ein sehr zurückhaldender Auszubildender";
+                arrSocialBehavior3[2] = "Ist ein sehr zurückgezogener Auszubildender";
+                arrWorkResult1[0] = "Sein Fachwissen ist sehr fundiert ";
+                arrWorkResult1[1] = "Die Arbeitsergebnisse sind sehr gut";
+                arrWorkResult2[0] = "Sein Fachwissen ist fundiert ";
+                arrWorkResult2[1] = "Gewisse Lücken sind in seinem Wissen noch vorhanden";
+                arrWorkResult2[2] = "Die Arbeitsergebnisse sind gut";
+                arrWorkResult3[0] = "Sein Fachwissen muss stark aufgebaut werden";
+                arrWorkResult3[1] = "Weißt große Wissenslücken auf";
+                arrWorkResult3[2] = "Oftmals ist Nacharbeit erforderlich ";
+                arrWorkResult3[3] = "Oftmals ist große Nacharbeit erforderlich";
+                arrParticipationInTheLesson1[0] = "Er beteiligt sich sehr aktiv im Unterricht";
+                arrParticipationInTheLesson1[1] = "Stellt sehr sinnvolle Fragen, die das Unterrichtsgeschehen bereichern";
+                arrParticipationInTheLesson1[2] = "Herr X ist sehr aktiv und ergreift Initiative um seine Kolleg*innen zu unterstützen";
+                arrParticipationInTheLesson2[0] = "Er beteiligt sich oftmals im Unterricht";
+                arrParticipationInTheLesson2[1] = "Stellt oftmals sinnvolle Fragen ";
+                arrParticipationInTheLesson3[0] = "Er beteiligt sich selten im Unterricht ";
+                arrParticipationInTheLesson3[1] = "Stellt meist wenig bis keine Fragen";
+                arrParticipationInTheLesson3[2] = "Herr X lenkt sich oftmals selbst ab";
+                arrParticipationInTheLesson3[3] = "Herr X lenkt sich und seine Kolleg*innen oftmals selbst ab";
+                arrIndependentWork1[0] = "Seine Arbeit wird stets gewissenhaft erledigt";
+                arrIndependentWork1[1] = "Seine Arbeit wird oftmals gewissenhaft erledigt";
+                arrIndependentWork2[0] = "Er erledigt seine Arbeit ohne Nachfragen ";
+                arrIndependentWork2[1] = "Lässt sich leicht ablenken";
+                arrIndependentWork3[0] = "Lässt sich sehr leicht ablenken";
+                arrIndependentWork3[1] = "Die Arbeit wird oftmals nicht selbstständig ausgeführt";
+                arrIndependentWork3[2] = "Er kommt seiner Arbeit erst nach Aufforderung nach";
+                arrIndependentWork3[3] = "Er ist oft unsicher und muss viel nachfragen um die Arbeit zu schaffen";
+                arrSupportColleagues1[0] = "Herr X geht offen auf seine Kolleg*innen zu und unterstützt jene";
+                arrSupportColleagues1[1] = "Herr X ist zurückhaltend, bringt sich jedoch sehr gut in Teams ein";
+                arrSupportColleagues2[0] = "Herr X ist eher zurückhaltend";
+                arrSupportColleagues2[1] = "Herr X bevorzugt es in der gleichen Gruppe zu arbeiten";
+                arrSupportColleagues3[0] = "Herr X geht seinen Kolleg*innen aus dem Weg und arbeitet lieber alleine";
+
+            }
+        });
+        genderWoman.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                arrSoicalBehavior1[0] = "Ist eine sehr freundliche Auszubildende";
+                arrSoicalBehavior1[1] = "Ist eine sehr freundliche und hilfsbereitete Auszubildende";
+                arrSocialBehavior2[0] = "Ist eine freundliche Auszubildende";
+                arrSocialBehavior2[1] = "Ist eine freundliche und hilfsbereite Auszubildende";
+                arrSocialBehavior2[2] = "Ist eine freundliche, jedoch zurückhaldende Auszubildende";
+                arrSocialBehavior3[0] = "Ist eine freundliche, jedoch sehr zurückhaltende Auszubildende";
+                arrSocialBehavior3[1] = "Ist eine sehr zurückhaldende Auszubildende";
+                arrSocialBehavior3[2] = "Ist eine sehr zurückgezogene Auszubildende";
+                arrWorkResult1[0] = "Ihr Fachwissen ist sehr fundiert ";
+                arrWorkResult1[1] = "Die Arbeitsergebnisse sind sehr gut";
+                arrWorkResult2[0] = "Ihr Fachwissen ist fundiert ";
+                arrWorkResult2[1] = "Gewisse Lücken sind in ihrem Wissen noch vorhanden";
+                arrWorkResult2[2] = "Die Arbeitsergebnisse sind gut";
+                arrWorkResult3[0] = "Ihr Fachwissen muss stark aufgebaut werden";
+                arrWorkResult3[1] = "Weißt große Wissenslücken auf";
+                arrWorkResult3[2] = "Oftmals ist Nacharbeit erforderlich ";
+                arrWorkResult3[3] = "Oftmals ist große Nacharbeit erforderlich";
+                arrParticipationInTheLesson1[0] = "Sie beteiligt sich sehr aktiv im Unterricht";
+                arrParticipationInTheLesson1[1] = "Stellt sehr sinnvolle Fragen, die das Unterrichtsgeschehen bereichern ";
+                arrParticipationInTheLesson1[2] = "Frau X ist sehr aktiv und ergreift Initiative um seine Kolleg*innen zu unterstützen";
+                arrParticipationInTheLesson2[0] = "Sie beteiligt sich oftmals im Unterricht ";
+                arrParticipationInTheLesson2[1] = "Stellt oftmals sinnvolle Fragen ";
+                arrParticipationInTheLesson3[0] = "Sie beteiligt sich selten im Unterricht ";
+                arrParticipationInTheLesson3[1] = "Stellt meist wenig bis keine Fragen";
+                arrParticipationInTheLesson3[2] = "Frau X lenkt sich oftmals selbst ab";
+                arrParticipationInTheLesson3[3] = "Frau X lenkt sich und seine Kolleg*innen oftmals selbst ab";
+                arrIndependentWork1[0] = "Ihre Arbeit wird stets gewissenhaft erledigt";
+                arrIndependentWork1[1] = "Ihre Arbeit wird oftmals gewissenhaft erledigt";
+                arrIndependentWork2[0] = "Sie erledigt ihre Arbeit ohne Nachfragen ";
+                arrIndependentWork2[1] = "Lässt sich leicht ablenken";
+                arrIndependentWork3[0] = "Lässt sich sehr leicht ablenken";
+                arrIndependentWork3[1] = "Die Arbeit wird oftmals nicht selbstständig ausgeführt";
+                arrIndependentWork3[2] = "Sie kommt ihrer Arbeit erst nach Aufforderung nach";
+                arrIndependentWork3[3] = "Sie ist oft unsicher und muss viel nachfragen um die Arbeit zu schaffen";
+                arrSupportColleagues1[0] ="Frau X geht offen auf ihre Kolleg*innen zu und unterstützt jene";
+                arrSupportColleagues1[1] ="Frau X ist zurückhaltend, bringt sich jedoch sehr gut in Teams ein";
+                arrSupportColleagues2[0] ="Frau X ist eher zurückhaltend";
+                arrSupportColleagues2[1] ="Frau X bevorzugt es in der gleichen Gruppe zu arbeiten";
+                arrSupportColleagues3[0] ="Frau X geht ihren Kolleg*innen aus dem Weg und arbeitet lieber alleine";
             }
         });
 
