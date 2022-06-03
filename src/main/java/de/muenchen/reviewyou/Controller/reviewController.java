@@ -14,10 +14,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class reviewController {
-    //TODO: Ask Rinor what exactly happens in the actionListener
-    //TODO: After that, make ONE actionListener and put everything else inside this one
-    //TODO: Then ask Rinor what he thought about the gender men/women
-    //TODO: Look others TODO in code
     GUI gui;
     private final int[] arrayListSlider = new int[19];
     DateTimeFormatter sdf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
@@ -189,7 +185,6 @@ public class reviewController {
                         break;
                     case 3:
                         //Safe selected data
-                        //TODO: Every ...String function + setValue from sliders
                         gui.getAbilities().setText(getSocialBehaviorString());
                         gui.getStrength().setText(getWorkResultString());
                         gui.getDevelopements().setText(getParticipationInTheLessonString());
@@ -284,7 +279,6 @@ public class reviewController {
                         break;
                     case 3:
                         //Safe selected data
-                        //TODO: Every ...String function + setValue from sliders
                         gui.getAbilities().setText(getSocialBehaviorString());
                         gui.getStrength().setText(getWorkResultString());
                         gui.getDevelopements().setText(getParticipationInTheLessonString());
@@ -370,65 +364,242 @@ public class reviewController {
 
     public String getSocialBehaviorString() {
         if(gui.getBtn1SocialBehavior().isSelected()) {
-            return null;
+            gui.getjSliders().get(0).setValue(12);
+            gui.getjSliders().get(6).setValue(12);
+            gui.getjSliders().get(7).setValue(12);
+            gui.getjSliders().get(8).setValue(12);
+            gui.getjSliders().get(9).setValue(12);
+            gui.getjSliders().get(10).setValue(12);
+            gui.getjSliders().get(11).setValue(12);
+            gui.getjSliders().get(12).setValue(12);
+            gui.getjSliders().get(13).setValue(12);
+            gui.getjSliders().get(15).setValue(12);
+            gui.getjSliders().get(18).setValue(12);
+            if(gui.getPickSocialBehavior().getSelectedIndex() == 1) {
+                return "1";
+            }
+            else if(gui.getPickSocialBehavior().getSelectedIndex() == 2) {
+                return "2";
+            }
+            else if(gui.getPickSocialBehavior().getSelectedIndex() == 3) {
+                return "3";
+            }
         }
         else if(gui.getBtn2SocialBehavior().isSelected()) {
-            return null;
+            gui.getjSliders().get(0).setValue(8);
+            gui.getjSliders().get(6).setValue(8);
+            gui.getjSliders().get(7).setValue(8);
+            gui.getjSliders().get(8).setValue(8);
+            gui.getjSliders().get(9).setValue(8);
+            gui.getjSliders().get(10).setValue(8);
+            gui.getjSliders().get(11).setValue(8);
+            gui.getjSliders().get(12).setValue(8);
+            gui.getjSliders().get(13).setValue(8);
+            gui.getjSliders().get(15).setValue(8);
+            gui.getjSliders().get(18).setValue(8);
+            if(gui.getPickSocialBehavior2().getSelectedIndex() == 1) {
+                return "";
+            }
+            else if(gui.getPickSocialBehavior2().getSelectedIndex() == 2) {
+                return "";
+            }
+            else if(gui.getPickSocialBehavior2().getSelectedIndex() == 3) {
+                return "";
+            }
         }
         else if(gui.getBtn3SocialBehavior().isSelected()) {
-            return null;
+            gui.getjSliders().get(0).setValue(4);
+            gui.getjSliders().get(6).setValue(4);
+            gui.getjSliders().get(7).setValue(4);
+            gui.getjSliders().get(8).setValue(4);
+            gui.getjSliders().get(9).setValue(4);
+            gui.getjSliders().get(10).setValue(4);
+            gui.getjSliders().get(11).setValue(4);
+            gui.getjSliders().get(12).setValue(4);
+            gui.getjSliders().get(13).setValue(4);
+            gui.getjSliders().get(15).setValue(4);
+            gui.getjSliders().get(18).setValue(4);
+            if(gui.getPickSocialBehavior3().getSelectedIndex() == 1) {
+                return "";
+            }
+            else if(gui.getPickSocialBehavior3().getSelectedIndex() == 2) {
+                return "";
+            }
+            else if(gui.getPickSocialBehavior3().getSelectedIndex() == 3) {
+                return "";
+            }
         }
         return null;
     }
 
     public String getWorkResultString() {
         if(gui.getBtn1WorkResult().isSelected()) {
-            return null;
+            gui.getjSliders().get(1).setValue(12);
+            if(gui.getPickWorkResult1().getSelectedIndex() == 1) {
+                return "";
+            }
+            else if(gui.getPickWorkResult1().getSelectedIndex() == 2) {
+                return "";
+            }
+            else if(gui.getPickWorkResult1().getSelectedIndex() == 3) {
+                return "";
+            }
         }
         else if(gui.getBtn2WorkResult().isSelected()) {
-            return null;
+            gui.getjSliders().get(1).setValue(8);
+            if (gui.getPickWorkResult2().getSelectedIndex() == 1) {
+                return "";
+            }
+            if (gui.getPickWorkResult2().getSelectedIndex() == 2) {
+                return "";
+            }
+            if (gui.getPickWorkResult2().getSelectedIndex() == 3) {
+                return "";
+            }
         }
         else if(gui.getBtn3WorkResult().isSelected()) {
-            return null;
+            gui.getjSliders().get(1).setValue(4);
+            if (gui.getPickWorkResult3().getSelectedIndex() == 1) {
+                return "";
+            }
+            if (gui.getPickWorkResult3().getSelectedIndex() == 2) {
+                return "";
+            }
+            if (gui.getPickWorkResult3().getSelectedIndex() == 3) {
+                return "";
+            }
         }
         return null;
     }
 
     public String getParticipationInTheLessonString() {
         if(gui.getBtn1ParticipationInTheLesson().isSelected()) {
-            return null;
+            gui.getjSliders().get(2).setValue(12);
+            gui.getjSliders().get(14).setValue(12);
+            if (gui.getPickParticipationInTheLesson1().getSelectedIndex() == 1) {
+                return "";
+            }
+            else if (gui.getPickParticipationInTheLesson1().getSelectedIndex() == 2) {
+                return "";
+            }
+            else if (gui.getPickParticipationInTheLesson1().getSelectedIndex() == 3) {
+                return "";
+            }
         }
         else if(gui.getBtn2ParticipationInTheLesson().isSelected()) {
-            return null;
+            gui.getjSliders().get(2).setValue(8);
+            gui.getjSliders().get(14).setValue(8);
+            if (gui.getPickParticipationInTheLesson2().getSelectedIndex() == 1) {
+                return "";
+            }
+            else if (gui.getPickParticipationInTheLesson2().getSelectedIndex() == 2) {
+                return "";
+            }
+            else if (gui.getPickParticipationInTheLesson2().getSelectedIndex() == 3) {
+                return "";
+            }
         }
         else if(gui.getBtn3ParticipationInTheLesson().isSelected()) {
-            return null;
+            gui.getjSliders().get(2).setValue(4);
+            gui.getjSliders().get(14).setValue(4);
+            if (gui.getPickParticipationInTheLesson3().getSelectedIndex() == 1) {
+                return "";
+            }
+            else if (gui.getPickParticipationInTheLesson3().getSelectedIndex() == 2) {
+                return "";
+            }
+            else if (gui.getPickParticipationInTheLesson3().getSelectedIndex() == 3) {
+                return "";
+            }
         }
         return null;
     }
 
     public String getIndependentWorkString() {
         if(gui.getBtn1IndependentWork().isSelected()) {
-            return null;
+            gui.getjSliders().get(3).setValue(12);
+            gui.getjSliders().get(4).setValue(12);
+            gui.getjSliders().get(5).setValue(12);
+            gui.getjSliders().get(17).setValue(12);
+            if (gui.getPickIndependentWork1().getSelectedIndex() == 1) {
+                return "";
+            }
+            else if (gui.getPickIndependentWork1().getSelectedIndex() == 2) {
+                return "";
+            }
+            else if (gui.getPickIndependentWork1().getSelectedIndex() == 3) {
+                return "";
+            }
         }
         else if(gui.getBtn2IndependentWork().isSelected()) {
-            return null;
+            gui.getjSliders().get(3).setValue(8);
+            gui.getjSliders().get(4).setValue(8);
+            gui.getjSliders().get(5).setValue(8);
+            gui.getjSliders().get(17).setValue(8);
+            if (gui.getPickIndependentWork2().getSelectedIndex() == 1) {
+                return "";
+            }
+            else if (gui.getPickIndependentWork2().getSelectedIndex() == 2) {
+                return "";
+            }
+            else if (gui.getPickIndependentWork2().getSelectedIndex() == 3) {
+                return "";
+            }
         }
         else if(gui.getBtn3IndependentWork().isSelected()) {
-            return null;
+            gui.getjSliders().get(3).setValue(4);
+            gui.getjSliders().get(4).setValue(4);
+            gui.getjSliders().get(5).setValue(4);
+            gui.getjSliders().get(17).setValue(4);
+            if (gui.getPickIndependentWork3().getSelectedIndex() == 1) {
+                return "";
+            }
+            else if (gui.getPickIndependentWork3().getSelectedIndex() == 2) {
+                return "";
+            }
+            else if (gui.getPickIndependentWork3().getSelectedIndex() == 3) {
+                return "";
+            }
         }
         return null;
     }
 
     public String getSupportColleaguesString() {
         if(gui.getBtn1supportColleagues().isSelected()) {
-            return null;
+            gui.getjSliders().get(16).setValue(12);
+            if (gui.getPickSupportColleagues1().getSelectedIndex() == 1) {
+                return "";
+            }
+            else if (gui.getPickSupportColleagues1().getSelectedIndex() == 2) {
+                return "";
+            }
+            else if (gui.getPickSupportColleagues1().getSelectedIndex() == 3) {
+                return "";
+            }
         }
         else if(gui.getBtn2supportColleagues().isSelected()) {
-            return null;
-        }
+            gui.getjSliders().get(16).setValue(8);
+            if(gui.getPickSupportColleagues2().getSelectedIndex() == 1) {
+                return "";
+            }
+            else if(gui.getPickSupportColleagues2().getSelectedIndex() == 2) {
+                return "";
+            }
+            else if(gui.getPickSupportColleagues2().getSelectedIndex() == 3) {
+                return "";
+                }
+            }
         else if(gui.getBtn3supportColleagues().isSelected()) {
-            return null;
+            gui.getjSliders().get(16).setValue(4);
+            if(gui.getPickSupportColleagues3().getSelectedIndex() == 1) {
+                return "";
+            }
+            else if(gui.getPickSupportColleagues3().getSelectedIndex() == 2) {
+                return "";
+            }
+            else if(gui.getPickSupportColleagues3().getSelectedIndex() == 3) {
+                return "";
+            }
         }
         return null;
     }
