@@ -1,37 +1,51 @@
 package de.muenchen.reviewyou.GUI;
 
+import de.muenchen.reviewyou.GUI.pages.StartPanel;
 import de.muenchen.reviewyou.Utils;
-import de.muenchen.reviewyou.excelhandler.Azubi;
 import lombok.Getter;
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.UtilDateModel;
+import lombok.Setter;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
 
 public class GUI {
 
-    private final Container contentPane;
+    @Getter
+    private final LocalDate startTime = LocalDate.now();
+
     private final JFrame window;
+    @Getter
+    private JPanel panel = new JPanel();
+
+    @Getter
+    @Setter
+    private JLabel traineeName = new JLabel();
+
+    //Pages
+    @Getter
+    private StartPanel pageStart = new StartPanel();
+
+    @Getter
+    private final Container contentPane;
 
     private final JButton next = new JButton("Weiter");
     private final JButton previous = new JButton("Zurück");
     private final JButton moreInfo = new JButton("Info");
     private final JButton btnTraineedata = new JButton("Azubidaten");
+
+    @Getter
+    @Setter
     private int page = 0;
 
-    private final JPanel panel = new JPanel();
-    private final JPanel thirdPagePanel = new JPanel();
+    @Getter
     private final Font font = new Font(null, Font.PLAIN, 20);
-    private final Font fontt = new Font(null, Font.PLAIN, 17);
+    @Getter
+    private final Font fontSmall = new Font(null, Font.PLAIN, 17);
+
+    private final JPanel thirdPagePanel = new JPanel();
     private final SpringLayout layout = new SpringLayout();
-    private final SpringLayout layout1 = new SpringLayout();
     private final SpringLayout layout2 = new SpringLayout();
     private final SpringLayout layout3 = new SpringLayout();
     private final SpringLayout layout4 = new SpringLayout();
@@ -99,19 +113,11 @@ public class GUI {
         return previous;
     }
 
-    public int getPage() {
-        return page;
-    }
-
-    public JPanel getPanel() {
-        return panel;
-    }
-
     //constructor
 
     public GUI() {
         window = new JFrame("Leistungsbericht Nachwuchskräfte");
-        window.setResizable(false);
+        window.setResizable(true);
         window.setSize(800, 800);
         window.setLocationRelativeTo(null);
 
@@ -150,248 +156,8 @@ public class GUI {
         layout.putConstraint(SpringLayout.EAST, btnTraineedata, -180, SpringLayout.WEST, previous);
 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        startPanel();
-
-        btn1SocialBehavior.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                startThirdPanel();
-                pickSocialBehavior.setFont(fontt);
-                pickSocialBehavior.setPreferredSize(new Dimension(800,200));
-                thirdPagePanel.add(pickSocialBehavior);
-
-
-            }
-        });
-        btn2SocialBehavior.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                startThirdPanel();
-                pickSocialBehavior2.setFont(fontt);
-                pickSocialBehavior2.setPreferredSize(new Dimension(800,200));
-                thirdPagePanel.add(pickSocialBehavior2);
-            }
-        });
-        btn3SocialBehavior.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                startThirdPanel();
-                pickSocialBehavior3.setFont(fontt);
-                pickSocialBehavior3.setPreferredSize(new Dimension(800,200));
-                thirdPagePanel.add(pickSocialBehavior3);
-            }
-        });
-
-        btn1WorkResult.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                startThirdPanel();
-                pickWorkResult1.setFont(fontt);
-                pickWorkResult1.setPreferredSize(new Dimension(800,200));
-                thirdPagePanel.add(pickWorkResult1);
-            }
-        });
-
-        btn2WorkResult.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                startThirdPanel();
-                pickWorkResult2.setFont(fontt);
-                pickWorkResult2.setPreferredSize(new Dimension(800,200));
-                thirdPagePanel.add(pickWorkResult2);
-            }
-        });
-
-        btn3WorkResult.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                startThirdPanel();
-                pickWorkResult3.setFont(fontt);
-                pickWorkResult3.setPreferredSize(new Dimension(800,200));
-                thirdPagePanel.add(pickWorkResult3);
-            }
-        });
-
-        btn1ParticipationInTheLesson.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                startThirdPanel();
-                pickParticipationInTheLesson1.setFont(fontt);
-                pickParticipationInTheLesson1.setPreferredSize(new Dimension(800,200));
-                thirdPagePanel.add(pickParticipationInTheLesson1);
-            }
-        });
-
-        btn2ParticipationInTheLesson.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                startThirdPanel();
-                pickParticipationInTheLesson2.setFont(fontt);
-                pickParticipationInTheLesson2.setPreferredSize(new Dimension(800,200));
-                thirdPagePanel.add(pickParticipationInTheLesson2);
-            }
-        });
-
-        btn3ParticipationInTheLesson.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                startThirdPanel();
-                pickParticipationInTheLesson3.setFont(fontt);
-                pickParticipationInTheLesson3.setPreferredSize(new Dimension(800,200));
-                thirdPagePanel.add(pickParticipationInTheLesson3);
-            }
-        });
-
-        btn1IndependentWork.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                startThirdPanel();
-                pickIndependentWork1.setFont(fontt);
-                pickIndependentWork1.setPreferredSize(new Dimension(800,200));
-                thirdPagePanel.add(pickIndependentWork1);
-            }
-        });
-
-        btn2IndependentWork.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                startThirdPanel();
-                pickIndependentWork2.setFont(fontt);
-                pickIndependentWork2.setPreferredSize(new Dimension(800,200));
-                thirdPagePanel.add(pickIndependentWork2);
-            }
-        });
-
-        btn3IndependentWork.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                startThirdPanel();
-                pickIndependentWork3.setFont(fontt);
-                pickIndependentWork3.setPreferredSize(new Dimension(800,200));
-                thirdPagePanel.add(pickIndependentWork3);
-            }
-        });
-
-        btn1supportColleagues.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                startThirdPanel();
-                pickSupportColleagues1.setFont(fontt);
-                pickSupportColleagues1.setPreferredSize(new Dimension(800,200));
-                thirdPagePanel.add(pickSupportColleagues1);
-            }
-        });
-
-        btn2supportColleagues.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                startThirdPanel();
-                pickSupportColleagues2.setFont(fontt);
-                pickSupportColleagues2.setPreferredSize(new Dimension(800,200));
-                thirdPagePanel.add(pickSupportColleagues2);
-            }
-        });
-
-        btn3supportColleagues.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                startThirdPanel();
-                pickSupportColleagues3.setFont(fontt);
-                pickSupportColleagues3.setPreferredSize(new Dimension(800,200));
-                thirdPagePanel.add(pickSupportColleagues3);
-            }
-        });
-
-        genderMen.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                arrSoicalBehavior1[0] = "Ist ein sehr freundlicher Auszubildender";
-                arrSoicalBehavior1[1] = "Ist ein sehr freundlicher und hilfsbereiteter Auszubildender";
-                arrSocialBehavior2[0] = "Ist ein freundlicher Auszubildender";
-                arrSocialBehavior2[1] = "Ist ein freundlicher und hilfsbereiter Auszubildender";
-                arrSocialBehavior2[2] = "Ist ein freundlicher, jedoch zurückhaltender Auszubildender";
-                arrSocialBehavior3[0] = "Ist ein freundlicher jedoch sehr zurückhaldender Auszubildender";
-                arrSocialBehavior3[1] = "Ist ein sehr zurückhaldender Auszubildender";
-                arrSocialBehavior3[2] = "Ist ein sehr zurückgezogener Auszubildender";
-                arrWorkResult1[0] = "Sein Fachwissen ist sehr fundiert ";
-                arrWorkResult1[1] = "Die Arbeitsergebnisse sind sehr gut";
-                arrWorkResult2[0] = "Sein Fachwissen ist fundiert ";
-                arrWorkResult2[1] = "Gewisse Lücken sind in seinem Wissen noch vorhanden";
-                arrWorkResult2[2] = "Die Arbeitsergebnisse sind gut";
-                arrWorkResult3[0] = "Sein Fachwissen muss stark aufgebaut werden";
-                arrWorkResult3[1] = "Weißt große Wissenslücken auf";
-                arrWorkResult3[2] = "Oftmals ist Nacharbeit erforderlich ";
-                arrWorkResult3[3] = "Oftmals ist große Nacharbeit erforderlich";
-                arrParticipationInTheLesson1[0] = "Er beteiligt sich sehr aktiv im Unterricht";
-                arrParticipationInTheLesson1[1] = "Stellt sehr sinnvolle Fragen, die das Unterrichtsgeschehen bereichern";
-                arrParticipationInTheLesson1[2] = "Herr X ist sehr aktiv und ergreift Initiative um seine Kolleg*innen zu unterstützen";
-                arrParticipationInTheLesson2[0] = "Er beteiligt sich oftmals im Unterricht";
-                arrParticipationInTheLesson2[1] = "Stellt oftmals sinnvolle Fragen ";
-                arrParticipationInTheLesson3[0] = "Er beteiligt sich selten im Unterricht ";
-                arrParticipationInTheLesson3[1] = "Stellt meist wenig bis keine Fragen";
-                arrParticipationInTheLesson3[2] = "Herr X lenkt sich oftmals selbst ab";
-                arrParticipationInTheLesson3[3] = "Herr X lenkt sich und seine Kolleg*innen oftmals selbst ab";
-                arrIndependentWork1[0] = "Seine Arbeit wird stets gewissenhaft erledigt";
-                arrIndependentWork1[1] = "Seine Arbeit wird oftmals gewissenhaft erledigt";
-                arrIndependentWork2[0] = "Er erledigt seine Arbeit ohne Nachfragen ";
-                arrIndependentWork2[1] = "Lässt sich leicht ablenken";
-                arrIndependentWork3[0] = "Lässt sich sehr leicht ablenken";
-                arrIndependentWork3[1] = "Die Arbeit wird oftmals nicht selbstständig ausgeführt";
-                arrIndependentWork3[2] = "Er kommt seiner Arbeit erst nach Aufforderung nach";
-                arrIndependentWork3[3] = "Er ist oft unsicher und muss viel nachfragen um die Arbeit zu schaffen";
-                arrSupportColleagues1[0] = "Herr X geht offen auf seine Kolleg*innen zu und unterstützt jene";
-                arrSupportColleagues1[1] = "Herr X ist zurückhaltend, bringt sich jedoch sehr gut in Teams ein";
-                arrSupportColleagues2[0] = "Herr X ist eher zurückhaltend";
-                arrSupportColleagues2[1] = "Herr X bevorzugt es in der gleichen Gruppe zu arbeiten";
-                arrSupportColleagues3[0] = "Herr X geht seinen Kolleg*innen aus dem Weg und arbeitet lieber alleine";
-
-            }
-        });
-        genderWoman.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                arrSoicalBehavior1[0] = "Ist eine sehr freundliche Auszubildende";
-                arrSoicalBehavior1[1] = "Ist eine sehr freundliche und hilfsbereitete Auszubildende";
-                arrSocialBehavior2[0] = "Ist eine freundliche Auszubildende";
-                arrSocialBehavior2[1] = "Ist eine freundliche und hilfsbereite Auszubildende";
-                arrSocialBehavior2[2] = "Ist eine freundliche, jedoch zurückhaldende Auszubildende";
-                arrSocialBehavior3[0] = "Ist eine freundliche, jedoch sehr zurückhaltende Auszubildende";
-                arrSocialBehavior3[1] = "Ist eine sehr zurückhaldende Auszubildende";
-                arrSocialBehavior3[2] = "Ist eine sehr zurückgezogene Auszubildende";
-                arrWorkResult1[0] = "Ihr Fachwissen ist sehr fundiert ";
-                arrWorkResult1[1] = "Die Arbeitsergebnisse sind sehr gut";
-                arrWorkResult2[0] = "Ihr Fachwissen ist fundiert ";
-                arrWorkResult2[1] = "Gewisse Lücken sind in ihrem Wissen noch vorhanden";
-                arrWorkResult2[2] = "Die Arbeitsergebnisse sind gut";
-                arrWorkResult3[0] = "Ihr Fachwissen muss stark aufgebaut werden";
-                arrWorkResult3[1] = "Weißt große Wissenslücken auf";
-                arrWorkResult3[2] = "Oftmals ist Nacharbeit erforderlich ";
-                arrWorkResult3[3] = "Oftmals ist große Nacharbeit erforderlich";
-                arrParticipationInTheLesson1[0] = "Sie beteiligt sich sehr aktiv im Unterricht";
-                arrParticipationInTheLesson1[1] = "Stellt sehr sinnvolle Fragen, die das Unterrichtsgeschehen bereichern ";
-                arrParticipationInTheLesson1[2] = "Frau X ist sehr aktiv und ergreift Initiative um seine Kolleg*innen zu unterstützen";
-                arrParticipationInTheLesson2[0] = "Sie beteiligt sich oftmals im Unterricht ";
-                arrParticipationInTheLesson2[1] = "Stellt oftmals sinnvolle Fragen ";
-                arrParticipationInTheLesson3[0] = "Sie beteiligt sich selten im Unterricht ";
-                arrParticipationInTheLesson3[1] = "Stellt meist wenig bis keine Fragen";
-                arrParticipationInTheLesson3[2] = "Frau X lenkt sich oftmals selbst ab";
-                arrParticipationInTheLesson3[3] = "Frau X lenkt sich und seine Kolleg*innen oftmals selbst ab";
-                arrIndependentWork1[0] = "Ihre Arbeit wird stets gewissenhaft erledigt";
-                arrIndependentWork1[1] = "Ihre Arbeit wird oftmals gewissenhaft erledigt";
-                arrIndependentWork2[0] = "Sie erledigt ihre Arbeit ohne Nachfragen ";
-                arrIndependentWork2[1] = "Lässt sich leicht ablenken";
-                arrIndependentWork3[0] = "Lässt sich sehr leicht ablenken";
-                arrIndependentWork3[1] = "Die Arbeit wird oftmals nicht selbstständig ausgeführt";
-                arrIndependentWork3[2] = "Sie kommt ihrer Arbeit erst nach Aufforderung nach";
-                arrIndependentWork3[3] = "Sie ist oft unsicher und muss viel nachfragen um die Arbeit zu schaffen";
-                arrSupportColleagues1[0] ="Frau X geht offen auf ihre Kolleg*innen zu und unterstützt jene";
-                arrSupportColleagues1[1] ="Frau X ist zurückhaltend, bringt sich jedoch sehr gut in Teams ein";
-                arrSupportColleagues2[0] ="Frau X ist eher zurückhaltend";
-                arrSupportColleagues2[1] ="Frau X bevorzugt es in der gleichen Gruppe zu arbeiten";
-                arrSupportColleagues3[0] ="Frau X geht ihren Kolleg*innen aus dem Weg und arbeitet lieber alleine";
-            }
-        });
-
+        window.setVisible(true);
+        getPageStart().generate(this);
     }
 
     public void startThirdPanel() {
@@ -411,372 +177,12 @@ public class GUI {
         previous.setVisible(false);
         btnTraineedata.setVisible(false);
         next.setVisible(true);
-        startPanel();
-    }
-    
-    // First page to get user data
-
-    private final JLabel name = new JLabel("Name");
-    private final JLabel email = new JLabel("E-Mail");
-    private final JLabel date = new JLabel("Datum");
-    private final JLabel telephone = new JLabel("Tel");
-    private final JTextField instructorName = new JTextField(15);
-    private final JTextField instructorEmail = new JTextField(15);
-    private final JTextField instructorTelephone = new JTextField(15);
-
-    @Getter
-    private final JTextField txtDate = new JTextField(15);
-    private JLabel headline;
-    LocalDate today = LocalDate.now();
-
-    //Getter
-    public JTextField getInstructorName() {
-        return instructorName;
-    }
-
-    public JTextField getInstructorEmail() {
-        return instructorEmail;
-    }
-
-    public JTextField getInstructorTelephone() {
-        return instructorTelephone;
-    }
-
-    // second page
-
-    public void startPanel() {
+        pageStart.generate(this);
         window.setVisible(true);
-        page = 1;
-        window.add(panel);
-        panel.setLayout(layout1);
-
-        panel.setPreferredSize(new Dimension(800, 700));
-
-        headline = new JLabel("Angaben zum / zur Ausbilder:in");
-        headline.setFont(font);
-
-        // add Components
-        panel.add(headline);
-        panel.add(name);
-        panel.add(email);
-        panel.add(date);
-        panel.add(instructorName);
-        panel.add(telephone);
-        panel.add(instructorEmail);
-        panel.add(instructorTelephone);
-        panel.add(txtDate);
-
-        layout1.putConstraint(SpringLayout.NORTH, headline, 50, SpringLayout.NORTH, panel);
-        layout1.putConstraint(SpringLayout.WEST, headline, 250, SpringLayout.WEST, panel);
-
-        // set name and name textfield
-        layout1.putConstraint(SpringLayout.WEST, name, 260, SpringLayout.WEST, panel);
-        layout1.putConstraint(SpringLayout.NORTH, name, 50, SpringLayout.SOUTH, headline);
-        name.setFont(font);
-
-        // set instructorName
-        layout1.putConstraint(SpringLayout.WEST, instructorName, 12, SpringLayout.EAST, name);
-        layout1.putConstraint(SpringLayout.NORTH, instructorName, 4, SpringLayout.NORTH, name);
-
-
-        // set email and email textfield
-        layout1.putConstraint(SpringLayout.WEST, email, 260, SpringLayout.WEST, panel);
-        layout1.putConstraint(SpringLayout.NORTH, email, 20, SpringLayout.SOUTH, name);
-        email.setFont(font);
-
-        //set instrutorEmail
-        layout1.putConstraint(SpringLayout.WEST, instructorEmail, 7, SpringLayout.EAST, email);
-        layout1.putConstraint(SpringLayout.NORTH, instructorEmail, 4, SpringLayout.NORTH, email);
-
-
-        // set telephone and telephone textfield
-        layout1.putConstraint(SpringLayout.WEST, telephone, 260, SpringLayout.WEST, panel);
-        layout1.putConstraint(SpringLayout.NORTH, telephone, 20, SpringLayout.SOUTH, email);
-        telephone.setFont(font);
-
-        //setInstructorTelephone
-        layout1.putConstraint(SpringLayout.WEST, instructorTelephone, 38, SpringLayout.EAST, telephone);
-        layout1.putConstraint(SpringLayout.NORTH, instructorTelephone, 4, SpringLayout.NORTH, telephone);
-
-        //setDate
-        layout1.putConstraint(SpringLayout.WEST, date, 260, SpringLayout.WEST, panel);
-        layout1.putConstraint(SpringLayout.NORTH, date, 20, SpringLayout.SOUTH, telephone);
-        date.setFont(font);
-
-        //txtDate
-        layout1.putConstraint(SpringLayout.NORTH,txtDate, 27,SpringLayout.SOUTH,instructorTelephone);
-        layout1.putConstraint(SpringLayout.WEST,txtDate,8,SpringLayout.EAST,date);
-
-        txtDate.setText(today.format(DateTimeFormatter.ofPattern("dd.MM.uuuu")));
-
-    }
-
-    //Second Page created Labels, Txtfields and JDatePicker
-
-    private final JLabel apprenticeship = new JLabel("Informationen zur Nachwuchskraft");
-    private final JLabel traineeName = new JLabel("Name, Vorname:");
-    private final JTextField txtTraineeName = new JTextField(10);
-    private final JComboBox apprenticeshipSelector = new JComboBox<Azubi>();
-    private final JLabel birthDate = new JLabel("Geburtsdatum: ");
-    private final JTextField txtBirthDate = new JTextField(9);
-    private final JLabel apartmentStreet = new JLabel("Straße, Haus-Nr., PLZ, Ort:");
-    private final JTextField txtApartmentStreet = new JTextField(24);
-    private final JLabel allocationPeriod = new JLabel("Zuweisungszeitraum:");
-    private final JLabel from = new JLabel("vom:");
-    private final JLabel till = new JLabel("bis:");
-    private final JLabel internshipSelection = new JLabel("Praktikumsabschnitt:");
-    private final JTextField txtInternshipSelection = new JTextField(20);
-    private final JLabel trainingArea = new JLabel("<html><body>Ausbildungsbereich und Zeitraum der Beschäftigung<br>" +
-            "in den einzelnen Ausbildungsgebieten:</body></html>");
-    private final JTextField txtTrainingArea = new JTextField(45);
-    private final JLabel sessions = new JLabel("<html><body>Teilnahme an Lehrgängen, Versammlungen, Sitzungen, " +
-            "<br>Besichtigungen usw.: </body></html>");
-    private final JTextField txtSessions = new JTextField(45);
-    private final JLabel traingPlan = new JLabel("<html><body>Örtlicher Ausbildungsplan vorgestellt und Kopie <br> " +
-            "ausgehändigt am: </body></html>");
-    private final JLabel interimTalk = new JLabel("Zwischengespräch geführt am:");
-    private final JLabel traineeYear = new JLabel("Jahrgang:");
-    private final JTextField txtTraineeYear = new JTextField(7);
-    private final JLabel course = new JLabel("Kurs:");
-    private final JTextField txtCourse = new JTextField(6);
-
-    UtilDateModel model = new UtilDateModel();
-    Properties p = new Properties();
-    JDatePanelImpl datePanel = new JDatePanelImpl(model,p);
-    JDatePickerImpl txtFrom = new JDatePickerImpl(datePanel,new DateLabelFormatter());
-
-    UtilDateModel model1 = new UtilDateModel();
-    JDatePanelImpl datePanel1 = new JDatePanelImpl(model1,p);
-    JDatePickerImpl txtTill = new JDatePickerImpl(datePanel1,new DateLabelFormatter());
-
-    UtilDateModel model2 = new UtilDateModel();
-    JDatePanelImpl datePanel2 = new JDatePanelImpl(model2, p);
-    JDatePickerImpl pickerHandover = new JDatePickerImpl(datePanel2, new DateLabelFormatter());
-    JDatePickerImpl pickerMeeting = new JDatePickerImpl(datePanel2, new DateLabelFormatter());
-
-    //Getter
-    public JDatePickerImpl getTxtFrom() {
-        return txtFrom;
-    }
-
-    public JDatePickerImpl getTxtTill() {
-        return txtTill;
-    }
-
-    public JDatePickerImpl getPickerHandover() {
-        return pickerHandover;
-    }
-
-    public JDatePickerImpl getPickerMeeting() {
-        return pickerMeeting;
-    }
-
-    public UtilDateModel getModel() {
-        return model;
-    }
-
-    public UtilDateModel getModel1() {
-        return model1;
-    }
-
-    public UtilDateModel getModel2() {
-        return model2;
-    }
-
-    public JComboBox getApprenticeshipSelector() {
-        return apprenticeshipSelector;
-    }
-
-    public JTextField getTxtTraineeName() {
-        return txtTraineeName;
-    }
-
-    public JTextField getTxtBirthDate() {
-        return txtBirthDate;
-    }
-
-    public JTextField getTxtApartmentStreet() {
-        return txtApartmentStreet;
-    }
-
-    public JTextField getTxtTraineeYear() {
-        return txtTraineeYear;
-    }
-
-    public JTextField getTxtTrainingArea() {
-        return txtTrainingArea;
-    }
-
-    public JTextField getTxtSessions() {
-        return txtSessions;
-    }
-
-    public JTextField getTxtInternshipSelection() {
-        return  txtInternshipSelection;
-    }
-
-    public JTextField getTxtCourse() {
-        return txtCourse;
     }
 
     // second Page
 
-    public void secondPanel() {
-        page = 2;
-
-        //set properties for JDatePanel
-
-        p.put("text.today", "Today");
-        p.put("text.month", "Month");
-        p.put("text.year", "Year");
-
-        //added components
-
-        panel.add(txtFrom);
-        panel.add(txtTill);
-        panel.add(pickerHandover);
-        panel.add(pickerMeeting);
-        panel.setLayout(layout2);
-        window.add(panel);
-        panel.add(apprenticeship);
-        panel.add(traineeName);
-        panel.add(txtTraineeName);
-        panel.add(birthDate);
-        panel.add(txtBirthDate);
-        panel.add(apartmentStreet);
-        panel.add(txtApartmentStreet);
-        panel.add(allocationPeriod);
-        panel.add(from);
-        panel.add(till);
-        panel.add(internshipSelection);
-        panel.add(txtInternshipSelection);
-        panel.add(trainingArea);
-        panel.add(txtTrainingArea);
-        panel.add(sessions);
-        panel.add(txtSessions);
-        panel.add(traingPlan);
-        panel.add(interimTalk);
-        panel.add(traineeYear);
-        panel.add(txtTraineeYear);
-        panel.add(course);
-        panel.add(txtCourse);
-        panel.add(apprenticeshipSelector);
-
-        // setFont for Labels
-
-        apprenticeship.setFont(fontt);
-        traineeName.setFont(fontt);
-        birthDate.setFont(fontt);
-        apartmentStreet.setFont(fontt);
-        allocationPeriod.setFont(fontt);
-        from.setFont(fontt);
-        till.setFont(fontt);
-        internshipSelection.setFont(fontt);
-        trainingArea.setFont(fontt);
-        sessions.setFont(fontt);
-        traingPlan.setFont(fontt);
-        interimTalk.setFont(fontt);
-        traineeYear.setFont(fontt);
-        course.setFont(fontt);
-
-        // set appreticeship
-        layout2.putConstraint(SpringLayout.WEST, apprenticeship, 100, SpringLayout.WEST, contentPane);
-        layout2.putConstraint(SpringLayout.NORTH, apprenticeship, 30, SpringLayout.NORTH, contentPane);
-
-        // set traineeName and Textfield
-        layout2.putConstraint(SpringLayout.WEST, traineeName, 100, SpringLayout.WEST, contentPane);
-        layout2.putConstraint(SpringLayout.NORTH, traineeName, 20, SpringLayout.SOUTH, apprenticeship);
-
-        layout2.putConstraint(SpringLayout.NORTH, txtTraineeName, 4, SpringLayout.NORTH, traineeName);
-        layout2.putConstraint(SpringLayout.WEST, txtTraineeName, 10, SpringLayout.EAST, traineeName);
-
-        // set birthDate and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, birthDate, 1, SpringLayout.NORTH, traineeName);
-        layout2.putConstraint(SpringLayout.WEST, birthDate, 10, SpringLayout.EAST, txtTraineeName);
-
-        layout2.putConstraint(SpringLayout.NORTH, txtBirthDate, 2, SpringLayout.NORTH, birthDate);
-        layout2.putConstraint(SpringLayout.WEST, txtBirthDate, 8, SpringLayout.EAST, birthDate);
-
-        // set apartmentStreet and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, apartmentStreet, 10, SpringLayout.SOUTH, traineeName);
-        layout2.putConstraint(SpringLayout.WEST, apartmentStreet, 100, SpringLayout.WEST, contentPane);
-
-        layout2.putConstraint(SpringLayout.NORTH, txtApartmentStreet, 4, SpringLayout.NORTH, apartmentStreet);
-        layout2.putConstraint(SpringLayout.WEST, txtApartmentStreet, 10, SpringLayout.EAST, apartmentStreet);
-
-        // set allocationPeriod
-        layout2.putConstraint(SpringLayout.EAST, apprenticeshipSelector, -205, SpringLayout.EAST, panel);
-        layout2.putConstraint(SpringLayout.NORTH, apprenticeshipSelector, 30, SpringLayout.NORTH, contentPane);
-        apprenticeshipSelector.setEditable(true);
-
-        layout2.putConstraint(SpringLayout.NORTH, allocationPeriod, 20, SpringLayout.SOUTH, apartmentStreet);
-        layout2.putConstraint(SpringLayout.WEST, allocationPeriod, 100, SpringLayout.WEST, contentPane);
-
-        // set from and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, from, 10, SpringLayout.SOUTH, allocationPeriod);
-        layout2.putConstraint(SpringLayout.WEST, from, 100, SpringLayout.WEST, contentPane);
-
-        layout2.putConstraint(SpringLayout.NORTH, txtFrom, 10, SpringLayout.SOUTH, allocationPeriod);
-        layout2.putConstraint(SpringLayout.WEST, txtFrom, 10, SpringLayout.EAST, from);
-
-        // set till and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, till, 10, SpringLayout.SOUTH, allocationPeriod);
-        layout2.putConstraint(SpringLayout.WEST, till, 10, SpringLayout.EAST, txtFrom);
-
-        layout2.putConstraint(SpringLayout.NORTH, txtTill, 10, SpringLayout.SOUTH, allocationPeriod);
-        layout2.putConstraint(SpringLayout.WEST, txtTill, 10, SpringLayout.EAST, till);
-
-        // set internshipSelection and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, internshipSelection, 10, SpringLayout.SOUTH, from);
-        layout2.putConstraint(SpringLayout.WEST, internshipSelection, 100, SpringLayout.WEST, contentPane);
-
-        layout2.putConstraint(SpringLayout.NORTH, txtInternshipSelection, 14, SpringLayout.SOUTH, from);
-        layout2.putConstraint(SpringLayout.WEST, txtInternshipSelection, 10, SpringLayout.EAST, internshipSelection);
-
-        // set tranieeYear and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, traineeYear,10, SpringLayout.SOUTH,internshipSelection);
-        layout2.putConstraint(SpringLayout.WEST,traineeYear,100,SpringLayout.WEST,contentPane);
-
-        layout2.putConstraint(SpringLayout.NORTH,txtTraineeYear, 14, SpringLayout.SOUTH,internshipSelection);
-        layout2.putConstraint(SpringLayout.WEST,txtTraineeYear,10,SpringLayout.EAST,traineeYear);
-
-        // set course and Textfield
-        layout2.putConstraint(SpringLayout.NORTH,course,10,SpringLayout.SOUTH,internshipSelection);
-        layout2.putConstraint(SpringLayout.WEST,course,10,SpringLayout.EAST,txtTraineeYear);
-
-        layout2.putConstraint(SpringLayout.NORTH, txtCourse, 14, SpringLayout.SOUTH,internshipSelection);
-        layout2.putConstraint(SpringLayout.WEST, txtCourse, 10 ,SpringLayout.EAST,course);
-
-        // set trainingsArea and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, trainingArea, 20, SpringLayout.SOUTH, traineeYear);
-        layout2.putConstraint(SpringLayout.WEST, trainingArea, 100, SpringLayout.WEST, contentPane);
-
-        layout2.putConstraint(SpringLayout.NORTH, txtTrainingArea, 5, SpringLayout.SOUTH, trainingArea);
-        layout2.putConstraint(SpringLayout.WEST, txtTrainingArea, 100, SpringLayout.WEST, contentPane);
-
-        // set sessions and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, sessions, 20, SpringLayout.SOUTH, txtTrainingArea);
-        layout2.putConstraint(SpringLayout.WEST, sessions, 100, SpringLayout.WEST, contentPane);
-
-        layout2.putConstraint(SpringLayout.NORTH, txtSessions, 14, SpringLayout.SOUTH, sessions);
-        layout2.putConstraint(SpringLayout.WEST, txtSessions, 100, SpringLayout.WEST, contentPane);
-
-        // set trainingsPlan and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, traingPlan, 20, SpringLayout.SOUTH, txtSessions);
-        layout2.putConstraint(SpringLayout.WEST, traingPlan, 100, SpringLayout.WEST, contentPane);
-
-        layout2.putConstraint(SpringLayout.NORTH, pickerHandover, 10, SpringLayout.SOUTH, traingPlan);
-        layout2.putConstraint(SpringLayout.WEST, pickerHandover, 100, SpringLayout.WEST, contentPane);
-
-        // set interimTalk and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, interimTalk, 20, SpringLayout.SOUTH, pickerHandover);
-        layout2.putConstraint(SpringLayout.WEST, interimTalk, 100, SpringLayout.WEST, contentPane);
-
-        layout2.putConstraint(SpringLayout.NORTH, pickerMeeting, 10, SpringLayout.SOUTH, interimTalk);
-        layout2.putConstraint(SpringLayout.WEST, pickerMeeting, 100, SpringLayout.WEST, contentPane);
-
-        pickerHandover.getJFormattedTextField().setText(today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
-    }
 
     // set Insets
 
@@ -784,8 +190,16 @@ public class GUI {
     Insets sliderInsets = new Insets(-60, 0, 70, 0);
     private final List<JSlider> jSliders = createSliders();
 
+
+    @Getter
+    Properties datePickerProperties = new Properties();
+
     //Getter
     public List<JSlider> getjSliders() {
+        datePickerProperties.put("text.today", "Today");
+        datePickerProperties.put("text.month", "Month");
+        datePickerProperties.put("text.year", "Year");
+
         return jSliders;
     }
 
@@ -873,8 +287,8 @@ public class GUI {
         panel.add(btn2supportColleagues);
         panel.add(btn3supportColleagues);
 
-        genderWoman.setFont(fontt);
-        genderMen.setFont(fontt);
+        genderWoman.setFont(fontSmall);
+        genderMen.setFont(fontSmall);
         socialBehavior.setFont(font);
         btn1SocialBehavior.setFont(font);
         btn2SocialBehavior.setFont(font);
@@ -1297,7 +711,7 @@ public class GUI {
 
     public void ninethPanel(){
         page = 9;
-        JLabel headline = new JLabel("Abschluss des Leistungsberichts von " + txtTraineeName.getText());
+        JLabel headline = new JLabel("Abschluss des Leistungsberichts von " + traineeName.getText());
         window.add(panel);
         panel.setLayout(layout3);
         panel.setVisible(true);
@@ -1409,8 +823,7 @@ public class GUI {
         popup.add(popupPanel);
         popup.setLocation(75, 300);
         popupPanel.setLayout(layout);
-        headline = new JLabel("Bewertung: ");
-        headline.setFont(font);
+        JLabel headline = Utils.getJLabel("Bewertung: ", font);
         popupPanel.add(headline);
         popupPanel.add(PointsDistribution);
         popupPanel.add(particularly);
@@ -1430,26 +843,26 @@ public class GUI {
 
         layout.putConstraint(SpringLayout.NORTH, particularly, 40, SpringLayout.SOUTH, PointsDistribution);
         layout.putConstraint(SpringLayout.WEST, particularly, 29, SpringLayout.WEST, contentPane);
-        particularly.setFont(fontt);
+        particularly.setFont(fontSmall);
 
         layout.putConstraint(SpringLayout.NORTH, good, 0, SpringLayout.SOUTH, particularly);
         layout.putConstraint(SpringLayout.WEST, good, 35, SpringLayout.WEST, contentPane);
-        good.setFont(fontt);
+        good.setFont(fontSmall);
 
         layout.putConstraint(SpringLayout.NORTH, average, 0, SpringLayout.SOUTH, good);
         layout.putConstraint(SpringLayout.WEST, average, 48, SpringLayout.WEST, contentPane);
-        average.setFont(fontt);
+        average.setFont(fontSmall);
 
         layout.putConstraint(SpringLayout.NORTH, defects, 0, SpringLayout.SOUTH, average);
         layout.putConstraint(SpringLayout.WEST, defects, 48, SpringLayout.WEST, contentPane);
-        defects.setFont(fontt);
+        defects.setFont(fontSmall);
 
         layout.putConstraint(SpringLayout.NORTH, badly, 0, SpringLayout.SOUTH, defects);
         layout.putConstraint(SpringLayout.WEST, badly, 48, SpringLayout.WEST, contentPane);
-        badly.setFont(fontt);
+        badly.setFont(fontSmall);
 
         layout.putConstraint(SpringLayout.NORTH, useless, 0, SpringLayout.SOUTH, badly);
         layout.putConstraint(SpringLayout.WEST, useless, 24, SpringLayout.WEST, badly);
-        useless.setFont(fontt);
+        useless.setFont(fontSmall);
         }
     }

@@ -1,6 +1,7 @@
 package de.muenchen.reviewyou.Controller;
 
 import de.muenchen.reviewyou.GUI.GUI;
+import de.muenchen.reviewyou.GUI.pages.StartPanel;
 import de.muenchen.reviewyou.excelhandler.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -36,9 +37,10 @@ public class reviewController {
             public void actionPerformed(ActionEvent e) {
                 //Give values to Excel-Group
                 try {
-                    excelHandler.writeInstructorData(gui.getInstructorName().getText(),
-                            gui.getInstructorTelephone().getText(), gui.getTxtDate().getText(),
-                            gui.getInstructorEmail().getText());
+                    StartPanel startPanel = gui.getPageStart();
+                    excelHandler.writeInstructorData(startPanel.getInstructorName().getText(),
+                            startPanel.getInstructorTelephone().getText(), startPanel.getTxtDate().getText(),
+                            startPanel.getInstructorEmail().getText());
                     excelHandler.writeStudentData(gui.getTxtTraineeName().getText(), gui.getTxtBirthDate().getText(),
                             gui.getTxtApartmentStreet().getText(), gui.getTxtTraineeYear().getText(),
                             gui.getTxtCourse().getText());
@@ -285,7 +287,7 @@ public class reviewController {
                         gui.getPanel().repaint();
                         gui.getPrevious().setVisible(false);
                         gui.getBtnTraineedata().setVisible(false);
-                        gui.startPanel();
+                        gui.getPageStart().generate(gui);
                         break;
                 }
             }
