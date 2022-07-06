@@ -1,6 +1,8 @@
 package de.muenchen.reviewyou.GUI;
 
+import de.muenchen.reviewyou.Utils;
 import de.muenchen.reviewyou.excelhandler.Azubi;
+import lombok.Getter;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -35,49 +37,49 @@ public class GUI {
     private final SpringLayout layout4 = new SpringLayout();
     private final SpringLayout layout5 = new SpringLayout();
 
-    private final String arrSoicalBehavior1[] = new String[2];
+    private final String[] arrSoicalBehavior1 = new String[2];
     private final JList pickSocialBehavior = new JList(arrSoicalBehavior1);
 
-    private final String arrSocialBehavior2[] = new String[3];
+    private final String[] arrSocialBehavior2 = new String[3];
     private final JList pickSocialBehavior2 = new JList(arrSocialBehavior2);
 
-    private final String arrSocialBehavior3[] = new String[3];
+    private final String[] arrSocialBehavior3 = new String[3];
     private final JList pickSocialBehavior3 = new JList(arrSocialBehavior3);
 
-    private final String arrWorkResult1[] = new String[2];
+    private final String[] arrWorkResult1 = new String[2];
     private final JList pickWorkResult1 = new JList(arrWorkResult1);
 
-    private final String arrWorkResult2[] = new String[3];
+    private final String[] arrWorkResult2 = new String[3];
     private final JList pickWorkResult2 = new JList(arrWorkResult2);
 
-    private final String arrWorkResult3[] = new String[4];
+    private final String[] arrWorkResult3 = new String[4];
     private final JList pickWorkResult3 = new JList(arrWorkResult3);
 
-    private final String arrParticipationInTheLesson1[] = new String[3];
+    private final String[] arrParticipationInTheLesson1 = new String[3];
     private final JList pickParticipationInTheLesson1 = new JList(arrParticipationInTheLesson1);
 
-    private final String arrParticipationInTheLesson2[] = new String[2];
+    private final String[] arrParticipationInTheLesson2 = new String[2];
     private final JList pickParticipationInTheLesson2 = new JList(arrParticipationInTheLesson2);
 
-    private final String arrParticipationInTheLesson3[] = new String[4];
+    private final String[] arrParticipationInTheLesson3 = new String[4];
     private final JList pickParticipationInTheLesson3 = new JList(arrParticipationInTheLesson3);
 
-    private final String arrIndependentWork1[] = new String[2];
+    private final String[] arrIndependentWork1 = new String[2];
     private final JList pickIndependentWork1 = new JList(arrIndependentWork1);
 
-    private final String arrIndependentWork2[] = new String[2];
+    private final String[] arrIndependentWork2 = new String[2];
     private final JList pickIndependentWork2 = new JList(arrIndependentWork2);
 
-    private final String arrIndependentWork3[] = new String[4];
+    private final String[] arrIndependentWork3 = new String[4];
     private final JList pickIndependentWork3 = new JList(arrIndependentWork3);
 
-    private final String arrSupportColleagues1[] = new String[2];
+    private final String[] arrSupportColleagues1 = new String[2];
     private final JList pickSupportColleagues1 = new JList(arrSupportColleagues1);
 
-    private final String arrSupportColleagues2[] = new String[2];
+    private final String[] arrSupportColleagues2 = new String[2];
     private final JList pickSupportColleagues2 = new JList(arrSupportColleagues2);
 
-    private final String arrSupportColleagues3[] = new String[1];
+    private final String[] arrSupportColleagues3 = new String[1];
     private final JList pickSupportColleagues3 = new JList(arrSupportColleagues3);
 
     //Getter
@@ -425,7 +427,9 @@ public class GUI {
     private final JTextField instructorName = new JTextField(15);
     private final JTextField instructorEmail = new JTextField(15);
     private final JTextField instructorTelephone = new JTextField(15);
-    private final JTextField txtdate = new JTextField(15);
+
+    @Getter
+    private final JTextField txtDate = new JTextField(15);
     private JLabel headline;
     LocalDate today = LocalDate.now();
 
@@ -464,7 +468,7 @@ public class GUI {
         panel.add(telephone);
         panel.add(instructorEmail);
         panel.add(instructorTelephone);
-        panel.add(txtdate);
+        panel.add(txtDate);
 
         layout1.putConstraint(SpringLayout.NORTH, headline, 50, SpringLayout.NORTH, panel);
         layout1.putConstraint(SpringLayout.WEST, headline, 250, SpringLayout.WEST, panel);
@@ -504,10 +508,10 @@ public class GUI {
         date.setFont(font);
 
         //txtDate
-        layout1.putConstraint(SpringLayout.NORTH,txtdate, 27,SpringLayout.SOUTH,instructorTelephone);
-        layout1.putConstraint(SpringLayout.WEST,txtdate,8,SpringLayout.EAST,date);
+        layout1.putConstraint(SpringLayout.NORTH,txtDate, 27,SpringLayout.SOUTH,instructorTelephone);
+        layout1.putConstraint(SpringLayout.WEST,txtDate,8,SpringLayout.EAST,date);
 
-        txtdate.setText(today.format(DateTimeFormatter.ofPattern("dd.MM.uuuu")));
+        txtDate.setText(today.format(DateTimeFormatter.ofPattern("dd.MM.uuuu")));
 
     }
 
@@ -1213,20 +1217,20 @@ public class GUI {
 
     GridBagLayout gbl = new GridBagLayout();
     GridBagConstraints gbc = new GridBagConstraints();
-    JLabel abilitiesLabel = new JLabel("Fähigkeiten, praktische Leistungen, Verhalten");
-    JLabel strengthLabel = new JLabel("Stärken");
-    JLabel developementsLabel = new JLabel("Entwicklungsfelder");
-    JLabel perspectiveLabel = new JLabel("Perspektiven");
-    JLabel othersLabel = new JLabel("Sonstige Anmerkungen");
 
-    JTextArea abilities = new JTextArea();
-
-    JTextArea strength = new JTextArea();
-    JTextArea developements = new JTextArea();
-    JTextArea perspective = new JTextArea();
-    JTextArea others = new JTextArea();
     Dimension preferedSize = new Dimension(600, 50);
     Dimension maximumSize = new Dimension(600, 70);
+
+    @Getter
+    JTextArea abilities = Utils.getDescJTextArea(preferedSize, maximumSize);
+    @Getter
+    JTextArea strength = Utils.getDescJTextArea(preferedSize, maximumSize);
+    @Getter
+    JTextArea developements = Utils.getDescJTextArea(preferedSize, maximumSize);
+    @Getter
+    JTextArea perspective = Utils.getDescJTextArea(preferedSize, maximumSize);
+    @Getter
+    JTextArea others = Utils.getDescJTextArea(preferedSize, maximumSize);
 
     // CREATE SEVENTH PAGE
     public void eightPanel() {
@@ -1237,131 +1241,61 @@ public class GUI {
         panel.setLayout(gbl);
 
         gbc.insets = new Insets(-10, 20, 80, 20);
-
         gbc.gridx = 0;
+
         gbc.gridy = 0;
         headline.setFont(font);
         panel.add(headline, gbc);
 
         gbc.insets = new Insets(0, 20, 10, 20);
 
-        gbc.gridx = 0;
         gbc.gridy = 2;
-        abilitiesLabel.setFont(font);
-        panel.add(abilitiesLabel, gbc);
+        panel.add(Utils.getJLabel("Fähigkeiten, praktische Leistungen, Verhalten", font), gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        abilities.setPreferredSize(preferedSize);
-        abilities.setMaximumSize(maximumSize);
-        abilities.setLineWrap(true);
+        gbc.gridy++;
         panel.add(abilities, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        strengthLabel.setFont(font);
-        panel.add(strengthLabel, gbc);
+        gbc.gridy++;
+        panel.add(Utils.getJLabel("Stärken", font), gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 5;
-        strength.setPreferredSize(preferedSize);
-        strength.setMaximumSize(maximumSize);
-        strength.setLineWrap(true);
+        gbc.gridy++;
         panel.add(strength, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 6;
-        developementsLabel.setFont(font);
-        panel.add(developementsLabel, gbc);
+        gbc.gridy++;
+        panel.add(Utils.getJLabel("Entwicklungsfelder", font), gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 7;
-        developements.setPreferredSize(preferedSize);
-        developements.setMaximumSize(maximumSize);
-        developements.setLineWrap(true);
+        gbc.gridy++;
         panel.add(developements, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 8;
-        perspectiveLabel.setFont(font);
-        panel.add(perspectiveLabel, gbc);
+        gbc.gridy++;
+        panel.add(Utils.getJLabel("Perspektiven", font), gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 9;
-        perspective.setPreferredSize(preferedSize);
-        perspective.setMaximumSize(maximumSize);
-        perspective.setLineWrap(true);
+        gbc.gridy++;
         panel.add(perspective, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 10;
-        othersLabel.setFont(font);
-        panel.add(othersLabel, gbc);
+        gbc.gridy++;
+        panel.add(Utils.getJLabel("Sonstige Anmerkungen", font), gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 11;
-        others.setPreferredSize(preferedSize);
-        others.setMaximumSize(maximumSize);
-        others.setLineWrap(true);
+        gbc.gridy++;
         panel.add(others, gbc);
-
     }
-
 
     // elements for eight Page
 
+    @Getter
     JButton calc = new JButton("Berechnen");
+    @Getter
     JButton saveAndNew = new JButton("Speichern und neuer Leistungsbericht");
+    @Getter
     JButton saveAndExit = new JButton("Speichern und Schließen");
-    JPanel panel1 = new JPanel();
+    @Getter
     JLabel score = new JLabel("Punktzahl:");
+    @Getter
     JLabel review = new JLabel("Gesamturteil:");
+    @Getter
     JLabel txtPoints = new JLabel();
+    @Getter
     JLabel txtReview = new JLabel();
-
-    //Getter
-    public JTextArea getAbilities() {
-        return abilities;
-    }
-
-    public JTextArea getStrength() {
-        return strength;
-    }
-
-    public JTextArea getDevelopements() {
-        return developements;
-    }
-
-    public JTextArea getPerspective() {
-        return perspective;
-    }
-
-    public JTextArea getOthers() {
-        return others;
-    }
-
-    public JButton getCalc() {
-        return calc;
-    }
-
-    public JButton getSaveAndNew() {
-        return saveAndNew;
-    }
-
-    public JButton getSaveAndExit() {
-        return saveAndExit;
-    }
-
-    public JLabel getTxtPoints() {
-        return txtPoints;
-    }
-
-    public JLabel getTxtReview() {
-        return txtReview;
-    }
-
-    public JTextField getTxtdate(){return txtdate;}
-
 
     // eight Page
 
