@@ -853,7 +853,7 @@ public class GUI {
     private final JRadioButton btn2SocialBehavior = new JRadioButton("2");
     private final JRadioButton btn3SocialBehavior = new JRadioButton("3");
     private final ButtonGroup socialBehaviorGroup = new ButtonGroup();
-    private final JLabel workResult = new JLabel("Arebitsergebnisse/ -erfolg");
+    private final JLabel workResult = new JLabel("Arbeitsergebnisse/ -erfolg");
     private final JRadioButton btn1WorkResult = new JRadioButton("1");
     private final JRadioButton btn2WorkResult = new JRadioButton("2");
     private final JRadioButton btn3WorkResult = new JRadioButton("3");
