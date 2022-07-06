@@ -1,5 +1,6 @@
 package de.muenchen.reviewyou.GUI;
 
+import de.muenchen.reviewyou.Utils;
 import de.muenchen.reviewyou.excelhandler.Azubi;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
@@ -1209,20 +1210,15 @@ public class GUI {
 
     GridBagLayout gbl = new GridBagLayout();
     GridBagConstraints gbc = new GridBagConstraints();
-    JLabel abilitiesLabel = new JLabel("Fähigkeiten, praktische Leistungen, Verhalten");
-    JLabel strengthLabel = new JLabel("Stärken");
-    JLabel developementsLabel = new JLabel("Entwicklungsfelder");
-    JLabel perspectiveLabel = new JLabel("Perspektiven");
-    JLabel othersLabel = new JLabel("Sonstige Anmerkungen");
 
-    JTextArea abilities = new JTextArea();
-
-    JTextArea strength = new JTextArea();
-    JTextArea developements = new JTextArea();
-    JTextArea perspective = new JTextArea();
-    JTextArea others = new JTextArea();
     Dimension preferedSize = new Dimension(600, 50);
     Dimension maximumSize = new Dimension(600, 70);
+
+    JTextArea abilities = Utils.getDescJTextArea(preferedSize, maximumSize);
+    JTextArea strength = Utils.getDescJTextArea(preferedSize, maximumSize);
+    JTextArea developements = Utils.getDescJTextArea(preferedSize, maximumSize);
+    JTextArea perspective = Utils.getDescJTextArea(preferedSize, maximumSize);
+    JTextArea others = Utils.getDescJTextArea(preferedSize, maximumSize);
 
     // CREATE SEVENTH PAGE
     public void eightPanel() {
@@ -1233,83 +1229,50 @@ public class GUI {
         panel.setLayout(gbl);
 
         gbc.insets = new Insets(-10, 20, 80, 20);
-
         gbc.gridx = 0;
+
         gbc.gridy = 0;
         headline.setFont(font);
         panel.add(headline, gbc);
 
         gbc.insets = new Insets(0, 20, 10, 20);
 
-        gbc.gridx = 0;
         gbc.gridy = 2;
-        abilitiesLabel.setFont(font);
-        panel.add(abilitiesLabel, gbc);
+        panel.add(Utils.getJLabel("Fähigkeiten, praktische Leistungen, Verhalten", font), gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        abilities.setPreferredSize(preferedSize);
-        abilities.setMaximumSize(maximumSize);
-        abilities.setLineWrap(true);
+        gbc.gridy++;
         panel.add(abilities, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        strengthLabel.setFont(font);
-        panel.add(strengthLabel, gbc);
+        gbc.gridy++;
+        panel.add(Utils.getJLabel("Stärken", font), gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 5;
-        strength.setPreferredSize(preferedSize);
-        strength.setMaximumSize(maximumSize);
-        strength.setLineWrap(true);
+        gbc.gridy++;
         panel.add(strength, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 6;
-        developementsLabel.setFont(font);
-        panel.add(developementsLabel, gbc);
+        gbc.gridy++;
+        panel.add(Utils.getJLabel("Entwicklungsfelder", font), gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 7;
-        developements.setPreferredSize(preferedSize);
-        developements.setMaximumSize(maximumSize);
-        developements.setLineWrap(true);
+        gbc.gridy++;
         panel.add(developements, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 8;
-        perspectiveLabel.setFont(font);
-        panel.add(perspectiveLabel, gbc);
+        gbc.gridy++;
+        panel.add(Utils.getJLabel("Perspektiven", font), gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 9;
-        perspective.setPreferredSize(preferedSize);
-        perspective.setMaximumSize(maximumSize);
-        perspective.setLineWrap(true);
+        gbc.gridy++;
         panel.add(perspective, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 10;
-        othersLabel.setFont(font);
-        panel.add(othersLabel, gbc);
+        gbc.gridy++;
+        panel.add(Utils.getJLabel("Sonstige Anmerkungen", font), gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 11;
-        others.setPreferredSize(preferedSize);
-        others.setMaximumSize(maximumSize);
-        others.setLineWrap(true);
+        gbc.gridy++;
         panel.add(others, gbc);
-
     }
-
 
     // elements for eight Page
 
     JButton calc = new JButton("Berechnen");
     JButton saveAndNew = new JButton("Speichern und neuer Leistungsbericht");
     JButton saveAndExit = new JButton("Speichern und Schließen");
-    JPanel panel1 = new JPanel();
     JLabel score = new JLabel("Punktzahl:");
     JLabel review = new JLabel("Gesamturteil:");
     JLabel txtPoints = new JLabel();
