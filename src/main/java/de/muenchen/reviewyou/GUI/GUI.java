@@ -105,6 +105,10 @@ public class GUI {
         return panel;
     }
 
+    public JPanel getThirdPagePanel() {
+        return thirdPagePanel;
+    }
+
     //constructor
 
     public GUI() {

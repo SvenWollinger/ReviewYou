@@ -182,6 +182,7 @@ public class reviewController {
                         gui.thirdPanel();
                         gui.getMoreInfo().setVisible(true);
                         gui.getBtnTraineedata().setVisible(false);
+                        gui.getThirdPagePanel().setVisible(true);
                         break;
                     case 3:
                         gui.getPanel().removeAll();
@@ -194,6 +195,7 @@ public class reviewController {
                         gui.getPanel().revalidate();
                         gui.getPanel().repaint();
                         gui.fifthPanel();
+                        gui.getThirdPagePanel().setVisible(false);
                         break;
                     case 5:
                         gui.getPanel().removeAll();
@@ -269,6 +271,7 @@ public class reviewController {
                         gui.getPanel().revalidate();
                         gui.getPanel().repaint();
                         gui.thirdPanel();
+                        gui.getThirdPagePanel().setVisible(true);
                         break;
                     case 3:
                         gui.getPanel().removeAll();
@@ -278,6 +281,7 @@ public class reviewController {
                         gui.getPopup().setVisible(false);
                         gui.getBtnTraineedata().setVisible(true);
                         gui.secondPanel();
+                        gui.getThirdPagePanel().setVisible(false);
                         break;
                     case 2:
                         gui.getPanel().removeAll();
