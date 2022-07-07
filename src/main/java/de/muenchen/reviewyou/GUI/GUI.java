@@ -27,7 +27,9 @@ public class GUI {
     private int page = 0;
 
     private final JPanel panel = new JPanel();
+    private final JPanel secondPanel = new JPanel();
     private final JPanel thirdPagePanel = new JPanel();
+    private final JPanel[] panelArr = new JPanel[9];
     private final Font font = new Font(null, Font.PLAIN, 20);
     private final Font fontt = new Font(null, Font.PLAIN, 17);
     private final SpringLayout layout = new SpringLayout();
@@ -623,6 +625,14 @@ public class GUI {
         return txtCourse;
     }
 
+    public JPanel getSecondPanel() {
+        return secondPanel;
+    }
+
+    public JPanel getPanelArr(int i) {
+        return panelArr[i];
+    }
+
     // second Page
 
     public void secondPanel() {
@@ -636,35 +646,37 @@ public class GUI {
 
         //added components
 
-        panel.add(txtFrom);
-        panel.add(txtTill);
-        panel.add(pickerHandover);
-        panel.add(pickerMeeting);
-        panel.setLayout(layout2);
-        window.add(panel);
-        panel.add(apprenticeship);
-        panel.add(traineeName);
-        panel.add(txtTraineeName);
-        panel.add(birthDate);
-        panel.add(txtBirthDate);
-        panel.add(apartmentStreet);
-        panel.add(txtApartmentStreet);
-        panel.add(allocationPeriod);
-        panel.add(from);
-        panel.add(till);
-        panel.add(internshipSelection);
-        panel.add(txtInternshipSelection);
-        panel.add(trainingArea);
-        panel.add(txtTrainingArea);
-        panel.add(sessions);
-        panel.add(txtSessions);
-        panel.add(traingPlan);
-        panel.add(interimTalk);
-        panel.add(traineeYear);
-        panel.add(txtTraineeYear);
-        panel.add(course);
-        panel.add(txtCourse);
-        panel.add(apprenticeshipSelector);
+        secondPanel.setPreferredSize(new Dimension(800, 700));
+
+        secondPanel.add(txtFrom);
+        secondPanel.add(txtTill);
+        secondPanel.add(pickerHandover);
+        secondPanel.add(pickerMeeting);
+        secondPanel.setLayout(layout2);
+        window.add(secondPanel);
+        secondPanel.add(apprenticeship);
+        secondPanel.add(traineeName);
+        secondPanel.add(txtTraineeName);
+        secondPanel.add(birthDate);
+        secondPanel.add(txtBirthDate);
+        secondPanel.add(apartmentStreet);
+        secondPanel.add(txtApartmentStreet);
+        secondPanel.add(allocationPeriod);
+        secondPanel.add(from);
+        secondPanel.add(till);
+        secondPanel.add(internshipSelection);
+        secondPanel.add(txtInternshipSelection);
+        secondPanel.add(trainingArea);
+        secondPanel.add(txtTrainingArea);
+        secondPanel.add(sessions);
+        secondPanel.add(txtSessions);
+        secondPanel.add(traingPlan);
+        secondPanel.add(interimTalk);
+        secondPanel.add(traineeYear);
+        secondPanel.add(txtTraineeYear);
+        secondPanel.add(course);
+        secondPanel.add(txtCourse);
+        secondPanel.add(apprenticeshipSelector);
 
         // setFont for Labels
 
@@ -828,10 +840,11 @@ public class GUI {
         page = 3;
 
         //set Panel
+        panelArr[2].setPreferredSize(new Dimension(800, 700));
 
-        window.add(panel);
-        panel.setVisible(true);
-        panel.setLayout(layout4);
+        window.add(panelArr[2]);
+        panelArr[2].setVisible(true);
+        panelArr[2].setLayout(layout4);
 
         //add Elements
 
@@ -854,28 +867,28 @@ public class GUI {
         supportColleaguesGroup.add(btn3supportColleagues);
 
 
-        panel.add(genderMen);
-        panel.add(genderWoman);
-        panel.add(socialBehavior);
-        panel.add(btn1SocialBehavior);
-        panel.add(btn2SocialBehavior);
-        panel.add(btn3SocialBehavior);
-        panel.add(workResult);
-        panel.add(btn1WorkResult);
-        panel.add(btn2WorkResult);
-        panel.add(btn3WorkResult);
-        panel.add(participationInTheLesson);
-        panel.add(btn1ParticipationInTheLesson);
-        panel.add(btn2ParticipationInTheLesson);
-        panel.add(btn3ParticipationInTheLesson);
-        panel.add(independentWork);
-        panel.add(btn1IndependentWork);
-        panel.add(btn2IndependentWork);
-        panel.add(btn3IndependentWork);
-        panel.add(supportColleagues);
-        panel.add(btn1supportColleagues);
-        panel.add(btn2supportColleagues);
-        panel.add(btn3supportColleagues);
+        panelArr[2].add(genderMen);
+        panelArr[2].add(genderWoman);
+        panelArr[2].add(socialBehavior);
+        panelArr[2].add(btn1SocialBehavior);
+        panelArr[2].add(btn2SocialBehavior);
+        panelArr[2].add(btn3SocialBehavior);
+        panelArr[2].add(workResult);
+        panelArr[2].add(btn1WorkResult);
+        panelArr[2].add(btn2WorkResult);
+        panelArr[2].add(btn3WorkResult);
+        panelArr[2].add(participationInTheLesson);
+        panelArr[2].add(btn1ParticipationInTheLesson);
+        panelArr[2].add(btn2ParticipationInTheLesson);
+        panelArr[2].add(btn3ParticipationInTheLesson);
+        panelArr[2].add(independentWork);
+        panelArr[2].add(btn1IndependentWork);
+        panelArr[2].add(btn2IndependentWork);
+        panelArr[2].add(btn3IndependentWork);
+        panelArr[2].add(supportColleagues);
+        panelArr[2].add(btn1supportColleagues);
+        panelArr[2].add(btn2supportColleagues);
+        panelArr[2].add(btn3supportColleagues);
 
         genderWoman.setFont(fontt);
         genderMen.setFont(fontt);

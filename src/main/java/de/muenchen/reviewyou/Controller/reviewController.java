@@ -168,17 +168,14 @@ public class reviewController {
             public void actionPerformed(ActionEvent e) {
                 switch (gui.getPage()) {
                     case 1:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
+                        gui.getPanel().setVisible(false);
+                        gui.getSecondPanel().setVisible(true);
                         gui.getPrevious().setVisible(true);
                         gui.getBtnTraineedata().setVisible(true);
                         gui.secondPanel();
                         break;
                     case 2:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
+                        gui.getSecondPanel().setVisible(false);
                         gui.thirdPanel();
                         gui.getMoreInfo().setVisible(true);
                         gui.getBtnTraineedata().setVisible(false);
