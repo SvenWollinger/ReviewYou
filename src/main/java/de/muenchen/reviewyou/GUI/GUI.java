@@ -1,6 +1,8 @@
 package de.muenchen.reviewyou.GUI;
 
+import de.muenchen.reviewyou.Utils;
 import de.muenchen.reviewyou.excelhandler.Azubi;
+import lombok.Getter;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -25,59 +27,64 @@ public class GUI {
     private int page = 0;
 
     private final JPanel panel = new JPanel();
+    private final JPanel secondPanel = new JPanel();
+    private final JPanel thirdPanel = new JPanel();
+    private final JPanel fourthPanel = new JPanel();
+    private final JPanel fifthPanel = new JPanel();
+    private final JPanel sixthPanel = new JPanel();
+    private final JPanel seventhPanel = new JPanel();
+    private final JPanel eigthPanel = new JPanel();
+    private final JPanel ninethPanel = new JPanel();
+
     private final JPanel thirdPagePanel = new JPanel();
     private final Font font = new Font(null, Font.PLAIN, 20);
     private final Font fontt = new Font(null, Font.PLAIN, 17);
+    private final SpringLayout[] layoutArr = new SpringLayout[4];
     private final SpringLayout layout = new SpringLayout();
-    private final SpringLayout layout1 = new SpringLayout();
-    private final SpringLayout layout2 = new SpringLayout();
-    private final SpringLayout layout3 = new SpringLayout();
-    private final SpringLayout layout4 = new SpringLayout();
-    private final SpringLayout layout5 = new SpringLayout();
 
-    private final String arrSoicalBehavior1[] = new String[2];
+    private final String[] arrSoicalBehavior1 = new String[2];
     private final JList pickSocialBehavior = new JList(arrSoicalBehavior1);
 
-    private final String arrSocialBehavior2[] = new String[3];
+    private final String[] arrSocialBehavior2 = new String[3];
     private final JList pickSocialBehavior2 = new JList(arrSocialBehavior2);
 
-    private final String arrSocialBehavior3[] = new String[3];
+    private final String[] arrSocialBehavior3 = new String[3];
     private final JList pickSocialBehavior3 = new JList(arrSocialBehavior3);
 
-    private final String arrWorkResult1[] = new String[2];
+    private final String[] arrWorkResult1 = new String[2];
     private final JList pickWorkResult1 = new JList(arrWorkResult1);
 
-    private final String arrWorkResult2[] = new String[3];
+    private final String[] arrWorkResult2 = new String[3];
     private final JList pickWorkResult2 = new JList(arrWorkResult2);
 
-    private final String arrWorkResult3[] = new String[4];
+    private final String[] arrWorkResult3 = new String[4];
     private final JList pickWorkResult3 = new JList(arrWorkResult3);
 
-    private final String arrParticipationInTheLesson1[] = new String[3];
+    private final String[] arrParticipationInTheLesson1 = new String[3];
     private final JList pickParticipationInTheLesson1 = new JList(arrParticipationInTheLesson1);
 
-    private final String arrParticipationInTheLesson2[] = new String[2];
+    private final String[] arrParticipationInTheLesson2 = new String[2];
     private final JList pickParticipationInTheLesson2 = new JList(arrParticipationInTheLesson2);
 
-    private final String arrParticipationInTheLesson3[] = new String[4];
+    private final String[] arrParticipationInTheLesson3 = new String[4];
     private final JList pickParticipationInTheLesson3 = new JList(arrParticipationInTheLesson3);
 
-    private final String arrIndependentWork1[] = new String[2];
+    private final String[] arrIndependentWork1 = new String[2];
     private final JList pickIndependentWork1 = new JList(arrIndependentWork1);
 
-    private final String arrIndependentWork2[] = new String[2];
+    private final String[] arrIndependentWork2 = new String[2];
     private final JList pickIndependentWork2 = new JList(arrIndependentWork2);
 
-    private final String arrIndependentWork3[] = new String[4];
+    private final String[] arrIndependentWork3 = new String[4];
     private final JList pickIndependentWork3 = new JList(arrIndependentWork3);
 
-    private final String arrSupportColleagues1[] = new String[2];
+    private final String[] arrSupportColleagues1 = new String[2];
     private final JList pickSupportColleagues1 = new JList(arrSupportColleagues1);
 
-    private final String arrSupportColleagues2[] = new String[2];
+    private final String[] arrSupportColleagues2 = new String[2];
     private final JList pickSupportColleagues2 = new JList(arrSupportColleagues2);
 
-    private final String arrSupportColleagues3[] = new String[1];
+    private final String[] arrSupportColleagues3 = new String[1];
     private final JList pickSupportColleagues3 = new JList(arrSupportColleagues3);
 
     //Getter
@@ -101,68 +108,53 @@ public class GUI {
         return page;
     }
 
+    public JFrame getWindow() {
+        return window;
+    }
+
     public JPanel getPanel() {
         return panel;
     }
 
-    public JList getPickSocialBehavior() {
-        return pickSocialBehavior;
+
+    public JPanel getThirdPagePanel() {
+        return thirdPagePanel;
     }
 
-    public JList getPickSocialBehavior2() {
-        return pickSocialBehavior2;
+    public void setPage(int page) {
+        this.page = page;
     }
 
-    public JList getPickSocialBehavior3() {
-        return pickSocialBehavior3;
+    public JPanel getSecondPanel() {
+        return secondPanel;
     }
 
-    public JList getPickWorkResult1() {
-        return pickWorkResult1;
+    public JPanel getThirdPanel() {
+        return thirdPanel;
     }
 
-    public JList getPickWorkResult2() {
-        return pickWorkResult2;
+    public JPanel getFourthPanel() {
+        return fourthPanel;
     }
 
-    public JList getPickWorkResult3() {
-        return pickWorkResult3;
+    public JPanel getFifthPanel() {
+        return fifthPanel;
     }
 
-    public JList getPickParticipationInTheLesson1() {
-        return pickParticipationInTheLesson1;
+    public JPanel getSixthPanel() {
+        return sixthPanel;
     }
 
-    public JList getPickParticipationInTheLesson2() {
-        return pickParticipationInTheLesson2;
+    public JPanel getSeventhPanel() {
+        return seventhPanel;
     }
 
-    public JList getPickParticipationInTheLesson3() {
-        return  pickParticipationInTheLesson3;
+    public JPanel getEigthPanel() {
+        return eigthPanel;
     }
 
-    public JList getPickIndependentWork1() {
-        return pickIndependentWork1;
-    }
-
-    public JList getPickIndependentWork2() {
-        return pickIndependentWork2;
-    }
-
-    public JList getPickIndependentWork3() {
-        return pickIndependentWork3;
-    }
-
-    public JList getPickSupportColleagues1() {
-        return pickSupportColleagues1;
-    }
-
-    public JList getPickSupportColleagues2() {
-        return pickSupportColleagues2;
-    }
-
-    public JList getPickSupportColleagues3() {
-        return pickSupportColleagues3;
+    public JPanel getNinethPanel() {
+        return ninethPanel;
     }
 
     //constructor
@@ -172,6 +164,10 @@ public class GUI {
         window.setResizable(false);
         window.setSize(800, 800);
         window.setLocationRelativeTo(null);
+
+        for (int i=0; i<layoutArr.length; i++) {
+            layoutArr[i] = new SpringLayout();
+        }
 
         contentPane = window.getContentPane();
         window.setLayout(layout);
@@ -209,6 +205,16 @@ public class GUI {
 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         startPanel();
+        secondPanel();
+        thirdPanel();
+        fourthPanel();
+        fifthPanel();
+        sixthPanel();
+        seventhPanel();
+        eightPanel();
+        ninethPanel();
+
+
 
         btn1SocialBehavior.addActionListener(new ActionListener() {
             @Override
@@ -450,6 +456,8 @@ public class GUI {
             }
         });
 
+
+
     }
 
     public void startThirdPanel() {
@@ -463,15 +471,37 @@ public class GUI {
     }
 
     public void goToFirstPanel() {
-        panel.removeAll();
-        panel.revalidate();
-        panel.repaint();
+        txtTraineeName.setText("");
+        txtBirthDate.setText("");
+        txtApartmentStreet.setText("");
+        txtInternshipSelection.setText("");
+        txtTraineeYear.setText("");
+        txtTrainingArea.setText("");
+        txtSessions.setText("");
+        txtCourse.setText("");
+        abilities.setText("");
+        strength.setText("");
+        developements.setText("");
+        perspective.setText("");
+        others.setText("");
+        txtPoints.setText("");
+        txtReview.setText("");
+
+        genderGroup.clearSelection();
+        supportColleaguesGroup.clearSelection();
+        independentWorkGroup.clearSelection();
+        workResultGroup.clearSelection();
+        participationInTheLessonGroup.clearSelection();
+        socialBehaviorGroup.clearSelection();
+
+        ninethPanel.setVisible(false);
         previous.setVisible(false);
         btnTraineedata.setVisible(false);
         next.setVisible(true);
-        startPanel();
+        panel.setVisible(true);
+        page = 1;
     }
-    
+
     // First page to get user data
 
     private final JLabel name = new JLabel("Name");
@@ -481,8 +511,10 @@ public class GUI {
     private final JTextField instructorName = new JTextField(15);
     private final JTextField instructorEmail = new JTextField(15);
     private final JTextField instructorTelephone = new JTextField(15);
-    private final JTextField txtdate = new JTextField(15);
-    private JLabel headline;
+
+    @Getter
+    private final JTextField txtDate = new JTextField(15);
+    //private JLabel headline
     LocalDate today = LocalDate.now();
 
     //Getter
@@ -501,15 +533,19 @@ public class GUI {
     // second page
 
     public void startPanel() {
+        panel.setVisible(true);
         window.setVisible(true);
         page = 1;
         window.add(panel);
-        panel.setLayout(layout1);
+
+
+        panel.setLayout(layoutArr[0]);
+        JLabel headline = new JLabel("Angaben zum / zur Ausbilder:in");
 
         panel.setPreferredSize(new Dimension(800, 700));
 
-        headline = new JLabel("Angaben zum / zur Ausbilder:in");
         headline.setFont(font);
+
 
         // add Components
         panel.add(headline);
@@ -520,50 +556,50 @@ public class GUI {
         panel.add(telephone);
         panel.add(instructorEmail);
         panel.add(instructorTelephone);
-        panel.add(txtdate);
+        panel.add(txtDate);
 
-        layout1.putConstraint(SpringLayout.NORTH, headline, 50, SpringLayout.NORTH, panel);
-        layout1.putConstraint(SpringLayout.WEST, headline, 250, SpringLayout.WEST, panel);
+        layoutArr[0].putConstraint(SpringLayout.NORTH, headline, 50, SpringLayout.NORTH, panel);
+        layoutArr[0].putConstraint(SpringLayout.WEST, headline, 250, SpringLayout.WEST, panel);
 
         // set name and name textfield
-        layout1.putConstraint(SpringLayout.WEST, name, 260, SpringLayout.WEST, panel);
-        layout1.putConstraint(SpringLayout.NORTH, name, 50, SpringLayout.SOUTH, headline);
+        layoutArr[0].putConstraint(SpringLayout.WEST, name, 260, SpringLayout.WEST, panel);
+        layoutArr[0].putConstraint(SpringLayout.NORTH, name, 50, SpringLayout.SOUTH, headline);
         name.setFont(font);
 
         // set instructorName
-        layout1.putConstraint(SpringLayout.WEST, instructorName, 12, SpringLayout.EAST, name);
-        layout1.putConstraint(SpringLayout.NORTH, instructorName, 4, SpringLayout.NORTH, name);
+        layoutArr[0].putConstraint(SpringLayout.WEST, instructorName, 12, SpringLayout.EAST, name);
+        layoutArr[0].putConstraint(SpringLayout.NORTH, instructorName, 4, SpringLayout.NORTH, name);
 
 
         // set email and email textfield
-        layout1.putConstraint(SpringLayout.WEST, email, 260, SpringLayout.WEST, panel);
-        layout1.putConstraint(SpringLayout.NORTH, email, 20, SpringLayout.SOUTH, name);
+        layoutArr[0].putConstraint(SpringLayout.WEST, email, 260, SpringLayout.WEST, panel);
+        layoutArr[0].putConstraint(SpringLayout.NORTH, email, 20, SpringLayout.SOUTH, name);
         email.setFont(font);
 
         //set instrutorEmail
-        layout1.putConstraint(SpringLayout.WEST, instructorEmail, 7, SpringLayout.EAST, email);
-        layout1.putConstraint(SpringLayout.NORTH, instructorEmail, 4, SpringLayout.NORTH, email);
+        layoutArr[0].putConstraint(SpringLayout.WEST, instructorEmail, 7, SpringLayout.EAST, email);
+        layoutArr[0].putConstraint(SpringLayout.NORTH, instructorEmail, 4, SpringLayout.NORTH, email);
 
 
         // set telephone and telephone textfield
-        layout1.putConstraint(SpringLayout.WEST, telephone, 260, SpringLayout.WEST, panel);
-        layout1.putConstraint(SpringLayout.NORTH, telephone, 20, SpringLayout.SOUTH, email);
+        layoutArr[0].putConstraint(SpringLayout.WEST, telephone, 260, SpringLayout.WEST, panel);
+        layoutArr[0].putConstraint(SpringLayout.NORTH, telephone, 20, SpringLayout.SOUTH, email);
         telephone.setFont(font);
 
         //setInstructorTelephone
-        layout1.putConstraint(SpringLayout.WEST, instructorTelephone, 38, SpringLayout.EAST, telephone);
-        layout1.putConstraint(SpringLayout.NORTH, instructorTelephone, 4, SpringLayout.NORTH, telephone);
+        layoutArr[0].putConstraint(SpringLayout.WEST, instructorTelephone, 38, SpringLayout.EAST, telephone);
+        layoutArr[0].putConstraint(SpringLayout.NORTH, instructorTelephone, 4, SpringLayout.NORTH, telephone);
 
         //setDate
-        layout1.putConstraint(SpringLayout.WEST, date, 260, SpringLayout.WEST, panel);
-        layout1.putConstraint(SpringLayout.NORTH, date, 20, SpringLayout.SOUTH, telephone);
+        layoutArr[0].putConstraint(SpringLayout.WEST, date, 260, SpringLayout.WEST, panel);
+        layoutArr[0].putConstraint(SpringLayout.NORTH, date, 20, SpringLayout.SOUTH, telephone);
         date.setFont(font);
 
         //txtDate
-        layout1.putConstraint(SpringLayout.NORTH,txtdate, 27,SpringLayout.SOUTH,instructorTelephone);
-        layout1.putConstraint(SpringLayout.WEST,txtdate,8,SpringLayout.EAST,date);
+        layoutArr[0].putConstraint(SpringLayout.NORTH,txtDate, 27,SpringLayout.SOUTH,instructorTelephone);
+        layoutArr[0].putConstraint(SpringLayout.WEST,txtDate,8,SpringLayout.EAST,date);
 
-        txtdate.setText(today.format(DateTimeFormatter.ofPattern("dd.MM.uuuu")));
+        txtDate.setText(today.format(DateTimeFormatter.ofPattern("dd.MM.uuuu")));
 
     }
 
@@ -678,7 +714,6 @@ public class GUI {
     // second Page
 
     public void secondPanel() {
-        page = 2;
 
         //set properties for JDatePanel
 
@@ -687,36 +722,38 @@ public class GUI {
         p.put("text.year", "Year");
 
         //added components
+        secondPanel.setVisible(false);
+        secondPanel.setPreferredSize(new Dimension(800, 700));
 
-        panel.add(txtFrom);
-        panel.add(txtTill);
-        panel.add(pickerHandover);
-        panel.add(pickerMeeting);
-        panel.setLayout(layout2);
-        window.add(panel);
-        panel.add(apprenticeship);
-        panel.add(traineeName);
-        panel.add(txtTraineeName);
-        panel.add(birthDate);
-        panel.add(txtBirthDate);
-        panel.add(apartmentStreet);
-        panel.add(txtApartmentStreet);
-        panel.add(allocationPeriod);
-        panel.add(from);
-        panel.add(till);
-        panel.add(internshipSelection);
-        panel.add(txtInternshipSelection);
-        panel.add(trainingArea);
-        panel.add(txtTrainingArea);
-        panel.add(sessions);
-        panel.add(txtSessions);
-        panel.add(traingPlan);
-        panel.add(interimTalk);
-        panel.add(traineeYear);
-        panel.add(txtTraineeYear);
-        panel.add(course);
-        panel.add(txtCourse);
-        panel.add(apprenticeshipSelector);
+        secondPanel.add(txtFrom);
+        secondPanel.add(txtTill);
+        secondPanel.add(pickerHandover);
+        secondPanel.add(pickerMeeting);
+        secondPanel.setLayout(layoutArr[1]);
+        window.add(secondPanel);
+        secondPanel.add(apprenticeship);
+        secondPanel.add(traineeName);
+        secondPanel.add(txtTraineeName);
+        secondPanel.add(birthDate);
+        secondPanel.add(txtBirthDate);
+        secondPanel.add(apartmentStreet);
+        secondPanel.add(txtApartmentStreet);
+        secondPanel.add(allocationPeriod);
+        secondPanel.add(from);
+        secondPanel.add(till);
+        secondPanel.add(internshipSelection);
+        secondPanel.add(txtInternshipSelection);
+        secondPanel.add(trainingArea);
+        secondPanel.add(txtTrainingArea);
+        secondPanel.add(sessions);
+        secondPanel.add(txtSessions);
+        secondPanel.add(traingPlan);
+        secondPanel.add(interimTalk);
+        secondPanel.add(traineeYear);
+        secondPanel.add(txtTraineeYear);
+        secondPanel.add(course);
+        secondPanel.add(txtCourse);
+        secondPanel.add(apprenticeshipSelector);
 
         // setFont for Labels
 
@@ -736,100 +773,100 @@ public class GUI {
         course.setFont(fontt);
 
         // set appreticeship
-        layout2.putConstraint(SpringLayout.WEST, apprenticeship, 100, SpringLayout.WEST, contentPane);
-        layout2.putConstraint(SpringLayout.NORTH, apprenticeship, 30, SpringLayout.NORTH, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.WEST, apprenticeship, 100, SpringLayout.WEST, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, apprenticeship, 30, SpringLayout.NORTH, contentPane);
 
         // set traineeName and Textfield
-        layout2.putConstraint(SpringLayout.WEST, traineeName, 100, SpringLayout.WEST, contentPane);
-        layout2.putConstraint(SpringLayout.NORTH, traineeName, 20, SpringLayout.SOUTH, apprenticeship);
+        layoutArr[1].putConstraint(SpringLayout.WEST, traineeName, 100, SpringLayout.WEST, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, traineeName, 20, SpringLayout.SOUTH, apprenticeship);
 
-        layout2.putConstraint(SpringLayout.NORTH, txtTraineeName, 4, SpringLayout.NORTH, traineeName);
-        layout2.putConstraint(SpringLayout.WEST, txtTraineeName, 10, SpringLayout.EAST, traineeName);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, txtTraineeName, 4, SpringLayout.NORTH, traineeName);
+        layoutArr[1].putConstraint(SpringLayout.WEST, txtTraineeName, 10, SpringLayout.EAST, traineeName);
 
         // set birthDate and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, birthDate, 1, SpringLayout.NORTH, traineeName);
-        layout2.putConstraint(SpringLayout.WEST, birthDate, 10, SpringLayout.EAST, txtTraineeName);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, birthDate, 1, SpringLayout.NORTH, traineeName);
+        layoutArr[1].putConstraint(SpringLayout.WEST, birthDate, 10, SpringLayout.EAST, txtTraineeName);
 
-        layout2.putConstraint(SpringLayout.NORTH, txtBirthDate, 2, SpringLayout.NORTH, birthDate);
-        layout2.putConstraint(SpringLayout.WEST, txtBirthDate, 8, SpringLayout.EAST, birthDate);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, txtBirthDate, 2, SpringLayout.NORTH, birthDate);
+        layoutArr[1].putConstraint(SpringLayout.WEST, txtBirthDate, 8, SpringLayout.EAST, birthDate);
 
         // set apartmentStreet and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, apartmentStreet, 10, SpringLayout.SOUTH, traineeName);
-        layout2.putConstraint(SpringLayout.WEST, apartmentStreet, 100, SpringLayout.WEST, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, apartmentStreet, 10, SpringLayout.SOUTH, traineeName);
+        layoutArr[1].putConstraint(SpringLayout.WEST, apartmentStreet, 100, SpringLayout.WEST, contentPane);
 
-        layout2.putConstraint(SpringLayout.NORTH, txtApartmentStreet, 4, SpringLayout.NORTH, apartmentStreet);
-        layout2.putConstraint(SpringLayout.WEST, txtApartmentStreet, 10, SpringLayout.EAST, apartmentStreet);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, txtApartmentStreet, 4, SpringLayout.NORTH, apartmentStreet);
+        layoutArr[1].putConstraint(SpringLayout.WEST, txtApartmentStreet, 10, SpringLayout.EAST, apartmentStreet);
 
         // set allocationPeriod
-        layout2.putConstraint(SpringLayout.EAST, apprenticeshipSelector, -205, SpringLayout.EAST, panel);
-        layout2.putConstraint(SpringLayout.NORTH, apprenticeshipSelector, 30, SpringLayout.NORTH, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.EAST, apprenticeshipSelector, -205, SpringLayout.EAST, panel);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, apprenticeshipSelector, 30, SpringLayout.NORTH, contentPane);
         apprenticeshipSelector.setEditable(true);
 
-        layout2.putConstraint(SpringLayout.NORTH, allocationPeriod, 20, SpringLayout.SOUTH, apartmentStreet);
-        layout2.putConstraint(SpringLayout.WEST, allocationPeriod, 100, SpringLayout.WEST, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, allocationPeriod, 20, SpringLayout.SOUTH, apartmentStreet);
+        layoutArr[1].putConstraint(SpringLayout.WEST, allocationPeriod, 100, SpringLayout.WEST, contentPane);
 
         // set from and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, from, 10, SpringLayout.SOUTH, allocationPeriod);
-        layout2.putConstraint(SpringLayout.WEST, from, 100, SpringLayout.WEST, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, from, 10, SpringLayout.SOUTH, allocationPeriod);
+        layoutArr[1].putConstraint(SpringLayout.WEST, from, 100, SpringLayout.WEST, contentPane);
 
-        layout2.putConstraint(SpringLayout.NORTH, txtFrom, 10, SpringLayout.SOUTH, allocationPeriod);
-        layout2.putConstraint(SpringLayout.WEST, txtFrom, 10, SpringLayout.EAST, from);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, txtFrom, 10, SpringLayout.SOUTH, allocationPeriod);
+        layoutArr[1].putConstraint(SpringLayout.WEST, txtFrom, 10, SpringLayout.EAST, from);
 
         // set till and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, till, 10, SpringLayout.SOUTH, allocationPeriod);
-        layout2.putConstraint(SpringLayout.WEST, till, 10, SpringLayout.EAST, txtFrom);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, till, 10, SpringLayout.SOUTH, allocationPeriod);
+        layoutArr[1].putConstraint(SpringLayout.WEST, till, 10, SpringLayout.EAST, txtFrom);
 
-        layout2.putConstraint(SpringLayout.NORTH, txtTill, 10, SpringLayout.SOUTH, allocationPeriod);
-        layout2.putConstraint(SpringLayout.WEST, txtTill, 10, SpringLayout.EAST, till);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, txtTill, 10, SpringLayout.SOUTH, allocationPeriod);
+        layoutArr[1].putConstraint(SpringLayout.WEST, txtTill, 10, SpringLayout.EAST, till);
 
         // set internshipSelection and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, internshipSelection, 10, SpringLayout.SOUTH, from);
-        layout2.putConstraint(SpringLayout.WEST, internshipSelection, 100, SpringLayout.WEST, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, internshipSelection, 10, SpringLayout.SOUTH, from);
+        layoutArr[1].putConstraint(SpringLayout.WEST, internshipSelection, 100, SpringLayout.WEST, contentPane);
 
-        layout2.putConstraint(SpringLayout.NORTH, txtInternshipSelection, 14, SpringLayout.SOUTH, from);
-        layout2.putConstraint(SpringLayout.WEST, txtInternshipSelection, 10, SpringLayout.EAST, internshipSelection);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, txtInternshipSelection, 14, SpringLayout.SOUTH, from);
+        layoutArr[1].putConstraint(SpringLayout.WEST, txtInternshipSelection, 10, SpringLayout.EAST, internshipSelection);
 
         // set tranieeYear and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, traineeYear,10, SpringLayout.SOUTH,internshipSelection);
-        layout2.putConstraint(SpringLayout.WEST,traineeYear,100,SpringLayout.WEST,contentPane);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, traineeYear,10, SpringLayout.SOUTH,internshipSelection);
+        layoutArr[1].putConstraint(SpringLayout.WEST,traineeYear,100,SpringLayout.WEST,contentPane);
 
-        layout2.putConstraint(SpringLayout.NORTH,txtTraineeYear, 14, SpringLayout.SOUTH,internshipSelection);
-        layout2.putConstraint(SpringLayout.WEST,txtTraineeYear,10,SpringLayout.EAST,traineeYear);
+        layoutArr[1].putConstraint(SpringLayout.NORTH,txtTraineeYear, 14, SpringLayout.SOUTH,internshipSelection);
+        layoutArr[1].putConstraint(SpringLayout.WEST,txtTraineeYear,10,SpringLayout.EAST,traineeYear);
 
         // set course and Textfield
-        layout2.putConstraint(SpringLayout.NORTH,course,10,SpringLayout.SOUTH,internshipSelection);
-        layout2.putConstraint(SpringLayout.WEST,course,10,SpringLayout.EAST,txtTraineeYear);
+        layoutArr[1].putConstraint(SpringLayout.NORTH,course,10,SpringLayout.SOUTH,internshipSelection);
+        layoutArr[1].putConstraint(SpringLayout.WEST,course,10,SpringLayout.EAST,txtTraineeYear);
 
-        layout2.putConstraint(SpringLayout.NORTH, txtCourse, 14, SpringLayout.SOUTH,internshipSelection);
-        layout2.putConstraint(SpringLayout.WEST, txtCourse, 10 ,SpringLayout.EAST,course);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, txtCourse, 14, SpringLayout.SOUTH,internshipSelection);
+        layoutArr[1].putConstraint(SpringLayout.WEST, txtCourse, 10 ,SpringLayout.EAST,course);
 
         // set trainingsArea and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, trainingArea, 20, SpringLayout.SOUTH, traineeYear);
-        layout2.putConstraint(SpringLayout.WEST, trainingArea, 100, SpringLayout.WEST, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, trainingArea, 20, SpringLayout.SOUTH, traineeYear);
+        layoutArr[1].putConstraint(SpringLayout.WEST, trainingArea, 100, SpringLayout.WEST, contentPane);
 
-        layout2.putConstraint(SpringLayout.NORTH, txtTrainingArea, 5, SpringLayout.SOUTH, trainingArea);
-        layout2.putConstraint(SpringLayout.WEST, txtTrainingArea, 100, SpringLayout.WEST, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, txtTrainingArea, 5, SpringLayout.SOUTH, trainingArea);
+        layoutArr[1].putConstraint(SpringLayout.WEST, txtTrainingArea, 100, SpringLayout.WEST, contentPane);
 
         // set sessions and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, sessions, 20, SpringLayout.SOUTH, txtTrainingArea);
-        layout2.putConstraint(SpringLayout.WEST, sessions, 100, SpringLayout.WEST, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, sessions, 20, SpringLayout.SOUTH, txtTrainingArea);
+        layoutArr[1].putConstraint(SpringLayout.WEST, sessions, 100, SpringLayout.WEST, contentPane);
 
-        layout2.putConstraint(SpringLayout.NORTH, txtSessions, 14, SpringLayout.SOUTH, sessions);
-        layout2.putConstraint(SpringLayout.WEST, txtSessions, 100, SpringLayout.WEST, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, txtSessions, 14, SpringLayout.SOUTH, sessions);
+        layoutArr[1].putConstraint(SpringLayout.WEST, txtSessions, 100, SpringLayout.WEST, contentPane);
 
         // set trainingsPlan and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, traingPlan, 20, SpringLayout.SOUTH, txtSessions);
-        layout2.putConstraint(SpringLayout.WEST, traingPlan, 100, SpringLayout.WEST, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, traingPlan, 20, SpringLayout.SOUTH, txtSessions);
+        layoutArr[1].putConstraint(SpringLayout.WEST, traingPlan, 100, SpringLayout.WEST, contentPane);
 
-        layout2.putConstraint(SpringLayout.NORTH, pickerHandover, 10, SpringLayout.SOUTH, traingPlan);
-        layout2.putConstraint(SpringLayout.WEST, pickerHandover, 100, SpringLayout.WEST, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, pickerHandover, 10, SpringLayout.SOUTH, traingPlan);
+        layoutArr[1].putConstraint(SpringLayout.WEST, pickerHandover, 100, SpringLayout.WEST, contentPane);
 
         // set interimTalk and Textfield
-        layout2.putConstraint(SpringLayout.NORTH, interimTalk, 20, SpringLayout.SOUTH, pickerHandover);
-        layout2.putConstraint(SpringLayout.WEST, interimTalk, 100, SpringLayout.WEST, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, interimTalk, 20, SpringLayout.SOUTH, pickerHandover);
+        layoutArr[1].putConstraint(SpringLayout.WEST, interimTalk, 100, SpringLayout.WEST, contentPane);
 
-        layout2.putConstraint(SpringLayout.NORTH, pickerMeeting, 10, SpringLayout.SOUTH, interimTalk);
-        layout2.putConstraint(SpringLayout.WEST, pickerMeeting, 100, SpringLayout.WEST, contentPane);
+        layoutArr[1].putConstraint(SpringLayout.NORTH, pickerMeeting, 10, SpringLayout.SOUTH, interimTalk);
+        layoutArr[1].putConstraint(SpringLayout.WEST, pickerMeeting, 100, SpringLayout.WEST, contentPane);
 
         pickerHandover.getJFormattedTextField().setText(today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
     }
@@ -853,7 +890,7 @@ public class GUI {
     private final JRadioButton btn2SocialBehavior = new JRadioButton("2");
     private final JRadioButton btn3SocialBehavior = new JRadioButton("3");
     private final ButtonGroup socialBehaviorGroup = new ButtonGroup();
-    private final JLabel workResult = new JLabel("Arbeitsergebnisse/ -erfolg");
+    private final JLabel workResult = new JLabel("Arebitsergebnisse/ -erfolg");
     private final JRadioButton btn1WorkResult = new JRadioButton("1");
     private final JRadioButton btn2WorkResult = new JRadioButton("2");
     private final JRadioButton btn3WorkResult = new JRadioButton("3");
@@ -874,109 +911,15 @@ public class GUI {
     private final JRadioButton btn3supportColleagues = new JRadioButton("3");
     private final ButtonGroup supportColleaguesGroup = new ButtonGroup();
 
-    //Getter
-    public JRadioButton getGenderMen() {
-        return genderMen;
-    }
-
-    public JRadioButton getGenderWoman() {
-        return genderWoman;
-    }
-
-    public ButtonGroup getGenderGroup() {
-        return genderGroup;
-    }
-
-    public JRadioButton getBtn1SocialBehavior() {
-        return btn1SocialBehavior;
-    }
-
-    public JRadioButton getBtn2SocialBehavior() {
-        return btn2SocialBehavior;
-    }
-
-    public JRadioButton getBtn3SocialBehavior() {
-        return btn3SocialBehavior;
-    }
-
-    public ButtonGroup getSocialBehaviorGroup() {
-        return socialBehaviorGroup;
-    }
-
-    public JRadioButton getBtn1WorkResult() {
-        return btn1WorkResult;
-    }
-
-    public JRadioButton getBtn2WorkResult() {
-        return btn2WorkResult;
-    }
-
-    public JRadioButton getBtn3WorkResult() {
-        return btn3WorkResult;
-    }
-
-    public ButtonGroup getWorkResultGroup() {
-        return workResultGroup;
-    }
-
-    public JRadioButton getBtn1ParticipationInTheLesson() {
-        return  btn1ParticipationInTheLesson;
-    }
-
-    public JRadioButton getBtn2ParticipationInTheLesson() {
-        return btn2ParticipationInTheLesson;
-    }
-
-    public JRadioButton getBtn3ParticipationInTheLesson() {
-        return btn3ParticipationInTheLesson;
-    }
-
-    public ButtonGroup getParticipationInTheLessonGroup() {
-        return  participationInTheLessonGroup;
-    }
-
-    public JRadioButton getBtn1IndependentWork() {
-        return btn1IndependentWork;
-    }
-
-    public JRadioButton getBtn2IndependentWork() {
-        return btn2IndependentWork;
-    }
-
-    public JRadioButton getBtn3IndependentWork() {
-        return btn3IndependentWork;
-    }
-
-    public ButtonGroup getIndependentWorkGroup() {
-        return independentWorkGroup;
-    }
-
-    public JRadioButton getBtn1supportColleagues() {
-        return btn1supportColleagues;
-    }
-
-    public JRadioButton getBtn2supportColleagues() {
-        return btn2supportColleagues;
-    }
-
-    public JRadioButton getBtn3supportColleagues() {
-        return btn3supportColleagues;
-    }
-
-    public ButtonGroup getSupportColleaguesGroup() {
-        return supportColleaguesGroup;
-    }
-
     //third Page
 
     public void thirdPanel() {
-        page = 3;
 
-        //set Panel
+        thirdPanel.setVisible(false);
+        thirdPanel.setPreferredSize(new Dimension(800, 700));
 
-        window.add(panel);
-        panel.setVisible(true);
-        panel.setLayout(layout4);
+        window.add(thirdPanel);
+        thirdPanel.setLayout(layoutArr[3]);
 
         //add Elements
 
@@ -999,28 +942,28 @@ public class GUI {
         supportColleaguesGroup.add(btn3supportColleagues);
 
 
-        panel.add(genderMen);
-        panel.add(genderWoman);
-        panel.add(socialBehavior);
-        panel.add(btn1SocialBehavior);
-        panel.add(btn2SocialBehavior);
-        panel.add(btn3SocialBehavior);
-        panel.add(workResult);
-        panel.add(btn1WorkResult);
-        panel.add(btn2WorkResult);
-        panel.add(btn3WorkResult);
-        panel.add(participationInTheLesson);
-        panel.add(btn1ParticipationInTheLesson);
-        panel.add(btn2ParticipationInTheLesson);
-        panel.add(btn3ParticipationInTheLesson);
-        panel.add(independentWork);
-        panel.add(btn1IndependentWork);
-        panel.add(btn2IndependentWork);
-        panel.add(btn3IndependentWork);
-        panel.add(supportColleagues);
-        panel.add(btn1supportColleagues);
-        panel.add(btn2supportColleagues);
-        panel.add(btn3supportColleagues);
+        thirdPanel.add(genderMen);
+        thirdPanel.add(genderWoman);
+        thirdPanel.add(socialBehavior);
+        thirdPanel.add(btn1SocialBehavior);
+        thirdPanel.add(btn2SocialBehavior);
+        thirdPanel.add(btn3SocialBehavior);
+        thirdPanel.add(workResult);
+        thirdPanel.add(btn1WorkResult);
+        thirdPanel.add(btn2WorkResult);
+        thirdPanel.add(btn3WorkResult);
+        thirdPanel.add(participationInTheLesson);
+        thirdPanel.add(btn1ParticipationInTheLesson);
+        thirdPanel.add(btn2ParticipationInTheLesson);
+        thirdPanel.add(btn3ParticipationInTheLesson);
+        thirdPanel.add(independentWork);
+        thirdPanel.add(btn1IndependentWork);
+        thirdPanel.add(btn2IndependentWork);
+        thirdPanel.add(btn3IndependentWork);
+        thirdPanel.add(supportColleagues);
+        thirdPanel.add(btn1supportColleagues);
+        thirdPanel.add(btn2supportColleagues);
+        thirdPanel.add(btn3supportColleagues);
 
         genderWoman.setFont(fontt);
         genderMen.setFont(fontt);
@@ -1046,491 +989,426 @@ public class GUI {
         btn3supportColleagues.setFont(font);
 
 
-        layout4.putConstraint(SpringLayout.NORTH, genderMen,30,SpringLayout.NORTH,contentPane);
-        layout4.putConstraint(SpringLayout.WEST,genderMen,95,SpringLayout.WEST,contentPane);
+        layoutArr[3].putConstraint(SpringLayout.NORTH, genderMen,30,SpringLayout.NORTH,contentPane);
+        layoutArr[3].putConstraint(SpringLayout.WEST,genderMen,95,SpringLayout.WEST,contentPane);
 
-        layout4.putConstraint(SpringLayout.NORTH,genderWoman,30,SpringLayout.NORTH,contentPane);
-        layout4.putConstraint(SpringLayout.WEST,genderWoman,5,SpringLayout.EAST,genderMen);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,genderWoman,30,SpringLayout.NORTH,contentPane);
+        layoutArr[3].putConstraint(SpringLayout.WEST,genderWoman,5,SpringLayout.EAST,genderMen);
 
-        layout4.putConstraint(SpringLayout.NORTH,socialBehavior,10,SpringLayout.SOUTH,genderMen);
-        layout4.putConstraint(SpringLayout.WEST,socialBehavior, 100,SpringLayout.WEST,contentPane);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,socialBehavior,10,SpringLayout.SOUTH,genderMen);
+        layoutArr[3].putConstraint(SpringLayout.WEST,socialBehavior, 100,SpringLayout.WEST,contentPane);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn1SocialBehavior,10,SpringLayout.SOUTH,genderMen);
-        layout4.putConstraint(SpringLayout.WEST,btn1SocialBehavior,150,SpringLayout.EAST,socialBehavior);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,btn1SocialBehavior,10,SpringLayout.SOUTH,genderMen);
+        layoutArr[3].putConstraint(SpringLayout.WEST,btn1SocialBehavior,150,SpringLayout.EAST,socialBehavior);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn2SocialBehavior,10,SpringLayout.SOUTH,genderMen);
-        layout4.putConstraint(SpringLayout.WEST,btn2SocialBehavior,50,SpringLayout.EAST,btn1SocialBehavior);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,btn2SocialBehavior,10,SpringLayout.SOUTH,genderMen);
+        layoutArr[3].putConstraint(SpringLayout.WEST,btn2SocialBehavior,50,SpringLayout.EAST,btn1SocialBehavior);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn3SocialBehavior,10,SpringLayout.SOUTH,genderMen);
-        layout4.putConstraint(SpringLayout.WEST,btn3SocialBehavior,50, SpringLayout.EAST,btn2SocialBehavior);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,btn3SocialBehavior,10,SpringLayout.SOUTH,genderMen);
+        layoutArr[3].putConstraint(SpringLayout.WEST,btn3SocialBehavior,50, SpringLayout.EAST,btn2SocialBehavior);
 
-        layout4.putConstraint(SpringLayout.NORTH,workResult,50,SpringLayout.SOUTH,socialBehavior);
-        layout4.putConstraint(SpringLayout.WEST,workResult,100,SpringLayout.WEST,contentPane);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,workResult,50,SpringLayout.SOUTH,socialBehavior);
+        layoutArr[3].putConstraint(SpringLayout.WEST,workResult,100,SpringLayout.WEST,contentPane);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn1WorkResult,40,SpringLayout.SOUTH,btn1SocialBehavior);
-        layout4.putConstraint(SpringLayout.WEST,btn1WorkResult,54,SpringLayout.EAST,workResult);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,btn1WorkResult,40,SpringLayout.SOUTH,btn1SocialBehavior);
+        layoutArr[3].putConstraint(SpringLayout.WEST,btn1WorkResult,54,SpringLayout.EAST,workResult);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn2WorkResult,40,SpringLayout.SOUTH,btn1SocialBehavior);
-        layout4.putConstraint(SpringLayout.WEST,btn2WorkResult,50,SpringLayout.EAST,btn1WorkResult);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,btn2WorkResult,40,SpringLayout.SOUTH,btn1SocialBehavior);
+        layoutArr[3].putConstraint(SpringLayout.WEST,btn2WorkResult,50,SpringLayout.EAST,btn1WorkResult);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn3WorkResult,40,SpringLayout.SOUTH,btn1SocialBehavior);
-        layout4.putConstraint(SpringLayout.WEST,btn3WorkResult,50, SpringLayout.EAST,btn2WorkResult);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,btn3WorkResult,40,SpringLayout.SOUTH,btn1SocialBehavior);
+        layoutArr[3].putConstraint(SpringLayout.WEST,btn3WorkResult,50, SpringLayout.EAST,btn2WorkResult);
 
-        layout4.putConstraint(SpringLayout.NORTH,participationInTheLesson,50,SpringLayout.SOUTH,workResult);
-        layout4.putConstraint(SpringLayout.WEST,participationInTheLesson, 100,SpringLayout.WEST,contentPane);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,participationInTheLesson,50,SpringLayout.SOUTH,workResult);
+        layoutArr[3].putConstraint(SpringLayout.WEST,participationInTheLesson, 100,SpringLayout.WEST,contentPane);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn1ParticipationInTheLesson,40,SpringLayout.SOUTH,btn1WorkResult);
-        layout4.putConstraint(SpringLayout.WEST,btn1ParticipationInTheLesson,88,SpringLayout.EAST,participationInTheLesson);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,btn1ParticipationInTheLesson,40,SpringLayout.SOUTH,btn1WorkResult);
+        layoutArr[3].putConstraint(SpringLayout.WEST,btn1ParticipationInTheLesson,88,SpringLayout.EAST,participationInTheLesson);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn2ParticipationInTheLesson,40,SpringLayout.SOUTH,btn1WorkResult);
-        layout4.putConstraint(SpringLayout.WEST,btn2ParticipationInTheLesson,50,SpringLayout.EAST,btn1ParticipationInTheLesson);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,btn2ParticipationInTheLesson,40,SpringLayout.SOUTH,btn1WorkResult);
+        layoutArr[3].putConstraint(SpringLayout.WEST,btn2ParticipationInTheLesson,50,SpringLayout.EAST,btn1ParticipationInTheLesson);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn3ParticipationInTheLesson,40,SpringLayout.SOUTH,btn1WorkResult);
-        layout4.putConstraint(SpringLayout.WEST,btn3ParticipationInTheLesson,50, SpringLayout.EAST,btn2ParticipationInTheLesson);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,btn3ParticipationInTheLesson,40,SpringLayout.SOUTH,btn1WorkResult);
+        layoutArr[3].putConstraint(SpringLayout.WEST,btn3ParticipationInTheLesson,50, SpringLayout.EAST,btn2ParticipationInTheLesson);
 
-        layout4.putConstraint(SpringLayout.NORTH,independentWork,50,SpringLayout.SOUTH,participationInTheLesson);
-        layout4.putConstraint(SpringLayout.WEST,independentWork, 100,SpringLayout.EAST,contentPane);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,independentWork,50,SpringLayout.SOUTH,participationInTheLesson);
+        layoutArr[3].putConstraint(SpringLayout.WEST,independentWork, 100,SpringLayout.EAST,contentPane);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn1IndependentWork,40,SpringLayout.SOUTH,btn1ParticipationInTheLesson);
-        layout4.putConstraint(SpringLayout.WEST,btn1IndependentWork,63,SpringLayout.EAST,independentWork);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,btn1IndependentWork,40,SpringLayout.SOUTH,btn1ParticipationInTheLesson);
+        layoutArr[3].putConstraint(SpringLayout.WEST,btn1IndependentWork,63,SpringLayout.EAST,independentWork);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn2IndependentWork,40,SpringLayout.SOUTH,btn1ParticipationInTheLesson);
-        layout4.putConstraint(SpringLayout.WEST,btn2IndependentWork,50,SpringLayout.EAST,btn1IndependentWork);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,btn2IndependentWork,40,SpringLayout.SOUTH,btn1ParticipationInTheLesson);
+        layoutArr[3].putConstraint(SpringLayout.WEST,btn2IndependentWork,50,SpringLayout.EAST,btn1IndependentWork);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn3IndependentWork,40,SpringLayout.SOUTH,btn1ParticipationInTheLesson);
-        layout4.putConstraint(SpringLayout.WEST,btn3IndependentWork,50, SpringLayout.EAST,btn2IndependentWork);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,btn3IndependentWork,40,SpringLayout.SOUTH,btn1ParticipationInTheLesson);
+        layoutArr[3].putConstraint(SpringLayout.WEST,btn3IndependentWork,50, SpringLayout.EAST,btn2IndependentWork);
 
-        layout4.putConstraint(SpringLayout.NORTH,supportColleagues,50,SpringLayout.SOUTH,independentWork);
-        layout4.putConstraint(SpringLayout.WEST,supportColleagues, 100,SpringLayout.WEST,contentPane);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,supportColleagues,50,SpringLayout.SOUTH,independentWork);
+        layoutArr[3].putConstraint(SpringLayout.WEST,supportColleagues, 100,SpringLayout.WEST,contentPane);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn1supportColleagues,40,SpringLayout.SOUTH,btn1IndependentWork);
-        layout4.putConstraint(SpringLayout.WEST,btn1supportColleagues,48,SpringLayout.EAST,supportColleagues);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,btn1supportColleagues,40,SpringLayout.SOUTH,btn1IndependentWork);
+        layoutArr[3].putConstraint(SpringLayout.WEST,btn1supportColleagues,48,SpringLayout.EAST,supportColleagues);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn2supportColleagues,40,SpringLayout.SOUTH,btn1IndependentWork);
-        layout4.putConstraint(SpringLayout.WEST,btn2supportColleagues,50,SpringLayout.EAST,btn1supportColleagues);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,btn2supportColleagues,40,SpringLayout.SOUTH,btn1IndependentWork);
+        layoutArr[3].putConstraint(SpringLayout.WEST,btn2supportColleagues,50,SpringLayout.EAST,btn1supportColleagues);
 
-        layout4.putConstraint(SpringLayout.NORTH,btn3supportColleagues,40,SpringLayout.SOUTH,btn1IndependentWork);
-        layout4.putConstraint(SpringLayout.WEST,btn3supportColleagues,50, SpringLayout.EAST,btn2supportColleagues);
+        layoutArr[3].putConstraint(SpringLayout.NORTH,btn3supportColleagues,40,SpringLayout.SOUTH,btn1IndependentWork);
+        layoutArr[3].putConstraint(SpringLayout.WEST,btn3supportColleagues,50, SpringLayout.EAST,btn2supportColleagues);
 
     }
 
     // third Page
 
     public void fourthPanel(){
-        page = 4;
+        //panelArr[3].setVisible(false);
+        fourthPanel.setPreferredSize(new Dimension(800, 700));
+        fourthPanel.setVisible(false);
         JLabel headline = new JLabel("Fachliche Kompetenzen");
         headline.setFont(font);
-        window.add(panel);
-        panel.setVisible(true);
-        panel.setLayout(gbl);
+        window.add(fourthPanel);
+        fourthPanel.setLayout(gbl);
 
         gbc.insets = headlineInsets;
         gbc.gridx = 0;
         gbc.gridy = 0;
 
-        panel.add(headline, gbc);
+        fourthPanel.add(headline, gbc);
 
         // BEHERRSCHUNG DER DEUTSCHEN SPRACHE
         gbc.insets = sliderInsets;
         gbc.gridx = 0;
         gbc.gridy = 1;
-        panel.add(createLabel("Beherrschung der deutschen Sprache").get(0), gbc);
+        fourthPanel.add(createLabel("Beherrschung der deutschen Sprache").get(0), gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 2;
-        panel.add(jSliders.get(0), gbc);
+        fourthPanel.add(jSliders.get(0), gbc);
 
 
         // IT-KENNTNISSE
         gbc.gridx = 0;
         gbc.gridy = 3;
-        panel.add(createLabel("IT-Kenntnisse").get(0), gbc);
+        fourthPanel.add(createLabel("IT-Kenntnisse").get(0), gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 4;
-        panel.add(jSliders.get(1), gbc);
+        fourthPanel.add(jSliders.get(1), gbc);
 
 
         // INTERESSE AM ARBEITSFELD
         gbc.gridx = 0;
         gbc.gridy = 5;
-        panel.add(createLabel("Interesse am Arbeitsumfeld und Grundwissen zum Aufgabenbereich der Praktikumsstelle").get(0), gbc);
+        fourthPanel.add(createLabel("Interesse am Arbeitsumfeld und Grundwissen zum Aufgabenbereich der Praktikumsstelle").get(0), gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 6;
-        panel.add(jSliders.get(2), gbc);
+        fourthPanel.add(jSliders.get(2), gbc);
 
-        }
+    }
 
-        // fourth Page
+    // fourth Page
 
-        public void fifthPanel(){
-            page = 5;
-            JLabel headline = new JLabel("Methodisches Denken");
-            headline.setFont(font);
-            window.add(panel);
-            panel.setVisible(true);
-            panel.setLayout(gbl);
+    public void fifthPanel(){
 
-            gbc.insets = headlineInsets;
-            gbc.gridx = 0;
-            gbc.gridy = 0;
-            panel.add(headline, gbc);
+        fifthPanel.setVisible(false);
+        fifthPanel.setPreferredSize(new Dimension(800, 700));
+        JLabel headline = new JLabel("Methodisches Denken");
+        headline.setFont(font);
+        window.add(fifthPanel);
+        fifthPanel.setLayout(gbl);
 
-            // ANALYTISCHES DENKEN
-            gbc.insets = sliderInsets;
-            gbc.gridx = 0;
-            gbc.gridy = 1;
-            panel.add(createLabel("Analytisches Denken").get(0), gbc);
+        gbc.insets = headlineInsets;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        fifthPanel.add(headline, gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 2;
-            panel.add(jSliders.get(3), gbc);
+        // ANALYTISCHES DENKEN
+        gbc.insets = sliderInsets;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        fifthPanel.add(createLabel("Analytisches Denken").get(0), gbc);
 
-            // GANZHEITLICHES UND VERNETZTES DENKEN
-            gbc.gridx = 0;
-            gbc.gridy = 3;
-            panel.add(createLabel("Ganzheitliches und vernetztes Denken").get(0), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        fifthPanel.add(jSliders.get(3), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 4;
-            panel.add(jSliders.get(4), gbc);
+        // GANZHEITLICHES UND VERNETZTES DENKEN
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        fifthPanel.add(createLabel("Ganzheitliches und vernetztes Denken").get(0), gbc);
 
-            // ARBEITS- UND LERNTECHNIKEN
-            gbc.gridx = 0;
-            gbc.gridy = 5;
-            panel.add(createLabel("Arbeits- und Lerntechniken").get(0), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        fifthPanel.add(jSliders.get(4), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 6;
-            panel.add(jSliders.get(5), gbc);
-        }
+        // ARBEITS- UND LERNTECHNIKEN
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        fifthPanel.add(createLabel("Arbeits- und Lerntechniken").get(0), gbc);
 
-        // fifth Page
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        fifthPanel.add(jSliders.get(5), gbc);
+    }
 
-        public void sixthPanel(){
-            page = 6;
-            JLabel headline = new JLabel("Soziale Kompetenzen");
-            headline.setFont(font);
-            window.add(panel);
-            panel.setVisible(true);
-            panel.setLayout(gbl);
+    // fifth Page
 
-            gbc.insets = new Insets(0, 0, 100, 0);
-            gbc.gridx = 0;
-            gbc.gridy = 0;
-            panel.add(headline, gbc);
+    public void sixthPanel(){
 
-            // KOMMUNIKATIONSFÄHIGKEIT
-            gbc.insets = sliderInsets;
-            gbc.gridx = 0;
-            gbc.gridy = 1;
-            panel.add(createLabel("Kommunikationsfähigkeit").get(0), gbc);
+        JLabel headline = new JLabel("Soziale Kompetenzen");
+        sixthPanel.setVisible(false);
+        sixthPanel.setPreferredSize(new Dimension(800, 700));
+        headline.setFont(font);
+        window.add(sixthPanel);
+        sixthPanel.setLayout(gbl);
 
-            gbc.gridx = 0;
-            gbc.gridy = 2;
-            panel.add(jSliders.get(6), gbc);
+        gbc.insets = new Insets(0, 0, 100, 0);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        sixthPanel.add(headline, gbc);
 
-            // KONTAKTFREUDIGKEIT
-            gbc.gridx = 0;
-            gbc.gridy = 3;
-            panel.add(createLabel("Kontaktfreudigkeit").get(0), gbc);
+        // KOMMUNIKATIONSFÄHIGKEIT
+        gbc.insets = sliderInsets;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        sixthPanel.add(createLabel("Kommunikationsfähigkeit").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 4;
-            panel.add(jSliders.get(7), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        sixthPanel.add(jSliders.get(6), gbc);
 
-            // TEAMFÄHIGKEIT UND KOOPERATIONSBEREITSCHAFT
-            gbc.gridx = 0;
-            gbc.gridy = 5;
-            panel.add(createLabel("Teamfähigkeit und Kooperationsbereitschaft").get(0), gbc);
+        // KONTAKTFREUDIGKEIT
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        sixthPanel.add(createLabel("Kontaktfreudigkeit").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 6;
-            panel.add(jSliders.get(8), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        sixthPanel.add(jSliders.get(7), gbc);
 
-            // KONFLIKTFÄHIGKEIT
-            gbc.gridx = 0;
-            gbc.gridy = 7;
-            panel.add(createLabel("Konfliktfähigkeit").get(0), gbc);
+        // TEAMFÄHIGKEIT UND KOOPERATIONSBEREITSCHAFT
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        sixthPanel.add(createLabel("Teamfähigkeit und Kooperationsbereitschaft").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 8;
-            panel.add(jSliders.get(9), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        sixthPanel.add(jSliders.get(8), gbc);
 
-            // EINFÜHLUNGSVERMÖGEN
-            gbc.gridx = 0;
-            gbc.gridy = 9;
-            panel.add(createLabel("Einfühlungsvermögen").get(0), gbc);
+        // KONFLIKTFÄHIGKEIT
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        sixthPanel.add(createLabel("Konfliktfähigkeit").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 10;
-            panel.add(jSliders.get(10), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        sixthPanel.add(jSliders.get(9), gbc);
 
-            // RESPEKT UND UMGANG MIT ANDEREN KULTUREN
-            gbc.gridx = 0;
-            gbc.gridy = 11;
-            panel.add(createLabel("Respekt und kompetenter Umgang mit anderen Kulturen").get(0), gbc);
+        // EINFÜHLUNGSVERMÖGEN
+        gbc.gridx = 0;
+        gbc.gridy = 9;
+        sixthPanel.add(createLabel("Einfühlungsvermögen").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 12;
-            panel.add(jSliders.get(11), gbc);
-        }
+        gbc.gridx = 0;
+        gbc.gridy = 10;
+        sixthPanel.add(jSliders.get(10), gbc);
 
-        // sixth Page
+        // RESPEKT UND UMGANG MIT ANDEREN KULTUREN
+        gbc.gridx = 0;
+        gbc.gridy = 11;
+        sixthPanel.add(createLabel("Respekt und kompetenter Umgang mit anderen Kulturen").get(0), gbc);
 
-        public void seventhPanel(){
+        gbc.gridx = 0;
+        gbc.gridy = 12;
+        sixthPanel.add(jSliders.get(11), gbc);
+    }
 
-            page = 7;
-            JLabel headline = new JLabel("Persönliche Kompetenzen");
-            headline.setFont(font);
-            window.add(panel);
-            panel.setVisible(true);
-            panel.setLayout(gbl);
+    // sixth Page
 
-            gbc.insets = new Insets(10, 0, 60, 0);
-            gbc.gridx = 0;
-            gbc.gridy = 0;
-            panel.add(headline, gbc);
+    public void seventhPanel(){
 
-            // OFFENHEIT
-            gbc.insets = new Insets(-30, 0, 40, 0);
-            gbc.gridx = 0;
-            gbc.gridy = 1;
-            panel.add(createLabel("Offenheit").get(0), gbc);
+        seventhPanel.setVisible(false);
+        seventhPanel.setPreferredSize(new Dimension(800, 700));
+        JLabel headline = new JLabel("Persönliche Kompetenzen");
+        headline.setFont(font);
+        window.add(seventhPanel);
+        seventhPanel.setLayout(gbl);
 
-            gbc.gridx = 0;
-            gbc.gridy = 2;
-            panel.add(jSliders.get(12), gbc);
+        gbc.insets = new Insets(10, 0, 60, 0);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        seventhPanel.add(headline, gbc);
 
-            // GEWISSENHAFTIGKEIT UND INTEGRITÄT
-            gbc.gridx = 0;
-            gbc.gridy = 3;
-            panel.add(createLabel("Gewissenhaftigkeit und Integrität").get(0), gbc);
+        // OFFENHEIT
+        gbc.insets = new Insets(-30, 0, 40, 0);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        seventhPanel.add(createLabel("Offenheit").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 4;
-            panel.add(jSliders.get(13), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        seventhPanel.add(jSliders.get(12), gbc);
 
-            // MOTIVATION
-            gbc.gridx = 0;
-            gbc.gridy = 5;
-            panel.add(createLabel("Motivation").get(0), gbc);
+        // GEWISSENHAFTIGKEIT UND INTEGRITÄT
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        seventhPanel.add(createLabel("Gewissenhaftigkeit und Integrität").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 6;
-            panel.add(jSliders.get(14), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        seventhPanel.add(jSliders.get(13), gbc);
 
-            // STRESSTOLERANZ
-            gbc.gridx = 0;
-            gbc.gridy = 7;
-            panel.add(createLabel("Stresstoleranz").get(0), gbc);
+        // MOTIVATION
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        seventhPanel.add(createLabel("Motivation").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 8;
-            panel.add(jSliders.get(15), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        seventhPanel.add(jSliders.get(14), gbc);
 
-            // IDENTIFIKATION
-            gbc.gridx = 0;
-            gbc.gridy = 9;
-            panel.add(createLabel("Identifikation").get(0), gbc);
+        // STRESSTOLERANZ
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        seventhPanel.add(createLabel("Stresstoleranz").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 10;
-            panel.add(jSliders.get(16), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        seventhPanel.add(jSliders.get(15), gbc);
 
-            // SELBSTSTÄNDIGKEIT
-            gbc.gridx = 0;
-            gbc.gridy = 11;
-            panel.add(createLabel("Selbstständigkeit").get(0), gbc);
+        // IDENTIFIKATION
+        gbc.gridx = 0;
+        gbc.gridy = 9;
+        seventhPanel.add(createLabel("Identifikation").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 12;
-            panel.add(jSliders.get(17), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 10;
+        seventhPanel.add(jSliders.get(16), gbc);
 
-            // KRITIKFÄHIGKEIT
-            gbc.gridx = 0;
-            gbc.gridy = 13;
-            panel.add(createLabel("Kritikfähigkeit").get(0), gbc);
+        // SELBSTSTÄNDIGKEIT
+        gbc.gridx = 0;
+        gbc.gridy = 11;
+        seventhPanel.add(createLabel("Selbstständigkeit").get(0), gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 14;
-            panel.add(jSliders.get(18), gbc);
-        }
+        gbc.gridx = 0;
+        gbc.gridy = 12;
+        seventhPanel.add(jSliders.get(17), gbc);
+
+        // KRITIKFÄHIGKEIT
+        gbc.gridx = 0;
+        gbc.gridy = 13;
+        seventhPanel.add(createLabel("Kritikfähigkeit").get(0), gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 14;
+        seventhPanel.add(jSliders.get(18), gbc);
+    }
 
     // ELEMENTS FOR SEVENTH PAGE
 
     GridBagLayout gbl = new GridBagLayout();
     GridBagConstraints gbc = new GridBagConstraints();
-    JLabel abilitiesLabel = new JLabel("Fähigkeiten, praktische Leistungen, Verhalten");
-    JLabel strengthLabel = new JLabel("Stärken");
-    JLabel developementsLabel = new JLabel("Entwicklungsfelder");
-    JLabel perspectiveLabel = new JLabel("Perspektiven");
-    JLabel othersLabel = new JLabel("Sonstige Anmerkungen");
 
-    JTextArea abilities = new JTextArea();
-    JTextArea strength = new JTextArea();
-    JTextArea developements = new JTextArea();
-    JTextArea perspective = new JTextArea();
-    JTextArea others = new JTextArea();
     Dimension preferedSize = new Dimension(600, 50);
     Dimension maximumSize = new Dimension(600, 70);
 
-    //Getter
+    @Getter
+    JTextArea abilities = Utils.getDescJTextArea(preferedSize, maximumSize);
+    @Getter
+    JTextArea strength = Utils.getDescJTextArea(preferedSize, maximumSize);
+    @Getter
+    JTextArea developements = Utils.getDescJTextArea(preferedSize, maximumSize);
+    @Getter
+    JTextArea perspective = Utils.getDescJTextArea(preferedSize, maximumSize);
+    @Getter
+    JTextArea others = Utils.getDescJTextArea(preferedSize, maximumSize);
 
     // CREATE SEVENTH PAGE
     public void eightPanel() {
-        page = 8;
+
         JLabel headline = new JLabel("Wortbeschreibung zur gezeigten Leistung insgesamt");
         JLabel whiteSpace = new JLabel();
-        window.add(panel);
-        panel.setLayout(gbl);
+        eigthPanel.setVisible(false);
+        eigthPanel.setPreferredSize(new Dimension(800, 700));
+        window.add(eigthPanel);
+        eigthPanel.setLayout(gbl);
 
         gbc.insets = new Insets(-10, 20, 80, 20);
-
         gbc.gridx = 0;
+
         gbc.gridy = 0;
         headline.setFont(font);
-        panel.add(headline, gbc);
+        eigthPanel.add(headline, gbc);
 
         gbc.insets = new Insets(0, 20, 10, 20);
 
-        gbc.gridx = 0;
         gbc.gridy = 2;
-        abilitiesLabel.setFont(font);
-        panel.add(abilitiesLabel, gbc);
+        eigthPanel.add(Utils.getJLabel("Fähigkeiten, praktische Leistungen, Verhalten", font), gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        abilities.setPreferredSize(preferedSize);
-        abilities.setMaximumSize(maximumSize);
-        abilities.setLineWrap(true);
-        panel.add(abilities, gbc);
+        gbc.gridy++;
+        eigthPanel.add(abilities, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        strengthLabel.setFont(font);
-        panel.add(strengthLabel, gbc);
+        gbc.gridy++;
+        eigthPanel.add(Utils.getJLabel("Stärken", font), gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 5;
-        strength.setPreferredSize(preferedSize);
-        strength.setMaximumSize(maximumSize);
-        strength.setLineWrap(true);
-        panel.add(strength, gbc);
+        gbc.gridy++;
+        eigthPanel.add(strength, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 6;
-        developementsLabel.setFont(font);
-        panel.add(developementsLabel, gbc);
+        gbc.gridy++;
+        eigthPanel.add(Utils.getJLabel("Entwicklungsfelder", font), gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 7;
-        developements.setPreferredSize(preferedSize);
-        developements.setMaximumSize(maximumSize);
-        developements.setLineWrap(true);
-        panel.add(developements, gbc);
+        gbc.gridy++;
+        eigthPanel.add(developements, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 8;
-        perspectiveLabel.setFont(font);
-        panel.add(perspectiveLabel, gbc);
+        gbc.gridy++;
+        eigthPanel.add(Utils.getJLabel("Perspektiven", font), gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 9;
-        perspective.setPreferredSize(preferedSize);
-        perspective.setMaximumSize(maximumSize);
-        perspective.setLineWrap(true);
-        panel.add(perspective, gbc);
+        gbc.gridy++;
+        eigthPanel.add(perspective, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 10;
-        othersLabel.setFont(font);
-        panel.add(othersLabel, gbc);
+        gbc.gridy++;
+        eigthPanel.add(Utils.getJLabel("Sonstige Anmerkungen", font), gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 11;
-        others.setPreferredSize(preferedSize);
-        others.setMaximumSize(maximumSize);
-        others.setLineWrap(true);
-        panel.add(others, gbc);
-
+        gbc.gridy++;
+        eigthPanel.add(others, gbc);
     }
-
 
     // elements for eight Page
 
+    @Getter
     JButton calc = new JButton("Berechnen");
+    @Getter
     JButton saveAndNew = new JButton("Speichern und neuer Leistungsbericht");
+    @Getter
     JButton saveAndExit = new JButton("Speichern und Schließen");
-    JPanel panel1 = new JPanel();
+    @Getter
     JLabel score = new JLabel("Punktzahl:");
+    @Getter
     JLabel review = new JLabel("Gesamturteil:");
+    @Getter
     JLabel txtPoints = new JLabel();
+    @Getter
     JLabel txtReview = new JLabel();
-
-    //Getter
-    public JTextArea getAbilities() {
-        return abilities;
-    }
-
-    public JTextArea getStrength() {
-        return strength;
-    }
-
-    public JTextArea getDevelopements() {
-        return developements;
-    }
-
-    public JTextArea getPerspective() {
-        return perspective;
-    }
-
-    public JTextArea getOthers() {
-        return others;
-    }
-
-    public JButton getCalc() {
-        return calc;
-    }
-
-    public JButton getSaveAndNew() {
-        return saveAndNew;
-    }
-
-    public JButton getSaveAndExit() {
-        return saveAndExit;
-    }
-
-    public JLabel getTxtPoints() {
-        return txtPoints;
-    }
-
-    public JLabel getTxtReview() {
-        return txtReview;
-    }
-
-    public JTextField getTxtdate(){return txtdate;}
-
 
     // eight Page
 
     public void ninethPanel(){
-        page = 9;
+
         JLabel headline = new JLabel("Abschluss des Leistungsberichts von " + txtTraineeName.getText());
-        window.add(panel);
-        panel.setLayout(layout3);
-        panel.setVisible(true);
+        ninethPanel.setVisible(false);
+        window.add(ninethPanel);
+        ninethPanel.setPreferredSize(new Dimension(800, 700));
+        ninethPanel.setLayout(layoutArr[2]);
 
         //add Elements
-        panel.add(headline);
-        panel.add(score);
-        panel.add(review);
-        panel.add(calc);
-        panel.add(saveAndNew);
-        panel.add(saveAndExit);
-        panel.add(txtPoints);
-        panel.add(txtReview);
+        ninethPanel.add(headline);
+        ninethPanel.add(score);
+        ninethPanel.add(review);
+        ninethPanel.add(calc);
+        ninethPanel.add(saveAndNew);
+        ninethPanel.add(saveAndExit);
+        ninethPanel.add(txtPoints);
+        ninethPanel.add(txtReview);
 
         //set Font
         headline.setFont(font);
@@ -1543,36 +1421,36 @@ public class GUI {
         calc.setPreferredSize(new Dimension(150,26));
 
         //set headline
-        layout3.putConstraint(SpringLayout.WEST,headline,80,SpringLayout.WEST,contentPane);
-        layout3.putConstraint(SpringLayout.NORTH,headline,280,SpringLayout.NORTH,contentPane);
+        layoutArr[2].putConstraint(SpringLayout.WEST,headline,80,SpringLayout.WEST,contentPane);
+        layoutArr[2].putConstraint(SpringLayout.NORTH,headline,280,SpringLayout.NORTH,contentPane);
 
         //set score
-        layout3.putConstraint(SpringLayout.NORTH,score,30,SpringLayout.SOUTH,headline);
-        layout3.putConstraint(SpringLayout.WEST,score,100,SpringLayout.WEST,contentPane);
+        layoutArr[2].putConstraint(SpringLayout.NORTH,score,30,SpringLayout.SOUTH,headline);
+        layoutArr[2].putConstraint(SpringLayout.WEST,score,100,SpringLayout.WEST,contentPane);
 
         //set review
-        layout3.putConstraint(SpringLayout.NORTH,review,5,SpringLayout.SOUTH,score);
-        layout3.putConstraint(SpringLayout.WEST,review,100,SpringLayout.WEST,contentPane);
+        layoutArr[2].putConstraint(SpringLayout.NORTH,review,5,SpringLayout.SOUTH,score);
+        layoutArr[2].putConstraint(SpringLayout.WEST,review,100,SpringLayout.WEST,contentPane);
 
         //set calc
-        layout3.putConstraint(SpringLayout.NORTH,calc,30,SpringLayout.SOUTH,review);
-        layout3.putConstraint(SpringLayout.WEST,calc,80,SpringLayout.WEST,contentPane);
+        layoutArr[2].putConstraint(SpringLayout.NORTH,calc,30,SpringLayout.SOUTH,review);
+        layoutArr[2].putConstraint(SpringLayout.WEST,calc,80,SpringLayout.WEST,contentPane);
 
         //set saveAndNew
-        layout3.putConstraint(SpringLayout.NORTH,saveAndNew,30,SpringLayout.SOUTH,review);
-        layout3.putConstraint(SpringLayout.WEST,saveAndNew,40,SpringLayout.EAST,calc);
+        layoutArr[2].putConstraint(SpringLayout.NORTH,saveAndNew,30,SpringLayout.SOUTH,review);
+        layoutArr[2].putConstraint(SpringLayout.WEST,saveAndNew,40,SpringLayout.EAST,calc);
 
         //set saveAndExit
-        layout3.putConstraint(SpringLayout.NORTH,saveAndExit,30,SpringLayout.SOUTH,review);
-        layout3.putConstraint(SpringLayout.WEST,saveAndExit,40,SpringLayout.EAST,saveAndNew);
+        layoutArr[2].putConstraint(SpringLayout.NORTH,saveAndExit,30,SpringLayout.SOUTH,review);
+        layoutArr[2].putConstraint(SpringLayout.WEST,saveAndExit,40,SpringLayout.EAST,saveAndNew);
 
         //set txtPoints
-        layout3.putConstraint(SpringLayout.NORTH,txtPoints,30,SpringLayout.SOUTH,headline);
-        layout3.putConstraint(SpringLayout.WEST,txtPoints,50,SpringLayout.EAST,score);
+        layoutArr[2].putConstraint(SpringLayout.NORTH,txtPoints,30,SpringLayout.SOUTH,headline);
+        layoutArr[2].putConstraint(SpringLayout.WEST,txtPoints,50,SpringLayout.EAST,score);
 
         //set txtReview
-        layout3.putConstraint(SpringLayout.NORTH,txtReview,5,SpringLayout.SOUTH,txtPoints);
-        layout3.putConstraint(SpringLayout.WEST,txtReview,50,SpringLayout.EAST,score);
+        layoutArr[2].putConstraint(SpringLayout.NORTH,txtReview,5,SpringLayout.SOUTH,txtPoints);
+        layoutArr[2].putConstraint(SpringLayout.WEST,txtReview,50,SpringLayout.EAST,score);
     }
 
     // sliders
@@ -1597,11 +1475,11 @@ public class GUI {
     }
     List<JLabel> createLabel(String name) {
         List<JLabel> labels = new ArrayList<>();
-            for (int i = 0; i < 18; i++){
-                labels.add(new JLabel(name));
+        for (int i = 0; i < 18; i++){
+            labels.add(new JLabel(name));
 
         }
-            return labels;
+        return labels;
     }
 
     // Elements for moreInfo page
@@ -1629,7 +1507,7 @@ public class GUI {
         popup.add(popupPanel);
         popup.setLocation(75, 300);
         popupPanel.setLayout(layout);
-        headline = new JLabel("Bewertung: ");
+        JLabel headline = new JLabel("Bewertung: ");
         headline.setFont(font);
         popupPanel.add(headline);
         popupPanel.add(PointsDistribution);
@@ -1671,5 +1549,5 @@ public class GUI {
         layout.putConstraint(SpringLayout.NORTH, useless, 0, SpringLayout.SOUTH, badly);
         layout.putConstraint(SpringLayout.WEST, useless, 24, SpringLayout.WEST, badly);
         useless.setFont(fontt);
-        }
     }
+}
