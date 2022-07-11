@@ -168,56 +168,58 @@ public class reviewController {
             public void actionPerformed(ActionEvent e) {
                 switch (gui.getPage()) {
                     case 1:
+                        gui.setPage(2);
                         gui.getPanel().setVisible(false);
-                        gui.getPanelArr(1).setVisible(true);
+                        gui.getSecondPanel().setVisible(true);
                         gui.getPrevious().setVisible(true);
                         gui.getBtnTraineedata().setVisible(true);
-                        gui.secondPanel();
                         break;
                     case 2:
-                        gui.getPanelArr(1).setVisible(false);
-                        gui.getPanelArr(2).setVisible(true);
-                        gui.thirdPanel();
+                        gui.setPage(3);
+                        gui.getSecondPanel().setVisible(false);
+                        gui.getThirdPanel().setVisible(true);
                         gui.getMoreInfo().setVisible(true);
                         gui.getBtnTraineedata().setVisible(false);
                         gui.getThirdPagePanel().setVisible(true);
                         break;
                     case 3:
-                        gui.getPanelArr(2).setVisible(false);
-                        gui.getPanelArr(3).setVisible(true);
-                        gui.fourthPanel();
+                        gui.setPage(4);
+                        gui.getThirdPanel().setVisible(false);
+                        gui.getFourthPanel().setVisible(true);
                         break;
                     case 4:
-                        gui.getPanelArr(3).setVisible(false);
-                        gui.getPanelArr(4).setVisible(true);
-                        gui.fifthPanel();
+                        gui.setPage(5);
+                        gui.getFourthPanel().setVisible(false);
+                        gui.getFifthPanel().setVisible(true);
                         gui.getThirdPagePanel().setVisible(false);
                         break;
                     case 5:
-                        gui.getPanelArr(4).setVisible(false);
-                        gui.getPanelArr(5).setVisible(true);
-                        gui.sixthPanel();
+                        gui.setPage(6);
+                        gui.getFifthPanel().setVisible(false);
+                        gui.getSixthPanel().setVisible(true);
                         break;
                     case 6:
-                        gui.getPanelArr(5).setVisible(false);
-                        gui.getPanelArr(6).setVisible(true);
-                        gui.seventhPanel();
+                        gui.setPage(7);
+                        gui.getSixthPanel().setVisible(false);
+                        gui.getSeventhPanel().setVisible(true);
                         break;
                     case 7:
-                        gui.getPanelArr(6).setVisible(false);
-                        gui.getPanelArr(7).setVisible(true);
-                        gui.eightPanel();
+                        gui.setPage(8);
+                        gui.getSeventhPanel().setVisible(false);
+                        gui.getEigthPanel().setVisible(true);
                         gui.getMoreInfo().setVisible(false);
                         gui.getPopup().setVisible(false);
                         break;
                     case 8:
-                        gui.getPanelArr(7).setVisible(false);
-                        gui.getPanelArr(8).setVisible(true);
-                        gui.ninethPanel();
+                        gui.setPage(9);
+                        gui.getEigthPanel().setVisible(false);
+                        gui.getNinethPanel().setVisible(true);
                         gui.getNext().setVisible(false);
                         break;
 
                 }
+                gui.getWindow().revalidate();
+                gui.getWindow().repaint();
             }
         });
 
@@ -227,53 +229,56 @@ public class reviewController {
             public void actionPerformed(ActionEvent e) {
                 switch (gui.getPage()) {
                     case 9:
-                        gui.getPanelArr(8).setVisible(false);
-                        gui.getPanelArr(7).setVisible(true);
+                        gui.setPage(8);
+                        gui.getNinethPanel().setVisible(false);
+                        gui.getEigthPanel().setVisible(true);
                         gui.getNext().setVisible(true);
-                        gui.eightPanel();
+                        //gui.eightPanel();
                         break;
                     case 8:
-                        gui.getPanelArr(7).setVisible(false);
-                        gui.getPanelArr(6).setVisible(true);
+                        gui.setPage(7);
+                        gui.getEigthPanel().setVisible(false);
+                        gui.getSeventhPanel().setVisible(true);
                         gui.getMoreInfo().setVisible(true);
-                        gui.seventhPanel();
+                        //gui.seventhPanel();
                         break;
                     case 7:
-                        gui.getPanelArr(6).setVisible(false);
-                        gui.getPanelArr(5).setVisible(true);
-                        gui.sixthPanel();
+                        gui.setPage(6);
+                        gui.getSeventhPanel().setVisible(false);
+                        gui.getSixthPanel().setVisible(true);
                         break;
                     case 6:
-                        gui.getPanelArr(5).setVisible(false);
-                        gui.getPanelArr(4).setVisible(true);
-                        gui.fifthPanel();
+                        gui.setPage(5);
+                        gui.getSixthPanel().setVisible(false);
+                        gui.getFifthPanel().setVisible(true);
                         break;
                     case 5:
-                        gui.getPanelArr(4).setVisible(false);
-                        gui.getPanelArr(3).setVisible(true);
-                        gui.fourthPanel();
+                        gui.setPage(4);
+                        gui.getFifthPanel().setVisible(false);
+                        gui.getFourthPanel().setVisible(true);
                         break;
                     case 4:
-                        gui.getPanelArr(3).setVisible(false);
-                        gui.getPanelArr(2).setVisible(true);
-                        gui.thirdPanel();
+                        gui.setPage(3);
+                        gui.getFourthPanel().setVisible(false);
+                        gui.getThirdPanel().setVisible(true);
                         gui.getThirdPagePanel().setVisible(true);
                         break;
                     case 3:
-                        gui.getPanelArr(2).setVisible(false);
-                        gui.getPanelArr(1).setVisible(true);
+                        gui.setPage(2);
+                        gui.getThirdPanel().setVisible(false);
+                        gui.getSecondPanel().setVisible(true);
                         gui.getMoreInfo().setVisible(false);
                         gui.getPopup().setVisible(false);
                         gui.getBtnTraineedata().setVisible(true);
-                        gui.secondPanel();
+                        //gui.secondPanel();
                         gui.getThirdPagePanel().setVisible(false);
                         break;
                     case 2:
-                        gui.getPanelArr(1).setVisible(false);
+                        gui.setPage(1);
+                        gui.getSecondPanel().setVisible(false);
                         gui.getPanel().setVisible(true);
                         gui.getPrevious().setVisible(false);
                         gui.getBtnTraineedata().setVisible(false);
-                        gui.startPanel();
                         break;
                 }
             }
