@@ -116,6 +116,65 @@ public class GUI {
         return panel;
     }
 
+    public JList getPickSocialBehavior() {
+        return pickSocialBehavior;
+    }
+
+    public JList getPickSocialBehavior2() {
+        return pickSocialBehavior2;
+    }
+
+    public JList getPickSocialBehavior3() {
+        return pickSocialBehavior3;
+    }
+
+    public JList getPickWorkResult1() {
+        return pickWorkResult1;
+    }
+
+    public JList getPickWorkResult2() {
+        return pickWorkResult2;
+    }
+
+    public JList getPickWorkResult3() {
+        return pickWorkResult3;
+    }
+
+    public JList getPickParticipationInTheLesson1() {
+        return pickParticipationInTheLesson1;
+    }
+
+    public JList getPickParticipationInTheLesson2() {
+        return pickParticipationInTheLesson2;
+    }
+
+    public JList getPickParticipationInTheLesson3() {
+        return pickParticipationInTheLesson3;
+    }
+
+    public JList getPickIndependentWork1() {
+        return pickIndependentWork1;
+    }
+
+    public JList getPickIndependentWork2() {
+        return pickIndependentWork2;
+    }
+
+    public JList getPickIndependentWork3() {
+        return pickIndependentWork3;
+    }
+
+    public JList getPickSupportColleagues1() {
+        return pickSupportColleagues1;
+    }
+
+    public JList getPickSupportColleagues2() {
+        return pickSupportColleagues2;
+    }
+
+    public JList getPickSupportColleagues3() {
+        return pickSupportColleagues3;
+    }
 
     public JPanel getThirdPagePanel() {
         return thirdPagePanel;
@@ -911,8 +970,28 @@ public class GUI {
     private final JRadioButton btn3supportColleagues = new JRadioButton("3");
     private final ButtonGroup supportColleaguesGroup = new ButtonGroup();
 
-    //third Page
+    //Getter
+    public ButtonGroup getSocialBehaviorGroup() {
+        return socialBehaviorGroup;
+    }
 
+    public ButtonGroup getWorkResultGroup() {
+        return workResultGroup;
+    }
+
+    public ButtonGroup getParticipationInTheLessonGroup() {
+        return participationInTheLessonGroup;
+    }
+
+    public ButtonGroup getIndependentWorkGroup() {
+        return independentWorkGroup;
+    }
+
+    public ButtonGroup getSupportColleaguesGroup() {
+        return supportColleaguesGroup;
+    }
+
+    //third Page
     public void thirdPanel() {
 
         thirdPanel.setVisible(false);
@@ -1391,17 +1470,16 @@ public class GUI {
     JLabel txtReview = new JLabel();
 
     // eight Page
-
     public void ninethPanel(){
 
-        JLabel headline = new JLabel("Abschluss des Leistungsberichts von " + txtTraineeName.getText());
+        JLabel headlineName = new JLabel("Abschluss des Leistungsberichtes");
         ninethPanel.setVisible(false);
         window.add(ninethPanel);
         ninethPanel.setPreferredSize(new Dimension(800, 700));
         ninethPanel.setLayout(layoutArr[2]);
 
         //add Elements
-        ninethPanel.add(headline);
+        ninethPanel.add(headlineName);
         ninethPanel.add(score);
         ninethPanel.add(review);
         ninethPanel.add(calc);
@@ -1411,7 +1489,7 @@ public class GUI {
         ninethPanel.add(txtReview);
 
         //set Font
-        headline.setFont(font);
+        headlineName.setFont(font);
         score.setFont(font);
         review.setFont(font);
         txtPoints.setFont(font);
@@ -1421,11 +1499,11 @@ public class GUI {
         calc.setPreferredSize(new Dimension(150,26));
 
         //set headline
-        layoutArr[2].putConstraint(SpringLayout.WEST,headline,80,SpringLayout.WEST,contentPane);
-        layoutArr[2].putConstraint(SpringLayout.NORTH,headline,280,SpringLayout.NORTH,contentPane);
+        layoutArr[2].putConstraint(SpringLayout.WEST,headlineName,80,SpringLayout.WEST,contentPane);
+        layoutArr[2].putConstraint(SpringLayout.NORTH,headlineName,280,SpringLayout.NORTH,contentPane);
 
         //set score
-        layoutArr[2].putConstraint(SpringLayout.NORTH,score,30,SpringLayout.SOUTH,headline);
+        layoutArr[2].putConstraint(SpringLayout.NORTH,score,30,SpringLayout.SOUTH,headlineName);
         layoutArr[2].putConstraint(SpringLayout.WEST,score,100,SpringLayout.WEST,contentPane);
 
         //set review
@@ -1445,7 +1523,7 @@ public class GUI {
         layoutArr[2].putConstraint(SpringLayout.WEST,saveAndExit,40,SpringLayout.EAST,saveAndNew);
 
         //set txtPoints
-        layoutArr[2].putConstraint(SpringLayout.NORTH,txtPoints,30,SpringLayout.SOUTH,headline);
+        layoutArr[2].putConstraint(SpringLayout.NORTH,txtPoints,30,SpringLayout.SOUTH,headlineName);
         layoutArr[2].putConstraint(SpringLayout.WEST,txtPoints,50,SpringLayout.EAST,score);
 
         //set txtReview

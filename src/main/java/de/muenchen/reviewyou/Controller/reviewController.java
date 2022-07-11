@@ -38,7 +38,7 @@ public class reviewController {
                 //Give values to Excel-Group
                 try {
                     excelHandler.writeInstructorData(gui.getInstructorName().getText(),
-                            gui.getInstructorTelephone().getText(), gui.getTxtdate().getText(),
+                            gui.getInstructorTelephone().getText(), gui.getTxtDate().getText(),
                             gui.getInstructorEmail().getText());
                     excelHandler.writeStudentData(gui.getTxtTraineeName().getText(), gui.getTxtBirthDate().getText(),
                             gui.getTxtApartmentStreet().getText(), gui.getTxtTraineeYear().getText(),
@@ -169,94 +169,62 @@ public class reviewController {
             public void actionPerformed(ActionEvent e) {
                 switch (gui.getPage()) {
                     case 1:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
+                        gui.setPage(2);
+                        gui.getPanel().setVisible(false);
+                        gui.getSecondPanel().setVisible(true);
                         gui.getPrevious().setVisible(true);
                         gui.getBtnTraineedata().setVisible(true);
-                        gui.secondPanel();
                         break;
                     case 2:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.thirdPanel();
+                        gui.setPage(3);
+                        gui.getSecondPanel().setVisible(false);
+                        gui.getThirdPanel().setVisible(true);
                         gui.getMoreInfo().setVisible(true);
                         gui.getBtnTraineedata().setVisible(false);
+                        gui.getThirdPagePanel().setVisible(true);
                         break;
                     case 3:
-                        //Safe selected data
                         socialBehaviorString();
-                        workResultString();
                         developmentsString();
-                        perspectivesString();
                         othersString();
-                        gui.getPickSocialBehavior().setVisible(false);
-                        gui.getPickSocialBehavior2().setVisible(false);
-                        gui.getPickSocialBehavior3().setVisible(false);
-                        gui.getPickWorkResult1().setVisible(false);
-                        gui.getPickWorkResult2().setVisible(false);
-                        gui.getPickWorkResult3().setVisible(false);
-                        gui.getPickParticipationInTheLesson1().setVisible(false);
-                        gui.getPickParticipationInTheLesson2().setVisible(false);
-                        gui.getPickParticipationInTheLesson3().setVisible(false);
-                        gui.getPickIndependentWork1().setVisible(false);
-                        gui.getPickIndependentWork2().setVisible(false);
-                        gui.getPickIndependentWork3().setVisible(false);
-                        gui.getPickSupportColleagues1().setVisible(false);
-                        gui.getPickSupportColleagues2().setVisible(false);
-                        gui.getPickSupportColleagues3().setVisible(false);
+                        perspectivesString();
+                        workResultString();
 
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.fourthPanel();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
+                        gui.setPage(4);
+                        gui.getThirdPanel().setVisible(false);
+                        gui.getFourthPanel().setVisible(true);
                         break;
                     case 4:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.fifthPanel();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
+                        gui.setPage(5);
+                        gui.getFourthPanel().setVisible(false);
+                        gui.getFifthPanel().setVisible(true);
+                        gui.getThirdPagePanel().setVisible(false);
                         break;
                     case 5:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.sixthPanel();
+                        gui.setPage(6);
+                        gui.getFifthPanel().setVisible(false);
+                        gui.getSixthPanel().setVisible(true);
                         break;
                     case 6:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.seventhPanel();
+                        gui.setPage(7);
+                        gui.getSixthPanel().setVisible(false);
+                        gui.getSeventhPanel().setVisible(true);
                         break;
                     case 7:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.eightPanel();
+                        gui.setPage(8);
+                        gui.getSeventhPanel().setVisible(false);
+                        gui.getEigthPanel().setVisible(true);
                         gui.getMoreInfo().setVisible(false);
                         gui.getPopup().setVisible(false);
                         break;
                     case 8:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.ninethPanel();
+                        gui.setPage(9);
+                        gui.getEigthPanel().setVisible(false);
+                        gui.getNinethPanel().setVisible(true);
                         gui.getNext().setVisible(false);
                         break;
-
                 }
+
             }
         });
 
@@ -266,87 +234,67 @@ public class reviewController {
             public void actionPerformed(ActionEvent e) {
                 switch (gui.getPage()) {
                     case 9:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
+                        gui.setPage(8);
+                        gui.getNinethPanel().setVisible(false);
+                        gui.getEigthPanel().setVisible(true);
                         gui.getNext().setVisible(true);
-                        gui.eightPanel();
+                        //gui.eightPanel();
                         break;
                     case 8:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
+                        gui.setPage(7);
+                        gui.getEigthPanel().setVisible(false);
+                        gui.getSeventhPanel().setVisible(true);
                         gui.getMoreInfo().setVisible(true);
-                        gui.seventhPanel();
+                        //gui.seventhPanel();
                         break;
                     case 7:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.sixthPanel();
+                        gui.setPage(6);
+                        gui.getSeventhPanel().setVisible(false);
+                        gui.getSixthPanel().setVisible(true);
                         break;
                     case 6:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.fifthPanel();
+                        gui.setPage(5);
+                        gui.getSixthPanel().setVisible(false);
+                        gui.getFifthPanel().setVisible(true);
                         break;
                     case 5:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.fourthPanel();
+                        gui.setPage(4);
+                        gui.getFifthPanel().setVisible(false);
+                        gui.getFourthPanel().setVisible(true);
                         break;
                     case 4:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.thirdPanel();
+                        socialBehaviorString();
+                        developmentsString();
+                        othersString();
+                        perspectivesString();
+                        workResultString();
 
-                        gui.getPickSocialBehavior().setVisible(true);
-                        gui.getPickSocialBehavior2().setVisible(true);
-                        gui.getPickSocialBehavior3().setVisible(true);
-                        gui.getPickWorkResult1().setVisible(true);
-                        gui.getPickWorkResult2().setVisible(true);
-                        gui.getPickWorkResult3().setVisible(true);
-                        gui.getPickParticipationInTheLesson1().setVisible(true);
-                        gui.getPickParticipationInTheLesson2().setVisible(true);
-                        gui.getPickParticipationInTheLesson3().setVisible(true);
-                        gui.getPickIndependentWork1().setVisible(true);
-                        gui.getPickIndependentWork2().setVisible(true);
-                        gui.getPickIndependentWork3().setVisible(true);
-                        gui.getPickSupportColleagues1().setVisible(true);
-                        gui.getPickSupportColleagues2().setVisible(true);
-                        gui.getPickSupportColleagues3().setVisible(true);
+                        gui.setPage(3);
+                        gui.getFourthPanel().setVisible(false);
+                        gui.getThirdPanel().setVisible(true);
+                        gui.getThirdPagePanel().setVisible(true);
                         break;
                     case 3:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
+                        gui.setPage(2);
+                        gui.getThirdPanel().setVisible(false);
+                        gui.getSecondPanel().setVisible(true);
                         gui.getMoreInfo().setVisible(false);
                         gui.getPopup().setVisible(false);
                         gui.getBtnTraineedata().setVisible(true);
-                        gui.secondPanel();
+                        //gui.secondPanel();
+                        gui.getThirdPagePanel().setVisible(false);
                         break;
                     case 2:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
+                        gui.setPage(1);
+                        gui.getSecondPanel().setVisible(false);
+                        gui.getPanel().setVisible(true);
                         gui.getPrevious().setVisible(false);
                         gui.getBtnTraineedata().setVisible(false);
-                        gui.startPanel();
                         break;
                 }
             }
         });
+
 
         //Add both buttons to ActionListener
         gui.getSaveAndNew().addActionListener(actionListenerSafeData);
