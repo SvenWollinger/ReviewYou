@@ -42,10 +42,10 @@ public class ExcelHandler {
 
     public void copyFinalFile(String fileName) throws IOException {
         FileDialog fd = new FileDialog(new JFrame(), "Speichern", FileDialog.SAVE);
+        fd.setFile(fileName+".xlsx");
         fd.setVisible(true);
-        System.out.println(fd.getFile());
         File clonedWb = new File(fd.getDirectory() + fd.getFile());
-        Files.copy(myFile.toPath(), clonedWb.toPath());
+        Files.copy(myFile.toPath(), clonedWb.toPath(),StandardCopyOption.REPLACE_EXISTING);
     }
 
     public void writeInstructorData(String name, String telephone, String date, String eMail) throws IOException {

@@ -102,10 +102,6 @@ public class reviewController {
             }
         };
 
-        //Add both buttons to ActionListener
-        gui.getSaveAndNew().addActionListener(actionListenerSafeData);
-        gui.getSaveAndExit().addActionListener(actionListenerSafeData);
-
         //"Berechnen" button
         gui.getCalc().addActionListener(new ActionListener() {
             @Override
