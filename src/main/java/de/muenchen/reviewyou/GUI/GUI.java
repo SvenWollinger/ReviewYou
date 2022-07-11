@@ -545,6 +545,7 @@ public class GUI {
         others.setText("");
         txtPoints.setText("");
         txtReview.setText("");
+        apprenticeshipSelector.setSelectedItem(null);
 
         genderGroup.clearSelection();
         supportColleaguesGroup.clearSelection();

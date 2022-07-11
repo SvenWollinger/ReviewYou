@@ -3,6 +3,7 @@ package de.muenchen.reviewyou.Controller;
 import de.muenchen.reviewyou.GUI.GUI;
 import de.muenchen.reviewyou.excelhandler.*;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -146,10 +147,14 @@ public class reviewController {
         gui.getBtnTraineedata().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                JFileChooser fileChooser = new JFileChooser();
-                int optiion = fileChooser.showOpenDialog(null);
-                if (optiion == JFileChooser.APPROVE_OPTION) {
-                    File file = fileChooser.getSelectedFile();
+                FileDialog fileChooser = new FileDialog(new JFrame(), "Azubidaten", FileDialog.LOAD);
+                fileChooser.setVisible(true);
+                String path = fileChooser.getDirectory();
+                String fileName = fileChooser.getFile();
+                String pathAndName = path + fileName;
+                if (path != null || fileName != null) {
+                    System.out.println(pathAndName);
+                    File file = new File(pathAndName);
                     AzubiGenerator azubiGenerator = new AzubiGenerator();
                     try {
                         List<Azubi> azubis = azubiGenerator.getAzubiList(file.getPath());

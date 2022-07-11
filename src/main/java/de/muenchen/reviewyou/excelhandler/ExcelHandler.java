@@ -3,6 +3,8 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.*;
 
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -39,7 +41,10 @@ public class ExcelHandler {
     }
 
     public void copyFinalFile(String fileName) throws IOException {
-        File clonedWb = new File(fileName + ".xlsx");
+        FileDialog fd = new FileDialog(new JFrame(), "Speichern", FileDialog.SAVE);
+        fd.setVisible(true);
+        System.out.println(fd.getFile());
+        File clonedWb = new File(fd.getDirectory() + fd.getFile());
         Files.copy(myFile.toPath(), clonedWb.toPath());
     }
 
