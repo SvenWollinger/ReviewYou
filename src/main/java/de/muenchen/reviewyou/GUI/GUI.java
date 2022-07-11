@@ -169,10 +169,6 @@ public class GUI {
             layoutArr[i] = new SpringLayout();
         }
 
-        /*for (int i=0; i<panelArr.length; i++) {
-            panelArr[i] = new JPanel();
-        }*/
-
         contentPane = window.getContentPane();
         window.setLayout(layout);
         window.add(next);
@@ -481,7 +477,7 @@ public class GUI {
         previous.setVisible(false);
         btnTraineedata.setVisible(false);
         next.setVisible(true);
-        //startPanel();
+        startPanel();
     }
     
     // First page to get user data
