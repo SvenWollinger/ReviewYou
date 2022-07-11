@@ -218,8 +218,7 @@ public class reviewController {
                         break;
 
                 }
-                gui.getWindow().revalidate();
-                gui.getWindow().repaint();
+
             }
         });
 
