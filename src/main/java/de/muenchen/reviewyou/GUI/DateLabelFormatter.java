@@ -7,6 +7,7 @@ import java.util.Calendar;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 
 public class DateLabelFormatter extends AbstractFormatter {
+
     private final String datePattern = "dd.MM.yyyy";
     private final SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
 
@@ -16,9 +17,12 @@ public class DateLabelFormatter extends AbstractFormatter {
     }
 
     @Override
-    public String valueToString(Object value) {
-        if (value != null)
-            return dateFormatter.format(((Calendar) value).getTime());
+    public String valueToString(Object value) throws ParseException {
+        if (value != null) {
+            Calendar cal = (Calendar) value;
+            return dateFormatter.format(cal.getTime());
+        }
+
         return "";
     }
 
