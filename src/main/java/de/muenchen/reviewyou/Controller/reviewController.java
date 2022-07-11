@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
-import java.util.Enumeration;
 import java.util.List;
 
 public class reviewController {
@@ -38,7 +37,7 @@ public class reviewController {
                 //Give values to Excel-Group
                 try {
                     excelHandler.writeInstructorData(gui.getInstructorName().getText(),
-                            gui.getInstructorTelephone().getText(), gui.getTxtdate().getText(),
+                            gui.getInstructorTelephone().getText(), gui.getTxtDate().getText(),
                             gui.getInstructorEmail().getText());
                     excelHandler.writeStudentData(gui.getTxtTraineeName().getText(), gui.getTxtBirthDate().getText(),
                             gui.getTxtApartmentStreet().getText(), gui.getTxtTraineeYear().getText(),
@@ -114,7 +113,7 @@ public class reviewController {
             }
         });
 
-        //setText from loaded AzubiData.xlsx
+        //setText from loaded AzubiDatan.xlsx
         gui.getApprenticeshipSelector().addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -169,94 +168,58 @@ public class reviewController {
             public void actionPerformed(ActionEvent e) {
                 switch (gui.getPage()) {
                     case 1:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
+                        gui.setPage(2);
+                        gui.getPanel().setVisible(false);
+                        gui.getSecondPanel().setVisible(true);
                         gui.getPrevious().setVisible(true);
                         gui.getBtnTraineedata().setVisible(true);
-                        gui.secondPanel();
                         break;
                     case 2:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.thirdPanel();
+                        gui.setPage(3);
+                        gui.getSecondPanel().setVisible(false);
+                        gui.getThirdPanel().setVisible(true);
                         gui.getMoreInfo().setVisible(true);
                         gui.getBtnTraineedata().setVisible(false);
+                        gui.getThirdPagePanel().setVisible(true);
                         break;
                     case 3:
-                        //Safe selected data
-                        socialBehaviorString();
-                        workResultString();
-                        developmentsString();
-                        perspectivesString();
-                        othersString();
-                        gui.getPickSocialBehavior().setVisible(false);
-                        gui.getPickSocialBehavior2().setVisible(false);
-                        gui.getPickSocialBehavior3().setVisible(false);
-                        gui.getPickWorkResult1().setVisible(false);
-                        gui.getPickWorkResult2().setVisible(false);
-                        gui.getPickWorkResult3().setVisible(false);
-                        gui.getPickParticipationInTheLesson1().setVisible(false);
-                        gui.getPickParticipationInTheLesson2().setVisible(false);
-                        gui.getPickParticipationInTheLesson3().setVisible(false);
-                        gui.getPickIndependentWork1().setVisible(false);
-                        gui.getPickIndependentWork2().setVisible(false);
-                        gui.getPickIndependentWork3().setVisible(false);
-                        gui.getPickSupportColleagues1().setVisible(false);
-                        gui.getPickSupportColleagues2().setVisible(false);
-                        gui.getPickSupportColleagues3().setVisible(false);
-
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.fourthPanel();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
+                        gui.setPage(4);
+                        gui.getThirdPanel().setVisible(false);
+                        gui.getFourthPanel().setVisible(true);
                         break;
                     case 4:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.fifthPanel();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
+                        gui.setPage(5);
+                        gui.getFourthPanel().setVisible(false);
+                        gui.getFifthPanel().setVisible(true);
+                        gui.getThirdPagePanel().setVisible(false);
                         break;
                     case 5:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.sixthPanel();
+                        gui.setPage(6);
+                        gui.getFifthPanel().setVisible(false);
+                        gui.getSixthPanel().setVisible(true);
                         break;
                     case 6:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.seventhPanel();
+                        gui.setPage(7);
+                        gui.getSixthPanel().setVisible(false);
+                        gui.getSeventhPanel().setVisible(true);
                         break;
                     case 7:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.eightPanel();
+                        gui.setPage(8);
+                        gui.getSeventhPanel().setVisible(false);
+                        gui.getEigthPanel().setVisible(true);
                         gui.getMoreInfo().setVisible(false);
                         gui.getPopup().setVisible(false);
                         break;
                     case 8:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.ninethPanel();
+                        gui.setPage(9);
+                        gui.getEigthPanel().setVisible(false);
+                        gui.getNinethPanel().setVisible(true);
                         gui.getNext().setVisible(false);
                         break;
 
                 }
+                gui.getWindow().revalidate();
+                gui.getWindow().repaint();
             }
         });
 
@@ -266,83 +229,56 @@ public class reviewController {
             public void actionPerformed(ActionEvent e) {
                 switch (gui.getPage()) {
                     case 9:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
+                        gui.setPage(8);
+                        gui.getNinethPanel().setVisible(false);
+                        gui.getEigthPanel().setVisible(true);
                         gui.getNext().setVisible(true);
-                        gui.eightPanel();
+                        //gui.eightPanel();
                         break;
                     case 8:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
+                        gui.setPage(7);
+                        gui.getEigthPanel().setVisible(false);
+                        gui.getSeventhPanel().setVisible(true);
                         gui.getMoreInfo().setVisible(true);
-                        gui.seventhPanel();
+                        //gui.seventhPanel();
                         break;
                     case 7:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.sixthPanel();
+                        gui.setPage(6);
+                        gui.getSeventhPanel().setVisible(false);
+                        gui.getSixthPanel().setVisible(true);
                         break;
                     case 6:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.fifthPanel();
+                        gui.setPage(5);
+                        gui.getSixthPanel().setVisible(false);
+                        gui.getFifthPanel().setVisible(true);
                         break;
                     case 5:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.fourthPanel();
+                        gui.setPage(4);
+                        gui.getFifthPanel().setVisible(false);
+                        gui.getFourthPanel().setVisible(true);
                         break;
                     case 4:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
-                        gui.thirdPanel();
-
-                        gui.getPickSocialBehavior().setVisible(true);
-                        gui.getPickSocialBehavior2().setVisible(true);
-                        gui.getPickSocialBehavior3().setVisible(true);
-                        gui.getPickWorkResult1().setVisible(true);
-                        gui.getPickWorkResult2().setVisible(true);
-                        gui.getPickWorkResult3().setVisible(true);
-                        gui.getPickParticipationInTheLesson1().setVisible(true);
-                        gui.getPickParticipationInTheLesson2().setVisible(true);
-                        gui.getPickParticipationInTheLesson3().setVisible(true);
-                        gui.getPickIndependentWork1().setVisible(true);
-                        gui.getPickIndependentWork2().setVisible(true);
-                        gui.getPickIndependentWork3().setVisible(true);
-                        gui.getPickSupportColleagues1().setVisible(true);
-                        gui.getPickSupportColleagues2().setVisible(true);
-                        gui.getPickSupportColleagues3().setVisible(true);
+                        gui.setPage(3);
+                        gui.getFourthPanel().setVisible(false);
+                        gui.getThirdPanel().setVisible(true);
+                        gui.getThirdPagePanel().setVisible(true);
                         break;
                     case 3:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
+                        gui.setPage(2);
+                        gui.getThirdPanel().setVisible(false);
+                        gui.getSecondPanel().setVisible(true);
                         gui.getMoreInfo().setVisible(false);
                         gui.getPopup().setVisible(false);
                         gui.getBtnTraineedata().setVisible(true);
-                        gui.secondPanel();
+                        //gui.secondPanel();
+                        gui.getThirdPagePanel().setVisible(false);
                         break;
                     case 2:
-                        gui.getPanel().removeAll();
-                        gui.getPanel().revalidate();
-                        gui.getPanel().repaint();
-                        gui.getPanel().repaint();
+                        gui.setPage(1);
+                        gui.getSecondPanel().setVisible(false);
+                        gui.getPanel().setVisible(true);
                         gui.getPrevious().setVisible(false);
                         gui.getBtnTraineedata().setVisible(false);
-                        gui.startPanel();
                         break;
                 }
             }
@@ -403,157 +339,5 @@ public class reviewController {
             return "zur IT-Systemelektronikerin / zum IT-Systemelektroniker";
         }
         return null;
-    }
-
-    public void socialBehaviorString() {
-        for (Enumeration<AbstractButton> buttons = gui.getSocialBehaviorGroup().getElements(); buttons.hasMoreElements();) {
-            AbstractButton button = buttons.nextElement();
-            if (button.isSelected()) {
-                switch (button.getText()) {
-                    case "1":
-                        gui.getAbilities().setText(gui.getPickSocialBehavior().getSelectedValue().toString());
-                        gui.getjSliders().get(0).setValue(12);
-                        gui.getjSliders().get(6).setValue(12);
-                        gui.getjSliders().get(7).setValue(12);
-                        gui.getjSliders().get(8).setValue(12);
-                        gui.getjSliders().get(9).setValue(12);
-                        gui.getjSliders().get(10).setValue(12);
-                        gui.getjSliders().get(11).setValue(12);
-                        gui.getjSliders().get(12).setValue(12);
-                        gui.getjSliders().get(13).setValue(12);
-                        gui.getjSliders().get(15).setValue(12);
-                        gui.getjSliders().get(18).setValue(12);
-                        break;
-                    case "2":
-                        gui.getAbilities().setText(gui.getPickSocialBehavior2().getSelectedValue().toString());
-                        gui.getjSliders().get(0).setValue(8);
-                        gui.getjSliders().get(6).setValue(8);
-                        gui.getjSliders().get(7).setValue(8);
-                        gui.getjSliders().get(8).setValue(8);
-                        gui.getjSliders().get(9).setValue(8);
-                        gui.getjSliders().get(10).setValue(8);
-                        gui.getjSliders().get(11).setValue(8);
-                        gui.getjSliders().get(12).setValue(8);
-                        gui.getjSliders().get(13).setValue(8);
-                        gui.getjSliders().get(15).setValue(8);
-                        gui.getjSliders().get(18).setValue(8);
-                        break;
-                    case "3":
-                        gui.getAbilities().setText(gui.getPickSocialBehavior3().getSelectedValue().toString());
-                        gui.getjSliders().get(0).setValue(4);
-                        gui.getjSliders().get(6).setValue(4);
-                        gui.getjSliders().get(7).setValue(4);
-                        gui.getjSliders().get(8).setValue(4);
-                        gui.getjSliders().get(9).setValue(4);
-                        gui.getjSliders().get(10).setValue(4);
-                        gui.getjSliders().get(11).setValue(4);
-                        gui.getjSliders().get(12).setValue(4);
-                        gui.getjSliders().get(13).setValue(4);
-                        gui.getjSliders().get(15).setValue(4);
-                        gui.getjSliders().get(18).setValue(4);
-                        break;
-                }
-            }
-        }
-    }
-
-    public void workResultString() {
-        for (Enumeration<AbstractButton> buttons = gui.getWorkResultGroup().getElements(); buttons.hasMoreElements();) {
-            AbstractButton button = buttons.nextElement();
-            if (button.isSelected()) {
-                switch (button.getText()) {
-                    case "1":
-                        gui.getStrength().setText(gui.getPickWorkResult1().getSelectedValue().toString());
-                        gui.getjSliders().get(1).setValue(12);
-                        break;
-                    case "2":
-                        gui.getStrength().setText(gui.getPickWorkResult2().getSelectedValue().toString());
-                        gui.getjSliders().get(1).setValue(8);
-                        break;
-                    case "3":
-                        gui.getStrength().setText(gui.getPickWorkResult3().getSelectedValue().toString());
-                        gui.getjSliders().get(1).setValue(4);
-                        break;
-                }
-            }
-        }
-    }
-
-    public void developmentsString() {
-        for (Enumeration<AbstractButton> buttons = gui.getParticipationInTheLessonGroup().getElements(); buttons.hasMoreElements(); ) {
-            AbstractButton button = buttons.nextElement();
-            if (button.isSelected()) {
-                switch (button.getText()) {
-                    case "1":
-                        gui.getDevelopements().setText(gui.getPickParticipationInTheLesson1().getSelectedValue().toString());
-                        gui.getjSliders().get(2).setValue(12);
-                        gui.getjSliders().get(14).setValue(12);
-                        break;
-                    case "2":
-                        gui.getDevelopements().setText(gui.getPickParticipationInTheLesson2().getSelectedValue().toString());
-                        gui.getjSliders().get(2).setValue(8);
-                        gui.getjSliders().get(14).setValue(8);
-                        break;
-                    case "3":
-                        gui.getDevelopements().setText(gui.getPickParticipationInTheLesson3().getSelectedValue().toString());
-                        gui.getjSliders().get(2).setValue(4);
-                        gui.getjSliders().get(14).setValue(4);
-                        break;
-                }
-            }
-        }
-    }
-
-    public void perspectivesString() {
-        for (Enumeration<AbstractButton> buttons = gui.getIndependentWorkGroup().getElements(); buttons.hasMoreElements(); ) {
-            AbstractButton button = buttons.nextElement();
-            if (button.isSelected()) {
-                switch (button.getText()) {
-                    case "1":
-                        gui.getPerspective().setText(gui.getPickIndependentWork1().getSelectedValue().toString());
-                        gui.getjSliders().get(3).setValue(12);
-                        gui.getjSliders().get(4).setValue(12);
-                        gui.getjSliders().get(5).setValue(12);
-                        gui.getjSliders().get(17).setValue(12);
-                        break;
-                    case "2":
-                        gui.getPerspective().setText(gui.getPickIndependentWork2().getSelectedValue().toString());
-                        gui.getjSliders().get(3).setValue(8);
-                        gui.getjSliders().get(4).setValue(8);
-                        gui.getjSliders().get(5).setValue(8);
-                        gui.getjSliders().get(17).setValue(8);
-                        break;
-                    case "3":
-                        gui.getPerspective().setText(gui.getPickIndependentWork3().getSelectedValue().toString());
-                        gui.getjSliders().get(3).setValue(4);
-                        gui.getjSliders().get(4).setValue(4);
-                        gui.getjSliders().get(5).setValue(4);
-                        gui.getjSliders().get(17).setValue(4);
-                        break;
-                }
-            }
-        }
-    }
-
-    public void othersString() {
-        for (Enumeration<AbstractButton> buttons = gui.getSupportColleaguesGroup().getElements(); buttons.hasMoreElements(); ) {
-            AbstractButton button = buttons.nextElement();
-            if (button.isSelected()) {
-                switch (button.getText()) {
-                    case "1":
-                        gui.getOthers().setText(gui.getPickSupportColleagues1().getSelectedValue().toString());
-                        gui.getjSliders().get(16).setValue(12);
-                        break;
-                    case "2":
-                        gui.getOthers().setText(gui.getPickSupportColleagues2().getSelectedValue().toString());
-                        gui.getjSliders().get(16).setValue(8);
-                        break;
-                    case "3":
-                        gui.getOthers().setText(gui.getPickSupportColleagues3().getSelectedValue().toString());
-                        gui.getjSliders().get(16).setValue(4);
-                        break;
-                }
-            }
-        }
     }
 }
