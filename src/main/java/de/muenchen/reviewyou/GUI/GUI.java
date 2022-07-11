@@ -471,13 +471,12 @@ public class GUI {
     }
 
     public void goToFirstPanel() {
-        panel.removeAll();
-        panel.revalidate();
-        panel.repaint();
+        ninethPanel.setVisible(false);
         previous.setVisible(false);
         btnTraineedata.setVisible(false);
         next.setVisible(true);
-        startPanel();
+        panel.setVisible(true);
+        page = 1;
     }
     
     // First page to get user data
