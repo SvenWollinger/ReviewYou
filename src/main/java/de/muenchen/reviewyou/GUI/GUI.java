@@ -37,7 +37,6 @@ public class GUI {
     private final JPanel ninethPanel = new JPanel();
 
     private final JPanel thirdPagePanel = new JPanel();
-    private final JPanel[] panelArr = new JPanel[9];
     private final Font font = new Font(null, Font.PLAIN, 20);
     private final Font fontt = new Font(null, Font.PLAIN, 17);
     private final SpringLayout[] layoutArr = new SpringLayout[4];
@@ -117,9 +116,6 @@ public class GUI {
         return panel;
     }
 
-    public JPanel getPanelByI(int i){
-        return panelArr[i];
-    }
 
     public JPanel getThirdPagePanel() {
         return thirdPagePanel;
@@ -695,11 +691,6 @@ public class GUI {
 
     public JTextField getTxtCourse() {
         return txtCourse;
-    }
-
-
-    public JPanel getPanelArr(int i) {
-        return panelArr[i];
     }
 
     // second Page
