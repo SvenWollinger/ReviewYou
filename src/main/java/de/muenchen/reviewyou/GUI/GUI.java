@@ -471,6 +471,29 @@ public class GUI {
     }
 
     public void goToFirstPanel() {
+        txtTraineeName.setText("");
+        txtBirthDate.setText("");
+        txtApartmentStreet.setText("");
+        txtInternshipSelection.setText("");
+        txtTraineeYear.setText("");
+        txtTrainingArea.setText("");
+        txtSessions.setText("");
+        txtCourse.setText("");
+        abilities.setText("");
+        strength.setText("");
+        developements.setText("");
+        perspective.setText("");
+        others.setText("");
+        txtPoints.setText("");
+        txtReview.setText("");
+
+        genderGroup.clearSelection();
+        supportColleaguesGroup.clearSelection();
+        independentWorkGroup.clearSelection();
+        workResultGroup.clearSelection();
+        participationInTheLessonGroup.clearSelection();
+        socialBehaviorGroup.clearSelection();
+
         ninethPanel.setVisible(false);
         previous.setVisible(false);
         btnTraineedata.setVisible(false);
