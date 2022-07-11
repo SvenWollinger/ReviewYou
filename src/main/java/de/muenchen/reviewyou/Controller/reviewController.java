@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -127,6 +128,9 @@ public class reviewController {
                     gui.getTxtCourse().setText(azubi.getCourse());
                     gui.getTxtInternshipSelection().setText(String.valueOf(azubi.getInternshipSection()));
                     gui.getTxtTraineeYear().setText(String.valueOf(azubi.getYear()));
+                    System.out.println(gui.getTxtTraineeName().getText());
+                    String[] name = gui.getTxtTraineeName().getText().split(",");
+                    gui.setNameStudent(name[0]);
                 }
             }
         });

@@ -42,11 +42,16 @@ public class GUI {
     private final SpringLayout[] layoutArr = new SpringLayout[4];
     private final SpringLayout layout = new SpringLayout();
 
-    private final String[] arrSoicalBehavior1 = new String[2];
-    private final JList pickSocialBehavior = new JList(arrSoicalBehavior1);
+    private  String nameStudent = "";
 
+    private final String[] arrSoicalBehavior1 = new String[2];
+
+    private final JList pickSocialBehavior = new JList(arrSoicalBehavior1);
     private final String[] arrSocialBehavior2 = new String[3];
+
     private final JList pickSocialBehavior2 = new JList(arrSocialBehavior2);
+
+    public void setNameStudent(String name) {nameStudent = name;}
 
     private final String[] arrSocialBehavior3 = new String[3];
     private final JList pickSocialBehavior3 = new JList(arrSocialBehavior3);
@@ -447,13 +452,13 @@ public class GUI {
                 arrWorkResult3[3] = "Oftmals ist große Nacharbeit erforderlich";
                 arrParticipationInTheLesson1[0] = "Er beteiligt sich sehr aktiv im Unterricht";
                 arrParticipationInTheLesson1[1] = "Stellt sehr sinnvolle Fragen, die das Unterrichtsgeschehen bereichern";
-                arrParticipationInTheLesson1[2] = "Herr X ist sehr aktiv und ergreift Initiative um seine Kolleg*innen zu unterstützen";
+                arrParticipationInTheLesson1[2] = "Herr " + nameStudent + " ist sehr aktiv und ergreift Initiative um seine Kolleg*innen zu unterstützen";
                 arrParticipationInTheLesson2[0] = "Er beteiligt sich oftmals im Unterricht";
                 arrParticipationInTheLesson2[1] = "Stellt oftmals sinnvolle Fragen ";
                 arrParticipationInTheLesson3[0] = "Er beteiligt sich selten im Unterricht ";
                 arrParticipationInTheLesson3[1] = "Stellt meist wenig bis keine Fragen";
-                arrParticipationInTheLesson3[2] = "Herr X lenkt sich oftmals selbst ab";
-                arrParticipationInTheLesson3[3] = "Herr X lenkt sich und seine Kolleg*innen oftmals selbst ab";
+                arrParticipationInTheLesson3[2] = "Herr " + nameStudent + " lenkt sich oftmals selbst ab";
+                arrParticipationInTheLesson3[3] = "Herr "+ nameStudent +" lenkt sich und seine Kolleg*innen oftmals selbst ab";
                 arrIndependentWork1[0] = "Seine Arbeit wird stets gewissenhaft erledigt";
                 arrIndependentWork1[1] = "Seine Arbeit wird oftmals gewissenhaft erledigt";
                 arrIndependentWork2[0] = "Er erledigt seine Arbeit ohne Nachfragen ";
@@ -462,11 +467,11 @@ public class GUI {
                 arrIndependentWork3[1] = "Die Arbeit wird oftmals nicht selbstständig ausgeführt";
                 arrIndependentWork3[2] = "Er kommt seiner Arbeit erst nach Aufforderung nach";
                 arrIndependentWork3[3] = "Er ist oft unsicher und muss viel nachfragen um die Arbeit zu schaffen";
-                arrSupportColleagues1[0] = "Herr X geht offen auf seine Kolleg*innen zu und unterstützt jene";
-                arrSupportColleagues1[1] = "Herr X ist zurückhaltend, bringt sich jedoch sehr gut in Teams ein";
-                arrSupportColleagues2[0] = "Herr X ist eher zurückhaltend";
-                arrSupportColleagues2[1] = "Herr X bevorzugt es in der gleichen Gruppe zu arbeiten";
-                arrSupportColleagues3[0] = "Herr X geht seinen Kolleg*innen aus dem Weg und arbeitet lieber alleine";
+                arrSupportColleagues1[0] = "Herr "+ nameStudent +" geht offen auf seine Kolleg*innen zu und unterstützt jene";
+                arrSupportColleagues1[1] = "Herr " + nameStudent + " ist zurückhaltend, bringt sich jedoch sehr gut in Teams ein";
+                arrSupportColleagues2[0] = "Herr " + nameStudent + " ist eher zurückhaltend";
+                arrSupportColleagues2[1] = "Herr " + nameStudent + " bevorzugt es in der gleichen Gruppe zu arbeiten";
+                arrSupportColleagues3[0] = "Herr " + nameStudent + " geht seinen Kolleg*innen aus dem Weg und arbeitet lieber alleine";
 
             }
         });
@@ -492,13 +497,13 @@ public class GUI {
                 arrWorkResult3[3] = "Oftmals ist große Nacharbeit erforderlich";
                 arrParticipationInTheLesson1[0] = "Sie beteiligt sich sehr aktiv im Unterricht";
                 arrParticipationInTheLesson1[1] = "Stellt sehr sinnvolle Fragen, die das Unterrichtsgeschehen bereichern ";
-                arrParticipationInTheLesson1[2] = "Frau X ist sehr aktiv und ergreift Initiative um seine Kolleg*innen zu unterstützen";
+                arrParticipationInTheLesson1[2] = "Frau "+ nameStudent +" ist sehr aktiv und ergreift Initiative um seine Kolleg*innen zu unterstützen";
                 arrParticipationInTheLesson2[0] = "Sie beteiligt sich oftmals im Unterricht ";
                 arrParticipationInTheLesson2[1] = "Stellt oftmals sinnvolle Fragen ";
                 arrParticipationInTheLesson3[0] = "Sie beteiligt sich selten im Unterricht ";
                 arrParticipationInTheLesson3[1] = "Stellt meist wenig bis keine Fragen";
-                arrParticipationInTheLesson3[2] = "Frau X lenkt sich oftmals selbst ab";
-                arrParticipationInTheLesson3[3] = "Frau X lenkt sich und seine Kolleg*innen oftmals selbst ab";
+                arrParticipationInTheLesson3[2] = "Frau " + nameStudent +" lenkt sich oftmals selbst ab";
+                arrParticipationInTheLesson3[3] = "Frau " + nameStudent + " lenkt sich und seine Kolleg*innen oftmals selbst ab";
                 arrIndependentWork1[0] = "Ihre Arbeit wird stets gewissenhaft erledigt";
                 arrIndependentWork1[1] = "Ihre Arbeit wird oftmals gewissenhaft erledigt";
                 arrIndependentWork2[0] = "Sie erledigt ihre Arbeit ohne Nachfragen ";
@@ -507,11 +512,11 @@ public class GUI {
                 arrIndependentWork3[1] = "Die Arbeit wird oftmals nicht selbstständig ausgeführt";
                 arrIndependentWork3[2] = "Sie kommt ihrer Arbeit erst nach Aufforderung nach";
                 arrIndependentWork3[3] = "Sie ist oft unsicher und muss viel nachfragen um die Arbeit zu schaffen";
-                arrSupportColleagues1[0] ="Frau X geht offen auf ihre Kolleg*innen zu und unterstützt jene";
-                arrSupportColleagues1[1] ="Frau X ist zurückhaltend, bringt sich jedoch sehr gut in Teams ein";
-                arrSupportColleagues2[0] ="Frau X ist eher zurückhaltend";
-                arrSupportColleagues2[1] ="Frau X bevorzugt es in der gleichen Gruppe zu arbeiten";
-                arrSupportColleagues3[0] ="Frau X geht ihren Kolleg*innen aus dem Weg und arbeitet lieber alleine";
+                arrSupportColleagues1[0] ="Frau " + nameStudent + " geht offen auf ihre Kolleg*innen zu und unterstützt jene";
+                arrSupportColleagues1[1] ="Frau " + nameStudent + " ist zurückhaltend, bringt sich jedoch sehr gut in Teams ein";
+                arrSupportColleagues2[0] ="Frau " + nameStudent + " ist eher zurückhaltend";
+                arrSupportColleagues2[1] ="Frau " + nameStudent + " bevorzugt es in der gleichen Gruppe zu arbeiten";
+                arrSupportColleagues3[0] ="Frau " + nameStudent + " geht ihren Kolleg*innen aus dem Weg und arbeitet lieber alleine";
             }
         });
 
