@@ -11,6 +11,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
@@ -718,7 +721,10 @@ public class GUI {
     UtilDateModel model2 = new UtilDateModel();
     JDatePanelImpl datePanel2 = new JDatePanelImpl(model2, p);
     JDatePickerImpl pickerHandover = new JDatePickerImpl(datePanel2, new DateLabelFormatter());
-    JDatePickerImpl pickerMeeting = new JDatePickerImpl(datePanel2, new DateLabelFormatter());
+
+    UtilDateModel model3 = new UtilDateModel();
+    JDatePanelImpl datePanel3 = new JDatePanelImpl(model3, p);
+    JDatePickerImpl pickerMeeting = new JDatePickerImpl(datePanel3, new DateLabelFormatter());
 
     //Getter
     public JDatePickerImpl getTxtFrom() {
@@ -794,11 +800,11 @@ public class GUI {
         p.put("text.today", "Today");
         p.put("text.month", "Month");
         p.put("text.year", "Year");
-
+        datePanel2.getModel().setDate(Year.now().getValue(),8,1);
+        pickerMeeting.getJFormattedTextField().setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
         //added components
         secondPanel.setVisible(false);
         secondPanel.setPreferredSize(new Dimension(800, 700));
-
         secondPanel.add(txtFrom);
         secondPanel.add(txtTill);
         secondPanel.add(pickerHandover);
@@ -942,7 +948,8 @@ public class GUI {
         layoutArr[1].putConstraint(SpringLayout.NORTH, pickerMeeting, 10, SpringLayout.SOUTH, interimTalk);
         layoutArr[1].putConstraint(SpringLayout.WEST, pickerMeeting, 100, SpringLayout.WEST, contentPane);
 
-        pickerHandover.getJFormattedTextField().setText(today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
+
+
     }
 
     // set Insets

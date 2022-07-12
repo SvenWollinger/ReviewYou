@@ -115,7 +115,6 @@ public class reviewController {
         gui.getApprenticeshipSelector().addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                System.out.println(gui.getApprenticeshipSelector().getSelectedItem());
                 Azubi azubi = (Azubi) gui.getApprenticeshipSelector().getSelectedItem();
                 if (azubi != null) {
                     gui.getTxtTraineeName().setText(azubi.getName());
@@ -127,7 +126,6 @@ public class reviewController {
                     gui.getTxtCourse().setText(azubi.getCourse());
                     gui.getTxtInternshipSelection().setText(String.valueOf(azubi.getInternshipSection()));
                     gui.getTxtTraineeYear().setText(String.valueOf(azubi.getYear()));
-                    System.out.println(gui.getTxtTraineeName().getText());
                     /*String[] name = gui.getTxtTraineeName().getText().split(",");
                     gui.setNameStudent(name[0]);*/
 
@@ -153,7 +151,6 @@ public class reviewController {
                 String fileName = fileChooser.getFile();
                 String pathAndName = path + fileName;
                 if (path != null || fileName != null) {
-                    System.out.println(pathAndName);
                     File file = new File(pathAndName);
                     AzubiGenerator azubiGenerator = new AzubiGenerator();
                     try {
