@@ -39,20 +39,20 @@ public class reviewController {
                 //Give values to Excel-Group
                 try {
                     excelHandler.writeInstructorData(gui.getInstructorName().getText(),
-                            gui.getInstructorTelephone().getText(), gui.getTxtDate().getText(),
-                            gui.getInstructorEmail().getText());
+                          gui.getInstructorTelephone().getText(), gui.getTxtDate().getText(),
+                          gui.getInstructorEmail().getText());
                     excelHandler.writeStudentData(gui.getTxtTraineeName().getText(), gui.getTxtBirthDate().getText(),
-                            gui.getTxtApartmentStreet().getText(), gui.getTxtTraineeYear().getText(),
-                            gui.getTxtCourse().getText());
+                          gui.getTxtApartmentStreet().getText(), gui.getTxtTraineeYear().getText(),
+                          gui.getTxtCourse().getText());
                     excelHandler.writeAllocationPeriod(gui.getTxtFrom().getJFormattedTextField().getText(),
-                            gui.getTxtTill().getJFormattedTextField().getText(),
-                            gui.getTxtInternshipSelection().getText());
+                          gui.getTxtTill().getJFormattedTextField().getText(),
+                          gui.getTxtInternshipSelection().getText());
                     excelHandler.writeTrainingAreaAndPeriod(gui.getTxtTrainingArea().getText());
                     excelHandler.writeParticipations(gui.getTxtSessions().getText());
                     excelHandler.writeDates(gui.getPickerHandover().getJFormattedTextField().getText(),
-                            gui.getPickerMeeting().getJFormattedTextField().getText());
+                          gui.getPickerMeeting().getJFormattedTextField().getText());
                     excelHandler.writePerformance(gui.getAbilities().getText(),gui.getStrength().getText(),
-                            gui.getDevelopements().getText(),gui.getPerspective().getText(),gui.getOthers().getText());
+                          gui.getDevelopements().getText(),gui.getPerspective().getText(),gui.getOthers().getText());
                     excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
                     excelHandler.writeCourse(getStringCourse());
 
@@ -181,67 +181,73 @@ public class reviewController {
         gui.getNext().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                switch (gui.getPage()) {
-                    case 1:
-                        gui.setPage(2);
-                        gui.getPanel().setVisible(false);
-                        gui.getSecondPanel().setVisible(true);
-                        gui.getPrevious().setVisible(true);
-                        gui.getBtnTraineedata().setVisible(true);
-                        break;
-                    case 2:
-                        gui.setPage(3);
-                        gui.getSecondPanel().setVisible(false);
-                        gui.getThirdPanel().setVisible(true);
-                        gui.getMoreInfo().setVisible(true);
-                        gui.getBtnTraineedata().setVisible(false);
-                        gui.getThirdPagePanel().setVisible(true);
-                        if (!gui.getGenderMen().isSelected() && !gui.getGenderWoman().isSelected()){
-                            disableAllButtons();
-                        }
-                        String[] name = gui.getTxtTraineeName().getText().split(",");
-                        gui.setNameStudent(name[0]);
-                        break;
+                try {
+                    switch (gui.getPage()) {
+                        case 1:
+                            gui.setPage(2);
+                            gui.getPanel().setVisible(false);
+                            gui.getSecondPanel().setVisible(true);
+                            gui.getPrevious().setVisible(true);
+                            gui.getBtnTraineedata().setVisible(true);
+                            break;
+                        case 2:
+                            gui.setPage(3);
+                            gui.getSecondPanel().setVisible(false);
+                            gui.getThirdPanel().setVisible(true);
+                            gui.getMoreInfo().setVisible(true);
+                            gui.getBtnTraineedata().setVisible(false);
+                            gui.getThirdPagePanel().setVisible(true);
+                            if (!gui.getGenderMen().isSelected() && !gui.getGenderWoman().isSelected()) {
+                                disableAllButtons();
+                            }
+                            String[] name = gui.getTxtTraineeName().getText().split(",");
+                            gui.setNameStudent(name[0]);
+                            break;
 
-                    case 3:
-                        socialBehaviorString();
-                        developmentsString();
-                        othersString();
-                        perspectivesString();
-                        workResultString();
-                        gui.setPage(4);
-                        gui.getThirdPanel().setVisible(false);
-                        gui.getFourthPanel().setVisible(true);
-                        break;
-                    case 4:
-                        gui.setPage(5);
-                        gui.getFourthPanel().setVisible(false);
-                        gui.getFifthPanel().setVisible(true);
-                        gui.getThirdPagePanel().setVisible(false);
-                        break;
-                    case 5:
-                        gui.setPage(6);
-                        gui.getFifthPanel().setVisible(false);
-                        gui.getSixthPanel().setVisible(true);
-                        break;
-                    case 6:
-                        gui.setPage(7);
-                        gui.getSixthPanel().setVisible(false);
-                        gui.getSeventhPanel().setVisible(true);
-                        break;
-                    case 7:
-                        gui.setPage(8);
-                        gui.getSeventhPanel().setVisible(false);
-                        gui.getEigthPanel().setVisible(true);
-                        gui.getMoreInfo().setVisible(false);
-                        gui.getPopup().setVisible(false);
-                        break;
-                    case 8:
-                        gui.setPage(9);
-                        gui.getEigthPanel().setVisible(false);
-                        gui.getNinethPanel().setVisible(true);
-                        gui.getNext().setVisible(false);
-                        break;
+                        case 3:
+                            socialBehaviorString();
+                            developmentsString();
+                            othersString();
+                            perspectivesString();
+                            workResultString();
+                            gui.setPage(4);
+                            gui.getThirdPanel().setVisible(false);
+                            gui.getFourthPanel().setVisible(true);
+                            break;
+
+                        case 4:
+                            gui.setPage(5);
+                            gui.getFourthPanel().setVisible(false);
+                            gui.getFifthPanel().setVisible(true);
+                            gui.getThirdPagePanel().setVisible(false);
+                            break;
+                        case 5:
+                            gui.setPage(6);
+                            gui.getFifthPanel().setVisible(false);
+                            gui.getSixthPanel().setVisible(true);
+                            break;
+                        case 6:
+                            gui.setPage(7);
+                            gui.getSixthPanel().setVisible(false);
+                            gui.getSeventhPanel().setVisible(true);
+                            break;
+                        case 7:
+                            gui.setPage(8);
+                            gui.getSeventhPanel().setVisible(false);
+                            gui.getEigthPanel().setVisible(true);
+                            gui.getMoreInfo().setVisible(false);
+                            gui.getPopup().setVisible(false);
+                            break;
+                        case 8:
+                            gui.setPage(9);
+                            gui.getEigthPanel().setVisible(false);
+                            gui.getNinethPanel().setVisible(true);
+                            gui.getNext().setVisible(false);
+                            break;
+                    }
+                }
+                catch(Exception exception){
+                    JOptionPane.showMessageDialog(null, "Bitte alles auswaehlen!");
                 }
 
             }
