@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -129,8 +128,9 @@ public class reviewController {
                     gui.getTxtInternshipSelection().setText(String.valueOf(azubi.getInternshipSection()));
                     gui.getTxtTraineeYear().setText(String.valueOf(azubi.getYear()));
                     System.out.println(gui.getTxtTraineeName().getText());
-                    String[] name = gui.getTxtTraineeName().getText().split(",");
-                    gui.setNameStudent(name[0]);
+                    /*String[] name = gui.getTxtTraineeName().getText().split(",");
+                    gui.setNameStudent(name[0]);*/
+
                 }
             }
         });
@@ -167,6 +167,18 @@ public class reviewController {
                 }
             }
         });
+        gui.getGenderMen().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                enableAllButtons();
+            }
+        });
+        gui.getGenderWoman().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                enableAllButtons();
+            }
+        });
 
         //"Weiter" button
         gui.getNext().addActionListener(new ActionListener() {
@@ -187,14 +199,19 @@ public class reviewController {
                         gui.getMoreInfo().setVisible(true);
                         gui.getBtnTraineedata().setVisible(false);
                         gui.getThirdPagePanel().setVisible(true);
+                        if (!gui.getGenderMen().isSelected() && !gui.getGenderWoman().isSelected()){
+                            disableAllButtons();
+                        }
+                        String[] name = gui.getTxtTraineeName().getText().split(",");
+                        gui.setNameStudent(name[0]);
                         break;
+
                     case 3:
                         socialBehaviorString();
                         developmentsString();
                         othersString();
                         perspectivesString();
                         workResultString();
-
                         gui.setPage(4);
                         gui.getThirdPanel().setVisible(false);
                         gui.getFourthPanel().setVisible(true);
@@ -509,4 +526,38 @@ public class reviewController {
             }
         }
     }
+
+    private void disableButtons(ButtonGroup buttonGroup){
+        Enumeration<AbstractButton> enumeration = buttonGroup.getElements();
+        while (enumeration.hasMoreElements()){
+            JRadioButton button = (JRadioButton) enumeration.nextElement();
+            button.setEnabled(false);
+        }
+    }
+
+    private void enableButtons(ButtonGroup buttonGroup){
+        Enumeration<AbstractButton> enumeration = buttonGroup.getElements();
+        while (enumeration.hasMoreElements()){
+            JRadioButton button = (JRadioButton) enumeration.nextElement();
+            button.setEnabled(true);
+        }
+    }
+
+    private void disableAllButtons(){
+        disableButtons(gui.getIndependentWorkGroup());
+        disableButtons(gui.getSocialBehaviorGroup());
+        disableButtons(gui.getSupportColleaguesGroup());
+        disableButtons(gui.getWorkResultGroup());
+        disableButtons(gui.getParticipationInTheLessonGroup());
+    }
+
+    private void enableAllButtons(){
+        enableButtons(gui.getParticipationInTheLessonGroup());
+        enableButtons(gui.getWorkResultGroup());
+        enableButtons(gui.getSupportColleaguesGroup());
+        enableButtons(gui.getIndependentWorkGroup());
+        enableButtons(gui.getSocialBehaviorGroup());
+    }
+
+
 }

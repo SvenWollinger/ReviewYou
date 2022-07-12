@@ -223,6 +223,15 @@ public class GUI {
 
     //constructor
 
+
+    public JRadioButton getGenderMen() {
+        return genderMen;
+    }
+
+    public JRadioButton getGenderWoman() {
+        return genderWoman;
+    }
+
     public GUI() {
         window = new JFrame("Leistungsbericht Nachwuchskräfte");
         window.setResizable(false);
