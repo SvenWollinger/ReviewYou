@@ -56,6 +56,13 @@ public class reviewController {
                     excelHandler.writeTotalandAverage(gui.getTxtReview().getText(), gui.getTxtPoints().getText());
                     excelHandler.writeCourse(getStringCourse());
 
+                    //Clear text
+                    String placeholder = "";
+                    gui.getAbilities().setText(placeholder);
+                    gui.getStrength().setText(placeholder);
+                    gui.getDevelopements().setText(placeholder);
+                    gui.getPerspective().setText(placeholder);
+                    gui.getOthers().setText(placeholder);
 
                     //Get every value and give them to excel
                     int pointsFromSliders = 0;

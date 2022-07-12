@@ -446,12 +446,12 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 arrSoicalBehavior1[0] = "Ist ein sehr freundlicher Auszubildender";
-                arrSoicalBehavior1[1] = "Ist ein sehr freundlicher und hilfsbereiteter Auszubildender";
+                arrSoicalBehavior1[1] = "Ist ein sehr freundlicher und hilfsbereiter Auszubildender";
                 arrSocialBehavior2[0] = "Ist ein freundlicher Auszubildender";
                 arrSocialBehavior2[1] = "Ist ein freundlicher und hilfsbereiter Auszubildender";
                 arrSocialBehavior2[2] = "Ist ein freundlicher, jedoch zurückhaltender Auszubildender";
-                arrSocialBehavior3[0] = "Ist ein freundlicher jedoch sehr zurückhaldender Auszubildender";
-                arrSocialBehavior3[1] = "Ist ein sehr zurückhaldender Auszubildender";
+                arrSocialBehavior3[0] = "Ist ein freundlicher jedoch sehr zurückhaltender Auszubildender";
+                arrSocialBehavior3[1] = "Ist ein sehr zurückhaltender Auszubildender";
                 arrSocialBehavior3[2] = "Ist ein sehr zurückgezogener Auszubildender";
                 arrWorkResult1[0] = "Sein Fachwissen ist sehr fundiert ";
                 arrWorkResult1[1] = "Die Arbeitsergebnisse sind sehr gut";
@@ -491,12 +491,12 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 arrSoicalBehavior1[0] = "Ist eine sehr freundliche Auszubildende";
-                arrSoicalBehavior1[1] = "Ist eine sehr freundliche und hilfsbereitete Auszubildende";
+                arrSoicalBehavior1[1] = "Ist eine sehr freundliche und hilfsbereite Auszubildende";
                 arrSocialBehavior2[0] = "Ist eine freundliche Auszubildende";
                 arrSocialBehavior2[1] = "Ist eine freundliche und hilfsbereite Auszubildende";
-                arrSocialBehavior2[2] = "Ist eine freundliche, jedoch zurückhaldende Auszubildende";
+                arrSocialBehavior2[2] = "Ist eine freundliche, jedoch zurückhaltende Auszubildende";
                 arrSocialBehavior3[0] = "Ist eine freundliche, jedoch sehr zurückhaltende Auszubildende";
-                arrSocialBehavior3[1] = "Ist eine sehr zurückhaldende Auszubildende";
+                arrSocialBehavior3[1] = "Ist eine sehr zurückhaltende Auszubildende";
                 arrSocialBehavior3[2] = "Ist eine sehr zurückgezogene Auszubildende";
                 arrWorkResult1[0] = "Ihr Fachwissen ist sehr fundiert ";
                 arrWorkResult1[1] = "Die Arbeitsergebnisse sind sehr gut";
@@ -971,7 +971,7 @@ public class GUI {
     private final JRadioButton btn2SocialBehavior = new JRadioButton("2");
     private final JRadioButton btn3SocialBehavior = new JRadioButton("3");
     private final ButtonGroup socialBehaviorGroup = new ButtonGroup();
-    private final JLabel workResult = new JLabel("Arebitsergebnisse/ -erfolg");
+    private final JLabel workResult = new JLabel("Arbeitsergebnisse/ -erfolg");
     private final JRadioButton btn1WorkResult = new JRadioButton("1");
     private final JRadioButton btn2WorkResult = new JRadioButton("2");
     private final JRadioButton btn3WorkResult = new JRadioButton("3");
@@ -986,7 +986,7 @@ public class GUI {
     private final JRadioButton btn2IndependentWork = new JRadioButton("2");
     private final JRadioButton btn3IndependentWork = new JRadioButton("3");
     private final ButtonGroup independentWorkGroup = new ButtonGroup();
-    private final JLabel supportColleagues = new JLabel("Unterstützung Kolleg*innen");
+    private final JLabel supportColleagues = new JLabel("Unterstützung von Kolleg*innen");
     private final JRadioButton btn1supportColleagues= new JRadioButton("1");
     private final JRadioButton btn2supportColleagues = new JRadioButton("2");
     private final JRadioButton btn3supportColleagues = new JRadioButton("3");
