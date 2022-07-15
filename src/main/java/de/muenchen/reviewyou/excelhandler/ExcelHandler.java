@@ -13,7 +13,7 @@ import java.nio.file.StandardCopyOption;
 
 public class ExcelHandler {
 
-    private final File myFile = new File("FinalFile.xlsx");
+    private File myFile = new File("FinalFile.xlsx");
     private FileInputStream fis;
     private XSSFWorkbook xssfWorkbook;
     private XSSFSheet xssfSheet;
@@ -24,6 +24,12 @@ public class ExcelHandler {
         InputStream src = ExcelHandler.class.getResourceAsStream("/Gradingtable.xlsx");
         Files.copy(src, Paths.get(myFile.getName()), StandardCopyOption.REPLACE_EXISTING);
     }
+
+    public void changeEditFile(String fileLocation) throws IOException {
+           this.myFile = new File(fileLocation);
+    }
+
+
 
 
     private void writeCell(int columnnumber,int rownumber, String text) throws IOException {
