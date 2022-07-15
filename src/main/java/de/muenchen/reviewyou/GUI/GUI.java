@@ -255,6 +255,7 @@ public class GUI {
         moreInfo.setVisible(false);
         btnTraineedata.setVisible(false);
 
+        btnTraineedata.setPreferredSize(new Dimension(100,25));
         next.setPreferredSize(new Dimension(80, 30));
         previous.setPreferredSize(new Dimension(80, 30));
         moreInfo.setPreferredSize(new Dimension(80, 30));
@@ -276,8 +277,8 @@ public class GUI {
 
         //set traineeDataButton
 
-        layout.putConstraint(SpringLayout.SOUTH, btnTraineedata, -25, SpringLayout.SOUTH,contentPane);
-        layout.putConstraint(SpringLayout.EAST, btnTraineedata, -180, SpringLayout.WEST, previous);
+        layout.putConstraint(SpringLayout.NORTH, btnTraineedata, 30, SpringLayout.NORTH,contentPane);
+        layout.putConstraint(SpringLayout.EAST, btnTraineedata, 700, SpringLayout.WEST, contentPane);
 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         startPanel();
